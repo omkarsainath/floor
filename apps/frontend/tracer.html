@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Floor Plan Tracer - Simple</title>
+    <style>
+        body { margin: 0; font-family: sans-serif; display: flex; height: 100vh; }
+        #left { width: 70%; position: relative; overflow: auto; background: #222; }
+        #right { width: 30%; padding: 15px; background: #f5f5f5; overflow-y: auto; }
+        #container { position: relative; display: inline-block; }
+        #plan { display: block; max-width: none; }
+        #overlay { position: absolute; top: 0; left: 0; cursor: crosshair; }
+        .controls { margin-bottom: 15px; }
+        button { padding: 8px 15px; margin: 3px; cursor: pointer; background: #4CAF50; color: white; border: none; font-size: 12px; }
+        button.active { background: #2196F3; }
+        textarea { width: 100%; height: 200px; font-family: monospace; font-size: 10px; }
+        .instructions { background: #fff3cd; padding: 8px; border-radius: 4px; margin-bottom: 10px; font-size: 12px; }
+        .stat { margin: 3px 0; font-size: 11px; }
+        h3 { margin: 5px 0; font-size: 14px; }
+        #doorList { max-height: 200px; overflow-y: auto; margin: 5px 0; }
+        .door-item { display: flex; align-items: center; gap: 4px; padding: 3px 0; border-bottom: 1px solid #ddd; font-size: 11px; }
+        .door-item .door-label { font-weight: bold; min-width: 28px; color: #ff6600; }
+        .door-item select { font-size: 10px; padding: 2px; }
+        .door-item .btn-del { background: #e53935; padding: 2px 6px; font-size: 10px; border: none; color: white; cursor: pointer; border-radius: 2px; }
+    </style>
+</head>
+<body>
+    <div id="left">
+        <div id="container">
+            <img id="plan" src="" style="display:none;">
+            <canvas id="overlay"></canvas>
+        </div>
+    </div>
+    <div id="right">
+        <div class="instructions">
+            <strong>Instructions:</strong><br>
+            1. Click "Wall Mode" → Click start point → Click end point<br>
+            2. When done, click "Generate JSON"<br>
+            3. Copy JSON and save to <code>precise_floorplan.json</code>
+        </div>
+        
+        <div class="controls">
+            <input type="file" id="fileInput" accept="image/*" style="display:none;" onchange="handleImageUpload(event)">
+            <button onclick="document.getElementById('fileInput').click()" style="background:#00897b;">Upload Image</button>
+            <br>
+            <button id="btnWall" onclick="setMode('wall')">Wall Mode</button>
+            <button id="btnDoor" onclick="setMode('door')">Door Mode</button>
+            <button id="btnDeleteDoor" onclick="setMode('deleteDoor')" style="background:#e53935;">Delete Door</button>
+            <br>
+            <button id="btnCalibrate" onclick="setMode('calibrate')" style="background:#ff9800;">Calibrate Scale</button>
+            <br>
+            <button onclick="undo()">Undo</button>
+            <button onclick="clearAll()">Clear All</button>
+            <button onclick="generateJSON()">Generate JSON</button>
+            <br>
+            <button onclick="autoDetectWalls()" style="background:#3f51b5;">Auto Detect</button>
+            <br>
+            <button onclick="view3D()" style="background: #FF5722; font-weight: bold;">View in 3D ➜</button>
+        </div>
+
+        <div class="stat" id="scaleStatus" style="background:#fff3cd;padding:6px;border-radius:4px;">
+            Scale: not set (will fit to 20m span)
+        </div>
+
+        <div class="stats">
+            <div class="stat"><strong>Walls:</strong> <span id="wallCount">0</span></div>
+            <div class="stat"><strong>Doors:</strong> <span id="doorCount">0</span></div>
+            <div class="stat"><strong>Rooms/Objects:</strong> <span id="roCount">0</span>
+                <label style="font-size:10px;margin-left:6px;"><input type="checkbox" id="toggleRO" checked onchange="showRoomObjects=this.checked;drawAll();"> Show</label>
+            </div>
+        </div>
+
+        <h3>Door List:</h3>
+        <div id="doorList"><em style="font-size:11px;color:#999;">No doors yet</em></div>
+        
+        <h3>Status:</h3>
+        <div id="status" class="stat">Idle</div>
+        <h3>JSON Output:</h3>
+        <textarea id="output" placeholder="Click 'Generate JSON' when done tracing..."></textarea>
+    </div>
+
+    <script>
+        const img = document.getElementById('plan');
+        const canvas = document.getElementById('overlay');
+        const ctx = canvas.getContext('2d');
+        
+        let mode = 'wall';
+        let walls = [];
+        let doors = [];
+        let roomObjects = [];
+        let showRoomObjects = true;
+        let currentWall = null;
+
+        // Scale calibration: meters per pixel. null = no calibration yet (fallback to fit-to-20m).
+        let metersPerPixel = null;
+        let scaleSource = null; // 'door_width_estimate' | 'manual'
+        let manualScaleLocked = false; // once user calibrates manually, auto-detect won't overwrite it
+        let calibrateStart = null;
+
+        function updateScaleStatus() {
+            const el = document.getElementById('scaleStatus');
+            if (!el) return;
+            if (metersPerPixel) {
+                const label = scaleSource === 'manual' ? 'manual calibration' : 'auto (door width estimate)';
+                el.textContent = `Scale: ${metersPerPixel.toFixed(5)} m/px (${label})`;
+            } else {
+                el.textContent = 'Scale: not set (will fit to 20m span)';
+            }
+        }
+
+        function setScale(mpp, source) {
+            metersPerPixel = mpp;
+            scaleSource = source;
+            updateScaleStatus();
+        }
+
+        // Draw placeholder if no image loaded
+        (function drawPlaceholder() {
+            canvas.width = 700;
+            canvas.height = 500;
+            ctx.fillStyle = '#1a1a2e';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#888';
+            ctx.font = 'bold 22px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('Upload a floor plan image to get started', canvas.width / 2, canvas.height / 2 - 10);
+            ctx.font = '14px sans-serif';
+            ctx.fillStyle = '#666';
+            ctx.fillText('Click "Upload Image" on the right panel', canvas.width / 2, canvas.height / 2 + 20);
+        })();
+
+        // Color map for room/object classes
+        const classColors = {
+            'Bedroom': '#4CAF50', 'Bathroom': '#2196F3', 'Kitchen': '#FF9800',
+            'Living Room': '#9C27B0', 'Dining Room': '#E91E63', 'Balcony': '#00BCD4',
+            'Hallway': '#607D8B', 'Foyer': '#795548', 'Study Room': '#3F51B5',
+            'Utility': '#FF5722', 'Garage': '#9E9E9E', 'Terrace': '#8BC34A',
+            'Walkin': '#CDDC39', 'Lobby': '#FFC107', 'Parking': '#757575',
+            'Storage': '#A1887F', 'Duct': '#546E7A',
+            'Bed': '#66BB6A', 'Sofa': '#AB47BC', 'Chair': '#5C6BC0',
+            'Table': '#26A69A', 'Dining Table': '#EF5350', 'Coffee Table': '#7E57C2',
+            'TV': '#42A5F5', 'Wardrobe': '#8D6E63', 'Fridge': '#78909C',
+            'Stove': '#FF7043', 'Sink': '#29B6F6', 'Washing Machine': '#26C6DA',
+            'Door': '#FFA726', 'Commode': '#80CBC4',
+            // Structural classes — these come from the room_object model in lowercase
+            // (see apps/room-and-object/data.yaml) and were previously falling through
+            // to the invisible default gray, making them impossible to spot on screen.
+            'pillar': '#673AB7', 'window': '#03A9F4',
+            'glass-window': '#81D4FA', 'glass-wall': '#4DD0E1',
+            'glass-grill': '#00ACC1', 'glass-banister': '#26C6DA',
+            'stairs': '#8D6E63', 'spiral-stairs': '#A1887F', 'lift': '#455A64',
+        };
+        function getClassColor(cls) {
+            return classColors[cls] || classColors[(cls || '').toLowerCase()] || '#888888';
+        }
+
+        function normalizeLine(line) {
+            const s = { x: line.start.x, y: line.start.y };
+            const e = { x: line.end.x, y: line.end.y };
+            if (s.x > e.x || (s.x === e.x && s.y > e.y)) {
+                return { start: e, end: s };
+            }
+            return { start: s, end: e };
+        }
+
+        function lineKey(line) {
+            const normalized = normalizeLine(line);
+            const round = (v) => Math.round(v * 10) / 10;
+            return `${round(normalized.start.x)}_${round(normalized.start.y)}_${round(normalized.end.x)}_${round(normalized.end.y)}`;
+        }
+
+        function mergeWalls(list) {
+            const seen = new Map();
+            list.forEach((w) => {
+                const key = lineKey(w);
+                if (!seen.has(key)) {
+                    seen.set(key, w);
+                }
+            });
+            return Array.from(seen.values());
+        }
+
+        function getManualWalls() {
+            return walls.filter((w) => w.source !== 'auto');
+        }
+        
+        // Wait for image to load
+        img.onload = function() {
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            setMode('wall');
+        };
+        
+        function setMode(m) {
+            mode = m;
+            document.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+            const btnId = m === 'wall' ? 'btnWall' : m === 'door' ? 'btnDoor' : m === 'calibrate' ? 'btnCalibrate' : 'btnDeleteDoor';
+            document.getElementById(btnId).classList.add('active');
+            currentWall = null;
+            calibrateStart = null;
+            if (m === 'deleteDoor') {
+                canvas.style.cursor = 'not-allowed';
+            } else {
+                canvas.style.cursor = 'crosshair';
+            }
+        }
+        
+        // Get coordinates relative to image
+        function getCoords(e) {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            return {
+                x: (e.clientX - rect.left) * scaleX,
+                y: (e.clientY - rect.top) * scaleY
+            };
+        }
+        
+        // Mouse events
+        canvas.addEventListener('mousedown', function(e) {
+            const pos = getCoords(e);
+            
+            if (mode === 'wall') {
+                if (!currentWall) {
+                    // First click - start of wall
+                    currentWall = { start: pos };
+                } else {
+                    // Second click - end of wall
+                    walls.push({
+                        start: currentWall.start,
+                        end: pos,
+                        height: 3,
+                        thickness: 0.15,
+                        source: 'manual'
+                    });
+                    currentWall = null;
+                    updateCounts();
+                    drawAll();
+                }
+            } else if (mode === 'door') {
+                doors.push({
+                    id: `door_${Date.now()}`,
+                    class: 'door',
+                    swingDir: 'auto',
+                    bbox: {
+                        x1: pos.x - 20, y1: pos.y - 20,
+                        x2: pos.x + 20, y2: pos.y + 20
+                    }
+                });
+                updateCounts();
+                drawAll();
+                renderDoorList();
+            } else if (mode === 'deleteDoor') {
+                const idx = findDoorAtPoint(pos.x, pos.y);
+                if (idx >= 0) {
+                    doors.splice(idx, 1);
+                    updateCounts();
+                    drawAll();
+                    renderDoorList();
+                }
+            } else if (mode === 'calibrate') {
+                if (!calibrateStart) {
+                    calibrateStart = pos;
+                } else {
+                    const pixelDist = Math.hypot(pos.x - calibrateStart.x, pos.y - calibrateStart.y);
+                    calibrateStart = null;
+                    if (pixelDist < 1) {
+                        drawAll();
+                        return;
+                    }
+                    const input = prompt('Real-world distance between these two points (in meters)?', '1');
+                    const meters = parseFloat(input);
+                    if (Number.isFinite(meters) && meters > 0) {
+                        setScale(meters / pixelDist, 'manual');
+                        manualScaleLocked = true;
+                        setStatus(`Calibrated: ${meters}m over ${pixelDist.toFixed(0)}px`);
+                    }
+                    drawAll();
+                }
+            }
+        });
+        
+        canvas.addEventListener('mousemove', function(e) {
+            if (mode === 'wall' && currentWall) {
+                const pos = getCoords(e);
+                drawAll();
+                // Draw temporary line
+                ctx.strokeStyle = '#00ff00';
+                ctx.lineWidth = 4;
+                ctx.beginPath();
+                ctx.moveTo(currentWall.start.x, currentWall.start.y);
+                ctx.lineTo(pos.x, pos.y);
+                ctx.stroke();
+            } else if (mode === 'calibrate' && calibrateStart) {
+                const pos = getCoords(e);
+                drawAll();
+                ctx.strokeStyle = '#ff9800';
+                ctx.lineWidth = 3;
+                ctx.setLineDash([6, 4]);
+                ctx.beginPath();
+                ctx.moveTo(calibrateStart.x, calibrateStart.y);
+                ctx.lineTo(pos.x, pos.y);
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
+        });
+        
+        canvas.addEventListener('mouseleave', function() {
+            if (currentWall) {
+                currentWall = null;
+                drawAll();
+            }
+        });
+        
+        function drawAll() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw completed walls
+            ctx.strokeStyle = '#00ff00';
+            ctx.lineWidth = 4;
+            walls.forEach(w => {
+                ctx.beginPath();
+                ctx.moveTo(w.start.x, w.start.y);
+                ctx.lineTo(w.end.x, w.end.y);
+                ctx.stroke();
+                
+                // Draw endpoints
+                ctx.fillStyle = '#00ff00';
+                ctx.fillRect(w.start.x - 3, w.start.y - 3, 6, 6);
+                ctx.fillRect(w.end.x - 3, w.end.y - 3, 6, 6);
+            });
+            
+            // Draw room/object detections
+            if (showRoomObjects && roomObjects.length) {
+                roomObjects.forEach((ro) => {
+                    const b = ro.bbox;
+                    const w = b.x2 - b.x1;
+                    const h = b.y2 - b.y1;
+                    const color = getClassColor(ro.class);
+                    ctx.fillStyle = color + '30'; // 30 = ~19% alpha
+                    ctx.fillRect(b.x1, b.y1, w, h);
+                    ctx.strokeStyle = color;
+                    ctx.lineWidth = 2;
+                    ctx.strokeRect(b.x1, b.y1, w, h);
+                    // Class label
+                    ctx.font = 'bold 12px sans-serif';
+                    ctx.fillStyle = color;
+                    ctx.strokeStyle = '#000';
+                    ctx.lineWidth = 2;
+                    const label = `${ro.class} ${(ro.confidence * 100).toFixed(0)}%`;
+                    ctx.strokeText(label, b.x1 + 2, b.y1 - 4);
+                    ctx.fillText(label, b.x1 + 2, b.y1 - 4);
+                });
+            }
+
+            // Draw doors with labels
+            doors.forEach((d, i) => {
+                ctx.fillStyle = 'rgba(255, 165, 0, 0.7)';
+                ctx.fillRect(d.bbox.x1, d.bbox.y1, d.bbox.x2 - d.bbox.x1, d.bbox.y2 - d.bbox.y1);
+                ctx.strokeStyle = '#ff6600';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(d.bbox.x1, d.bbox.y1, d.bbox.x2 - d.bbox.x1, d.bbox.y2 - d.bbox.y1);
+                // Label
+                ctx.font = 'bold 14px sans-serif';
+                ctx.fillStyle = '#fff';
+                ctx.strokeStyle = '#000';
+                ctx.lineWidth = 3;
+                const label = `D${i}`;
+                const lx = d.bbox.x1 + 3;
+                const ly = d.bbox.y1 + 14;
+                ctx.strokeText(label, lx, ly);
+                ctx.fillText(label, lx, ly);
+                // Swing label
+                if (d.swingDir && d.swingDir !== 'auto') {
+                    const cx = (d.bbox.x1 + d.bbox.x2) / 2;
+                    const cy = (d.bbox.y1 + d.bbox.y2) / 2;
+                    ctx.fillStyle = '#fff';
+                    ctx.strokeStyle = '#000';
+                    ctx.lineWidth = 2;
+                    const labelMap = {
+                        'right-inside': 'R-In', 'right-outside': 'R-Out',
+                        'left-inside': 'L-In', 'left-outside': 'L-Out'
+                    };
+                    ctx.font = 'bold 11px sans-serif';
+                    const txt = labelMap[d.swingDir] || '';
+                    ctx.strokeText(txt, cx - 12, cy + 5);
+                    ctx.fillText(txt, cx - 12, cy + 5);
+                }
+            });
+        }
+        
+        function updateCounts() {
+            document.getElementById('wallCount').textContent = walls.length;
+            document.getElementById('doorCount').textContent = doors.length;
+            document.getElementById('roCount').textContent = roomObjects.length;
+        }
+        
+        function undo() {
+            if (mode === 'wall' && walls.length) {
+                walls.pop();
+            } else if (mode === 'door' && doors.length) {
+                doors.pop();
+            }
+            updateCounts();
+            drawAll();
+        }
+        
+        function clearAll() {
+            walls = [];
+            doors = [];
+            currentWall = null;
+            updateCounts();
+            drawAll();
+            renderDoorList();
+        }
+
+        function findDoorAtPoint(px, py) {
+            for (let i = doors.length - 1; i >= 0; i--) {
+                const b = doors[i].bbox;
+                if (px >= b.x1 && px <= b.x2 && py >= b.y1 && py <= b.y2) return i;
+            }
+            return -1;
+        }
+
+        function deleteDoor(idx) {
+            if (idx >= 0 && idx < doors.length) {
+                doors.splice(idx, 1);
+                updateCounts();
+                drawAll();
+                renderDoorList();
+            }
+        }
+
+        function setDoorSwing(idx, dir) {
+            if (idx >= 0 && idx < doors.length) {
+                doors[idx].swingDir = dir;
+                drawAll();
+            }
+        }
+
+        function renderDoorList() {
+            const container = document.getElementById('doorList');
+            if (!doors.length) {
+                container.innerHTML = '<em style="font-size:11px;color:#999;">No doors yet</em>';
+                return;
+            }
+            container.innerHTML = doors.map((d, i) => {
+                const sw = d.swingDir || 'auto';
+                return `<div class="door-item">
+                    <span class="door-label">D${i}</span>
+                    <select onchange="setDoorSwing(${i}, this.value)">
+                        <option value="auto" ${sw === 'auto' ? 'selected' : ''}>Auto</option>
+                        <option value="right-inside" ${sw === 'right-inside' ? 'selected' : ''}>Right Inside</option>
+                        <option value="right-outside" ${sw === 'right-outside' ? 'selected' : ''}>Right Outside</option>
+                        <option value="left-inside" ${sw === 'left-inside' ? 'selected' : ''}>Left Inside</option>
+                        <option value="left-outside" ${sw === 'left-outside' ? 'selected' : ''}>Left Outside</option>
+                    </select>
+                    <button class="btn-del" onclick="deleteDoor(${i})">✕</button>
+                </div>`;
+            }).join('');
+        }
+        
+        function generateJSON() {
+            if (walls.length === 0) {
+                alert('Please trace some walls first!');
+                return;
+            }
+
+            const validWalls = walls.filter((w) => {
+                if (!w || !w.start || !w.end) return false;
+                const dx = w.end.x - w.start.x;
+                const dy = w.end.y - w.start.y;
+                if (!Number.isFinite(dx) || !Number.isFinite(dy)) return false;
+                return Math.hypot(dx, dy) > 1;
+            });
+
+            if (validWalls.length === 0) {
+                alert('No valid wall segments found. Please redraw.');
+                return;
+            }
+            
+            // Calculate bounding box
+            let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+            validWalls.forEach(w => {
+                minX = Math.min(minX, w.start.x, w.end.x);
+                maxX = Math.max(maxX, w.start.x, w.end.x);
+                minY = Math.min(minY, w.start.y, w.end.y);
+                maxY = Math.max(maxY, w.start.y, w.end.y);
+            });
+            
+            // Center, then scale to real-world meters if calibrated, else fit to a 20m span
+            const cx = (minX + maxX) / 2;
+            const cy = (minY + maxY) / 2;
+            const span = Math.max(maxX - minX, maxY - minY);
+            const scale = metersPerPixel || (20 / span);
+
+            // Normalize coordinates
+            const nx = x => (x - cx) * scale;
+            const ny = y => (y - cy) * scale;
+
+            const layout = {
+                scale_m_per_px: metersPerPixel,
+                scale_source: metersPerPixel ? scaleSource : 'fit_to_20m',
+                rooms: [],
+                walls: validWalls.map((w, i) => ({
+                    id: `wall_${i}`,
+                    start: { x: nx(w.start.x), y: ny(w.start.y) },
+                    end: { x: nx(w.end.x), y: ny(w.end.y) },
+                    height: 3,
+                    thickness: 0.15
+                })),
+                objects: [
+                    ...doors.map((d, i) => ({
+                        id: `door_${i}`,
+                        class: 'door',
+                        swingDir: d.swingDir || 'auto',
+                        bbox: {
+                            x1: nx(d.bbox.x1), y1: ny(d.bbox.y1),
+                            x2: nx(d.bbox.x2), y2: ny(d.bbox.y2)
+                        }
+                    })),
+                    ...roomObjects.map((ro, i) => ({
+                        id: `ro_${i}`,
+                        class: ro.class,
+                        confidence: ro.confidence,
+                        bbox: {
+                            x1: nx(ro.bbox.x1), y1: ny(ro.bbox.y1),
+                            x2: nx(ro.bbox.x2), y2: ny(ro.bbox.y2)
+                        }
+                    }))
+                ]
+            };
+            
+            document.getElementById('output').value = JSON.stringify(layout, null, 2);
+        }
+
+        function setStatus(text) {
+            const statusEl = document.getElementById('status');
+            if (statusEl) statusEl.textContent = text;
+        }
+
+        async function autoDetectWalls() {
+            if (!img.src || img.src === window.location.href) {
+                setStatus('Please upload a floor plan image first.');
+                return;
+            }
+            try {
+                setStatus('Auto-detecting walls... (preparing image)');
+                let payload;
+                if (img.src.startsWith('data:')) {
+                    // Compress to JPEG to reduce payload size
+                    const c = document.createElement('canvas');
+                    c.width = img.naturalWidth;
+                    c.height = img.naturalHeight;
+                    c.getContext('2d').drawImage(img, 0, 0);
+                    const jpegData = c.toDataURL('image/jpeg', 0.85);
+                    payload = { imageBase64: jpegData };
+                    setStatus(`Auto-detecting walls... (sending ${(jpegData.length / 1024 / 1024).toFixed(1)}MB)`);
+                } else {
+                    payload = { imagePath: img.getAttribute('src') };
+                }
+                const response = await fetch('http://localhost:5050/api/auto-detect', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!response.ok) {
+                    throw new Error('Auto-detect failed');
+                }
+                const data = await response.json();
+                if (!Array.isArray(data.walls)) {
+                    throw new Error('No walls detected');
+                }
+                const manual = getManualWalls();
+                const seedWalls = Array.isArray(data.seedWalls) ? data.seedWalls : [];
+                const seeded = seedWalls.map((w) => ({
+                    start: { x: w.start.x, y: w.start.y },
+                    end: { x: w.end.x, y: w.end.y },
+                    height: 3,
+                    thickness: 0.15,
+                    source: 'seed'
+                }));
+                const detected = data.walls.map((w) => ({
+                    start: { x: w.start.x, y: w.start.y },
+                    end: { x: w.end.x, y: w.end.y },
+                    height: 3,
+                    thickness: 0.15,
+                    source: 'auto'
+                }));
+                const autoDoors = Array.isArray(data.doors) ? data.doors : [];
+                const doorDetections = autoDoors.map((d, i) => ({
+                    id: `door_auto_${i}`,
+                    class: 'door',
+                    swingDir: 'auto',
+                    bbox: {
+                        x1: d.bbox.x1,
+                        y1: d.bbox.y1,
+                        x2: d.bbox.x2,
+                        y2: d.bbox.y2
+                    }
+                }));
+                const windowsDetected = Array.isArray(data.windows) ? data.windows : [];
+                const glassGrillsDetected = Array.isArray(data.glass_grills) ? data.glass_grills : [];
+                const glassBanistersDetected = Array.isArray(data.glass_banisters) ? data.glass_banisters : [];
+                const pillarsDetected = Array.isArray(data.pillars) ? data.pillars : [];
+                const stairsDetected = Array.isArray(data.stairs) ? data.stairs : [];
+                const liftsDetected = Array.isArray(data.lifts) ? data.lifts : [];
+                const fixturesDetected = Array.isArray(data.fixtures) ? data.fixtures : [];
+                const roomsDetected = Array.isArray(data.rooms_detected) ? data.rooms_detected : [];
+
+                // Room & object detections (exclude Door — already from door model)
+                const autoRoomObjects = Array.isArray(data.rooms_and_objects)
+                    ? data.rooms_and_objects
+                    : [...roomsDetected, ...windowsDetected, ...glassGrillsDetected, ...glassBanistersDetected, ...pillarsDetected, ...stairsDetected, ...liftsDetected, ...fixturesDetected];
+                roomObjects = autoRoomObjects
+                    .filter((ro) => (ro.class || '').toLowerCase() !== 'door')
+                    .map((ro) => ({
+                        class: ro.class || 'unknown',
+                        confidence: ro.confidence || 0,
+                        bbox: { x1: ro.bbox.x1, y1: ro.bbox.y1, x2: ro.bbox.x2, y2: ro.bbox.y2 }
+                    }));
+
+                // Store floor plan ID for later corrections
+                if (data.floor_plan_id) {
+                    window._currentFloorPlanId = data.floor_plan_id;
+                }
+
+                // Adopt auto-estimated scale from door widths, unless user already calibrated manually
+                if (!manualScaleLocked && data.scale_estimate && data.scale_estimate.meters_per_pixel) {
+                    setScale(data.scale_estimate.meters_per_pixel, data.scale_estimate.source);
+                }
+
+                walls = mergeWalls([...seeded, ...manual, ...detected]);
+                doors = [...doors, ...doorDetections];
+                currentWall = null;
+                updateCounts();
+                drawAll();
+                renderDoorList();
+                const dbNote = data.db_corrections_loaded ? ' (merged with saved corrections)' : '';
+                let aiNote = '';
+                if (data.ai_review) {
+                    if (data.ai_review.applied && data.ai_review.error) {
+                        aiNote = ` | AI review: ${data.ai_review.corrections_count} correction(s) applied (partial) — ${data.ai_review.summary || 'with warnings'} | warning: ${data.ai_review.error}`;
+                    } else if (data.ai_review.error) {
+                        aiNote = ` | AI review skipped: ${data.ai_review.error}`;
+                    } else if (data.ai_review.applied) {
+                        aiNote = ` | AI review: ${data.ai_review.corrections_count} correction(s) — ${data.ai_review.summary || ''}`;
+                    } else {
+                        aiNote = ' | AI review: no changes needed';
+                    }
+                }
+                const summary = data.detection_summary || {};
+                const wallsCount = summary.walls ?? detected.length;
+                const doorsCount = summary.doors ?? doorDetections.length;
+                const windowsCount = summary.windows ?? windowsDetected.length;
+                const glassGrillsCount = summary.glass_grills ?? glassGrillsDetected.length;
+                const glassBanistersCount = summary.glass_banisters ?? glassBanistersDetected.length;
+                const pillarsCount = summary.pillars ?? pillarsDetected.length;
+                const stairsCount = summary.stairs ?? stairsDetected.length;
+                const liftsCount = summary.lifts ?? liftsDetected.length;
+                const fixturesCount = summary.fixtures ?? fixturesDetected.length;
+                const roomsCount = summary.rooms ?? roomsDetected.length;
+
+                setStatus(
+                    `Auto-detected walls:${wallsCount}, doors:${doorsCount}, windows:${windowsCount}, glass-grills:${glassGrillsCount}, glass-banisters:${glassBanistersCount}, pillars:${pillarsCount}, stairs:${stairsCount}, lifts:${liftsCount}, fixtures:${fixturesCount}, rooms:${roomsCount}${dbNote}${aiNote}`
+                );
+            } catch (err) {
+                console.error('Auto-detect error:', err);
+                setStatus('Auto-detect failed: ' + err.message);
+            }
+        }
+
+        async function trainAI() {
+            try {
+                const manualWalls = getManualWalls();
+                if (manualWalls.length < 2) {
+                    alert('Draw at least 2-3 wall lines before training.');
+                    return;
+                }
+                setStatus('Saving corrections & training AI...');
+                // Prepare image for DB storage
+                let imageBase64 = null;
+                if (img.src.startsWith('data:')) {
+                    const c = document.createElement('canvas');
+                    c.width = img.naturalWidth;
+                    c.height = img.naturalHeight;
+                    c.getContext('2d').drawImage(img, 0, 0);
+                    imageBase64 = c.toDataURL('image/jpeg', 0.85);
+                }
+                // Collect doors
+                const doorData = doors.map(d => ({
+                    bbox: { x1: d.x1, y1: d.y1, x2: d.x2, y2: d.y2 },
+                    class: 'Door',
+                    swing_dir: d.swing || 'auto'
+                }));
+                const response = await fetch('http://localhost:5050/api/train', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        imagePath: img.getAttribute('src'),
+                        imageBase64: imageBase64,
+                        walls: manualWalls.map(w => ({ start: w.start, end: w.end })),
+                        doors: doorData,
+                        floor_plan_id: window._currentFloorPlanId || null
+                    })
+                });
+                if (!response.ok) {
+                    throw new Error('Training failed');
+                }
+                const data = await response.json();
+                const trainedCount = data.trained_wall_count ?? manualWalls.length;
+                setStatus(`Training complete (score ${data.score?.toFixed(2) || 'n/a'}, walls ${trainedCount}). Corrections saved to DB.`);
+            } catch (err) {
+                console.error(err);
+                setStatus('Training failed. Start the training server first.');
+            }
+        }
+        
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const dataUrl = e.target.result;
+                img.onload = function() {
+                    img.style.display = '';
+                    canvas.width = img.naturalWidth;
+                    canvas.height = img.naturalHeight;
+                    // Reset all data
+                    walls = [];
+                    doors = [];
+                    roomObjects = [];
+                    currentWall = null;
+                    metersPerPixel = null;
+                    scaleSource = null;
+                    manualScaleLocked = false;
+                    updateScaleStatus();
+                    updateCounts();
+                    drawAll();
+                    renderDoorList();
+                    setStatus('Image loaded: ' + file.name);
+                };
+                img.src = dataUrl;
+                // Store the file name for auto-detect (uses data URL directly)
+                img.dataset.uploadedName = file.name;
+            };
+            reader.readAsDataURL(file);
+            // Reset input so same file can be re-uploaded
+            event.target.value = '';
+        }
+
+        // Handle right-click to cancel current wall
+        canvas.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            if (currentWall) {
+                currentWall = null;
+                drawAll();
+            }
+        });
+        
+        // View in 3D - saves JSON and opens 3D viewer
+        async function view3D() {
+            if (walls.length === 0) {
+                alert('Please trace at least one wall first!');
+                return;
+            }
+            
+            // Generate JSON
+            generateJSON();
+            const jsonData = document.getElementById('output').value;
+
+            // Save corrections to DB with image hash
+            try {
+                setStatus('Saving corrections to DB...');
+                let imageBase64 = null;
+                if (img.src && img.src.startsWith('data:')) {
+                    const c = document.createElement('canvas');
+                    c.width = img.naturalWidth;
+                    c.height = img.naturalHeight;
+                    c.getContext('2d').drawImage(img, 0, 0);
+                    imageBase64 = c.toDataURL('image/jpeg', 0.85);
+                }
+                const manualWalls = getManualWalls();
+                const doorData = doors.map(d => ({
+                    bbox: { x1: d.bbox.x1, y1: d.bbox.y1, x2: d.bbox.x2, y2: d.bbox.y2 },
+                    class: 'Door',
+                    swing_dir: d.swingDir || 'auto'
+                }));
+                const saveResp = await fetch('http://localhost:5050/api/save-corrections', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        imagePath: img.getAttribute('src'),
+                        imageBase64: imageBase64,
+                        walls: manualWalls.map(w => ({ start: w.start, end: w.end })),
+                        doors: doorData,
+                        floor_plan_id: window._currentFloorPlanId || null
+                    })
+                });
+                if (saveResp.ok) {
+                    setStatus('Corrections saved to DB. Opening 3D viewer...');
+                } else {
+                    setStatus('DB save failed, opening 3D viewer anyway...');
+                }
+            } catch (err) {
+                console.warn('DB save failed (non-fatal):', err);
+                setStatus('Opening 3D viewer...');
+            }
+            
+            // Save to localStorage for 3D viewer to pick up
+            localStorage.setItem('preciseFloorplan', jsonData);
+            localStorage.setItem('floorplanTimestamp', Date.now());
+            
+            // Open 3D viewer in new tab
+            window.open('/apps/frontend/', '_blank');
+        }
+    </script>
+</body>
+</html>
