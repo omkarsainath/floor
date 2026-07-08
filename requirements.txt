@@ -1,0 +1,9 @@
+opencv-python
+numpy
+pdf2image
+Pillow
+shapely
+pytesseract
+ultralytics
+fiftyone
+pyyaml
