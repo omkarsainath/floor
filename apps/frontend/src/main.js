@@ -8,6 +8,7 @@ import { createCeiling } from './generators/ceiling.js';
 import { createObject } from './generators/object.js';
 import { setupViewerControls } from './controls/controls.js';
 import { createAIChatPanel } from './ai/chatPanel.js';
+import { createCatalogPanel } from './ui/catalogPanel.js';
 
 const container = document.getElementById('app') || document.body;
 
@@ -299,6 +300,8 @@ const carveWalls = (walls = [], doorBoxes = []) => {
 function onMouseClick(event) {
   // Ignore clicks on UI overlay elements
   if (event.target !== renderer.domElement) return;
+  // Catalog placement mode handles its own clicks
+  if (catalogRef.isPlacing()) return;
 
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -354,6 +357,9 @@ window.addEventListener('click', onMouseClick);
 
 // Ref object so AI chat panel can read current layout
 const layoutRef = { current: { walls: [], objects: [], rooms: [] } };
+
+// Catalog panel ref — set after layout loads, used to check placement mode
+const catalogRef = { isPlacing: () => false };
 
 async function initLayout() {
   try {
@@ -561,9 +567,11 @@ async function initLayout() {
     info.textContent = `source: ${layoutSource}, rooms: ${layout.rooms?.length || 0}, walls: ${layout.walls?.length || 0}, objects: ${layout.objects?.length || 0}`;
     document.body.appendChild(info);
 
-    // Store layout for AI access and initialize chat panel
+    // Store layout for AI access and initialize panels
     layoutRef.current = layout;
     createAIChatPanel(scene, layoutRef, selectableMeshes);
+    const catalog = createCatalogPanel({ scene, camera, renderer, layoutRef, selectableMeshes });
+    catalogRef.isPlacing = catalog.isPlacing;
   } catch (err) {
     console.error('Failed to load layout:', err);
   }
