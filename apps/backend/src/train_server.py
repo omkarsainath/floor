@@ -58,6 +58,17 @@ WINDOW_GLASS_YOLO_WEIGHTS = REPO_ROOT / "models" / "window_glass_best.pt"
 MAX_BODY_SIZE = 20 * 1024 * 1024  # 20 MB — reject oversized uploads before reading
 
 
+def _effective_weights(specialized: Path, fallback: Path = COMBINED_WEIGHTS):
+    """Return specialized weights path if it exists, else fall back to the combined model.
+    Specialized models are trained separately (R1 fix) but won't exist until first retrain.
+    Until then, COMBINED_WEIGHTS handles all three classes (0=door, 1=wall, 2=window)."""
+    if specialized.exists():
+        return specialized
+    if fallback.exists():
+        return fallback
+    return None
+
+
 def _env_float(name: str, default: float) -> float:
     raw = os.environ.get(name)
     if raw is None:
@@ -787,6 +798,7 @@ class Handler(BaseHTTPRequestHandler):
                 "door_yolo": DOOR_YOLO_WEIGHTS.exists(),
                 "room_object_yolo": ROOM_OBJECT_YOLO_WEIGHTS.exists(),
                 "window_glass_yolo": WINDOW_GLASS_YOLO_WEIGHTS.exists(),
+                "combined_fallback": COMBINED_WEIGHTS.exists(),
             },
         })
 
@@ -981,8 +993,9 @@ class Handler(BaseHTTPRequestHandler):
             use_door_yolo = data.get("useDoorYolo", True)
             lines = []
             model_used = "cv"
-            if use_yolo and YOLO_WEIGHTS.exists():
-                lines = detect_lines_yolo(image, str(YOLO_WEIGHTS), conf=WALL_YOLO_CONF, classes=[1])
+            _wall_w = _effective_weights(YOLO_WEIGHTS)
+            if use_yolo and _wall_w:
+                lines = detect_lines_yolo(image, str(_wall_w), conf=WALL_YOLO_CONF, classes=[1])
                 if lines:
                     model_used = "yolo+cv"
                     # Supplement YOLO with CV to catch walls the model missed
@@ -992,8 +1005,9 @@ class Handler(BaseHTTPRequestHandler):
                 lines = detect_lines(image, params)
             lines = classify_wall_types(image, lines)
             doors = []
-            if use_door_yolo and DOOR_YOLO_WEIGHTS.exists():
-                doors = detect_boxes_yolo(image, str(DOOR_YOLO_WEIGHTS), conf=DOOR_YOLO_CONF, classes=[0])
+            _door_w = _effective_weights(DOOR_YOLO_WEIGHTS)
+            if use_door_yolo and _door_w:
+                doors = detect_boxes_yolo(image, str(_door_w), conf=DOOR_YOLO_CONF, classes=[0])
             # Room & object detection
             use_room_object = data.get("useRoomObject", True)
             rooms_and_objects = []
@@ -1005,11 +1019,13 @@ class Handler(BaseHTTPRequestHandler):
                 )
             # Window/glass detection — dedicated model, kept separate from room_object_yolo
             # so thin structural elements aren't starved of capacity by furniture/room classes.
+            # Falls back to combined model class 2 until window_glass_best.pt is trained.
             use_window_glass = data.get("useWindowGlass", True)
-            if use_window_glass and WINDOW_GLASS_YOLO_WEIGHTS.exists():
+            _win_w = _effective_weights(WINDOW_GLASS_YOLO_WEIGHTS)
+            if use_window_glass and _win_w:
                 window_glass_objects = detect_classified_boxes_yolo(
                     image,
-                    str(WINDOW_GLASS_YOLO_WEIGHTS),
+                    str(_win_w),
                     conf=WINDOW_GLASS_YOLO_CONF,
                     classes=[2],
                 )
@@ -1040,7 +1056,8 @@ class Handler(BaseHTTPRequestHandler):
                 seed_walls = classify_wall_types(image, seed_walls)
 
             # Compute YOLO embedding for similarity-based image memory
-            yolo_path = str(YOLO_WEIGHTS) if YOLO_WEIGHTS.exists() else None
+            _emb_w = _effective_weights(YOLO_WEIGHTS)
+            yolo_path = str(_emb_w) if _emb_w else None
             img_embedding = EMB.compute_embedding(image, yolo_path) if EMB else None
 
             # SHA-256 hash of the raw image bytes for exact-match lookup
