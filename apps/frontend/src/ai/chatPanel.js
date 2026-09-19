@@ -7,7 +7,7 @@ const API_URL = 'http://localhost:5050/api/ai-chat';
  * AI Chat Panel — injects a floating chat UI into the 3D viewer
  * and processes AI actions (add/remove objects, change materials, etc.)
  */
-export function createAIChatPanel(scene, layoutRef) {
+export function createAIChatPanel(scene, layoutRef, selectableMeshes = []) {
   const history = [];
   let panelEl = null;
   let messagesEl = null;
@@ -289,8 +289,11 @@ export function createAIChatPanel(scene, layoutRef) {
     const mesh = createObject(obj);
     if (mesh) {
       mesh.userData.aiPlaced = true;
+      mesh.userData.isSelectable = true;
       mesh.userData.objectType = action.object_type;
+      mesh.userData.layoutId = `ai-${Date.now()}`;
       scene.add(mesh);
+      selectableMeshes.push(mesh);
       if (layoutRef.current) {
         layoutRef.current.objects = layoutRef.current.objects || [];
         layoutRef.current.objects.push({
@@ -330,6 +333,11 @@ export function createAIChatPanel(scene, layoutRef) {
         o => !(o.source === 'ai' && (o.class || '').toLowerCase() === type)
       );
     }
+    // Remove from selectable pool too
+    toRemove.forEach(child => {
+      const idx = selectableMeshes.indexOf(child);
+      if (idx !== -1) selectableMeshes.splice(idx, 1);
+    });
     console.log(`[ai] Removed ${removed} ${type}(s)`);
   }
 

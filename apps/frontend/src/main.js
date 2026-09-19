@@ -23,10 +23,105 @@ container.appendChild(renderer.domElement);
 
 const { scene, camera, controls } = createBasicScene(renderer.domElement, OrbitControls);
 
-// Raycaster for door clicking
+// Raycaster for door clicking and object selection
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 const clickableDoors = [];
+
+// ── Object selection & rotation ────────────────────────────
+const selectableMeshes = [];   // non-door scene objects that can be picked
+let selectedObject = null;
+let selectionHelper = null;
+
+function selectObject(obj) {
+  deselectObject();
+  selectedObject = obj;
+  selectionHelper = new THREE.BoxHelper(obj, 0xff8c00);
+  selectionHelper.userData.isHelper = true;
+  scene.add(selectionHelper);
+  _showObjectPanel(obj);
+}
+
+function deselectObject() {
+  if (selectionHelper) { scene.remove(selectionHelper); selectionHelper = null; }
+  const p = document.getElementById('obj-ctrl-panel');
+  if (p) p.remove();
+  selectedObject = null;
+}
+
+function rotateSelected(deltaY) {
+  if (!selectedObject) return;
+  selectedObject.rotation.y += deltaY;
+  if (selectionHelper) selectionHelper.update();
+  // Persist rotation into layoutRef so the chat panel sees up-to-date state
+  const id = selectedObject.userData.layoutId;
+  if (id && layoutRef.current) {
+    const o = (layoutRef.current.objects || []).find(x => x.id === id);
+    if (o) o.rotationY = selectedObject.rotation.y;
+  }
+}
+
+function _showObjectPanel(obj) {
+  const existing = document.getElementById('obj-ctrl-panel');
+  if (existing) existing.remove();
+
+  const panel = document.createElement('div');
+  panel.id = 'obj-ctrl-panel';
+  panel.style.cssText = [
+    'position:fixed;bottom:90px;left:50%;transform:translateX(-50%)',
+    'background:rgba(16,16,24,0.88);border:1px solid rgba(255,255,255,0.12)',
+    'border-radius:12px;padding:10px 14px;display:flex;gap:8px;align-items:center',
+    'font-family:Inter,system-ui,sans-serif;color:#e5e7eb;z-index:30',
+    'backdrop-filter:blur(8px);box-shadow:0 4px 20px rgba(0,0,0,0.4)',
+  ].join(';');
+
+  const label = document.createElement('span');
+  label.style.cssText = 'font-size:11px;color:#9ca3af;max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap';
+  label.textContent = obj.userData.objectType || 'object';
+
+  const mkBtn = (text, title, onClick) => {
+    const b = document.createElement('button');
+    b.textContent = text;
+    b.title = title;
+    b.style.cssText = [
+      'padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,0.15)',
+      'background:rgba(255,255,255,0.08);color:#f8fafc;cursor:pointer',
+      'font-size:14px;line-height:1;transition:background 0.15s',
+    ].join(';');
+    b.onmouseenter = () => (b.style.background = 'rgba(255,255,255,0.2)');
+    b.onmouseleave = () => (b.style.background = 'rgba(255,255,255,0.08)');
+    b.addEventListener('click', (e) => { e.stopPropagation(); onClick(); });
+    return b;
+  };
+
+  const hint = document.createElement('span');
+  hint.style.cssText = 'font-size:10px;color:#6b7280;margin-left:4px';
+  hint.textContent = '[ ] or R';
+
+  const close = mkBtn('✕', 'Deselect (Esc)', deselectObject);
+  close.style.padding = '5px 8px';
+
+  panel.append(
+    label,
+    mkBtn('↺', 'Rotate CCW 45° ([)', () => rotateSelected(-Math.PI / 4)),
+    mkBtn('↻', 'Rotate CW 45° (])', () => rotateSelected(Math.PI / 4)),
+    mkBtn('↺90', 'Rotate CCW 90°', () => rotateSelected(-Math.PI / 2)),
+    mkBtn('↻90', 'Rotate CW 90°', () => rotateSelected(Math.PI / 2)),
+    hint,
+    close,
+  );
+  document.body.appendChild(panel);
+}
+
+window.addEventListener('keydown', (e) => {
+  // Ignore when typing in an input
+  if (document.activeElement && ['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+  if (e.key === 'Escape') { deselectObject(); return; }
+  if (!selectedObject) return;
+  if (e.key === '[') { e.preventDefault(); rotateSelected(-Math.PI / 4); }
+  if (e.key === ']') { e.preventDefault(); rotateSelected(Math.PI / 4); }
+  if (e.key === 'r' || e.key === 'R') { e.preventDefault(); rotateSelected(Math.PI / 4); }
+});
 
 const isAxisAligned = (dx, dy, tol = 0.15) => {
   const len = Math.hypot(dx, dy);
@@ -202,23 +297,33 @@ const carveWalls = (walls = [], doorBoxes = []) => {
 };
 
 function onMouseClick(event) {
+  // Ignore clicks on UI overlay elements
+  if (event.target !== renderer.domElement) return;
+
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
   raycaster.setFromCamera(mouse, camera);
-  const intersects = raycaster.intersectObjects(clickableDoors, true);
 
-  if (intersects.length > 0) {
-    // Find the door hinge (parent of the clicked mesh)
-    let target = intersects[0].object;
-    while (target && !target.userData.isDoor) {
-      target = target.parent;
-    }
+  // 1. Check doors first
+  const doorHits = raycaster.intersectObjects(clickableDoors, true);
+  if (doorHits.length > 0) {
+    let target = doorHits[0].object;
+    while (target && !target.userData.isDoor) target = target.parent;
+    if (target && target.userData.isDoor) { toggleDoor(target); return; }
+  }
 
-    if (target && target.userData.isDoor) {
-      toggleDoor(target);
+  // 2. Check selectable furniture
+  if (selectableMeshes.length) {
+    const hits = raycaster.intersectObjects(selectableMeshes, true);
+    if (hits.length > 0) {
+      let target = hits[0].object;
+      while (target && target.parent && !target.userData.isSelectable) target = target.parent;
+      if (target && target.userData.isSelectable) { selectObject(target); return; }
     }
   }
+
+  // 3. Click on empty space — deselect
+  deselectObject();
 }
 
 function toggleDoor(hinge) {
@@ -391,6 +496,12 @@ async function initLayout() {
           objMesh.traverse((child) => {
             if (child.isMesh) clickableDoors.push(child);
           });
+        } else {
+          // All non-door objects are selectable for rotation
+          objMesh.userData.isSelectable = true;
+          objMesh.userData.objectType = cls;
+          objMesh.userData.layoutId = obj.id;
+          selectableMeshes.push(objMesh);
         }
       }
     });
@@ -452,7 +563,7 @@ async function initLayout() {
 
     // Store layout for AI access and initialize chat panel
     layoutRef.current = layout;
-    createAIChatPanel(scene, layoutRef);
+    createAIChatPanel(scene, layoutRef, selectableMeshes);
   } catch (err) {
     console.error('Failed to load layout:', err);
   }
