@@ -65,7 +65,7 @@ function validateWall(wall, index) {
   const end = validatePoint(wall.end, `walls[${index}].end`);
   const height = ensureNumber(wall.height, 3);
   const thickness = ensureNumber(wall.thickness, 0.2);
-  return { id, start, end, height, thickness, material: wall.material || 'default' };
+  return { id, start, end, height, thickness, material: wall.material || 'default', wall_type: wall.wall_type || 'interior' };
 }
 
 const defaultLayout = {
@@ -95,8 +95,8 @@ function dedupeObjects(objs) {
   const filtered = objs
     .filter((o) => {
       const cls = (o.class || '').toLowerCase();
-      const conf = o.confidence ?? 0;
-      return _isRetainedObjectClass(cls) && conf >= 0.2;
+      const conf = o.confidence;
+      return _isRetainedObjectClass(cls) && (conf === undefined || conf === null || conf >= 0.2);
     })
     .sort((a, b) => (b.confidence ?? 0) - (a.confidence ?? 0));
 
@@ -215,12 +215,8 @@ function detectionsToLayout(detections) {
 
 function normalizeLayout(layout) {
   const points = [];
-  layout.rooms.forEach((r) => {
-    r.points.forEach((p) => points.push(p));
-  });
-  layout.walls.forEach((w) => {
-    points.push(w.start, w.end);
-  });
+  layout.rooms.forEach((r) => { r.points.forEach((p) => points.push(p)); });
+  layout.walls.forEach((w) => { points.push(w.start, w.end); });
   if (layout.objects) {
     layout.objects.forEach((o) => {
       const b = o.bbox || {};
@@ -238,8 +234,9 @@ function normalizeLayout(layout) {
   const cx = (minX + maxX) / 2;
   const cy = (minY + maxY) / 2;
   const span = Math.max(maxX - minX, maxY - minY, 1);
-  const target = 20; // scene span in world units
-  const scale = target / span;
+
+  // If the layout carries calibrated scale metadata, only center — do not rescale.
+  const scale = layout.metersPerUnit ? 1 : (20 / span);
 
   const tx = (p) => ({ x: (p.x - cx) * scale, y: (p.y - cy) * scale });
 
@@ -247,16 +244,19 @@ function normalizeLayout(layout) {
     rooms: layout.rooms.map((r) => ({
       ...r,
       points: r.points.map(tx),
-      height: r.height || 3
+      height: r.height || 3,
     })),
     walls: layout.walls.map((w) => ({
       ...w,
       start: tx(w.start),
       end: tx(w.end),
       height: w.height || 3,
-      thickness: w.thickness || 0.2
-    }))
+      thickness: w.thickness || 0.2,
+    })),
   };
+
+  if (layout.metersPerUnit) normalized.metersPerUnit = layout.metersPerUnit;
+  if (layout.scale) normalized.scale = layout.scale;
 
   if (layout.objects) {
     normalized.objects = layout.objects.map((o) => {
@@ -266,10 +266,7 @@ function normalizeLayout(layout) {
       const y2 = o.bbox?.y2 ?? 0;
       const p1 = tx({ x: x1, y: y1 });
       const p2 = tx({ x: x2, y: y2 });
-      return {
-        ...o,
-        bbox: { x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y }
-      };
+      return { ...o, bbox: { x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y } };
     });
   }
 

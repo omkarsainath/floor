@@ -151,9 +151,14 @@ export function createAIChatPanel(scene, layoutRef) {
   function addMessage(text, role = 'bot', actionsCount = 0) {
     const div = document.createElement('div');
     div.className = `ai-msg ${role}`;
-    div.innerHTML = text.replace(/\n/g, '<br>');
+    div.style.whiteSpace = 'pre-wrap';
+    div.textContent = text;
     if (actionsCount > 0 && role === 'bot') {
-      div.innerHTML += `<br><span class="actions-tag">✓ ${actionsCount} scene change${actionsCount > 1 ? 's' : ''} applied</span>`;
+      const badge = document.createElement('span');
+      badge.className = 'actions-tag';
+      badge.textContent = `✓ ${actionsCount} scene change${actionsCount > 1 ? 's' : ''} applied`;
+      div.appendChild(document.createElement('br'));
+      div.appendChild(badge);
     }
     messagesEl.appendChild(div);
     messagesEl.scrollTop = messagesEl.scrollHeight;
@@ -286,6 +291,15 @@ export function createAIChatPanel(scene, layoutRef) {
       mesh.userData.aiPlaced = true;
       mesh.userData.objectType = action.object_type;
       scene.add(mesh);
+      if (layoutRef.current) {
+        layoutRef.current.objects = layoutRef.current.objects || [];
+        layoutRef.current.objects.push({
+          id: `ai-${Date.now()}`,
+          class: action.object_type || 'default',
+          bbox: obj.bbox,
+          source: 'ai',
+        });
+      }
       console.log(`[ai] Added ${action.object_type} at (${x}, ${z})`);
     }
   }
@@ -296,16 +310,26 @@ export function createAIChatPanel(scene, layoutRef) {
     const nearZ = action.near_z;
     let removed = 0;
 
+    const toRemove = [];
     scene.children.forEach(child => {
       if (child.userData.aiPlaced && child.userData.objectType === type) {
         if (nearX !== undefined && nearZ !== undefined) {
           const dist = Math.hypot(child.position.x - nearX, child.position.z - nearZ);
           if (dist > 3) return;
         }
-        scene.remove(child);
-        removed++;
+        toRemove.push(child);
       }
     });
+    toRemove.forEach(child => {
+      scene.remove(child);
+      child.traverse(n => { if (n.geometry) n.geometry.dispose(); if (n.material) n.material.dispose(); });
+      removed++;
+    });
+    if (layoutRef.current && layoutRef.current.objects) {
+      layoutRef.current.objects = layoutRef.current.objects.filter(
+        o => !(o.source === 'ai' && (o.class || '').toLowerCase() === type)
+      );
+    }
     console.log(`[ai] Removed ${removed} ${type}(s)`);
   }
 

@@ -151,19 +151,19 @@ def get_data_by_floor_plan_id(fp_id: int) -> dict:
         with conn.cursor() as cur:
             cur.execute(
                 "SELECT * FROM walls WHERE floor_plan_id = %s AND is_active = 1 "
-                "ORDER BY FIELD(source, 'corrected', 'manual', 'auto') DESC, id DESC",
+                "ORDER BY FIELD(source, 'corrected', 'manual', 'auto') ASC, id ASC",
                 (fp_id,),
             )
             all_walls = cur.fetchall()
             cur.execute(
                 "SELECT * FROM doors WHERE floor_plan_id = %s AND is_active = 1 "
-                "ORDER BY FIELD(source, 'corrected', 'manual', 'auto') DESC, id DESC",
+                "ORDER BY FIELD(source, 'corrected', 'manual', 'auto') ASC, id ASC",
                 (fp_id,),
             )
             all_doors = cur.fetchall()
             cur.execute(
                 "SELECT * FROM objects WHERE floor_plan_id = %s AND is_active = 1 "
-                "ORDER BY FIELD(source, 'corrected', 'manual', 'auto') DESC, id DESC",
+                "ORDER BY FIELD(source, 'corrected', 'manual', 'auto') ASC, id ASC",
                 (fp_id,),
             )
             all_objects = cur.fetchall()
@@ -234,21 +234,21 @@ def get_best_data_for_image(query_emb: np.ndarray = None, min_similarity: float 
         with conn.cursor() as cur:
             cur.execute(
                 "SELECT * FROM walls WHERE floor_plan_id = %s AND is_active = 1 "
-                "ORDER BY FIELD(source, 'corrected', 'manual', 'auto') DESC, id DESC",
+                "ORDER BY FIELD(source, 'corrected', 'manual', 'auto') ASC, id ASC",
                 (best_fp_id,),
             )
             all_walls = cur.fetchall()
 
             cur.execute(
                 "SELECT * FROM doors WHERE floor_plan_id = %s AND is_active = 1 "
-                "ORDER BY FIELD(source, 'corrected', 'manual', 'auto') DESC, id DESC",
+                "ORDER BY FIELD(source, 'corrected', 'manual', 'auto') ASC, id ASC",
                 (best_fp_id,),
             )
             all_doors = cur.fetchall()
 
             cur.execute(
                 "SELECT * FROM objects WHERE floor_plan_id = %s AND is_active = 1 "
-                "ORDER BY FIELD(source, 'corrected', 'manual', 'auto') DESC, id DESC",
+                "ORDER BY FIELD(source, 'corrected', 'manual', 'auto') ASC, id ASC",
                 (best_fp_id,),
             )
             all_objects = cur.fetchall()
@@ -312,6 +312,8 @@ def _dedupe_doors(rows, threshold=0.3):
             "bbox": {"x1": r["bbox_x1"], "y1": r["bbox_y1"], "x2": r["bbox_x2"], "y2": r["bbox_y2"]},
             "class": "Door",
             "source": r["source"],
+            "swing_angle": r.get("swing_angle"),
+            "swing_direction": r.get("swing_direction"),
         }
         cx = (r["bbox_x1"] + r["bbox_x2"]) / 2
         cy = (r["bbox_y1"] + r["bbox_y2"]) / 2

@@ -1,0 +1,17 @@
+{
+  "name": "ai-3d-floorplan",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite apps/frontend",
+    "build": "vite build apps/frontend",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "three": "^0.160.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

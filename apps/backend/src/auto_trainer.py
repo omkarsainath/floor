@@ -31,11 +31,13 @@ RUNS_DIR = TRAIN_DATASET_DIR / "runs"
 BACKUP_DIR = TRAIN_DATASET_DIR / "backups"
 
 # Weights paths (production — these get promoted into by a successful retrain)
-COMBINED_WEIGHTS = REPO_ROOT / "models" / "best.pt"  # yolov8m: door + wall + window
-WALL_WEIGHTS = COMBINED_WEIGHTS
-DOOR_WEIGHTS = COMBINED_WEIGHTS
+# Each model type writes to its own file so a specialized retrain cannot overwrite
+# the combined model or another model's weights.
+COMBINED_WEIGHTS = REPO_ROOT / "models" / "best.pt"  # yolov8m: door + wall + window (read-only reference)
+WALL_WEIGHTS = REPO_ROOT / "models" / "wall_best.pt"
+DOOR_WEIGHTS = REPO_ROOT / "models" / "door_best.pt"
 ROOM_OBJ_WEIGHTS = REPO_ROOT / "apps" / "room-and-object" / "runs" / "room_object_yolo" / "weights" / "best.pt"
-WINDOW_GLASS_WEIGHTS = COMBINED_WEIGHTS
+WINDOW_GLASS_WEIGHTS = REPO_ROOT / "models" / "window_glass_best.pt"
 
 MODEL_TYPES = ("wall_yolo", "door_yolo", "room_object_yolo", "window_glass_yolo")
 
@@ -315,9 +317,21 @@ def _build_data_yaml(model_type: str) -> Path:
         src = yaml.safe_load(f)
     dataset_dir = DATASET_DIRS[model_type]
     data_yaml_path = dataset_dir / "data.yaml"
+
+    # Prefer a dedicated local val split; fall back to source dataset val; last resort: train dir.
+    local_val = dataset_dir / "images" / "val"
+    if local_val.exists() and any(local_val.iterdir()):
+        val_path = str(local_val)
+    else:
+        src_val = src.get("val")
+        val_path = str(src_val) if src_val else str(dataset_dir / "images" / "train")
+        if val_path == str(dataset_dir / "images" / "train"):
+            print(f"[auto-train] WARNING: no held-out val split for {model_type} — "
+                  "validation score reflects training data and cannot measure generalisation")
+
     data_config = {
         "train": str(dataset_dir / "images" / "train"),
-        "val": str(dataset_dir / "images" / "train"),  # no held-out split yet
+        "val": val_path,
         "nc": src["nc"],
         "names": src["names"],
     }

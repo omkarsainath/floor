@@ -150,9 +150,9 @@ export function createFloor(points, { roomType = '', color, opacity = 1.0 } = {}
   }
   const shape = new THREE.Shape();
   const [first, ...rest] = points;
-  shape.moveTo(first.x, first.y);
-  rest.forEach((p) => shape.lineTo(p.x, p.y));
-  shape.lineTo(first.x, first.y);
+  shape.moveTo(first.x, -first.y);
+  rest.forEach((p) => shape.lineTo(p.x, -p.y));
+  shape.lineTo(first.x, -first.y);
 
   const geometry = new THREE.ShapeGeometry(shape);
   geometry.rotateX(-Math.PI / 2);

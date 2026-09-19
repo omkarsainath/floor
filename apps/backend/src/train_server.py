@@ -49,11 +49,13 @@ REPO_ROOT = BACKEND_DIR.parent.parent
 DATA_DIR = BACKEND_DIR / "outputs" / "self_train"
 LABELS_FILE = DATA_DIR / "labels.jsonl"
 PARAMS_FILE = DATA_DIR / "params.json"
-COMBINED_WEIGHTS = REPO_ROOT / "models" / "best.pt"  # yolov8m: door + wall + window
-YOLO_WEIGHTS = COMBINED_WEIGHTS
-DOOR_YOLO_WEIGHTS = COMBINED_WEIGHTS
+COMBINED_WEIGHTS = REPO_ROOT / "models" / "best.pt"  # yolov8m: door + wall + window (read-only reference)
+YOLO_WEIGHTS = REPO_ROOT / "models" / "wall_best.pt"
+DOOR_YOLO_WEIGHTS = REPO_ROOT / "models" / "door_best.pt"
 ROOM_OBJECT_YOLO_WEIGHTS = REPO_ROOT / "apps" / "room-and-object" / "runs" / "room_object_yolo" / "weights" / "best.pt"
-WINDOW_GLASS_YOLO_WEIGHTS = COMBINED_WEIGHTS
+WINDOW_GLASS_YOLO_WEIGHTS = REPO_ROOT / "models" / "window_glass_best.pt"
+
+MAX_BODY_SIZE = 20 * 1024 * 1024  # 20 MB — reject oversized uploads before reading
 
 
 def _env_float(name: str, default: float) -> float:
@@ -729,7 +731,7 @@ class Handler(BaseHTTPRequestHandler):
     def _send(self, status=200, payload=None):
         self.send_response(status)
         self.send_header("Content-Type", "application/json")
-        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Origin", "http://localhost:5173")
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
         self.send_header("Access-Control-Allow-Methods", "POST, OPTIONS")
         self.end_headers()
@@ -793,6 +795,9 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         length = int(self.headers.get("Content-Length", 0))
+        if length > MAX_BODY_SIZE:
+            self._send(413, {"error": "Request body too large"})
+            return
         body = self.rfile.read(length).decode("utf-8")
         data = json.loads(body) if body else {}
         path = self.path
@@ -1439,7 +1444,7 @@ def _handle_termination(signum, frame):
 
 def main():
     signal.signal(signal.SIGTERM, _handle_termination)
-    server = HTTPServer(("0.0.0.0", 5050), Handler)
+    server = HTTPServer(("127.0.0.1", 5050), Handler)
     print("Self-train server running on http://localhost:5050")
     server.serve_forever()
 
