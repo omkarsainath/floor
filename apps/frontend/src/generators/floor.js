@@ -121,7 +121,10 @@ function getCachedTexture(key, generator) {
     const tex = new THREE.CanvasTexture(canvas);
     tex.wrapS = THREE.RepeatWrapping;
     tex.wrapT = THREE.RepeatWrapping;
-    tex.repeat.set(2, 2);
+    // Shape UVs are in meters: repeat one texture every two meters.
+    tex.repeat.set(0.5, 0.5);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.anisotropy = 4;
     _texCache[key] = tex;
   }
   return _texCache[key];
@@ -196,5 +199,6 @@ export function createFloor(points, { roomType = '', color, opacity = 1.0 } = {}
   const mesh = new THREE.Mesh(geometry, material);
   mesh.receiveShadow = true;
   mesh.position.y = 0.005;
+  mesh.userData.type = 'floor';
   return mesh;
 }

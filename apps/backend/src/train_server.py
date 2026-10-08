@@ -3,6 +3,7 @@ import hashlib
 import json
 import os
 import signal
+import shutil
 import traceback
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
@@ -10,7 +11,13 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-from wall_ai import classify_wall_types, detect_boxes_yolo, detect_classified_boxes_yolo, detect_door_swing, detect_lines, detect_lines_yolo, estimate_scale_from_doors, load_image, load_params, save_params, train_params
+from wall_geometry import consolidate_walls, exclude_object_interior_walls
+from wall_evidence import paired_wall_proposals, assess_walls
+from plan_measurements import extract_plan_measurements, exclude_dimension_walls
+from room_boundaries import detect_room_boundaries
+from door_geometry import deduplicate_doors
+from stair_detection import detect_stairs, detect_stairs_from_image, detect_stairs_from_walls, has_stair_tread_geometry
+from wall_ai import yolo_class_ids, yolo_runtime_available, classify_wall_types, detect_boxes_yolo, detect_classified_boxes_yolo, detect_door_swing, detect_lines, detect_lines_yolo, estimate_scale_from_doors, load_image, load_params, save_params, train_params
 
 # Optional DB + auto-trainer + embeddings (gracefully degrade if MySQL not available)
 try:
@@ -56,6 +63,25 @@ ROOM_OBJECT_YOLO_WEIGHTS = REPO_ROOT / "apps" / "room-and-object" / "runs" / "ro
 WINDOW_GLASS_YOLO_WEIGHTS = REPO_ROOT / "models" / "window_glass_best.pt"
 
 MAX_BODY_SIZE = 20 * 1024 * 1024  # 20 MB — reject oversized uploads before reading
+SCAN_API_VERSION = 1
+
+
+def scan_runtime_info():
+    """Report loaded capabilities separately from optional OCR availability."""
+    yolo_ready = yolo_runtime_available()
+    return {
+        'status': 'running',
+        'pid': os.getpid(),
+        'scan_api_version': SCAN_API_VERSION,
+        'database_enabled': DB_AVAILABLE,
+        'capabilities': {'printed_measurements': True, 'automatic_room_boundaries': True,
+                         'outlined_wall_detection': True, 'door_deduplication': True,
+                         'labeled_stair_detection': True,
+                         'object_detection': yolo_ready and ROOM_OBJECT_YOLO_WEIGHTS.exists(),
+                         'door_detection': yolo_ready and _effective_weights(DOOR_YOLO_WEIGHTS) is not None,
+                         'window_detection': yolo_ready and _effective_weights(WINDOW_GLASS_YOLO_WEIGHTS) is not None},
+        'ocr': {'engine': 'tesseract-local', 'available': shutil.which('tesseract') is not None},
+    }
 
 
 def _effective_weights(specialized: Path, fallback: Path = COMBINED_WEIGHTS):
@@ -92,9 +118,11 @@ DOOR_YOLO_CONF = _env_float("DOOR_YOLO_CONF", 0.35)
 ROOM_OBJECT_YOLO_CONF = _env_float("ROOM_OBJECT_YOLO_CONF", 0.25)
 WINDOW_GLASS_YOLO_CONF = _env_float("WINDOW_GLASS_YOLO_CONF", 0.25)
 AI_REVIEW_MAX_OBJECTS = max(20, int(os.environ.get("AI_REVIEW_MAX_OBJECTS", "80")))
+CLOUD_DETECTION_REVIEW_ENABLED = _env_bool("CLOUD_DETECTION_REVIEW_ENABLED", False)
 AUTO_TRAIN_ON_DETECT = _env_bool("AUTO_TRAIN_ON_DETECT", False)
+AUTO_TRAIN_ON_CORRECTION = _env_bool("AUTO_TRAIN_ON_CORRECTION", False)
 AI_STRUCTURAL_PASS_ENABLED = _env_bool("AI_STRUCTURAL_PASS_ENABLED", True)
-CV_PILLAR_AUGMENT_ENABLED = _env_bool("CV_PILLAR_AUGMENT_ENABLED", True)
+CV_PILLAR_AUGMENT_ENABLED = False  # pillar detection removed
 ADK_PIPELINE_ENABLED = _env_bool("ADK_PIPELINE_ENABLED", False)
 
 # These must stay identical to auto_trainer.PRODUCTION_WEIGHTS — that module promotes
@@ -194,125 +222,15 @@ def _walls_similar(a: dict, b: dict, tol: float = 25.0) -> bool:
     return d1r < tol and d2r < tol
 
 
-def merge_yolo_with_corrections(yolo_walls: list, db_walls: list) -> list:
-    """Merge: fresh YOLO walls as base; append user-corrected DB walls YOLO missed.
-    Only walls with source 'corrected' or 'manual' (user-added) are added."""
-    if not db_walls:
-        return list(yolo_walls)
-    result = list(yolo_walls)
-    for db_w in db_walls:
-        # Only add user-authored walls (not previous 'auto' detections)
-        src = (db_w.get("source") or "").lower()
-        if src not in ("corrected", "manual"):
-            continue
-        # Skip if already detected by YOLO
-        if any(_walls_similar(db_w, yw) for yw in yolo_walls):
-            continue
-        result.append({"start": db_w["start"], "end": db_w["end"]})
-    return result
-
-
-def _doors_similar(a: dict, b: dict, tol: float = 30.0) -> bool:
-    try:
-        ax = (float(a["bbox"]["x1"]) + float(a["bbox"]["x2"])) / 2
-        ay = (float(a["bbox"]["y1"]) + float(a["bbox"]["y2"])) / 2
-        bx = (float(b["bbox"]["x1"]) + float(b["bbox"]["x2"])) / 2
-        by = (float(b["bbox"]["y1"]) + float(b["bbox"]["y2"])) / 2
-    except Exception:
-        return False
-    return ((ax - bx) ** 2 + (ay - by) ** 2) ** 0.5 < tol
+def merge_yolo_with_corrections(yolo_walls: list, db_walls: list, image=None) -> list:
+    """User corrections take priority; never average their coordinates away."""
+    authored = [w for w in db_walls if (w.get("source") or "").lower() in ("corrected", "manual", "seed")]
+    return consolidate_walls(authored + list(yolo_walls), image=image)
 
 
 def merge_yolo_with_correction_doors(yolo_doors: list, db_doors: list) -> list:
-    if not db_doors:
-        return list(yolo_doors)
-    result = list(yolo_doors)
-    for db_d in db_doors:
-        src = (db_d.get("source") or "").lower()
-        if src not in ("corrected", "manual"):
-            continue
-        if any(_doors_similar(db_d, yd) for yd in yolo_doors):
-            continue
-        result.append(db_d)
-    return result
-
-
-def _merge_double_doors(doors: list, gap_ratio: float = 0.35) -> list:
-    """Two adjacent door leaves of the same double-door unit get detected as separate
-    boxes (e.g. D33/D34). Merge pairs that sit side-by-side along the same wall,
-    are similarly sized, and nearly touch into a single door bbox."""
-    items = list(doors or [])
-    if len(items) < 2:
-        return items
-
-    def _bbox(d):
-        b = d.get("bbox") if isinstance(d, dict) else None
-        if not b:
-            return None
-        try:
-            return float(b["x1"]), float(b["y1"]), float(b["x2"]), float(b["y2"])
-        except Exception:
-            return None
-
-    used = [False] * len(items)
-    merged = []
-    for i in range(len(items)):
-        if used[i]:
-            continue
-        bi = _bbox(items[i])
-        if not bi:
-            merged.append(items[i])
-            continue
-        ix1, iy1, ix2, iy2 = bi
-        iw, ih = ix2 - ix1, iy2 - iy1
-        best_j, best_bbox = None, None
-        for j in range(i + 1, len(items)):
-            if used[j]:
-                continue
-            bj = _bbox(items[j])
-            if not bj:
-                continue
-            jx1, jy1, jx2, jy2 = bj
-            jw, jh = jx2 - jx1, jy2 - jy1
-
-            # Must be roughly the same size and orientation (both leaves of one frame).
-            if min(iw, jw) <= 0 or min(ih, jh) <= 0:
-                continue
-            size_ratio_w = max(iw, jw) / min(iw, jw)
-            size_ratio_h = max(ih, jh) / min(ih, jh)
-            if size_ratio_w > 1.6 or size_ratio_h > 1.6:
-                continue
-
-            horizontal_pair = abs(iy1 - jy1) < ih * 0.5 and abs(iy2 - jy2) < ih * 0.5
-            vertical_pair = abs(ix1 - jx1) < iw * 0.5 and abs(ix2 - jx2) < iw * 0.5
-            if horizontal_pair:
-                gap = max(0.0, max(ix1, jx1) - min(ix2, jx2))
-                if gap > iw * gap_ratio:
-                    continue
-            elif vertical_pair:
-                gap = max(0.0, max(iy1, jy1) - min(iy2, jy2))
-                if gap > ih * gap_ratio:
-                    continue
-            else:
-                continue
-
-            best_j = j
-            best_bbox = (
-                min(ix1, jx1), min(iy1, jy1), max(ix2, jx2), max(iy2, jy2)
-            )
-            break
-
-        if best_j is not None:
-            used[best_j] = True
-            merged_door = dict(items[i])
-            mb = best_bbox
-            merged_door["bbox"] = {"x1": mb[0], "y1": mb[1], "x2": mb[2], "y2": mb[3]}
-            merged_door["double"] = True
-            merged.append(merged_door)
-        else:
-            merged.append(items[i])
-
-    return merged
+    corrections = [d for d in db_doors or [] if (d.get("source") or "").lower() in ("corrected", "manual")]
+    return deduplicate_doors(corrections + list(yolo_doors or []))
 
 
 MODEL_TYPE_FOR_ENTITY = {"wall": "wall_yolo", "door": "door_yolo", "object": "room_object_yolo"}
@@ -430,9 +348,6 @@ ROOM_LABEL_CLASSES = {
 def _normalize_class_name(class_name: str) -> str:
     normalized = " ".join(str(class_name or "").strip().lower().replace("_", " ").split())
     synonyms = {
-        "column": "pillar",
-        "columns": "pillar",
-        "pillars": "pillar",
         "window panel": "window",
         "windows": "window",
         "glass window": "glass-window",
@@ -523,110 +438,6 @@ def _distance_to_nearest_wall_endpoint(cx: float, cy: float, walls: list) -> flo
     return best
 
 
-def _detect_pillar_candidates_cv(
-    image: np.ndarray, walls: list, existing_objects: list, doors: list | None = None
-) -> list:
-    """Detect small pillar-like blocks as a fallback when room-object YOLO misses them.
-    Keeps detections conservative: near-wall, compact, and reasonably filled contours."""
-    if image is None:
-        return []
-
-    h, w = image.shape[:2]
-    max_dim = max(h, w)
-
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    blur = cv2.GaussianBlur(gray, (3, 3), 0)
-    _, mask = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
-
-    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
-    mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel, iterations=1)
-
-    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-
-    min_side = max(6, int(max_dim * 0.005))
-    max_side = max(24, int(max_dim * 0.04))
-    min_fill = 0.18
-    max_aspect = 1.75
-    near_wall_dist = max(10.0, max_dim * 0.018)
-    near_endpoint_dist = max(14.0, max_dim * 0.02)
-
-    candidates = []
-    existing_bboxes = [o.get("bbox") for o in (existing_objects or []) if isinstance(o.get("bbox"), dict)]
-    door_bboxes = [d.get("bbox") for d in (doors or []) if isinstance(d.get("bbox"), dict)]
-
-    for cnt in contours:
-        x, y, bw, bh = cv2.boundingRect(cnt)
-        if bw < min_side or bh < min_side:
-            continue
-        if bw > max_side or bh > max_side:
-            continue
-
-        aspect = max(bw, bh) / max(1.0, float(min(bw, bh)))
-        if aspect > max_aspect:
-            continue
-
-        rect_area = float(bw * bh)
-        contour_area = float(cv2.contourArea(cnt))
-        if rect_area <= 0:
-            continue
-        fill_ratio = contour_area / rect_area
-        if fill_ratio < min_fill:
-            continue
-
-        hull_area = float(cv2.contourArea(cv2.convexHull(cnt)))
-        if hull_area <= 0:
-            continue
-        solidity = contour_area / hull_area
-        if solidity < 0.62:
-            continue
-
-        peri = float(cv2.arcLength(cnt, True))
-        approx = cv2.approxPolyDP(cnt, 0.05 * peri, True)
-        if len(approx) < 4 or len(approx) > 8:
-            continue
-
-        crop = gray[y : y + bh, x : x + bw]
-        if crop.size == 0:
-            continue
-        ink_ratio = float(np.mean(crop < 160))
-        if ink_ratio < 0.12:
-            continue
-
-        cx, cy = x + bw / 2.0, y + bh / 2.0
-        if not _is_near_any_wall(cx, cy, walls, near_wall_dist):
-            continue
-        if _distance_to_nearest_wall_endpoint(cx, cy, walls) > near_endpoint_dist and fill_ratio < 0.28:
-            continue
-
-        bbox = {
-            "x1": float(x),
-            "y1": float(y),
-            "x2": float(x + bw),
-            "y2": float(y + bh),
-        }
-        if any(_bbox_iou(bbox, eb) >= 0.45 for eb in existing_bboxes if eb):
-            continue
-        # Doors (especially merged double-door boxes) must never be reported as pillars.
-        if any(_bbox_iou(bbox, db) > 0.05 for db in door_bboxes if db):
-            continue
-
-        candidates.append(
-            {
-                "class": "pillar",
-                "confidence": 0.19,
-                "bbox": bbox,
-                "source": "cv-structural",
-            }
-        )
-
-    if len(candidates) > 40:
-        candidates = sorted(
-            candidates,
-            key=lambda c: (c["bbox"]["x2"] - c["bbox"]["x1"]) * (c["bbox"]["y2"] - c["bbox"]["y1"]),
-            reverse=True,
-        )[:40]
-
-    return candidates
 
 
 def _augment_doors_from_object_detections(doors: list, objects: list) -> tuple[list, list, int]:
@@ -656,7 +467,7 @@ def _augment_doors_from_object_detections(doors: list, objects: list) -> tuple[l
         if duplicate:
             continue
 
-        candidate = {"bbox": bbox, "source": "object-door-fallback"}
+        candidate = {**obj, "bbox": bbox, "source": "object-door-fallback"}
         augmented_doors.append(candidate)
         added += 1
 
@@ -684,7 +495,6 @@ def _group_detected_objects(objects: list) -> tuple[dict, dict]:
         "windows": [],
         "glass_grills": [],
         "glass_banisters": [],
-        "pillars": [],
         "stairs": [],
         "lifts": [],
         "fixtures": [],
@@ -708,8 +518,7 @@ def _group_detected_objects(objects: list) -> tuple[dict, dict]:
             groups["windows"].append(obj)
             continue
         if "pillar" in cls or "column" in cls:
-            groups["pillars"].append(obj)
-            continue
+            continue  # pillars removed
         if "stair" in cls:
             groups["stairs"].append(obj)
             continue
@@ -729,7 +538,6 @@ def _group_detected_objects(objects: list) -> tuple[dict, dict]:
         "windows": len(groups["windows"]),
         "glass_grills": len(groups["glass_grills"]),
         "glass_banisters": len(groups["glass_banisters"]),
-        "pillars": len(groups["pillars"]),
         "stairs": len(groups["stairs"]),
         "lifts": len(groups["lifts"]),
         "fixtures": len(groups["fixtures"]),
@@ -751,6 +559,10 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         path = self.path.split("?")[0]
+
+        if path == '/api/health':
+            self._send(200, scan_runtime_info())
+            return
 
         if path == "/api/stats" and DB_AVAILABLE:
             try:
@@ -782,9 +594,10 @@ class Handler(BaseHTTPRequestHandler):
             return
 
         self._send(200, {
-            "status": "running",
+            **scan_runtime_info(),
             "db_enabled": DB_AVAILABLE,
             "endpoints": [
+                "/api/health (GET)",
                 "/api/train (POST)",
                 "/api/auto-detect (POST)",
                 "/api/save (POST)",
@@ -806,12 +619,25 @@ class Handler(BaseHTTPRequestHandler):
         self._send(200, {})
 
     def do_POST(self):
-        length = int(self.headers.get("Content-Length", 0))
+        try:
+            length = int(self.headers.get("Content-Length", 0))
+        except (ValueError, TypeError):
+            self._send(400, {"error": "Invalid Content-Length"})
+            return
+        if length < 0:
+            self._send(400, {"error": "Invalid Content-Length"})
+            return
         if length > MAX_BODY_SIZE:
             self._send(413, {"error": "Request body too large"})
             return
-        body = self.rfile.read(length).decode("utf-8")
-        data = json.loads(body) if body else {}
+        try:
+            body = self.rfile.read(length).decode("utf-8")
+            data = json.loads(body) if body else {}
+            if not isinstance(data, dict):
+                raise ValueError("Expected a JSON object")
+        except (ValueError, UnicodeError):
+            self._send(400, {"error": "Request body must be a valid JSON object"})
+            return
         path = self.path
 
         # ---- AI Chat Assistant ----
@@ -868,7 +694,8 @@ class Handler(BaseHTTPRequestHandler):
 
                 # Compute YOLO embedding and create/find floor plan
                 if img_for_emb is not None:
-                    yolo_path = str(YOLO_WEIGHTS) if YOLO_WEIGHTS.exists() else None
+                    correction_weights = _effective_weights(YOLO_WEIGHTS)
+                    yolo_path = str(correction_weights) if correction_weights else None
                     img_embedding = EMB.compute_embedding(img_for_emb, yolo_path) if EMB else None
                     img_h, img_w = img_for_emb.shape[:2]
 
@@ -877,8 +704,10 @@ class Handler(BaseHTTPRequestHandler):
                             saved_path = auto_trainer.save_uploaded_image_cv(img_for_emb, "correction.jpg")
                         else:
                             saved_path = str(resolve_image_path(data.get("imagePath", "")))
+                        hash_ok, hash_buffer = cv2.imencode('.jpg', img_for_emb)
+                        correction_hash = hashlib.sha256(hash_buffer.tobytes()).hexdigest() if hash_ok else None
                         fp_id = DB.save_floor_plan("correction", saved_path, img_w, img_h,
-                                                   embedding=img_embedding)
+                                                   image_hash=correction_hash, embedding=img_embedding)
                         DB.update_floor_plan_status(fp_id, "detected")
                     else:
                         # Update embedding on existing floor plan
@@ -890,9 +719,11 @@ class Handler(BaseHTTPRequestHandler):
                     if doors_data:
                         DB.save_doors(fp_id, doors_data, source="corrected")
 
-                    if walls_data:
+                    # A few edited segments are not a complete training label set.
+                    # Saving/viewing a plan must not silently retrain on partial labels.
+                    if AUTO_TRAIN_ON_CORRECTION and walls_data:
                         auto_trainer.trigger_auto_train("correction", fp_id, model_type="wall_yolo")
-                    if doors_data:
+                    if AUTO_TRAIN_ON_CORRECTION and doors_data:
                         auto_trainer.trigger_auto_train("correction", fp_id, model_type="door_yolo")
                     emb_dim = len(img_embedding) if img_embedding is not None else 0
                     print(f"[save-corrections] fp_id={fp_id}, emb_dim={emb_dim}, walls={len(walls_data)}, doors={len(doors_data)}")
@@ -991,23 +822,29 @@ class Handler(BaseHTTPRequestHandler):
             params = load_params(PARAMS_FILE)
             use_yolo = data.get("useYolo", True)
             use_door_yolo = data.get("useDoorYolo", True)
+            # Recognized dimension rules must not become paired wall faces.
+            measurements = extract_plan_measurements(image)
             lines = []
             model_used = "cv"
             _wall_w = _effective_weights(YOLO_WEIGHTS)
             if use_yolo and _wall_w:
-                lines = detect_lines_yolo(image, str(_wall_w), conf=WALL_YOLO_CONF, classes=[1])
+                lines = detect_lines_yolo(image, str(_wall_w), conf=WALL_YOLO_CONF)
                 if lines:
                     model_used = "yolo+cv"
                     # Supplement YOLO with CV to catch walls the model missed
-                    cv_lines = detect_lines(image, params)
-                    lines = lines + cv_lines
+                    cv_lines = detect_lines(image, params, measurements=measurements)
+                    lines = consolidate_walls(lines + cv_lines, image=image)
             if not lines:
-                lines = detect_lines(image, params)
+                lines = detect_lines(image, params, measurements=measurements)
+            # Opening-aware evidence assessment below owns final geometry. Do
+            # not snap blindly before doors/windows have been detected.
+            lines = consolidate_walls(lines, image=image)
             lines = classify_wall_types(image, lines)
             doors = []
             _door_w = _effective_weights(DOOR_YOLO_WEIGHTS)
-            if use_door_yolo and _door_w:
-                doors = detect_boxes_yolo(image, str(_door_w), conf=DOOR_YOLO_CONF, classes=[0])
+            door_classes = yolo_class_ids(str(_door_w), "door") if use_door_yolo and _door_w else []
+            if door_classes:
+                doors = detect_boxes_yolo(image, str(_door_w), conf=DOOR_YOLO_CONF, classes=door_classes)
             # Room & object detection
             use_room_object = data.get("useRoomObject", True)
             rooms_and_objects = []
@@ -1016,38 +853,69 @@ class Handler(BaseHTTPRequestHandler):
                     image,
                     str(ROOM_OBJECT_YOLO_WEIGHTS),
                     conf=ROOM_OBJECT_YOLO_CONF,
+                    image_sizes=(640, 960),
                 )
+                # The object model sometimes learns the printed "STAIR CASE"
+                # label instead of the structure. Never turn text alone into a
+                # 3D staircase; require a regular run of visible treads.
+                rooms_and_objects = [
+                    obj for obj in rooms_and_objects
+                    if "stair" not in _normalize_class_name(obj.get("class"))
+                    or has_stair_tread_geometry(image, obj.get("bbox"))
+                ]
             # Window/glass detection — dedicated model, kept separate from room_object_yolo
             # so thin structural elements aren't starved of capacity by furniture/room classes.
             # Falls back to combined model class 2 until window_glass_best.pt is trained.
             use_window_glass = data.get("useWindowGlass", True)
             _win_w = _effective_weights(WINDOW_GLASS_YOLO_WEIGHTS)
-            if use_window_glass and _win_w:
+            window_classes = yolo_class_ids(str(_win_w), "window") if use_window_glass and _win_w else []
+            if window_classes:
                 window_glass_objects = detect_classified_boxes_yolo(
                     image,
                     str(_win_w),
                     conf=WINDOW_GLASS_YOLO_CONF,
-                    classes=[2],
+                    classes=window_classes,
                 )
                 rooms_and_objects = rooms_and_objects + window_glass_objects
+            # Floor plans conventionally mark stairs with an UP/DN label and a
+            # run of parallel treads.  Use that strong local evidence when the
+            # general object model misses the structural element.
+            stair_fallbacks = detect_stairs(image)
+            wall_stairs = detect_stairs_from_walls(lines, image.shape)
+            image_stairs = [stair for stair in detect_stairs_from_image(image)
+                            if len(stair.get("tread_directions", [])) >= 2
+                            or any(_bbox_iou(stair["bbox"], known["bbox"]) >= 0.30 for known in wall_stairs)]
+            geometric_stairs = wall_stairs + image_stairs
+            # Reject repeated wardrobe/cabinet slats when the object model has
+            # already identified the containing furniture footprint.
+            furnishing_boxes = [obj.get("bbox") for obj in rooms_and_objects
+                                if obj.get("bbox") and not any(token in _normalize_class_name(obj.get("class"))
+                                for token in ("stair", "room", "area"))]
+            geometric_stairs = [stair for stair in geometric_stairs if not any(
+                _bbox_iou(stair["bbox"], box) >= 0.45 for box in furnishing_boxes)]
+            stair_fallbacks.extend(
+                stair for stair in geometric_stairs
+                if not any(_bbox_iou(stair["bbox"], old["bbox"]) >= 0.35 for old in stair_fallbacks)
+            )
+            for stair in stair_fallbacks:
+                if not any(
+                    "stair" in _normalize_class_name(obj.get("class"))
+                    and _bbox_iou(stair["bbox"], obj.get("bbox") or {}) >= 0.30
+                    for obj in rooms_and_objects
+                ):
+                    rooms_and_objects.append(stair)
+            if stair_fallbacks:
+                print(f"[auto-detect] OCR/tread fallback found {len(stair_fallbacks)} stair run(s)")
             doors, rooms_and_objects, object_door_added = _augment_doors_from_object_detections(
                 doors, rooms_and_objects
             )
             if object_door_added > 0:
                 print(f"[auto-detect] Added {object_door_added} door(s) from object-model fallback")
             doors_before_merge = len(doors)
-            doors = _merge_double_doors(doors)
+            doors = deduplicate_doors(doors)
             if len(doors) < doors_before_merge:
-                print(f"[auto-detect] Merged {doors_before_merge - len(doors)} double-door leaf pair(s) "
-                      f"into single door box(es): {doors_before_merge} -> {len(doors)}")
-            if CV_PILLAR_AUGMENT_ENABLED:
-                pillar_candidates = _detect_pillar_candidates_cv(image, lines, rooms_and_objects, doors)
-                if pillar_candidates:
-                    rooms_and_objects.extend(pillar_candidates)
-                    print(
-                        f"[auto-detect] Added {len(pillar_candidates)} CV pillar candidates "
-                        f"(YOLO objects={len(rooms_and_objects) - len(pillar_candidates)})"
-                    )
+                print(f"[auto-detect] Removed {doors_before_merge - len(doors)} duplicate door detection(s) "
+                      f"using opening geometry: {doors_before_merge} -> {len(doors)}")
             # Only load seed walls for known image paths, not uploaded images
             seed_walls = []
             if not image_base64 and image_path:
@@ -1072,12 +940,12 @@ class Handler(BaseHTTPRequestHandler):
             db_objects = []
             fp_id = None
             match_type = None
-            ai_review = {"applied": False, "corrections_count": 0, "summary": None, "error": None}
+            ai_review = {"enabled": CLOUD_DETECTION_REVIEW_ENABLED, "applied": False, "corrections_count": 0, "summary": None, "error": None}
             adk_evaluation = None
 
             if DB_AVAILABLE:
                 try:
-                    # 3-level lookup: (1) exact SHA-256 hash, (2) embedding >= 0.97, (3) none
+                    # Only exact image matches can supply geometry corrections.
                     prev_data = None
                     if img_hash:
                         hash_fp = DB.get_floor_plan_by_hash(img_hash)
@@ -1086,21 +954,15 @@ class Handler(BaseHTTPRequestHandler):
                             if prev_data:
                                 print(f"[auto-detect] Exact hash match fp_id={hash_fp['id']}: "
                                       f"{len(prev_data.get('walls', []))} walls, {len(prev_data.get('doors', []))} doors")
-                    if prev_data is None and img_embedding is not None:
-                        prev_data = DB.get_best_data_for_image(
-                            query_emb=img_embedding, min_similarity=0.97
-                        )
-                        if prev_data:
-                            sim = prev_data.get("similarity", 0)
-                            print(f"[auto-detect] Embedding match (sim={sim:.3f}): "
-                                  f"{len(prev_data.get('walls', []))} walls, {len(prev_data.get('doors', []))} doors")
+                    # Similar-looking plans may be resized, cropped or different.
+                    # Pixel coordinates are reusable only for an exact image match.
                     if prev_data:
                         db_walls = prev_data.get("walls", [])
                         db_doors = prev_data.get("doors", [])
                         db_objects = prev_data.get("objects", [])
                         match_type = prev_data.get("match_type", "unknown")
                     else:
-                        print("[auto-detect] No exact or embedding match — fresh YOLO only")
+                        print("[auto-detect] No exact image match — fresh local detection")
 
                     # Save this detection to DB with embedding + hash
                     filename = data.get("filename", "upload.jpg")
@@ -1138,7 +1000,7 @@ class Handler(BaseHTTPRequestHandler):
                     # Hybrid step: have Gemini visually cross-check the YOLO detections
                     # (fix wrong labels, find missed objects) and feed its corrections back
                     # through the same path a human correction would use.
-                    if AI_AVAILABLE and (lines or doors or rooms_and_objects) and _enc_ok:
+                    if CLOUD_DETECTION_REVIEW_ENABLED and AI_AVAILABLE and (lines or doors or rooms_and_objects) and _enc_ok:
                         try:
                             if ADK_PIPELINE_ENABLED and ADK_AVAILABLE:
                                 pipeline_result = ADK_PIPELINE.run_detection_review(
@@ -1221,15 +1083,9 @@ class Handler(BaseHTTPRequestHandler):
                                     continue
                                 if (
                                     et == "object" and action == "add" and new_data
-                                    and "pillar" in _normalize_class_name(new_data.get("class"))
-                                    and new_data.get("bbox")
-                                    and any(
-                                        _bbox_iou(new_data["bbox"], d.get("bbox")) > 0.05
-                                        for d in doors if d.get("bbox")
-                                    )
+                                    and "pillar" in _normalize_class_name(new_data.get("class", ""))
                                 ):
-                                    # Gemini sometimes mistakes a door's mullion/leaf split for a pillar.
-                                    continue
+                                    continue  # pillar additions blocked
                                 applied_et = _apply_correction(
                                     fp_id, et, action, entity_id, old_data, new_data, proposed_by="ai"
                                 )
@@ -1275,10 +1131,9 @@ class Handler(BaseHTTPRequestHandler):
                     traceback.print_exc()
 
             # Always merge fresh YOLO detection with saved corrections.
-            # The 3-level lookup (exact hash → embedding 0.97 → none) ensures we only
-            # merge corrections from THIS image, not unrelated floor plans.
+            # Corrections must belong to this exact image and retain user priority.
             if db_walls or db_doors:
-                final_walls = merge_yolo_with_corrections(lines, db_walls)
+                final_walls = merge_yolo_with_corrections(lines, db_walls, image=image)
                 final_doors = merge_yolo_with_correction_doors(doors, db_doors)
                 print(f"[auto-detect] Merged: YOLO {len(lines)} + corrections {len(final_walls)-len(lines)} = {len(final_walls)} walls, "
                       f"YOLO {len(doors)} + corrections {len(final_doors)-len(doors)} = {len(final_doors)} doors")
@@ -1287,14 +1142,20 @@ class Handler(BaseHTTPRequestHandler):
                 final_doors = doors
                 print(f"[auto-detect] Fresh YOLO only: {len(lines)} walls, {len(doors)} doors")
 
+            # Seed labels and the current editor's manual walls participate in the
+            # same final cleanup, rather than being appended again by the browser.
+            editor_walls = [{**w, "source": "manual"} for w in data.get("manualWalls", [])
+                            if isinstance(w, dict)]
+            seeds = [{**w, "source": "seed"} for w in seed_walls]
+            final_walls = consolidate_walls(editor_walls + seeds + final_walls, image=image)
             final_walls = classify_wall_types(image, final_walls)
 
             # Detect swing direction for each door using CV arc analysis
             for door in final_doors:
-                if door.get('swing_dir'):
-                    door['swingDir'] = door['swing_dir']
+                if door.get('swing_dir') or door.get('swingDir'):
+                    door['swingDir'] = door.get('swing_dir') or door['swingDir']
                 elif door.get('bbox'):
-                    door['swingDir'] = detect_door_swing(image, door['bbox'])
+                    door['swingDir'] = detect_door_swing(image, door.get('swing_bbox') or door['bbox'])
                 else:
                     door['swingDir'] = 'left-inside'
 
@@ -1308,13 +1169,18 @@ class Handler(BaseHTTPRequestHandler):
             else:
                 final_objects = rooms_and_objects
 
+            # Furniture outlines and stair treads are common false wall lines in
+            # furnished/color plans. Remove only automatic segments contained
+            # well inside a detected object; preserve perimeter and manual walls.
+            final_walls = exclude_object_interior_walls(final_walls, final_objects)
+
             grouped_objects, detection_summary = _group_detected_objects(final_objects)
             detection_summary["walls"] = len(final_walls)
             detection_summary["doors"] = len(final_doors)
 
             structural_counts = {
                 cls: sum(1 for o in final_objects if _normalize_class_name(o.get("class")) == cls)
-                for cls in ("pillar", "window", "glass-window", "glass-wall", "glass-grill", "glass-banister", "stairs", "lift")
+                for cls in ("window", "glass-window", "glass-wall", "glass-grill", "glass-banister", "stairs", "lift")
             }
             print(f"[auto-detect] Structural class counts: {structural_counts} "
                   f"(walls={len(final_walls)})")
@@ -1323,32 +1189,67 @@ class Handler(BaseHTTPRequestHandler):
                       "fallback for this image — check input image style vs. training domain.")
 
             scale_estimate = estimate_scale_from_doors(final_doors)
+            final_walls = exclude_dimension_walls(final_walls, measurements)
+            evidence = assess_walls(image,
+                final_walls + paired_wall_proposals(image, measurements),
+                measurements, final_objects, final_doors)
+            final_walls = evidence['walls']
+            detection_summary['walls'] = len(final_walls)
+            try:
+                room_scan = detect_room_boundaries(image, final_walls, final_doors, final_objects, measurements)
+                # Inside room faces and rendered wall faces must use the same
+                # measured stroke widths, including fallback image samples.
+                for sample in room_scan.get('wall_thicknesses', []):
+                    wall = final_walls[sample['wall_index']]
+                    if not isinstance(wall.get('thickness_px'), (int, float)) or not np.isfinite(wall['thickness_px']) or wall['thickness_px'] <= 0:
+                        wall['thickness_px'] = sample['thickness_px']
+            except Exception:
+                traceback.print_exc()
+                room_scan = {'rooms': [], 'unresolved': [], 'warnings': [
+                    'Automatic room boundaries could not be resolved. Wall detections are available; correct missing walls and rescan.'
+                ]}
 
             self._send(200, {
                 "walls": final_walls,
+                "wall_review": evidence['wall_review'],
+                "wall_rejected": evidence['wall_rejected'],
+                "wall_geometry": evidence['wall_geometry'],
+                "scan_api_version": SCAN_API_VERSION,
                 "seedWalls": seed_walls,
+                "walls_include_seeds": True,
                 "params": params,
                 "model": model_used,
                 "floor_plan_id": fp_id,
                 "db_saved": fp_id is not None,
                 "db_corrections_loaded": len(db_walls) > 0 or len(db_doors) > 0,
-                "yolo_weights": str(YOLO_WEIGHTS) if YOLO_WEIGHTS.exists() else None,
-                "door_weights": str(DOOR_YOLO_WEIGHTS) if DOOR_YOLO_WEIGHTS.exists() else None,
+                "detection_provenance": {
+                    "mode": "fresh_detector_with_saved_corrections"
+                    if (db_walls or db_doors) else "fresh_detector",
+                    "database_enabled": DB_AVAILABLE,
+                    "database_saved": fp_id is not None,
+                    "saved_corrections_loaded": len(db_walls) > 0 or len(db_doors) > 0,
+                    "manual_walls_preserved": len(editor_walls),
+                },
+                "yolo_weights": str(_wall_w) if _wall_w else None,
+                "door_weights": str(_door_w) if _door_w else None,
                 "room_object_weights": str(ROOM_OBJECT_YOLO_WEIGHTS) if ROOM_OBJECT_YOLO_WEIGHTS.exists() else None,
-                "window_glass_weights": str(WINDOW_GLASS_YOLO_WEIGHTS) if WINDOW_GLASS_YOLO_WEIGHTS.exists() else None,
+                "window_glass_weights": str(_win_w) if _win_w else None,
                 "doors": final_doors,
                 "rooms_detected": grouped_objects["rooms"],
                 "windows": grouped_objects["windows"],
                 "glass_grills": grouped_objects["glass_grills"],
                 "glass_banisters": grouped_objects["glass_banisters"],
-                "pillars": grouped_objects["pillars"],
+                "pillars": [],
                 "stairs": grouped_objects["stairs"],
                 "lifts": grouped_objects["lifts"],
                 "fixtures": grouped_objects["fixtures"],
                 "rooms_and_objects": final_objects,
-                "detected_count": len(lines),
+                "detected_count": len(final_walls),
                 "seed_count": len(seed_walls),
                 "scale_estimate": scale_estimate,
+                "measurements": measurements,
+                "room_boundaries": room_scan['rooms'],
+                "room_scan": {key: value for key, value in room_scan.items() if key != 'rooms'},
                 "ai_review": ai_review,
                 "adk_pipeline_enabled": ADK_PIPELINE_ENABLED and ADK_AVAILABLE,
                 "adk_evaluation": adk_evaluation,

@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite apps/frontend",
     "build": "vite build apps/frontend",
-    "preview": "vite preview"
+    "preview": "vite preview apps/frontend",
+    "test": "node --test apps/frontend/tests/*.test.js"
   },
   "dependencies": {
     "three": "^0.160.0"

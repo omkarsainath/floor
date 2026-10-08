@@ -1,59 +1,33 @@
 import * as THREE from 'three';
 
-/**
- * Single-slab ceiling for the entire plan.
- * Uses the bounding box of all room points; places a thin box at the max room height.
- */
-export function createCeiling(
-  rooms,
-  { color = 0xf0ece5, thickness = 0.05, padding = 0.1 } = {}
-) {
-  if (!Array.isArray(rooms) || rooms.length === 0) return null;
-
-  let minX = Infinity;
-  let maxX = -Infinity;
-  let minY = Infinity;
-  let maxY = -Infinity;
-  let maxHeight = 0;
-
-  rooms.forEach((room) => {
-    const height = Number.isFinite(room.height) ? room.height : 3;
-    if (height > maxHeight) maxHeight = height;
-    if (Array.isArray(room.points)) {
-      room.points.forEach((p) => {
-        if (p && Number.isFinite(p.x) && Number.isFinite(p.y)) {
-          if (p.x < minX) minX = p.x;
-          if (p.x > maxX) maxX = p.x;
-          if (p.y < minY) minY = p.y;
-          if (p.y > maxY) maxY = p.y;
-        }
-      });
+/** Interior ceiling slabs follow each room footprint and its own height. */
+export function createCeiling(rooms, { color = 0xf0ece5, thickness = 0.05 } = {}) {
+  if (!Array.isArray(rooms) || !rooms.length) return null;
+  const group = new THREE.Group();
+  group.userData.type = 'ceiling';
+  const depth = Number.isFinite(thickness) && thickness > 0 ? thickness : 0.05;
+  const material = new THREE.MeshStandardMaterial({ color, roughness: 0.7, metalness: 0.05, side: THREE.DoubleSide });
+  for (const room of rooms) {
+    if (!Array.isArray(room.points) || room.points.length < 3
+      || room.points.some(p => !Number.isFinite(p?.x) || !Number.isFinite(p?.y))) continue;
+    const points = room.points.map(p => new THREE.Vector2(p.x, p.y));
+    if (points[0].distanceTo(points.at(-1)) < 1e-8) points.pop();
+    if (!THREE.ShapeUtils.triangulateShape(points, []).length) continue;
+    const shape = new THREE.Shape(points);
+    for (const hole of room.holes || []) {
+      if (hole.length >= 3 && hole.every(p => Number.isFinite(p.x) && Number.isFinite(p.y))) {
+        shape.holes.push(new THREE.Path(hole.map(p => new THREE.Vector2(p.x,p.y))));
+      }
     }
-  });
-
-  if (!Number.isFinite(minX) || !Number.isFinite(maxX) || !Number.isFinite(minY) || !Number.isFinite(maxY)) {
-    return null;
+    const geometry = new THREE.ExtrudeGeometry(shape, { depth, bevelEnabled: false, steps: 1 });
+    geometry.rotateX(Math.PI / 2);
+    const height = Number.isFinite(room.height) && room.height > 0 ? room.height : 3;
+    geometry.translate(0, height + depth / 2, 0);
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.receiveShadow = true;
+    mesh.userData = { type: 'ceiling', roomId: room.id, walkSurfaceTriangles: true };
+    group.add(mesh);
   }
-
-  const width = (maxX - minX) + padding * 2;
-  const depth = (maxY - minY) + padding * 2;
-  const heightY = maxHeight;
-
-  const geometry = new THREE.BoxGeometry(width, thickness, depth);
-  const material = new THREE.MeshStandardMaterial({
-    color,
-    roughness: 0.7,
-    metalness: 0.05,
-    side: THREE.DoubleSide,
-  });
-  const mesh = new THREE.Mesh(geometry, material);
-  mesh.castShadow = false;
-  mesh.receiveShadow = true;
-
-  const centerX = (minX + maxX) / 2;
-  const centerY = (minY + maxY) / 2;
-
-  mesh.position.set(centerX, heightY, centerY);
-
-  return mesh;
+  if (!group.children.length) { material.dispose(); return null; }
+  return group;
 }

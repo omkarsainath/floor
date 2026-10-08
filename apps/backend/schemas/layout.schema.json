@@ -5,11 +5,76 @@
   "type": "object",
   "required": ["rooms", "walls"],
   "properties": {
+    "units": {
+      "type": "string",
+      "enum": ["m", "cm", "mm", "ft", "in"],
+      "description": "Coordinate and geometry units. The tracer exports metres and the viewer normalizes imported units to metres."
+    },
     "metersPerUnit": {
       "type": "number",
       "exclusiveMinimum": 0,
-      "description": "Real-world meters per one scene unit. Present only when the plan has been calibrated."
+      "description": "Metres per input coordinate unit, consistent with units when both are present. Canonical exported geometry uses 1; calibration records whether scale is confirmed or estimated."
     },
+    "scale_m_per_px": {
+      "type": ["number", "null"],
+      "exclusiveMinimum": 0,
+      "description": "Source-image calibration provenance; do not multiply geometry already in metres by this value again."
+    },
+    "calibration": {
+      "type": "object",
+      "properties": {
+        "status": { "type": "string", "enum": ["confirmed", "automatic", "estimated", "unscaled"] },
+        "source": { "type": ["string", "null"] },
+        "reference": {
+          "type": "object",
+          "description": "Scanned or confirmed dimension text and its source-image span; image coordinates remain in pixels."
+        }
+      }
+    },
+    "measurements": {
+      "type": "object",
+      "description": "Printed annotations with OCR confidence and pixel-coordinate evidence; these do not replace actual room boundaries."
+    },
+    "dimension_constraints": {
+      "type": "array",
+      "description": "Automatically matched or manually confirmed dimensions applied jointly to geometry. Endpoint coordinates use layout units; target_m and target_m2 always use SI units.",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object", "required": ["id", "type", "start", "end", "target_m"],
+            "properties": {
+              "id": { "type": "string" }, "type": { "const": "length" },
+              "start": { "type": "object", "required": ["x", "y"], "properties": { "x": { "type": "number" }, "y": { "type": "number" } } },
+              "end": { "type": "object", "required": ["x", "y"], "properties": { "x": { "type": "number" }, "y": { "type": "number" } } },
+              "target_m": { "type": "number", "exclusiveMinimum": 0 },
+              "start_anchor": { "type": "object" }, "end_anchor": { "type": "object" }
+            }
+          },
+          {
+            "type": "object", "required": ["id", "type", "room_id", "target_m2"],
+            "properties": { "id": { "type": "string" }, "type": { "const": "area" },
+              "room_id": { "type": "string" }, "target_m2": { "type": "number", "exclusiveMinimum": 0 } }
+          }
+        ]
+      }
+    },
+    "dimension_constraint_report": {
+      "type": "object", "description": "Residuals from applying exact dimensions. The viewer recomputes actual areas and anchored lengths instead of trusting this cached report."
+    },
+    "automatic_scan": {
+      "type": "object",
+      "description": "Automatic scan outcome, applied target counts and unresolved readings retained for review.",
+      "properties": {
+        "status": { "enum": ["applied", "partial", "review", "none"] },
+        "applied": { "type": "object" },
+        "unresolved": { "type": "array", "items": { "type": "object" } },
+        "warnings": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "geometry_transform": {
+      "type": "object", "description": "Piecewise X/Y coordinate mapping from the initially calibrated geometry to the solved geometry; the original image is not overwritten."
+    },
+    "warnings": { "type": "array", "items": { "type": "string" } },
     "rooms": {
       "type": "array",
       "items": {
@@ -19,6 +84,68 @@
           "id":     { "type": "string" },
           "name":   { "type": "string" },
           "height": { "type": "number", "exclusiveMinimum": 0 },
+          "design": {
+            "type": "object",
+            "description": "Optional room-specific local finish previews. Measured room/wall geometry is retained. Ceiling settings, light positions and wall panel region coordinates are in metres; light positions use world X/Z. Raised ceiling profiles remain below room.height.",
+            "properties": {
+              "roomType": { "enum": ["living", "bedroom", "kitchen", "bathroom"] },
+              "floor": { "type": ["string", "null"] },
+              "ceiling": { "type": ["string", "null"] },
+              "wallPanel": { "type": ["string", "null"] },
+              "tvPanel": { "type": ["string", "null"] },
+              "accentWallId": { "type": "string" },
+              "ceilingDropM": { "type": "number", "minimum": 0.05, "maximum": 0.45 },
+              "ceilingRiseM": { "type": "number", "minimum": 0.1, "maximum": 2 },
+              "ceilingAxis": { "enum": ["x", "z"], "description": "Axis across which the ceiling height varies; plan Y is 3D Z." },
+              "ceilingLights": {
+                "type": "array",
+                "maxItems": 16,
+                "description": "Locally generated room ceiling fixtures. Attachment elevation is recomputed from the actual ceiling underside; it is not a separately stored, potentially stale Y coordinate.",
+                "items": {
+                  "type": "object",
+                  "required": ["id", "type", "x", "z", "lumens", "temperatureK", "dropM", "rotation", "enabled"],
+                  "properties": {
+                    "id": { "type": "string", "minLength": 1, "maxLength": 96 },
+                    "type": { "enum": ["downlight", "surface-spot", "pendant", "chandelier", "linear-led"] },
+                    "x": { "type": "number", "minimum": -10000, "maximum": 10000 },
+                    "z": { "type": "number", "minimum": -10000, "maximum": 10000 },
+                    "lumens": { "type": "number", "minimum": 50, "maximum": 5000, "description": "Requested output for the visual lighting approximation; not a certified photometric result." },
+                    "temperatureK": { "type": "number", "minimum": 2200, "maximum": 6500 },
+                    "dropM": { "type": "number", "minimum": 0, "maximum": 1.5, "description": "Total ceiling-to-bottom depth for pendant/chandelier fixtures (0.1–1.5 m). Other types store 0 and use their fixed model depth." },
+                    "rotation": { "type": "number", "minimum": -3.141592653589793, "maximum": 3.141592653589793, "description": "Fixture rotation in radians about its mounting axis; hanging fixtures remain vertical." },
+                    "enabled": { "type": "boolean" }
+                  }
+                }
+              },
+              "wallPanelRegions": {
+                "type": "array",
+                "maxItems": 32,
+                "description": "Rectangles marked on a room's inside wall faces. Nonempty regions replace legacy full-wall panel coverage; each retains its own panel style. The viewer validates positive bounds, wall association and non-overlap, then clips around actual door/window openings.",
+                "items": {
+                  "type": "object",
+                  "required": ["id", "wallId", "startM", "endM", "bottomM", "topM", "styleId"],
+                  "properties": {
+                    "id": { "type": "string", "minLength": 1, "maxLength": 128 },
+                    "wallId": { "type": "string", "minLength": 1, "maxLength": 128, "description": "Original parent wall ID, not a segment ID created by cutting an opening." },
+                    "startM": { "type": "number", "minimum": 0, "description": "Distance along the original wall from wall.start toward wall.end." },
+                    "endM": { "type": "number", "exclusiveMinimum": 0, "description": "Distance along the original wall; must exceed startM." },
+                    "bottomM": { "type": "number", "minimum": 0, "description": "Lower height above the model floor." },
+                    "topM": { "type": "number", "exclusiveMinimum": 0, "description": "Upper height above the model floor; must exceed bottomM." },
+                    "styleId": { "type": "string", "minLength": 1, "maxLength": 128, "description": "Catalog style whose category is wallPanel." }
+                  }
+                }
+              },
+              "color": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" }
+            }
+          },
+          "boundary_source": { "type": "string" },
+          "boundary_reference": { "type": "string", "description": "inside_faces records that the detected/traced room outline follows inside wall faces." },
+          "area_source": { "type": "string" },
+          "declared_area_m2": {
+            "type": "number", "exclusiveMinimum": 0,
+            "description": "Area printed on the plan or supplied by the user, always in square metres; an accepted target is enforced jointly with other dimensions on actual room geometry."
+          },
+          "declared_area_text": { "type": "string" },
           "points": {
             "type": "array",
             "minItems": 3,
@@ -65,7 +192,9 @@
           "id":         { "type": "string" },
           "class":      { "type": "string" },
           "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
-          "source":     { "type": "string", "enum": ["auto", "manual", "corrected", "ai"] },
+          "source":     { "type": "string", "enum": ["auto", "manual", "corrected", "ai", "catalog"] },
+          "rotationY":  { "type": "number", "description": "Yaw about the vertical axis, in radians." },
+          "elevation":  { "type": "number" },
           "bbox": {
             "type": "object", "required": ["x1", "y1", "x2", "y2"],
             "properties": {

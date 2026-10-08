@@ -6,12 +6,20 @@ from typing import Dict, List, Tuple
 import cv2
 import numpy as np
 
+from wall_geometry import consolidate_walls, snap_wall_endpoints, supported_proposals
+from outlined_walls import detect_outlined_walls
+
 try:
     from ultralytics import YOLO
 except Exception:
     YOLO = None
 
 _YOLO_MODEL_CACHE: Dict[str, "YOLO"] = {}
+
+
+def yolo_runtime_available() -> bool:
+    """Whether this Python environment can execute the trained YOLO models."""
+    return YOLO is not None
 
 
 def load_image(image_path: str) -> np.ndarray:
@@ -34,41 +42,123 @@ def line_center(line: Dict) -> Tuple[float, float]:
     )
 
 
-def preprocess_image(image: np.ndarray, wall_thickness: int) -> np.ndarray:
+def _erase_text_regions(mask: np.ndarray, measurements) -> np.ndarray:
+    result = mask.copy()
+    for box in (measurements or {}).get("ocr_text_regions", []):
+        try:
+            x1, y1, x2, y2 = (float(value) for value in box)
+        except (TypeError, ValueError):
+            continue
+        pad_x = max(2, int(round((y2 - y1) * .22)))
+        pad_y = max(2, int(round((y2 - y1) * .18)))
+        a = (max(0, int(x1) - pad_x), max(0, int(y1) - pad_y))
+        b = (min(mask.shape[1] - 1, int(math.ceil(x2)) + pad_x),
+             min(mask.shape[0] - 1, int(math.ceil(y2)) + pad_y))
+        cv2.rectangle(result, a, b, 0, -1)
+    return result
+
+
+def preprocess_image(image: np.ndarray, wall_thickness: int, measurements=None) -> np.ndarray:
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     blur = cv2.GaussianBlur(gray, (3, 3), 0)
     _, thresh = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
-    kernel_size = max(3, int(round(wall_thickness)))
-    if kernel_size % 2 == 0:
-        kernel_size += 1
-    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (kernel_size, kernel_size))
-    opened = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel, iterations=1)
-    clean = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, kernel, iterations=1)
-    return clean
+    # A trained wall thickness is not a safe denoising-kernel size. The old
+    # 11x11 opening (from a 10 px reference wall) completely erased thinner
+    # plans before line detection. Directional extraction below already rejects
+    # short text/furniture strokes, so retain every wall scale here and only
+    # close one-pixel antialiasing/JPEG gaps.
+    close_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+    clean = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, close_kernel, iterations=1)
+    return _erase_text_regions(clean, measurements)
 
 
 def merge_segments(segments: List[Dict], coord_tol: int, gap_tol: int) -> List[Dict]:
-    if not segments:
-        return []
-    segments.sort(key=lambda s: (s["coord"], s["start"]))
-    merged = [segments[0]]
-    for seg in segments[1:]:
-        last = merged[-1]
-        if abs(seg["coord"] - last["coord"]) <= coord_tol and seg["start"] <= last["end"] + gap_tol:
-            last["end"] = max(last["end"], seg["end"])
-            last["coord"] = (last["coord"] + seg["coord"]) / 2.0
-        else:
-            merged.append(seg)
-    return merged
+    # Compatibility helper: only overlap on the same centreline is sufficient
+    # evidence without the image. Preserve both ends and never mutate callers.
+    lines = [{"start": {"x": s["start"], "y": s["coord"]},
+              "end": {"x": s["end"], "y": s["coord"]}} for s in segments]
+    return [{"coord": w["start"]["y"], "start": w["start"]["x"], "end": w["end"]["x"]}
+            for w in consolidate_walls(lines, max_sep=min(coord_tol, 0.25))]
 
 
-def detect_lines(image: np.ndarray, params: Dict) -> List[Dict]:
+def _filter_drawing_scale(walls: List[Dict], image: np.ndarray) -> List[Dict]:
+    """Suppress annotation/furniture rules thinner than this drawing's walls.
+
+    Architectural sheets mix scales, so a fixed pixel threshold is unreliable.
+    Outlined wall pairs are the strongest thickness evidence; otherwise vote by
+    the supported length of long solid bands. Keep multiple legitimate wall
+    weights (for example 4 px partitions beside 10 px exterior walls).
+    """
+    if len(walls) < 4:
+        return walls
+    maximum = max(image.shape[:2])
+    outlined = [float(w.get("thickness_px", 0)) for w in walls
+                if w.get("detector") == "cv-outline" and float(w.get("thickness_px", 0)) >= 2]
+    if len(outlined) >= 2:
+        reference = float(np.median(outlined))
+    else:
+        votes = {}
+        for wall in walls:
+            thickness = float(wall.get("thickness_px", 0) or 0)
+            length = math.hypot(wall["end"]["x"] - wall["start"]["x"],
+                                wall["end"]["y"] - wall["start"]["y"])
+            if thickness >= 2 and length >= maximum * .06:
+                votes[round(thickness)] = votes.get(round(thickness), 0) + length
+        if not votes:
+            return walls
+        reference = float(max(votes, key=votes.get))
+    minimum = max(2.0, reference * .38)
+    retained = [wall for wall in walls if wall.get("detector") == "cv-outline"
+                or float(wall.get("thickness_px", 0) or 0) >= minimum]
+
+    def connected_to_retained(candidate):
+        ax, ay = candidate["start"]["x"], candidate["start"]["y"]
+        bx, by = candidate["end"]["x"], candidate["end"]["y"]
+        horizontal = abs(bx - ax) >= abs(by - ay)
+        gap = max(8.0, maximum * 0.012)
+        for other in retained:
+            cx, cy = other["start"]["x"], other["start"]["y"]
+            dx, dy = other["end"]["x"], other["end"]["y"]
+            other_horizontal = abs(dx - cx) >= abs(dy - cy)
+            if horizontal == other_horizontal:
+                continue
+            if horizontal:
+                ix, iy = (cx + dx) / 2, (ay + by) / 2
+                along_candidate = min(ax, bx) - gap <= ix <= max(ax, bx) + gap
+                along_other = min(cy, dy) - gap <= iy <= max(cy, dy) + gap
+            else:
+                ix, iy = (ax + bx) / 2, (cy + dy) / 2
+                along_candidate = min(ay, by) - gap <= iy <= max(ay, by) + gap
+                along_other = min(cx, dx) - gap <= ix <= max(cx, dx) + gap
+            if along_candidate and along_other:
+                # Require the intersection to be near a candidate endpoint. A
+                # dimension rule crossing through the middle is not a wall join.
+                endpoint_distance = min(math.hypot(ix - ax, iy - ay), math.hypot(ix - bx, iy - by))
+                if endpoint_distance <= gap:
+                    return True
+        return False
+
+    # Some plans draw interior partitions much thinner than exterior walls.
+    # Recover only long, ink-supported candidates attached to the validated wall
+    # network; later object-footprint cleanup removes furniture-contained lines.
+    for wall in walls:
+        if wall in retained:
+            continue
+        thickness = float(wall.get("thickness_px", 0) or 0)
+        length = math.hypot(wall["end"]["x"] - wall["start"]["x"],
+                            wall["end"]["y"] - wall["start"]["y"])
+        if thickness >= 2 and length >= maximum * .18 and connected_to_retained(wall):
+            retained.append(wall)
+    return retained
+
+
+def detect_lines(image: np.ndarray, params: Dict, measurements=None) -> List[Dict]:
     wall_thickness = int(params.get("wall_thickness", 3))
-    pre = preprocess_image(image, wall_thickness)
+    pre = preprocess_image(image, wall_thickness, measurements)
 
     max_dim = max(image.shape[0], image.shape[1])
-    min_len = max(16, int(max_dim * 0.025), int(params["min_line_length"] * 0.5))
-    thickness_tol = max(8, wall_thickness * 2)
+    min_len = max(12, int(params["min_line_length"] * 0.25))
+    thickness_tol = max(24, wall_thickness * 4)
 
     kernel_long = max(22, int(max_dim * 0.035))
     kernel_short = max(10, int(max_dim * 0.018))
@@ -134,10 +224,10 @@ def detect_lines(image: np.ndarray, params: Dict) -> List[Dict]:
         np.pi / 180,
         params["hough_threshold"],
         minLineLength=min_len,
-        maxLineGap=params["max_line_gap"],
+        maxLineGap=min(2, params["max_line_gap"]),
     )
     if hough is not None:
-        angle_tol = 10
+        angle_tol = 3
         for x1, y1, x2, y2 in hough[:, 0]:
             dx = x2 - x1
             dy = y2 - y1
@@ -157,34 +247,23 @@ def detect_lines(image: np.ndarray, params: Dict) -> List[Dict]:
     horizontals = [seg for seg in horizontals if segment_support(pre, seg, "h") >= 0.55]
     verticals = [seg for seg in verticals if segment_support(pre, seg, "v") >= 0.55]
 
-    merge_coord = max(8, int(max_dim * 0.01))
-    merge_gap = max(15, int(max_dim * 0.015))
-    merged_h = merge_segments(horizontals, coord_tol=merge_coord, gap_tol=merge_gap)
-    merged_v = merge_segments(verticals, coord_tol=merge_coord, gap_tol=merge_gap)
-
-    # Final minimum length filter — remove short noise fragments
-    final_min_len = max(40, int(max_dim * 0.05))
-
+    # Keep short returns; merge both detectors only with original-pixel evidence.
     results = []
-    for seg in merged_h:
-        length = seg["end"] - seg["start"]
-        if length >= final_min_len:
-            results.append(
-                {
-                    "start": {"x": int(seg["start"]), "y": int(seg["coord"])},
-                    "end": {"x": int(seg["end"]), "y": int(seg["coord"])},
-                }
-            )
-    for seg in merged_v:
-        length = seg["end"] - seg["start"]
-        if length >= final_min_len:
-            results.append(
-                {
-                    "start": {"x": int(seg["coord"]), "y": int(seg["start"])},
-                    "end": {"x": int(seg["coord"]), "y": int(seg["end"])},
-                }
-            )
-    return results
+    for axis, segments in (("h", horizontals), ("v", verticals)):
+        for seg in segments:
+            a, b, coord = float(seg["start"]), float(seg["end"]), float(seg["coord"])
+            results.append({
+                "start": {"x": a if axis == "h" else coord, "y": coord if axis == "h" else a},
+                "end": {"x": b if axis == "h" else coord, "y": coord if axis == "h" else b},
+                "detector": "cv",
+            })
+    results.extend(detect_outlined_walls(image, measurements))
+    supported = supported_proposals(consolidate_walls(results, image=image), image)
+    supported = _filter_drawing_scale(supported, image)
+    # Small irregular dark symbols (plants/text) can survive directional opening.
+    # Keep short returns when their perpendicular profile forms a stable wall band.
+    return [w for w in supported if w.get("thickness_px", 0) >= 2 or
+            math.hypot(w["end"]["x"] - w["start"]["x"], w["end"]["y"] - w["start"]["y"]) >= 48]
 
 
 def _get_yolo_model(model_path: str):
@@ -206,36 +285,32 @@ def invalidate_yolo_cache(model_path: str = None) -> None:
         _YOLO_MODEL_CACHE.pop(model_path, None)
 
 
+def _deduplicate_parallel_walls(lines: List[Dict], max_sep: int = 18) -> List[Dict]:
+    # Without pixel evidence only coincident proposals are safe to combine.
+    return consolidate_walls(lines, max_sep=max_sep)
+
+
+def _snap_wall_endpoints(lines: List[Dict], snap_dist: int = 10) -> List[Dict]:
+    return snap_wall_endpoints(lines, snap_dist)
+
+
 def _merge_collinear_lines(lines: List[Dict], coord_tol: int = 10, gap_tol: int = 20) -> List[Dict]:
-    """Merge nearly-collinear wall segments (horizontal or vertical) into longer walls.
-    Also deduplicates overlapping parallel segments."""
-    h_segs = []  # {coord: y, start: x1, end: x2}
-    v_segs = []  # {coord: x, start: y1, end: y2}
+    return consolidate_walls(lines, max_sep=coord_tol)
 
-    for ln in lines:
-        sx, sy = ln["start"]["x"], ln["start"]["y"]
-        ex, ey = ln["end"]["x"], ln["end"]["y"]
-        dx, dy = abs(ex - sx), abs(ey - sy)
-        if dx >= dy:  # horizontal
-            h_segs.append({"coord": (sy + ey) / 2.0, "start": min(sx, ex), "end": max(sx, ex)})
-        else:  # vertical
-            v_segs.append({"coord": (sx + ex) / 2.0, "start": min(sy, ey), "end": max(sy, ey)})
 
-    merged_h = merge_segments(h_segs, coord_tol=coord_tol, gap_tol=gap_tol)
-    merged_v = merge_segments(v_segs, coord_tol=coord_tol, gap_tol=gap_tol)
-
-    result = []
-    for seg in merged_h:
-        result.append({
-            "start": {"x": int(seg["start"]), "y": int(seg["coord"])},
-            "end":   {"x": int(seg["end"]),   "y": int(seg["coord"])},
-        })
-    for seg in merged_v:
-        result.append({
-            "start": {"x": int(seg["coord"]), "y": int(seg["start"])},
-            "end":   {"x": int(seg["coord"]), "y": int(seg["end"])},
-        })
-    return result
+def yolo_class_ids(model_path: str, kind: str) -> List[int]:
+    """Read class IDs from weights, including single-class specialized models."""
+    model = _get_yolo_model(model_path)
+    if model is None:
+        return []
+    aliases = {
+        "wall": {"wall", "walls"},
+        "door": {"door", "doors", "puerta de plano"},
+        "window": {"window", "windows", "glass window", "glass wall", "glass grill", "glass banister"},
+    }
+    names = model.names.items() if isinstance(model.names, dict) else enumerate(model.names)
+    return [int(i) for i, name in names
+            if str(name).lower().replace("_", " ").replace("-", " ").strip() in aliases[kind]]
 
 
 def detect_lines_yolo(
@@ -249,6 +324,11 @@ def detect_lines_yolo(
     if model is None:
         return []
 
+    if classes is None:
+        classes = yolo_class_ids(model_path, "wall")
+    if not classes:
+        return []
+
     results = model.predict(source=image, conf=conf, iou=iou, classes=classes, agnostic_nms=True, verbose=False)
     if not results:
         return []
@@ -257,12 +337,12 @@ def detect_lines_yolo(
         return []
 
     max_dim = max(image.shape[0], image.shape[1])
-    min_len = max(20, int(max_dim * 0.02))
+    min_len = 12
     min_aspect = 3.0
     max_thickness = max(20, int(max_dim * 0.06))
 
     raw_lines: List[Dict] = []
-    for x1, y1, x2, y2 in boxes.xyxy.cpu().numpy():
+    for box_index, (x1, y1, x2, y2) in enumerate(boxes.xyxy.cpu().numpy()):
         width = max(0.0, x2 - x1)
         height = max(0.0, y2 - y1)
         long_side = max(width, height)
@@ -286,18 +366,12 @@ def detect_lines_yolo(
                 "end": {"x": int(round(x)), "y": int(round(y2))},
             })
 
-    # Merge near-parallel duplicates (2% coord tolerance to collapse doubled detections)
-    merged = _merge_collinear_lines(raw_lines,
-                                     coord_tol=max(10, int(max_dim * 0.02)),
-                                     gap_tol=max(15, int(max_dim * 0.02)))
+        if raw_lines:
+            raw_lines[-1]["detector"] = "yolo"
+            if boxes.conf is not None:
+                raw_lines[-1]["confidence"] = float(boxes.conf[box_index].item())
 
-    # Remove short fragments after merging
-    final_min = max(40, int(max_dim * 0.05))
-    merged = [ln for ln in merged
-              if math.hypot(ln["end"]["x"] - ln["start"]["x"],
-                            ln["end"]["y"] - ln["start"]["y"]) >= final_min]
-    print(f"[yolo-walls] raw={len(raw_lines)}, merged={len(merged)}, max_dim={max_dim}")
-    return merged
+    return supported_proposals(consolidate_walls(raw_lines, image=image), image, minimum=0.35)
 
 
 def detect_door_swing(image: np.ndarray, bbox: dict) -> str:
@@ -409,42 +483,58 @@ def detect_classified_boxes_yolo(
     conf: float = 0.25,
     iou: float = 0.5,
     classes: List[int] = None,
+    image_sizes: Tuple[int, ...] = (640,),
 ) -> List[Dict]:
     """Detect objects with class names using a YOLO model."""
     model = _get_yolo_model(model_path)
     if model is None:
         return []
 
-    results = model.predict(source=image, conf=conf, iou=iou, classes=classes, agnostic_nms=True, verbose=False)
-    if not results:
-        return []
-    boxes = results[0].boxes
-    if boxes is None or boxes.xyxy is None:
-        return []
-
-    names = results[0].names  # {0: 'ClassName', 1: ...}
     detections: List[Dict] = []
-    xyxy = boxes.xyxy.cpu().numpy()
-    cls_ids = boxes.cls.cpu().numpy().astype(int) if boxes.cls is not None else []
-    confs = boxes.conf.cpu().numpy() if boxes.conf is not None else []
+    sizes = tuple(dict.fromkeys(int(size) for size in image_sizes if int(size) >= 320)) or (640,)
+    for image_size in sizes:
+        results = model.predict(source=image, conf=conf, iou=iou, classes=classes,
+                                agnostic_nms=True, imgsz=image_size, verbose=False)
+        if not results or results[0].boxes is None or results[0].boxes.xyxy is None:
+            continue
+        boxes = results[0].boxes
+        names = results[0].names
+        xyxy = boxes.xyxy.cpu().numpy()
+        cls_ids = boxes.cls.cpu().numpy().astype(int) if boxes.cls is not None else []
+        confs = boxes.conf.cpu().numpy() if boxes.conf is not None else []
+        for index, (x1, y1, x2, y2) in enumerate(xyxy):
+            cls_id = int(cls_ids[index]) if index < len(cls_ids) else 0
+            detections.append({
+                "class": names.get(cls_id, f"class_{cls_id}") if names else f"class_{cls_id}",
+                "confidence": round(float(confs[index]) if index < len(confs) else 0.0, 3),
+                "bbox": {"x1": float(x1), "y1": float(y1),
+                         "x2": float(x2), "y2": float(y2)},
+                "inference_size": image_size,
+            })
+    return _deduplicate_classified_boxes(detections)
 
-    for i, (x1, y1, x2, y2) in enumerate(xyxy):
-        cls_id = int(cls_ids[i]) if i < len(cls_ids) else 0
-        class_name = names.get(cls_id, f"class_{cls_id}") if names else f"class_{cls_id}"
-        confidence = float(confs[i]) if i < len(confs) else 0.0
-        detections.append(
-            {
-                "class": class_name,
-                "confidence": round(confidence, 3),
-                "bbox": {
-                    "x1": float(x1),
-                    "y1": float(y1),
-                    "x2": float(x2),
-                    "y2": float(y2),
-                },
-            }
-        )
-    return detections
+
+def _deduplicate_classified_boxes(detections: List[Dict], threshold: float = 0.5) -> List[Dict]:
+    """Combine the same object found by multiple inference resolutions."""
+    kept = []
+    for candidate in sorted(detections, key=lambda item: item.get("confidence", 0), reverse=True):
+        box = candidate.get("bbox") or {}
+        area = max(0, box.get("x2", 0) - box.get("x1", 0)) * max(0, box.get("y2", 0) - box.get("y1", 0))
+        duplicate = False
+        for old in kept:
+            if str(old.get("class", "")).lower() != str(candidate.get("class", "")).lower():
+                continue
+            other = old["bbox"]
+            intersection = max(0, min(box["x2"], other["x2"]) - max(box["x1"], other["x1"])) * \
+                max(0, min(box["y2"], other["y2"]) - max(box["y1"], other["y1"]))
+            other_area = max(0, other["x2"] - other["x1"]) * max(0, other["y2"] - other["y1"])
+            union = area + other_area - intersection
+            if union > 0 and intersection / union >= threshold:
+                duplicate = True
+                break
+        if not duplicate:
+            kept.append(candidate)
+    return kept
 
 
 def estimate_scale_from_doors(doors: List[Dict], standard_door_width_m: float = 0.9) -> Dict:
@@ -470,24 +560,39 @@ def estimate_scale_from_doors(doors: List[Dict], standard_door_width_m: float = 
 
 
 def score_detection(detected: List[Dict], labeled: List[Dict]) -> float:
-    if not labeled:
-        return 0.0
-    matches = 0
-    for target in labeled:
-        target_angle = line_angle_deg(target)
-        target_center = line_center(target)
-        best_dist = None
-        for det in detected:
-            det_angle = line_angle_deg(det)
-            if abs(det_angle - target_angle) > 10 and abs(det_angle - target_angle) < 170:
+    """One-to-one segment F1 for parameter tuning, including false positives.
+
+    Match parallel segments within 5 px with projected interval IoU >= 0.5.
+    This is a local tuning metric, not a dataset-wide accuracy claim.
+    """
+    candidates = []
+    for i, target in enumerate(labeled):
+        a = np.array([target["start"]["x"], target["start"]["y"]], dtype=float)
+        b = np.array([target["end"]["x"], target["end"]["y"]], dtype=float)
+        size = np.linalg.norm(b - a)
+        if size < 0.5:
+            continue
+        u = (b - a) / size
+        n = np.array([-u[1], u[0]])
+        for j, det in enumerate(detected):
+            c = np.array([det["start"]["x"], det["start"]["y"]], dtype=float)
+            d = np.array([det["end"]["x"], det["end"]["y"]], dtype=float)
+            det_size = np.linalg.norm(d - c)
+            if det_size < 0.5 or abs(np.dot((d - c) / det_size, n)) > math.sin(math.radians(5)):
                 continue
-            det_center = line_center(det)
-            dist = math.hypot(det_center[0] - target_center[0], det_center[1] - target_center[1])
-            if best_dist is None or dist < best_dist:
-                best_dist = dist
-        if best_dist is not None and best_dist < 25:
-            matches += 1
-    return matches / max(len(labeled), 1)
+            if max(abs(np.dot(c - a, n)), abs(np.dot(d - a, n))) > 5:
+                continue
+            lo, hi = sorted([float(np.dot(c - a, u)), float(np.dot(d - a, u))])
+            overlap = max(0, min(size, hi) - max(0, lo))
+            iou = overlap / max(size, hi) if lo >= 0 else overlap / (max(size, hi) - lo)
+            if iou >= 0.5:
+                candidates.append((-iou, i, j))
+    used_labels, used_detections = set(), set()
+    for _, i, j in sorted(candidates):
+        if i not in used_labels and j not in used_detections:
+            used_labels.add(i)
+            used_detections.add(j)
+    return 2 * len(used_labels) / max(len(detected) + len(labeled), 1)
 
 
 def estimate_wall_thickness(image: np.ndarray, labeled_lines: List[Dict]) -> int:
@@ -541,9 +646,8 @@ def classify_wall_types(image: np.ndarray, walls: List[Dict]) -> List[Dict]:
 
     Position (exterior vs interior) is derived from the convex hull of all wall
     endpoints — walls lying on the outer boundary are exterior, the rest interior.
-    Thickness is then checked independently: any wall noticeably thinner than the
-    floor plan's median wall thickness is reclassified as "half", since half-walls
-    are a height/thickness property rather than a positional one.
+    This is a positional hint, not proof of topology. Never infer half-height from
+    stroke width; retain explicit user wall types.
     """
     if not walls:
         return walls
@@ -586,19 +690,8 @@ def classify_wall_types(image: np.ndarray, walls: List[Dict]) -> List[Dict]:
                 return True
         return False
 
-    per_wall_thickness = [0.0] * len(walls)
-    if image is not None:
-        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
-        dist_transform = cv2.distanceTransform(binary, cv2.DIST_L2, 3)
-        for i, w in enumerate(walls):
-            per_wall_thickness[i] = _wall_segment_thickness(image, w, dist_transform)
-    nonzero_thicknesses = [t for t in per_wall_thickness if t > 0]
-    median_thickness = float(np.median(nonzero_thicknesses)) if nonzero_thicknesses else 0.0
-    half_threshold = median_thickness * 0.6
-
     result = []
-    for w, t in zip(walls, per_wall_thickness):
+    for w in walls:
         sx, sy = w["start"]["x"], w["start"]["y"]
         ex, ey = w["end"]["x"], w["end"]["y"]
         # Sample several points along the segment, not just its endpoints — a wall
@@ -609,10 +702,9 @@ def classify_wall_types(image: np.ndarray, walls: List[Dict]) -> List[Dict]:
             point_near_hull((sx + (ex - sx) * t, sy + (ey - sy) * t)) for t in sample_ts
         )
         wall_type = "exterior" if on_boundary else "interior"
-        if median_thickness > 0 and t > 0 and t < half_threshold:
-            wall_type = "half"
         out = dict(w)
-        out["wall_type"] = wall_type
+        out["wall_type"] = w.get("wall_type", wall_type)
+        out["wall_type_inferred"] = "wall_type" not in w or w.get("wall_type_inferred", False)
         result.append(out)
     return result
 

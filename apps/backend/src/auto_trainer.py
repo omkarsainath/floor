@@ -129,9 +129,6 @@ def save_uploaded_image_cv(image: np.ndarray, filename: str) -> str:
 def _normalize_class_name(name: str) -> str:
     normalized = " ".join(name.strip().lower().split())
     synonyms = {
-        "column": "pillar",
-        "columns": "pillar",
-        "pillars": "pillar",
         "window panel": "window",
         "windows": "window",
         "glass window": "glass-window",

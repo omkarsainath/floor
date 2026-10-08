@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { createObject } from '../generators/object.js';
+import { addAIObject, removeAIObjects } from './objectActions.js';
 
 const API_URL = 'http://localhost:5050/api/ai-chat';
 
@@ -269,76 +269,11 @@ export function createAIChatPanel(scene, layoutRef, selectableMeshes = []) {
   }
 
   function addObjectToScene(action) {
-    const w = action.width || 1;
-    const d = action.depth || 1;
-    const x = action.x || 0;
-    const z = action.z || 0;
-
-    const obj = {
-      class: action.object_type || 'default',
-      bbox: {
-        x1: x - w / 2,
-        y1: z - d / 2,
-        x2: x + w / 2,
-        y2: z + d / 2,
-      },
-      layoutCenter: { x: 0, y: 0 },
-      walls: layoutRef.current.walls || [],
-    };
-
-    const mesh = createObject(obj);
-    if (mesh) {
-      mesh.userData.aiPlaced = true;
-      mesh.userData.isSelectable = true;
-      mesh.userData.objectType = action.object_type;
-      mesh.userData.layoutId = `ai-${Date.now()}`;
-      scene.add(mesh);
-      selectableMeshes.push(mesh);
-      if (layoutRef.current) {
-        layoutRef.current.objects = layoutRef.current.objects || [];
-        layoutRef.current.objects.push({
-          id: `ai-${Date.now()}`,
-          class: action.object_type || 'default',
-          bbox: obj.bbox,
-          source: 'ai',
-        });
-      }
-      console.log(`[ai] Added ${action.object_type} at (${x}, ${z})`);
-    }
+    return addAIObject(action, { scene, layout: layoutRef.current, selectableMeshes });
   }
 
   function removeObjectFromScene(action) {
-    const type = (action.object_type || '').toLowerCase();
-    const nearX = action.near_x;
-    const nearZ = action.near_z;
-    let removed = 0;
-
-    const toRemove = [];
-    scene.children.forEach(child => {
-      if (child.userData.aiPlaced && child.userData.objectType === type) {
-        if (nearX !== undefined && nearZ !== undefined) {
-          const dist = Math.hypot(child.position.x - nearX, child.position.z - nearZ);
-          if (dist > 3) return;
-        }
-        toRemove.push(child);
-      }
-    });
-    toRemove.forEach(child => {
-      scene.remove(child);
-      child.traverse(n => { if (n.geometry) n.geometry.dispose(); if (n.material) n.material.dispose(); });
-      removed++;
-    });
-    if (layoutRef.current && layoutRef.current.objects) {
-      layoutRef.current.objects = layoutRef.current.objects.filter(
-        o => !(o.source === 'ai' && (o.class || '').toLowerCase() === type)
-      );
-    }
-    // Remove from selectable pool too
-    toRemove.forEach(child => {
-      const idx = selectableMeshes.indexOf(child);
-      if (idx !== -1) selectableMeshes.splice(idx, 1);
-    });
-    console.log(`[ai] Removed ${removed} ${type}(s)`);
+    return removeAIObjects(action, { scene, layout: layoutRef.current, selectableMeshes });
   }
 
   function changeFloorMaterial(action) {

@@ -4,7 +4,6 @@ from collections import Counter
 
 
 STRUCTURAL_CLASSES = {
-    "pillar",
     "window",
     "glass-window",
     "glass-wall",
@@ -17,9 +16,6 @@ STRUCTURAL_CLASSES = {
 def _normalize_class_name(class_name: str) -> str:
     normalized = " ".join(str(class_name or "").strip().lower().replace("_", " ").split())
     synonyms = {
-        "column": "pillar",
-        "columns": "pillar",
-        "pillars": "pillar",
         "window panel": "window",
         "windows": "window",
         "glass window": "glass-window",

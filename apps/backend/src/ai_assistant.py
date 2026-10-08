@@ -9,6 +9,9 @@ Uses Google Gemini (free tier) for:
 
 import json
 import os
+import math
+
+from shapely.geometry import Polygon, box
 
 try:
     from dotenv import load_dotenv
@@ -92,9 +95,8 @@ already made (walls, doors, and room/furniture objects) for that same image. You
 3. Look for any wall, door, or furniture/room object clearly visible in the image that is
    MISSING from the list entirely, and propose an "add" correction with its class and a
    tight bounding box in the same pixel coordinate space as the existing detections.
-   Include structural objects too (e.g., pillar/column shafts, windows, grills, glass partitions,
-   stairs, and lifts).
-   Use these canonical class names when relevant: "pillar", "window", "glass-window",
+   Include structural objects too (e.g., windows, grills, glass partitions, stairs, and lifts).
+   Use these canonical class names when relevant: "window", "glass-window",
    "glass-wall", "glass-grill", "stairs", "lift".
 4. Be conservative: only propose a correction when you are reasonably confident. Do not
    relabel or invent objects you can't actually see in the image.
@@ -120,15 +122,13 @@ If you find no issues and nothing missing, respond with {"corrections": [], "sum
 """
 
 STRUCTURAL_REVIEW_PROMPT = """You are a careful architectural floor-plan reviewer. A YOLO model has already run and
-detected windows, pillars, and glass elements. Your job is ONLY to add the ones it clearly missed —
+detected windows and glass elements. Your job is ONLY to add the ones it clearly missed —
 not to re-detect everything from scratch.
 
 Be conservative: only add an object when you are highly confident (>80% sure) it is present and
 was not already detected. Prefer precision over recall — a false positive is worse than a missed box.
 
 What to look for (ONLY add if clearly not already in the existing detections):
-- Pillars/columns: small filled or hatched squares/rectangles at wall corners or wall junctions.
-  Do NOT mark door frames, double-door dividers, or anything inside a door opening as a pillar.
 - Windows: clear gaps/notches along exterior walls only. Do not add windows on interior walls.
 - Glass windows / glass walls: dashed or double-line wall segments clearly showing a glass partition.
 - Glass grills: grill/bar patterns on windows or balcony openings.
@@ -141,7 +141,7 @@ Return your findings using this JSON format:
     {
       "entity_type": "object",
       "action": "add",
-      "class": "pillar" | "window" | "glass-window" | "glass-wall" | "glass-grill" | "stairs" | "lift",
+      "class": "window" | "glass-window" | "glass-wall" | "glass-grill" | "stairs" | "lift",
       "bbox": {"x1": 0, "y1": 0, "x2": 0, "y2": 0},
       "reason": "<short reason>"
     }
@@ -151,6 +151,7 @@ Return your findings using this JSON format:
 
 Rules:
 - Do NOT return walls or doors here.
+- Do NOT add pillars or columns — these are excluded from detection.
 - Only return add actions for objects clearly missed by the YOLO model.
 - Do NOT add objects you are uncertain about.
 - If none found, return {"corrections": [], "summary": "No structural additions needed."}
@@ -281,81 +282,57 @@ Wall coordinates (x,y start -> end):
 # ── Room Detection ───────────────────────────────────────
 
 def detect_rooms_from_layout(layout_data: dict) -> dict:
-    """Use AI to identify room types from wall layout."""
-    model = _get_model()
-    if model is None:
-        return _fallback_room_detection(layout_data)
+    """Read the project's actual room boundaries locally, without guessing geometry."""
+    return _fallback_room_detection(layout_data)
 
-    context = _build_context(layout_data)
-    prompt = f"""{context}
 
-Analyze the wall layout above and identify the rooms. For each room, determine:
-1. Room type (bedroom, bathroom, kitchen, living room, dining room, hallway, balcony, etc.)
-2. Approximate center position (x, z coordinates)
-3. Approximate dimensions (width, depth)
-
-Respond with:
-{{
-  "message": "description of identified rooms",
-  "actions": [{{"type": "detect_rooms"}}],
-  "rooms": [
-    {{"type": "bedroom", "center_x": 5.0, "center_z": 3.0, "width": 4.0, "depth": 3.5}},
-    ...
-  ]
-}}
-"""
+def _room_polygon(room: dict):
+    """Bounding-box detections and AI labels are not measured room boundaries."""
+    if room.get("boundary_source") in ("detector_bbox", "detection_bbox", "bbox_estimate") or room.get("area_source") == "bbox":
+        return None
+    points = room.get("points")
+    if not isinstance(points, list) or len(points) < 3:
+        return None
     try:
-        response = model.generate_content(prompt)
-        return _parse_model_json(
-            response.text,
-            fallback={"message": "Room detection parsing failed.", "actions": [], "rooms": []},
-        )
-    except Exception as e:
-        print(f"[ai] Room detection failed: {e}")
-        return _fallback_room_detection(layout_data)
+        coords = [(float(p["x"]), float(p["y"])) for p in points]
+        if not all(math.isfinite(v) for point in coords for v in point):
+            return None
+        polygon = Polygon(coords)
+        return polygon if polygon.is_valid and polygon.area > 1e-8 else None
+    except (TypeError, ValueError, KeyError):
+        return None
 
 
 def _fallback_room_detection(layout_data: dict) -> dict:
-    """Simple rule-based room detection when AI is unavailable."""
-    walls = layout_data.get("walls", [])
-    if not walls:
-        return {"message": "No walls found to detect rooms.", "actions": [], "rooms": []}
-
-    xs, ys = [], []
-    for w in walls:
-        if w.get("start") and w.get("end"):
-            xs.extend([w["start"]["x"], w["end"]["x"]])
-            ys.extend([w["start"]["y"], w["end"]["y"]])
-
-    if not xs:
-        return {"message": "No valid walls.", "actions": [], "rooms": []}
-
-    cx = (min(xs) + max(xs)) / 2
-    cy = (min(ys) + max(ys)) / 2
-    total_w = max(xs) - min(xs)
-    total_h = max(ys) - min(ys)
-
-    # Simple heuristic: divide into quadrants and assign room types
+    """Preserve traced room shapes and names instead of inventing quadrants."""
     rooms = []
-    if total_w > 4 and total_h > 4:
-        rooms = [
-            {"type": "living room", "center_x": cx - total_w / 4, "center_z": cy - total_h / 4,
-             "width": total_w / 2, "depth": total_h / 2},
-            {"type": "bedroom", "center_x": cx + total_w / 4, "center_z": cy - total_h / 4,
-             "width": total_w / 2, "depth": total_h / 2},
-            {"type": "kitchen", "center_x": cx - total_w / 4, "center_z": cy + total_h / 4,
-             "width": total_w / 2, "depth": total_h / 2},
-            {"type": "bathroom", "center_x": cx + total_w / 4, "center_z": cy + total_h / 4,
-             "width": total_w / 2, "depth": total_h / 2},
-        ]
-    else:
-        rooms = [
-            {"type": "living room", "center_x": cx, "center_z": cy,
-             "width": total_w, "depth": total_h},
-        ]
-
+    for room in layout_data.get("rooms", []):
+        if not isinstance(room, dict):
+            continue
+        polygon = _room_polygon(room)
+        if polygon is None:
+            continue
+        x1, y1, x2, y2 = polygon.bounds
+        center = polygon.centroid
+        if not polygon.covers(center):
+            center = polygon.representative_point()
+        rooms.append({
+            **room,
+            "type": str(room.get("type") or room.get("name") or "room").lower(),
+            "center_x": center.x,
+            "center_z": center.y,
+            "width": x2 - x1,
+            "depth": y2 - y1,
+            "area_m2": polygon.area,
+            "area_sqft": polygon.area / 0.09290304,
+        })
+    if not rooms:
+        return {
+            "message": "No room boundaries are defined. Trace each room's inside boundary in the tracer first; wall bounds alone do not identify rooms.",
+            "actions": [], "rooms": [],
+        }
     return {
-        "message": f"Detected {len(rooms)} rooms based on layout analysis.",
+        "message": f"Using {len(rooms)} rooms from the project's traced boundaries.",
         "actions": [{"type": "detect_rooms"}],
         "rooms": rooms,
     }
@@ -404,22 +381,33 @@ ROOM_FURNITURE = {
 
 
 def auto_furnish(rooms: list) -> dict:
-    """Generate furniture placement actions for detected rooms."""
+    """Suggest placements fully contained in real room boundaries."""
     actions = []
     placed = []
+    occupied = []
+    skipped = 0
 
     for room in rooms:
+        polygon = _room_polygon(room)
+        if polygon is None:
+            continue
         rtype = room.get("type", "").lower()
         cx = room.get("center_x", 0)
         cz = room.get("center_z", 0)
         rw = room.get("width", 4)
         rd = room.get("depth", 4)
 
-        furniture_list = ROOM_FURNITURE.get(rtype, ROOM_FURNITURE.get("living room", []))
+        furniture_list = ROOM_FURNITURE.get(rtype, [])
 
         for furn in furniture_list:
-            fx = cx + furn["rel_x"] * rw
-            fz = cz + furn["rel_z"] * rd
+            fx = round(cx + furn["rel_x"] * rw, 2)
+            fz = round(cz + furn["rel_z"] * rd, 2)
+            footprint = box(fx - furn["width"] / 2, fz - furn["depth"] / 2,
+                            fx + furn["width"] / 2, fz + furn["depth"] / 2)
+            if not polygon.covers(footprint) or any(footprint.intersection(other).area > 1e-8 for other in occupied):
+                skipped += 1
+                continue
+            occupied.append(footprint)
             action = {
                 "type": "add_object",
                 "object_type": furn["type"],
@@ -435,7 +423,7 @@ def auto_furnish(rooms: list) -> dict:
                             for p in placed)) if placed else "nothing"
 
     return {
-        "message": f"Auto-furnished {len(rooms)} rooms. Placed: {summary}.",
+        "message": f"Furniture suggestions: {summary}. Skipped {skipped} placements that would cross a room boundary or overlap another suggestion. Check door access and existing furniture before building.",
         "actions": actions,
     }
 
@@ -732,7 +720,7 @@ def review_structural_elements_with_vision(image_bytes: bytes) -> dict:
     prompt = STRUCTURAL_REVIEW_PROMPT
 
     result = _review_one_call(model, image_bytes, prompt)
-    allowed = {"pillar", "window", "glass-window", "glass-wall", "glass-grill", "stairs", "lift"}
+    allowed = {"window", "glass-window", "glass-wall", "glass-grill", "stairs", "lift"}
     filtered = []
     for c in result.get("corrections", []):
         if c.get("entity_type") != "object" or c.get("action") != "add":

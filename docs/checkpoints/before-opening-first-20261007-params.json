@@ -1,0 +1,12 @@
+{
+  "params": {
+    "canny1": 40,
+    "canny2": 120,
+    "hough_threshold": 90,
+    "min_line_length": 40,
+    "max_line_gap": 20,
+    "wall_thickness": 10
+  },
+  "score": 0.6666666666666666,
+  "detected_count": 25
+}
