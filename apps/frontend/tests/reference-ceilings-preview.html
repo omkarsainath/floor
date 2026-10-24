@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>54 reference false ceilings</title>
+<style>body{margin:24px;background:#24272c;color:#f2eee4;font:15px system-ui}nav{display:flex;gap:14px;flex-wrap:wrap;margin:18px 0}a{color:#b8dbff}main{display:grid;grid-template-columns:repeat(3,minmax(250px,1fr));gap:16px}article{background:#35383e;padding:14px;border-radius:12px}h3{font-size:15px}canvas{width:100%;aspect-ratio:4/3;display:block}@media(max-width:850px){main{grid-template-columns:1fr 1fr}}</style>
+<h1>Reference false ceilings</h1><p>54 interpretations, numbered to match your reference pages. View from below; drag to orbit.</p><nav></nav><main></main>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
+import {REFERENCE_CEILING_TYPES} from '../src/design/referenceCeilings.js';
+import {buildCeilingProfile} from '../src/design/ceilingProfiles.js';
+const page=Math.max(0,Math.min(8,Number(new URLSearchParams(location.search).get('page'))||0)),views=[];
+for(let i=0;i<9;i++){const a=document.createElement('a');a.href='?page='+i;a.textContent=`${i*6+1}–${i*6+6}`;document.querySelector('nav').append(a);}
+for(const style of REFERENCE_CEILING_TYPES.slice(page*6,page*6+6)){
+ const article=document.createElement('article'),title=document.createElement('h3'),canvas=document.createElement('canvas');title.textContent=style.label;article.append(title,canvas);document.querySelector('main').append(article);
+ const renderer=new THREE.WebGLRenderer({canvas,antialias:true});renderer.setSize(600,450,false);renderer.setPixelRatio(1);renderer.setClearColor(0x24272c);renderer.toneMapping=THREE.ACESFilmicToneMapping;
+ const scene=new THREE.Scene();scene.add(new THREE.AmbientLight(0xffffff,1.5));const light=new THREE.DirectionalLight(0xfff0de,2.3);light.position.set(-3,-6,4);scene.add(light);
+ const room={id:'preview',height:3,points:[{x:0,y:0},{x:6,y:0},{x:6,y:4},{x:0,y:4}]};
+ const root=buildCeilingProfile({room,style,selection:{ceilingDropM:.23}});root.position.set(-3,-3,-2);scene.add(root);
+ const camera=new THREE.PerspectiveCamera(40,4/3,.01,30);camera.position.set(0,-8,3.2);camera.lookAt(0,0,0);const controls=new OrbitControls(camera,canvas);controls.target.set(0,0,0);controls.update();views.push({renderer,scene,camera});
+}
+function frame(){for(const v of views)v.renderer.render(v.scene,v.camera);requestAnimationFrame(frame);}frame();document.body.dataset.ready='true';document.body.dataset.page=page;
+</script></html>

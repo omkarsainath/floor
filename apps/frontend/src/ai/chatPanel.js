@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { addAIObject, removeAIObjects } from './objectActions.js';
 
-const API_URL = 'http://localhost:5050/api/ai-chat';
+const API_URL = '/api/ai-chat';
 
 /**
  * AI Chat Panel — injects a floating chat UI into the 3D viewer

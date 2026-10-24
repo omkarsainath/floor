@@ -1,10 +1,20 @@
 import * as THREE from 'three';
+import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 
-export function createBasicScene(domElement, OrbitControls) {
+export function createBasicScene(domElement, OrbitControls, renderer) {
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0xf4f6f8);
   // Subtle horizon/ground fog for depth
   scene.fog = new THREE.Fog(0xf4f6f8, 35, 75);
+  // Materials need a reflected environment in the normal interactive view too.
+  // Keep this local and neutral; authored room lights still control illumination.
+  if(renderer){
+    const pmrem=new THREE.PMREMGenerator(renderer),room=new RoomEnvironment();
+    const target=pmrem.fromScene(room,.04);
+    scene.environment=target.texture;
+    scene.userData.disposeEnvironment=()=>target.dispose();
+    room.dispose();pmrem.dispose();
+  }
 
   const camera = new THREE.PerspectiveCamera(
     45,

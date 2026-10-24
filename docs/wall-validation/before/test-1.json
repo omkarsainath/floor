@@ -1,0 +1,1195 @@
+{
+  "walls": [
+    {
+      "start": {
+        "x": 194.5,
+        "y": 44.5
+      },
+      "end": {
+        "x": 194.5,
+        "y": 351.5
+      },
+      "detector": "cv",
+      "thickness_px": 10.0,
+      "pixel_support": 1.0,
+      "confidence": 0.6547895669937134,
+      "wall_type": "exterior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 194.5,
+        "y": 44.5
+      },
+      "end": {
+        "x": 240.0,
+        "y": 44.5
+      },
+      "detector": "cv",
+      "thickness_px": 10.0,
+      "pixel_support": 0.978,
+      "wall_type": "exterior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 194.5,
+        "y": 237.5
+      },
+      "end": {
+        "x": 370.0,
+        "y": 237.5
+      },
+      "detector": "cv",
+      "thickness_px": 4.0,
+      "pixel_support": 0.8,
+      "confidence": 0.6202011704444885,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 194.5,
+        "y": 351.5
+      },
+      "end": {
+        "x": 542.0,
+        "y": 351.5
+      },
+      "detector": "cv",
+      "thickness_px": 10.0,
+      "pixel_support": 0.75,
+      "confidence": 0.6892097592353821,
+      "wall_type": "exterior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 277.0,
+        "y": 44.5
+      },
+      "end": {
+        "x": 497.0,
+        "y": 44.5
+      },
+      "detector": "yolo",
+      "confidence": 0.30355507135391235,
+      "thickness_px": 10.0,
+      "pixel_support": 0.56,
+      "wall_type": "exterior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 364.5,
+        "y": 237.5
+      },
+      "end": {
+        "x": 364.5,
+        "y": 351.5
+      },
+      "detector": "yolo",
+      "confidence": 0.4699290692806244,
+      "thickness_px": 4.0,
+      "pixel_support": 1.0,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 385.0,
+        "y": 365.5
+      },
+      "end": {
+        "x": 403.0,
+        "y": 365.5
+      },
+      "detector": "cv",
+      "thickness_px": 6.0,
+      "pixel_support": 0.737,
+      "wall_type": "exterior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 414.0,
+        "y": 237.5
+      },
+      "end": {
+        "x": 542.0,
+        "y": 237.5
+      },
+      "detector": "yolo",
+      "confidence": 0.5741687417030334,
+      "thickness_px": 4.0,
+      "pixel_support": 0.74,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 418.5,
+        "y": 237.5
+      },
+      "end": {
+        "x": 418.5,
+        "y": 351.5
+      },
+      "detector": "yolo",
+      "confidence": 0.45632123947143555,
+      "thickness_px": 4.0,
+      "pixel_support": 1.0,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 463.0,
+        "y": 188.0
+      },
+      "end": {
+        "x": 463.0,
+        "y": 237.5
+      },
+      "detector": "yolo",
+      "confidence": 0.5371847152709961,
+      "pixel_support": 0.423,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 463.0,
+        "y": 188.0
+      },
+      "end": {
+        "x": 514.5,
+        "y": 188.0
+      },
+      "detector": "yolo",
+      "confidence": 0.5414836406707764,
+      "thickness_px": 5.0,
+      "pixel_support": 1.0,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 514.5,
+        "y": 41.0
+      },
+      "end": {
+        "x": 514.5,
+        "y": 188.0
+      },
+      "detector": "yolo",
+      "confidence": 0.7242740392684937,
+      "thickness_px": 10.0,
+      "pixel_support": 1.0,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 514.5,
+        "y": 185.5
+      },
+      "end": {
+        "x": 542.0,
+        "y": 185.5
+      },
+      "detector": "yolo",
+      "confidence": 0.7609632611274719,
+      "thickness_px": 10.0,
+      "pixel_support": 1.0,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 542.0,
+        "y": 185.5
+      },
+      "end": {
+        "x": 542.0,
+        "y": 351.5
+      },
+      "detector": "yolo",
+      "confidence": 0.6410653591156006,
+      "thickness_px": 9.0,
+      "pixel_support": 0.85,
+      "wall_type": "exterior",
+      "wall_type_inferred": true
+    }
+  ],
+  "scan_api_version": 1,
+  "seedWalls": [],
+  "walls_include_seeds": true,
+  "params": {
+    "canny1": 40,
+    "canny2": 120,
+    "hough_threshold": 90,
+    "min_line_length": 40,
+    "max_line_gap": 20,
+    "wall_thickness": 10
+  },
+  "model": "yolo+cv",
+  "floor_plan_id": null,
+  "db_saved": false,
+  "db_corrections_loaded": false,
+  "detection_provenance": {
+    "mode": "fresh_detector",
+    "database_enabled": false,
+    "database_saved": false,
+    "saved_corrections_loaded": false,
+    "manual_walls_preserved": 0
+  },
+  "yolo_weights": "/Users/apple/Documents/ai-3d-project/models/best.pt",
+  "door_weights": "/Users/apple/Documents/ai-3d-project/models/best.pt",
+  "room_object_weights": "/Users/apple/Documents/ai-3d-project/apps/room-and-object/runs/room_object_yolo/weights/best.pt",
+  "window_glass_weights": "/Users/apple/Documents/ai-3d-project/models/best.pt",
+  "doors": [
+    {
+      "bbox": {
+        "x1": 376.3867492675781,
+        "y1": 348.0511779785156,
+        "x2": 409.89471435546875,
+        "y2": 357.7581481933594
+      },
+      "swing_bbox": {
+        "x1": 376.67901611328125,
+        "y1": 316.368408203125,
+        "x2": 410.7913513183594,
+        "y2": 349.66461181640625
+      },
+      "class": "Door",
+      "confidence": 0.902,
+      "swingDir": "right-outside"
+    },
+    {
+      "bbox": {
+        "x1": 296.0376281738281,
+        "y1": 236.5734405517578,
+        "x2": 325.88104248046875,
+        "y2": 241.33065795898438
+      },
+      "swing_bbox": {
+        "x1": 295.82470703125,
+        "y1": 238.8149871826172,
+        "x2": 326.3819580078125,
+        "y2": 269.0643310546875
+      },
+      "class": "Door",
+      "confidence": 0.763,
+      "swingDir": "right-inside"
+    },
+    {
+      "bbox": {
+        "x1": 426.5728759765625,
+        "y1": 236.25425720214844,
+        "x2": 455.8856506347656,
+        "y2": 240.94839477539062
+      },
+      "swing_bbox": {
+        "x1": 425.2388000488281,
+        "y1": 238.5126190185547,
+        "x2": 456.5853271484375,
+        "y2": 269.1014099121094
+      },
+      "class": "Door",
+      "confidence": 0.836,
+      "swingDir": "left-inside"
+    },
+    {
+      "bbox": {
+        "x1": 460.5987243652344,
+        "y1": 200.95989990234375,
+        "x2": 465.0237121582031,
+        "y2": 230.13577270507812
+      },
+      "swing_bbox": {
+        "x1": 463.67803955078125,
+        "y1": 199.06231689453125,
+        "x2": 493.06591796875,
+        "y2": 230.22689819335938
+      },
+      "class": "Door",
+      "confidence": 0.855,
+      "swingDir": "left-outside"
+    }
+  ],
+  "rooms_detected": [
+    {
+      "class": "Bathroom",
+      "confidence": 0.981,
+      "bbox": {
+        "x1": 419.3124084472656,
+        "y1": 236.19053649902344,
+        "x2": 542.3829345703125,
+        "y2": 350.10272216796875
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Living Room",
+      "confidence": 0.922,
+      "bbox": {
+        "x1": 197.2357635498047,
+        "y1": 46.28736877441406,
+        "x2": 348.6905212402344,
+        "y2": 236.58001708984375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Bedroom",
+      "confidence": 0.912,
+      "bbox": {
+        "x1": 196.7795867919922,
+        "y1": 238.1652374267578,
+        "x2": 364.8044738769531,
+        "y2": 351.4017639160156
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Kitchen",
+      "confidence": 0.8,
+      "bbox": {
+        "x1": 429.69775390625,
+        "y1": 47.28643798828125,
+        "x2": 513.3184814453125,
+        "y2": 188.5389404296875
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bathroom",
+      "confidence": 0.797,
+      "bbox": {
+        "x1": 462.4295654296875,
+        "y1": 188.51870727539062,
+        "x2": 540.736572265625,
+        "y2": 237.6342010498047
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Dining Room",
+      "confidence": 0.56,
+      "bbox": {
+        "x1": 349.31591796875,
+        "y1": 62.68655776977539,
+        "x2": 433.57867431640625,
+        "y2": 231.76649475097656
+      },
+      "inference_size": 960
+    }
+  ],
+  "windows": [
+    {
+      "class": "window",
+      "confidence": 0.738,
+      "bbox": {
+        "x1": 538.3551635742188,
+        "y1": 201.8686981201172,
+        "x2": 547.2454223632812,
+        "y2": 228.49122619628906
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.706,
+      "bbox": {
+        "x1": 413.3607482910156,
+        "y1": 40.77632141113281,
+        "x2": 462.3998107910156,
+        "y2": 50.2796630859375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.699,
+      "bbox": {
+        "x1": 238.93511962890625,
+        "y1": 40.98340606689453,
+        "x2": 324.8752136230469,
+        "y2": 49.91569137573242
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.649,
+      "bbox": {
+        "x1": 252.18536376953125,
+        "y1": 348.255859375,
+        "x2": 307.3037414550781,
+        "y2": 356.93646240234375
+      },
+      "inference_size": 640
+    }
+  ],
+  "glass_grills": [],
+  "glass_banisters": [],
+  "pillars": [],
+  "stairs": [],
+  "lifts": [],
+  "fixtures": [
+    {
+      "class": "Stove",
+      "confidence": 0.983,
+      "bbox": {
+        "x1": 485.646728515625,
+        "y1": 107.24610137939453,
+        "x2": 509.7101745605469,
+        "y2": 132.45223999023438
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.975,
+      "bbox": {
+        "x1": 199.8472137451172,
+        "y1": 241.76510620117188,
+        "x2": 221.15322875976562,
+        "y2": 307.6617126464844
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Sofa",
+      "confidence": 0.967,
+      "bbox": {
+        "x1": 243.8424835205078,
+        "y1": 175.31622314453125,
+        "x2": 276.9705505371094,
+        "y2": 204.9896697998047
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Sink",
+      "confidence": 0.961,
+      "bbox": {
+        "x1": 516.8568725585938,
+        "y1": 289.063720703125,
+        "x2": 538.0100708007812,
+        "y2": 318.3410949707031
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Dining Table",
+      "confidence": 0.955,
+      "bbox": {
+        "x1": 364.5826416015625,
+        "y1": 99.96895599365234,
+        "x2": 426.11322021484375,
+        "y2": 179.20555114746094
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Accent Chair",
+      "confidence": 0.951,
+      "bbox": {
+        "x1": 291.96954345703125,
+        "y1": 157.6718292236328,
+        "x2": 332.38629150390625,
+        "y2": 198.1118927001953
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Sofa",
+      "confidence": 0.949,
+      "bbox": {
+        "x1": 202.0296630859375,
+        "y1": 109.73365783691406,
+        "x2": 234.79624938964844,
+        "y2": 196.6095733642578
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Kitchen-Slab",
+      "confidence": 0.943,
+      "bbox": {
+        "x1": 407.9907531738281,
+        "y1": 49.82393264770508,
+        "x2": 509.7834167480469,
+        "y2": 75.40185546875
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Sink",
+      "confidence": 0.94,
+      "bbox": {
+        "x1": 421.3948059082031,
+        "y1": 280.3374328613281,
+        "x2": 441.95428466796875,
+        "y2": 311.5068054199219
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bed",
+      "confidence": 0.939,
+      "bbox": {
+        "x1": 250.5873565673828,
+        "y1": 278.2441711425781,
+        "x2": 309.3320007324219,
+        "y2": 345.6666564941406
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Side Table",
+      "confidence": 0.931,
+      "bbox": {
+        "x1": 233.16812133789062,
+        "y1": 331.14996337890625,
+        "x2": 248.95953369140625,
+        "y2": 346.2171936035156
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Commode",
+      "confidence": 0.931,
+      "bbox": {
+        "x1": 489.9882507324219,
+        "y1": 240.33230590820312,
+        "x2": 507.1864013671875,
+        "y2": 268.43328857421875
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Kitchen-Slab",
+      "confidence": 0.919,
+      "bbox": {
+        "x1": 484.9064025878906,
+        "y1": 50.62517166137695,
+        "x2": 510.9454650878906,
+        "y2": 162.05386352539062
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Sink",
+      "confidence": 0.898,
+      "bbox": {
+        "x1": 433.50439453125,
+        "y1": 53.14027786254883,
+        "x2": 460.159423828125,
+        "y2": 74.06646728515625
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Side Table",
+      "confidence": 0.883,
+      "bbox": {
+        "x1": 310.2900085449219,
+        "y1": 331.16436767578125,
+        "x2": 326.49871826171875,
+        "y2": 346.5887756347656
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "TV",
+      "confidence": 0.848,
+      "bbox": {
+        "x1": 247.6935272216797,
+        "y1": 66.18679809570312,
+        "x2": 317.86138916015625,
+        "y2": 84.72792053222656
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Stove",
+      "confidence": 0.82,
+      "bbox": {
+        "x1": 433.425048828125,
+        "y1": 52.160072326660156,
+        "x2": 460.7816467285156,
+        "y2": 73.95214080810547
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Fridge",
+      "confidence": 0.707,
+      "bbox": {
+        "x1": 484.60943603515625,
+        "y1": 159.77818298339844,
+        "x2": 510.5221862792969,
+        "y2": 185.95352172851562
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.573,
+      "bbox": {
+        "x1": 342.8085632324219,
+        "y1": 264.88507080078125,
+        "x2": 363.1803894042969,
+        "y2": 323.11083984375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "TV",
+      "confidence": 0.433,
+      "bbox": {
+        "x1": 343.80767822265625,
+        "y1": 259.6349182128906,
+        "x2": 362.85760498046875,
+        "y2": 324.00921630859375
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Fridge",
+      "confidence": 0.34,
+      "bbox": {
+        "x1": 386.21917724609375,
+        "y1": 50.20599365234375,
+        "x2": 413.36126708984375,
+        "y2": 77.0573959350586
+      },
+      "inference_size": 960
+    }
+  ],
+  "rooms_and_objects": [
+    {
+      "class": "Stove",
+      "confidence": 0.983,
+      "bbox": {
+        "x1": 485.646728515625,
+        "y1": 107.24610137939453,
+        "x2": 509.7101745605469,
+        "y2": 132.45223999023438
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Bathroom",
+      "confidence": 0.981,
+      "bbox": {
+        "x1": 419.3124084472656,
+        "y1": 236.19053649902344,
+        "x2": 542.3829345703125,
+        "y2": 350.10272216796875
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.975,
+      "bbox": {
+        "x1": 199.8472137451172,
+        "y1": 241.76510620117188,
+        "x2": 221.15322875976562,
+        "y2": 307.6617126464844
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Sofa",
+      "confidence": 0.967,
+      "bbox": {
+        "x1": 243.8424835205078,
+        "y1": 175.31622314453125,
+        "x2": 276.9705505371094,
+        "y2": 204.9896697998047
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Sink",
+      "confidence": 0.961,
+      "bbox": {
+        "x1": 516.8568725585938,
+        "y1": 289.063720703125,
+        "x2": 538.0100708007812,
+        "y2": 318.3410949707031
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Dining Table",
+      "confidence": 0.955,
+      "bbox": {
+        "x1": 364.5826416015625,
+        "y1": 99.96895599365234,
+        "x2": 426.11322021484375,
+        "y2": 179.20555114746094
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Accent Chair",
+      "confidence": 0.951,
+      "bbox": {
+        "x1": 291.96954345703125,
+        "y1": 157.6718292236328,
+        "x2": 332.38629150390625,
+        "y2": 198.1118927001953
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Sofa",
+      "confidence": 0.949,
+      "bbox": {
+        "x1": 202.0296630859375,
+        "y1": 109.73365783691406,
+        "x2": 234.79624938964844,
+        "y2": 196.6095733642578
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Kitchen-Slab",
+      "confidence": 0.943,
+      "bbox": {
+        "x1": 407.9907531738281,
+        "y1": 49.82393264770508,
+        "x2": 509.7834167480469,
+        "y2": 75.40185546875
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Sink",
+      "confidence": 0.94,
+      "bbox": {
+        "x1": 421.3948059082031,
+        "y1": 280.3374328613281,
+        "x2": 441.95428466796875,
+        "y2": 311.5068054199219
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bed",
+      "confidence": 0.939,
+      "bbox": {
+        "x1": 250.5873565673828,
+        "y1": 278.2441711425781,
+        "x2": 309.3320007324219,
+        "y2": 345.6666564941406
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Side Table",
+      "confidence": 0.931,
+      "bbox": {
+        "x1": 233.16812133789062,
+        "y1": 331.14996337890625,
+        "x2": 248.95953369140625,
+        "y2": 346.2171936035156
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Commode",
+      "confidence": 0.931,
+      "bbox": {
+        "x1": 489.9882507324219,
+        "y1": 240.33230590820312,
+        "x2": 507.1864013671875,
+        "y2": 268.43328857421875
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Living Room",
+      "confidence": 0.922,
+      "bbox": {
+        "x1": 197.2357635498047,
+        "y1": 46.28736877441406,
+        "x2": 348.6905212402344,
+        "y2": 236.58001708984375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Kitchen-Slab",
+      "confidence": 0.919,
+      "bbox": {
+        "x1": 484.9064025878906,
+        "y1": 50.62517166137695,
+        "x2": 510.9454650878906,
+        "y2": 162.05386352539062
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bedroom",
+      "confidence": 0.912,
+      "bbox": {
+        "x1": 196.7795867919922,
+        "y1": 238.1652374267578,
+        "x2": 364.8044738769531,
+        "y2": 351.4017639160156
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Sink",
+      "confidence": 0.898,
+      "bbox": {
+        "x1": 433.50439453125,
+        "y1": 53.14027786254883,
+        "x2": 460.159423828125,
+        "y2": 74.06646728515625
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Side Table",
+      "confidence": 0.883,
+      "bbox": {
+        "x1": 310.2900085449219,
+        "y1": 331.16436767578125,
+        "x2": 326.49871826171875,
+        "y2": 346.5887756347656
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "TV",
+      "confidence": 0.848,
+      "bbox": {
+        "x1": 247.6935272216797,
+        "y1": 66.18679809570312,
+        "x2": 317.86138916015625,
+        "y2": 84.72792053222656
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Stove",
+      "confidence": 0.82,
+      "bbox": {
+        "x1": 433.425048828125,
+        "y1": 52.160072326660156,
+        "x2": 460.7816467285156,
+        "y2": 73.95214080810547
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Kitchen",
+      "confidence": 0.8,
+      "bbox": {
+        "x1": 429.69775390625,
+        "y1": 47.28643798828125,
+        "x2": 513.3184814453125,
+        "y2": 188.5389404296875
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bathroom",
+      "confidence": 0.797,
+      "bbox": {
+        "x1": 462.4295654296875,
+        "y1": 188.51870727539062,
+        "x2": 540.736572265625,
+        "y2": 237.6342010498047
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Fridge",
+      "confidence": 0.707,
+      "bbox": {
+        "x1": 484.60943603515625,
+        "y1": 159.77818298339844,
+        "x2": 510.5221862792969,
+        "y2": 185.95352172851562
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.573,
+      "bbox": {
+        "x1": 342.8085632324219,
+        "y1": 264.88507080078125,
+        "x2": 363.1803894042969,
+        "y2": 323.11083984375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Dining Room",
+      "confidence": 0.56,
+      "bbox": {
+        "x1": 349.31591796875,
+        "y1": 62.68655776977539,
+        "x2": 433.57867431640625,
+        "y2": 231.76649475097656
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "TV",
+      "confidence": 0.433,
+      "bbox": {
+        "x1": 343.80767822265625,
+        "y1": 259.6349182128906,
+        "x2": 362.85760498046875,
+        "y2": 324.00921630859375
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Fridge",
+      "confidence": 0.34,
+      "bbox": {
+        "x1": 386.21917724609375,
+        "y1": 50.20599365234375,
+        "x2": 413.36126708984375,
+        "y2": 77.0573959350586
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "window",
+      "confidence": 0.738,
+      "bbox": {
+        "x1": 538.3551635742188,
+        "y1": 201.8686981201172,
+        "x2": 547.2454223632812,
+        "y2": 228.49122619628906
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.706,
+      "bbox": {
+        "x1": 413.3607482910156,
+        "y1": 40.77632141113281,
+        "x2": 462.3998107910156,
+        "y2": 50.2796630859375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.699,
+      "bbox": {
+        "x1": 238.93511962890625,
+        "y1": 40.98340606689453,
+        "x2": 324.8752136230469,
+        "y2": 49.91569137573242
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.649,
+      "bbox": {
+        "x1": 252.18536376953125,
+        "y1": 348.255859375,
+        "x2": 307.3037414550781,
+        "y2": 356.93646240234375
+      },
+      "inference_size": 640
+    }
+  ],
+  "detected_count": 14,
+  "seed_count": 0,
+  "scale_estimate": {
+    "meters_per_pixel": 0.030427923628916186,
+    "source": "door_width_estimate",
+    "sample_count": 4
+  },
+  "measurements": {
+    "status": "ok",
+    "engine": "tesseract-local",
+    "linear": [],
+    "areas": [],
+    "calibration": null,
+    "warnings": [
+      "No readable explicit-unit dimensions found. Calibrate using a known distance in the drawing."
+    ],
+    "ocr_text_regions": [
+      [
+        324.0,
+        40.0,
+        548.0,
+        203.0
+      ]
+    ]
+  },
+  "room_boundaries": [
+    {
+      "id": "auto-room-1",
+      "name": "Bedroom",
+      "points": [
+        {
+          "x": 362.5,
+          "y": 239.5
+        },
+        {
+          "x": 362.5,
+          "y": 346.5
+        },
+        {
+          "x": 199.5,
+          "y": 346.5
+        },
+        {
+          "x": 199.5,
+          "y": 239.5
+        }
+      ],
+      "boundary_source": "auto_walls",
+      "boundary_reference": "inside_faces",
+      "area_px2": 17441.0
+    },
+    {
+      "id": "auto-room-2",
+      "name": "Bathroom",
+      "points": [
+        {
+          "x": 420.5,
+          "y": 346.5
+        },
+        {
+          "x": 420.5,
+          "y": 239.5
+        },
+        {
+          "x": 537.5,
+          "y": 239.5
+        },
+        {
+          "x": 537.5,
+          "y": 346.5
+        }
+      ],
+      "boundary_source": "auto_walls",
+      "boundary_reference": "inside_faces",
+      "area_px2": 12519.0
+    }
+  ],
+  "room_scan": {
+    "unresolved": [],
+    "warnings": [
+      "A wall has no reliable pixel thickness; rooms depending on that wall need review."
+    ],
+    "closures": [],
+    "wall_thicknesses": [
+      {
+        "wall_index": 0,
+        "thickness_px": 10.0
+      },
+      {
+        "wall_index": 1,
+        "thickness_px": 10.0
+      },
+      {
+        "wall_index": 2,
+        "thickness_px": 4.0
+      },
+      {
+        "wall_index": 3,
+        "thickness_px": 10.0
+      },
+      {
+        "wall_index": 4,
+        "thickness_px": 10.0
+      },
+      {
+        "wall_index": 5,
+        "thickness_px": 4.0
+      },
+      {
+        "wall_index": 6,
+        "thickness_px": 6.0
+      },
+      {
+        "wall_index": 7,
+        "thickness_px": 4.0
+      },
+      {
+        "wall_index": 8,
+        "thickness_px": 4.0
+      },
+      {
+        "wall_index": 10,
+        "thickness_px": 5.0
+      },
+      {
+        "wall_index": 11,
+        "thickness_px": 10.0
+      },
+      {
+        "wall_index": 12,
+        "thickness_px": 10.0
+      },
+      {
+        "wall_index": 13,
+        "thickness_px": 9.0
+      }
+    ]
+  },
+  "ai_review": {
+    "enabled": false,
+    "applied": false,
+    "corrections_count": 0,
+    "summary": null,
+    "error": null
+  },
+  "adk_pipeline_enabled": true,
+  "adk_evaluation": null,
+  "detection_summary": {
+    "walls": 14,
+    "doors": 4,
+    "objects_total": 31,
+    "rooms": 6,
+    "windows": 4,
+    "glass_grills": 0,
+    "glass_banisters": 0,
+    "stairs": 0,
+    "lifts": 0,
+    "fixtures": 21,
+    "objects_by_class": {
+      "Stove": 2,
+      "Bathroom": 2,
+      "Wardrobe": 2,
+      "Sofa": 2,
+      "Sink": 3,
+      "Dining Table": 1,
+      "Accent Chair": 1,
+      "Kitchen-Slab": 2,
+      "Bed": 1,
+      "Side Table": 2,
+      "Commode": 1,
+      "Living Room": 1,
+      "Bedroom": 1,
+      "TV": 2,
+      "Kitchen": 1,
+      "Fridge": 2,
+      "Dining Room": 1,
+      "window": 4
+    }
+  }
+}

@@ -1,0 +1,12 @@
+<!doctype html><html><head><title>Wall relief designs</title><style>body{margin:0;background:#25272b;color:white;font:14px system-ui}#labels{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,1fr);pointer-events:none}#labels div{padding:12px}</style></head><body><div id="labels"></div><script type="module">
+import * as T from 'three';
+import { WALL_RELIEF_STYLES, createReliefGeometry } from '../src/design/wallReliefs.js';
+const renderer=new T.WebGLRenderer({antialias:true});renderer.setSize(innerWidth,innerHeight);document.body.appendChild(renderer.domElement);
+const scene=new T.Scene();scene.background=new T.Color('#25272b');
+const camera=new T.PerspectiveCamera(35,innerWidth/innerHeight,.1,100);camera.position.set(0,0,19);
+scene.add(new T.HemisphereLight(0xffffff,0x635a48,2));const light=new T.DirectionalLight(0xffefdb,3);light.position.set(-8,9,5);scene.add(light);
+const single=new URLSearchParams(location.search).has('mountains');
+if(single){camera.position.set(1.3,1.3,5.2);camera.lookAt(1.3,1.3,0); light.intensity=1.2;document.querySelector('#labels').style.display='none';}
+(single?WALL_RELIEF_STYLES.filter(s=>s.motif==='mountains'):WALL_RELIEF_STYLES).forEach((style,i)=>{const g=createReliefGeometry({motif:style.motif,span:{lo:0,hi:2.6,bottom:0,top:2.6},left:0,right:2.6,bottom:0,top:2.6});const m=new T.Mesh(g,new T.MeshStandardMaterial({vertexColors:true,roughness:.82}));m.position.set((i%5-2)*2.85-1.3,(1-Math.floor(i/5))*2.85-1.3,0);if(single)m.position.set(0,0,0);scene.add(m);const label=document.createElement('div');label.textContent=style.label;document.querySelector('#labels').appendChild(label);});
+renderer.render(scene,camera);document.body.dataset.ready='true';
+</script></body></html>

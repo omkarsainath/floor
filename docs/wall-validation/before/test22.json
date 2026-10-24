@@ -1,0 +1,2457 @@
+{
+  "walls": [
+    {
+      "start": {
+        "x": 115.0,
+        "y": 513.0
+      },
+      "end": {
+        "x": 382.5,
+        "y": 513.0
+      },
+      "detector": "yolo",
+      "confidence": 0.5139575600624084,
+      "pixel_support": 0.46,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 117.0,
+        "y": 245.5
+      },
+      "end": {
+        "x": 903.0,
+        "y": 245.5
+      },
+      "detector": "cv",
+      "thickness_px": 16.0,
+      "pixel_support": 0.973,
+      "confidence": 0.4387091100215912,
+      "wall_type": "exterior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 118.0,
+        "y": 882.5
+      },
+      "end": {
+        "x": 902.0,
+        "y": 882.5
+      },
+      "detector": "yolo",
+      "confidence": 0.5330588221549988,
+      "thickness_px": 18.0,
+      "pixel_support": 0.89,
+      "wall_type": "exterior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 119.0,
+        "y": 746.5
+      },
+      "end": {
+        "x": 345.0,
+        "y": 746.5
+      },
+      "detector": "cv",
+      "thickness_px": 14.0,
+      "pixel_support": 0.974,
+      "confidence": 0.631327748298645,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 128.75,
+        "y": 245.5
+      },
+      "end": {
+        "x": 128.75,
+        "y": 892.0
+      },
+      "detector": "yolo",
+      "confidence": 0.6525430679321289,
+      "thickness_px": 20.5,
+      "pixel_support": 0.99,
+      "wall_type": "exterior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 128.75,
+        "y": 515.0
+      },
+      "end": {
+        "x": 382.5,
+        "y": 515.0
+      },
+      "detector": "yolo",
+      "confidence": 0.3622739315032959,
+      "pixel_support": 0.48,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 264.0,
+        "y": 605.0
+      },
+      "end": {
+        "x": 346.0,
+        "y": 605.0
+      },
+      "detector": "cv",
+      "thickness_px": 15.0,
+      "pixel_support": 0.964,
+      "confidence": 0.6939421892166138,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 265.0,
+        "y": 644.0
+      },
+      "end": {
+        "x": 345.0,
+        "y": 644.0
+      },
+      "detector": "cv",
+      "thickness_px": 11.0,
+      "pixel_support": 0.975,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 289.0,
+        "y": 513.0
+      },
+      "end": {
+        "x": 289.0,
+        "y": 614.0
+      },
+      "detector": "cv",
+      "thickness_px": 15.0,
+      "pixel_support": 0.98,
+      "confidence": 0.7689564824104309,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 336.5,
+        "y": 605.0
+      },
+      "end": {
+        "x": 336.5,
+        "y": 892.0
+      },
+      "detector": "cv",
+      "thickness_px": 14.0,
+      "pixel_support": 0.99,
+      "confidence": 0.5097105503082275,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 382.5,
+        "y": 245.5
+      },
+      "end": {
+        "x": 382.5,
+        "y": 524.0
+      },
+      "detector": "cv",
+      "thickness_px": 14.0,
+      "pixel_support": 0.99,
+      "confidence": 0.6813054084777832,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 577.0,
+        "y": 237.0
+      },
+      "end": {
+        "x": 577.0,
+        "y": 326.0
+      },
+      "detector": "cv",
+      "thickness_px": 11.0,
+      "pixel_support": 0.967,
+      "confidence": 0.5073464512825012,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 641.0,
+        "y": 802.0
+      },
+      "end": {
+        "x": 641.0,
+        "y": 882.5
+      },
+      "detector": "yolo",
+      "confidence": 0.3789377510547638,
+      "pixel_support": 1.0,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "thickness_px": 15.0
+    },
+    {
+      "start": {
+        "x": 647.0,
+        "y": 622.5
+      },
+      "end": {
+        "x": 719.0,
+        "y": 622.5
+      },
+      "detector": "cv",
+      "thickness_px": 12.0,
+      "pixel_support": 0.973,
+      "confidence": 0.5422160625457764,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 647.0,
+        "y": 714.75
+      },
+      "end": {
+        "x": 752.0,
+        "y": 714.75
+      },
+      "detector": "yolo",
+      "confidence": 0.5602861046791077,
+      "thickness_px": 14.0,
+      "pixel_support": 0.98,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 653.0,
+        "y": 245.5
+      },
+      "end": {
+        "x": 653.0,
+        "y": 524.0
+      },
+      "detector": "cv",
+      "thickness_px": 15.0,
+      "pixel_support": 0.75,
+      "confidence": 0.38405999541282654,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 653.0,
+        "y": 524.0
+      },
+      "end": {
+        "x": 902.0,
+        "y": 524.0
+      },
+      "detector": "yolo",
+      "confidence": 0.6101139187812805,
+      "thickness_px": 15.0,
+      "pixel_support": 1.0,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 710.5,
+        "y": 524.0
+      },
+      "end": {
+        "x": 710.5,
+        "y": 723.0
+      },
+      "detector": "cv",
+      "thickness_px": 14.0,
+      "pixel_support": 0.99,
+      "confidence": 0.5127872824668884,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 710.5,
+        "y": 645.5
+      },
+      "end": {
+        "x": 902.0,
+        "y": 645.5
+      },
+      "detector": "cv",
+      "thickness_px": 11.0,
+      "pixel_support": 0.919,
+      "confidence": 0.5761809349060059,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 729.5,
+        "y": 714.75
+      },
+      "end": {
+        "x": 729.5,
+        "y": 892.0
+      },
+      "detector": "cv",
+      "thickness_px": 14.0,
+      "pixel_support": 0.979,
+      "confidence": 0.5325446128845215,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 846.0,
+        "y": 812.0
+      },
+      "end": {
+        "x": 846.0,
+        "y": 892.0
+      },
+      "detector": "cv",
+      "thickness_px": 11.0,
+      "pixel_support": 0.988,
+      "confidence": 0.2939198613166809,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 846.0,
+        "y": 812.0
+      },
+      "end": {
+        "x": 892.0,
+        "y": 812.0
+      },
+      "detector": "yolo",
+      "confidence": 0.4114799201488495,
+      "thickness_px": 9.0,
+      "pixel_support": 1.0,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 892.0,
+        "y": 245.5
+      },
+      "end": {
+        "x": 892.0,
+        "y": 892.0
+      },
+      "detector": "cv",
+      "thickness_px": 19.0,
+      "pixel_support": 0.99,
+      "confidence": 0.6678484678268433,
+      "wall_type": "exterior",
+      "wall_type_inferred": true
+    }
+  ],
+  "scan_api_version": 1,
+  "seedWalls": [],
+  "walls_include_seeds": true,
+  "params": {
+    "canny1": 40,
+    "canny2": 120,
+    "hough_threshold": 90,
+    "min_line_length": 40,
+    "max_line_gap": 20,
+    "wall_thickness": 10
+  },
+  "model": "yolo+cv",
+  "floor_plan_id": null,
+  "db_saved": false,
+  "db_corrections_loaded": false,
+  "detection_provenance": {
+    "mode": "fresh_detector",
+    "database_enabled": false,
+    "database_saved": false,
+    "saved_corrections_loaded": false,
+    "manual_walls_preserved": 0
+  },
+  "yolo_weights": "/Users/apple/Documents/ai-3d-project/models/best.pt",
+  "door_weights": "/Users/apple/Documents/ai-3d-project/models/best.pt",
+  "room_object_weights": "/Users/apple/Documents/ai-3d-project/apps/room-and-object/runs/room_object_yolo/weights/best.pt",
+  "window_glass_weights": "/Users/apple/Documents/ai-3d-project/models/best.pt",
+  "doors": [
+    {
+      "bbox": {
+        "x1": 196.58433532714844,
+        "y1": 735.496337890625,
+        "x2": 259.6807556152344,
+        "y2": 755.02490234375
+      },
+      "swingDir": "right-inside"
+    },
+    {
+      "bbox": {
+        "x1": 307.2592468261719,
+        "y1": 508.9563293457031,
+        "x2": 371.3272399902344,
+        "y2": 523.461181640625
+      },
+      "swing_bbox": {
+        "x1": 304.9397888183594,
+        "y1": 444.87042236328125,
+        "x2": 371.76190185546875,
+        "y2": 514.515869140625
+      },
+      "class": "Door",
+      "confidence": 0.762,
+      "swingDir": "right-outside"
+    },
+    {
+      "bbox": {
+        "x1": 212.76995849609375,
+        "y1": 508.6307678222656,
+        "x2": 277.0684814453125,
+        "y2": 520.439208984375
+      },
+      "swing_bbox": {
+        "x1": 210.921630859375,
+        "y1": 517.1979370117188,
+        "x2": 278.65582275390625,
+        "y2": 583.1756591796875
+      },
+      "class": "Door",
+      "confidence": 0.673,
+      "swingDir": "right-inside"
+    },
+    {
+      "bbox": {
+        "x1": 765.9386596679688,
+        "y1": 641.4322509765625,
+        "x2": 830.4642944335938,
+        "y2": 652.0178833007812
+      },
+      "swing_bbox": {
+        "x1": 765.2599487304688,
+        "y1": 651.0274658203125,
+        "x2": 831.16796875,
+        "y2": 714.2842407226562
+      },
+      "class": "Door",
+      "confidence": 0.394,
+      "swingDir": "left-inside"
+    },
+    {
+      "bbox": {
+        "x1": 764.1459350585938,
+        "y1": 517.9365844726562,
+        "x2": 830.2845458984375,
+        "y2": 527.9841918945312
+      },
+      "swingDir": "left-inside"
+    },
+    {
+      "bbox": {
+        "x1": 560.4723510742188,
+        "y1": 874.6788940429688,
+        "x2": 626.7890625,
+        "y2": 888.2923583984375
+      },
+      "swing_bbox": {
+        "x1": 558.9957275390625,
+        "y1": 809.9850463867188,
+        "x2": 631.1536865234375,
+        "y2": 879.1160888671875
+      },
+      "class": "Door",
+      "confidence": 0.849,
+      "swingDir": "left-inside"
+    },
+    {
+      "bbox": {
+        "x1": 647.1782836914062,
+        "y1": 636.0462646484375,
+        "x2": 658.591552734375,
+        "y2": 702.5445556640625
+      },
+      "swing_bbox": {
+        "x1": 583.3156127929688,
+        "y1": 637.0552368164062,
+        "x2": 654.7630004882812,
+        "y2": 702.0296630859375
+      },
+      "class": "Door",
+      "confidence": 0.626,
+      "swingDir": "right-inside"
+    },
+    {
+      "bbox": {
+        "x1": 646.3773193359375,
+        "y1": 446.8974914550781,
+        "x2": 660.9921264648438,
+        "y2": 512.8836059570312
+      },
+      "swing_bbox": {
+        "x1": 659.3578491210938,
+        "y1": 447.1559143066406,
+        "x2": 724.9555053710938,
+        "y2": 513.0252075195312
+      },
+      "class": "Door",
+      "confidence": 0.841,
+      "swingDir": "left-outside"
+    },
+    {
+      "bbox": {
+        "x1": 723.197021484375,
+        "y1": 730.552734375,
+        "x2": 737.1838989257812,
+        "y2": 795.22802734375
+      },
+      "swing_bbox": {
+        "x1": 734.8328247070312,
+        "y1": 725.5420532226562,
+        "x2": 801.9380493164062,
+        "y2": 795.814453125
+      },
+      "class": "Door",
+      "confidence": 0.616,
+      "swingDir": "left-outside"
+    },
+    {
+      "bbox": {
+        "x1": 652.6500854492188,
+        "y1": 801.8540649414062,
+        "x2": 716.6953735351562,
+        "y2": 812.6168823242188
+      },
+      "swingDir": "right-inside"
+    },
+    {
+      "class": "Door",
+      "confidence": 0.883,
+      "bbox": {
+        "x1": 765.490234375,
+        "y1": 522.0317993164062,
+        "x2": 828.3189086914062,
+        "y2": 558.793212890625
+      },
+      "inference_size": 960,
+      "source": "object-door-fallback",
+      "swingDir": "right-inside"
+    },
+    {
+      "class": "Door",
+      "confidence": 0.864,
+      "bbox": {
+        "x1": 195.76100158691406,
+        "y1": 748.822509765625,
+        "x2": 259.5500793457031,
+        "y2": 785.8444213867188
+      },
+      "inference_size": 960,
+      "source": "object-door-fallback",
+      "swingDir": "left-inside"
+    },
+    {
+      "class": "Door",
+      "confidence": 0.637,
+      "bbox": {
+        "x1": 589.8794555664062,
+        "y1": 740.789306640625,
+        "x2": 638.044921875,
+        "y2": 799.3446655273438
+      },
+      "inference_size": 960,
+      "source": "object-door-fallback",
+      "swingDir": "right-outside"
+    }
+  ],
+  "rooms_detected": [
+    {
+      "class": "Bathroom",
+      "confidence": 0.991,
+      "bbox": {
+        "x1": 735.2249755859375,
+        "y1": 644.9973754882812,
+        "x2": 888.5443115234375,
+        "y2": 880.2735595703125
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Bedroom",
+      "confidence": 0.923,
+      "bbox": {
+        "x1": 131.80099487304688,
+        "y1": 249.27938842773438,
+        "x2": 381.31903076171875,
+        "y2": 513.7646484375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Bedroom",
+      "confidence": 0.917,
+      "bbox": {
+        "x1": 655.7357177734375,
+        "y1": 248.4604949951172,
+        "x2": 887.8063354492188,
+        "y2": 521.6840209960938
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Bathroom",
+      "confidence": 0.879,
+      "bbox": {
+        "x1": 134.79786682128906,
+        "y1": 513.1341552734375,
+        "x2": 335.59228515625,
+        "y2": 745.74853515625
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Living Room",
+      "confidence": 0.735,
+      "bbox": {
+        "x1": 339.54266357421875,
+        "y1": 534.6826171875,
+        "x2": 643.35693359375,
+        "y2": 881.4558715820312
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Living Room",
+      "confidence": 0.627,
+      "bbox": {
+        "x1": 384.5015563964844,
+        "y1": 245.0121612548828,
+        "x2": 648.89794921875,
+        "y2": 525.8587036132812
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Bathroom",
+      "confidence": 0.384,
+      "bbox": {
+        "x1": 135.52635192871094,
+        "y1": 747.99169921875,
+        "x2": 334.14288330078125,
+        "y2": 872.2389526367188
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Bathroom",
+      "confidence": 0.307,
+      "bbox": {
+        "x1": 713.8885498046875,
+        "y1": 524.1463623046875,
+        "x2": 885.6749267578125,
+        "y2": 646.2833862304688
+      },
+      "inference_size": 640
+    }
+  ],
+  "windows": [
+    {
+      "class": "window",
+      "confidence": 0.682,
+      "bbox": {
+        "x1": 705.1063232421875,
+        "y1": 238.05319213867188,
+        "x2": 831.5899658203125,
+        "y2": 254.4197540283203
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.677,
+      "bbox": {
+        "x1": 187.7456512451172,
+        "y1": 238.159423828125,
+        "x2": 314.0340881347656,
+        "y2": 254.7947235107422
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.34,
+      "bbox": {
+        "x1": 396.01824951171875,
+        "y1": 237.26998901367188,
+        "x2": 565.5555419921875,
+        "y2": 256.06451416015625
+      },
+      "inference_size": 640
+    }
+  ],
+  "glass_grills": [],
+  "glass_banisters": [],
+  "pillars": [],
+  "stairs": [],
+  "lifts": [],
+  "fixtures": [
+    {
+      "class": "Sofa",
+      "confidence": 0.98,
+      "bbox": {
+        "x1": 391.110595703125,
+        "y1": 323.04229736328125,
+        "x2": 445.78863525390625,
+        "y2": 460.3744201660156
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Sink",
+      "confidence": 0.97,
+      "bbox": {
+        "x1": 842.6043090820312,
+        "y1": 687.8683471679688,
+        "x2": 879.6983032226562,
+        "y2": 733.6940307617188
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Sofa",
+      "confidence": 0.969,
+      "bbox": {
+        "x1": 458.3916931152344,
+        "y1": 607.7947998046875,
+        "x2": 523.736328125,
+        "y2": 740.5281982421875
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Side Table",
+      "confidence": 0.965,
+      "bbox": {
+        "x1": 838.5140380859375,
+        "y1": 450.126953125,
+        "x2": 881.1417846679688,
+        "y2": 480.5703125
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Side Table",
+      "confidence": 0.963,
+      "bbox": {
+        "x1": 140.4158935546875,
+        "y1": 436.8998107910156,
+        "x2": 180.3470916748047,
+        "y2": 466.1005859375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.955,
+      "bbox": {
+        "x1": 658.9389038085938,
+        "y1": 627.8380126953125,
+        "x2": 703.9829711914062,
+        "y2": 710.46875
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.948,
+      "bbox": {
+        "x1": 659.3136596679688,
+        "y1": 530.412841796875,
+        "x2": 703.8777465820312,
+        "y2": 617.4292602539062
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.947,
+      "bbox": {
+        "x1": 863.0324096679688,
+        "y1": 525.790771484375,
+        "x2": 883.1576538085938,
+        "y2": 640.3343505859375
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.946,
+      "bbox": {
+        "x1": 716.6312866210938,
+        "y1": 526.1010131835938,
+        "x2": 737.7298583984375,
+        "y2": 643.6221313476562
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Side Table",
+      "confidence": 0.935,
+      "bbox": {
+        "x1": 139.57003784179688,
+        "y1": 275.3153076171875,
+        "x2": 182.46560668945312,
+        "y2": 306.3949890136719
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bed",
+      "confidence": 0.932,
+      "bbox": {
+        "x1": 745.4989013671875,
+        "y1": 332.7855529785156,
+        "x2": 881.3190307617188,
+        "y2": 437.8148498535156
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "TV",
+      "confidence": 0.927,
+      "bbox": {
+        "x1": 615.9934692382812,
+        "y1": 337.8198547363281,
+        "x2": 646.8052368164062,
+        "y2": 428.9498596191406
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "TV",
+      "confidence": 0.918,
+      "bbox": {
+        "x1": 335.1770935058594,
+        "y1": 299.57855224609375,
+        "x2": 375.50665283203125,
+        "y2": 428.08917236328125
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Sink",
+      "confidence": 0.914,
+      "bbox": {
+        "x1": 141.3612060546875,
+        "y1": 619.6527099609375,
+        "x2": 178.62423706054688,
+        "y2": 668.7535400390625
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.914,
+      "bbox": {
+        "x1": 838.5374755859375,
+        "y1": 527.4307861328125,
+        "x2": 883.1261596679688,
+        "y2": 643.191650390625
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Sink",
+      "confidence": 0.911,
+      "bbox": {
+        "x1": 141.8542022705078,
+        "y1": 545.0084838867188,
+        "x2": 178.1155242919922,
+        "y2": 592.4069213867188
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "TV",
+      "confidence": 0.889,
+      "bbox": {
+        "x1": 665.406982421875,
+        "y1": 342.0557861328125,
+        "x2": 697.6619262695312,
+        "y2": 428.8719482421875
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Side Table",
+      "confidence": 0.871,
+      "bbox": {
+        "x1": 840.1876220703125,
+        "y1": 289.4026794433594,
+        "x2": 881.2166748046875,
+        "y2": 320.925048828125
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Side Table",
+      "confidence": 0.843,
+      "bbox": {
+        "x1": 401.7957763671875,
+        "y1": 278.817138671875,
+        "x2": 446.76690673828125,
+        "y2": 314.58502197265625
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.839,
+      "bbox": {
+        "x1": 682.2036743164062,
+        "y1": 627.3760375976562,
+        "x2": 703.9864501953125,
+        "y2": 710.1340942382812
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.834,
+      "bbox": {
+        "x1": 716.7077026367188,
+        "y1": 527.5573120117188,
+        "x2": 759.3934326171875,
+        "y2": 642.6907348632812
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Commode",
+      "confidence": 0.83,
+      "bbox": {
+        "x1": 826.3909912109375,
+        "y1": 759.3197021484375,
+        "x2": 880.4367065429688,
+        "y2": 794.72509765625
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.823,
+      "bbox": {
+        "x1": 285.3526611328125,
+        "y1": 752.1777954101562,
+        "x2": 329.8852233886719,
+        "y2": 832.1158447265625
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.812,
+      "bbox": {
+        "x1": 137.77554321289062,
+        "y1": 752.8390502929688,
+        "x2": 157.96287536621094,
+        "y2": 831.058837890625
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Side Table",
+      "confidence": 0.793,
+      "bbox": {
+        "x1": 403.4552001953125,
+        "y1": 466.28314208984375,
+        "x2": 442.21240234375,
+        "y2": 498.114990234375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Bed",
+      "confidence": 0.792,
+      "bbox": {
+        "x1": 140.26480102539062,
+        "y1": 316.43304443359375,
+        "x2": 278.32257080078125,
+        "y2": 426.5397033691406
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.754,
+      "bbox": {
+        "x1": 134.70663452148438,
+        "y1": 831.3072509765625,
+        "x2": 332.9142150878906,
+        "y2": 863.9677734375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.733,
+      "bbox": {
+        "x1": 138.1809844970703,
+        "y1": 753.2454223632812,
+        "x2": 181.40367126464844,
+        "y2": 831.388916015625
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.674,
+      "bbox": {
+        "x1": 269.34600830078125,
+        "y1": 611.523681640625,
+        "x2": 330.53509521484375,
+        "y2": 640.0020751953125
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Sink",
+      "confidence": 0.665,
+      "bbox": {
+        "x1": 344.87225341796875,
+        "y1": 650.423095703125,
+        "x2": 383.8170471191406,
+        "y2": 705.7353515625
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Commode",
+      "confidence": 0.605,
+      "bbox": {
+        "x1": 141.47396850585938,
+        "y1": 691.9102783203125,
+        "x2": 193.96009826660156,
+        "y2": 730.48974609375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.601,
+      "bbox": {
+        "x1": 311.25372314453125,
+        "y1": 752.0280151367188,
+        "x2": 330.34967041015625,
+        "y2": 832.1555786132812
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Duct",
+      "confidence": 0.515,
+      "bbox": {
+        "x1": 268.60833740234375,
+        "y1": 647.010986328125,
+        "x2": 331.4246520996094,
+        "y2": 732.9024047851562
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.466,
+      "bbox": {
+        "x1": 268.5705261230469,
+        "y1": 649.0587158203125,
+        "x2": 330.8029479980469,
+        "y2": 733.529541015625
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Sofa",
+      "confidence": 0.461,
+      "bbox": {
+        "x1": 455.4942321777344,
+        "y1": 260.04046630859375,
+        "x2": 511.21533203125,
+        "y2": 317.41864013671875
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Sink",
+      "confidence": 0.455,
+      "bbox": {
+        "x1": 140.19241333007812,
+        "y1": 565.2208251953125,
+        "x2": 179.24905395507812,
+        "y2": 669.1309814453125
+      },
+      "inference_size": 960
+    }
+  ],
+  "rooms_and_objects": [
+    {
+      "class": "Bathroom",
+      "confidence": 0.991,
+      "bbox": {
+        "x1": 735.2249755859375,
+        "y1": 644.9973754882812,
+        "x2": 888.5443115234375,
+        "y2": 880.2735595703125
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Sofa",
+      "confidence": 0.98,
+      "bbox": {
+        "x1": 391.110595703125,
+        "y1": 323.04229736328125,
+        "x2": 445.78863525390625,
+        "y2": 460.3744201660156
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Sink",
+      "confidence": 0.97,
+      "bbox": {
+        "x1": 842.6043090820312,
+        "y1": 687.8683471679688,
+        "x2": 879.6983032226562,
+        "y2": 733.6940307617188
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Sofa",
+      "confidence": 0.969,
+      "bbox": {
+        "x1": 458.3916931152344,
+        "y1": 607.7947998046875,
+        "x2": 523.736328125,
+        "y2": 740.5281982421875
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Side Table",
+      "confidence": 0.965,
+      "bbox": {
+        "x1": 838.5140380859375,
+        "y1": 450.126953125,
+        "x2": 881.1417846679688,
+        "y2": 480.5703125
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Side Table",
+      "confidence": 0.963,
+      "bbox": {
+        "x1": 140.4158935546875,
+        "y1": 436.8998107910156,
+        "x2": 180.3470916748047,
+        "y2": 466.1005859375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.955,
+      "bbox": {
+        "x1": 658.9389038085938,
+        "y1": 627.8380126953125,
+        "x2": 703.9829711914062,
+        "y2": 710.46875
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.948,
+      "bbox": {
+        "x1": 659.3136596679688,
+        "y1": 530.412841796875,
+        "x2": 703.8777465820312,
+        "y2": 617.4292602539062
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.947,
+      "bbox": {
+        "x1": 863.0324096679688,
+        "y1": 525.790771484375,
+        "x2": 883.1576538085938,
+        "y2": 640.3343505859375
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.946,
+      "bbox": {
+        "x1": 716.6312866210938,
+        "y1": 526.1010131835938,
+        "x2": 737.7298583984375,
+        "y2": 643.6221313476562
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Side Table",
+      "confidence": 0.935,
+      "bbox": {
+        "x1": 139.57003784179688,
+        "y1": 275.3153076171875,
+        "x2": 182.46560668945312,
+        "y2": 306.3949890136719
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bed",
+      "confidence": 0.932,
+      "bbox": {
+        "x1": 745.4989013671875,
+        "y1": 332.7855529785156,
+        "x2": 881.3190307617188,
+        "y2": 437.8148498535156
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "TV",
+      "confidence": 0.927,
+      "bbox": {
+        "x1": 615.9934692382812,
+        "y1": 337.8198547363281,
+        "x2": 646.8052368164062,
+        "y2": 428.9498596191406
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bedroom",
+      "confidence": 0.923,
+      "bbox": {
+        "x1": 131.80099487304688,
+        "y1": 249.27938842773438,
+        "x2": 381.31903076171875,
+        "y2": 513.7646484375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "TV",
+      "confidence": 0.918,
+      "bbox": {
+        "x1": 335.1770935058594,
+        "y1": 299.57855224609375,
+        "x2": 375.50665283203125,
+        "y2": 428.08917236328125
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bedroom",
+      "confidence": 0.917,
+      "bbox": {
+        "x1": 655.7357177734375,
+        "y1": 248.4604949951172,
+        "x2": 887.8063354492188,
+        "y2": 521.6840209960938
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Sink",
+      "confidence": 0.914,
+      "bbox": {
+        "x1": 141.3612060546875,
+        "y1": 619.6527099609375,
+        "x2": 178.62423706054688,
+        "y2": 668.7535400390625
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.914,
+      "bbox": {
+        "x1": 838.5374755859375,
+        "y1": 527.4307861328125,
+        "x2": 883.1261596679688,
+        "y2": 643.191650390625
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Sink",
+      "confidence": 0.911,
+      "bbox": {
+        "x1": 141.8542022705078,
+        "y1": 545.0084838867188,
+        "x2": 178.1155242919922,
+        "y2": 592.4069213867188
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "TV",
+      "confidence": 0.889,
+      "bbox": {
+        "x1": 665.406982421875,
+        "y1": 342.0557861328125,
+        "x2": 697.6619262695312,
+        "y2": 428.8719482421875
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bathroom",
+      "confidence": 0.879,
+      "bbox": {
+        "x1": 134.79786682128906,
+        "y1": 513.1341552734375,
+        "x2": 335.59228515625,
+        "y2": 745.74853515625
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Side Table",
+      "confidence": 0.871,
+      "bbox": {
+        "x1": 840.1876220703125,
+        "y1": 289.4026794433594,
+        "x2": 881.2166748046875,
+        "y2": 320.925048828125
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Side Table",
+      "confidence": 0.843,
+      "bbox": {
+        "x1": 401.7957763671875,
+        "y1": 278.817138671875,
+        "x2": 446.76690673828125,
+        "y2": 314.58502197265625
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.839,
+      "bbox": {
+        "x1": 682.2036743164062,
+        "y1": 627.3760375976562,
+        "x2": 703.9864501953125,
+        "y2": 710.1340942382812
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.834,
+      "bbox": {
+        "x1": 716.7077026367188,
+        "y1": 527.5573120117188,
+        "x2": 759.3934326171875,
+        "y2": 642.6907348632812
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Commode",
+      "confidence": 0.83,
+      "bbox": {
+        "x1": 826.3909912109375,
+        "y1": 759.3197021484375,
+        "x2": 880.4367065429688,
+        "y2": 794.72509765625
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.823,
+      "bbox": {
+        "x1": 285.3526611328125,
+        "y1": 752.1777954101562,
+        "x2": 329.8852233886719,
+        "y2": 832.1158447265625
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.812,
+      "bbox": {
+        "x1": 137.77554321289062,
+        "y1": 752.8390502929688,
+        "x2": 157.96287536621094,
+        "y2": 831.058837890625
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Side Table",
+      "confidence": 0.793,
+      "bbox": {
+        "x1": 403.4552001953125,
+        "y1": 466.28314208984375,
+        "x2": 442.21240234375,
+        "y2": 498.114990234375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Bed",
+      "confidence": 0.792,
+      "bbox": {
+        "x1": 140.26480102539062,
+        "y1": 316.43304443359375,
+        "x2": 278.32257080078125,
+        "y2": 426.5397033691406
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.754,
+      "bbox": {
+        "x1": 134.70663452148438,
+        "y1": 831.3072509765625,
+        "x2": 332.9142150878906,
+        "y2": 863.9677734375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Living Room",
+      "confidence": 0.735,
+      "bbox": {
+        "x1": 339.54266357421875,
+        "y1": 534.6826171875,
+        "x2": 643.35693359375,
+        "y2": 881.4558715820312
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.733,
+      "bbox": {
+        "x1": 138.1809844970703,
+        "y1": 753.2454223632812,
+        "x2": 181.40367126464844,
+        "y2": 831.388916015625
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.674,
+      "bbox": {
+        "x1": 269.34600830078125,
+        "y1": 611.523681640625,
+        "x2": 330.53509521484375,
+        "y2": 640.0020751953125
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Sink",
+      "confidence": 0.665,
+      "bbox": {
+        "x1": 344.87225341796875,
+        "y1": 650.423095703125,
+        "x2": 383.8170471191406,
+        "y2": 705.7353515625
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Living Room",
+      "confidence": 0.627,
+      "bbox": {
+        "x1": 384.5015563964844,
+        "y1": 245.0121612548828,
+        "x2": 648.89794921875,
+        "y2": 525.8587036132812
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Commode",
+      "confidence": 0.605,
+      "bbox": {
+        "x1": 141.47396850585938,
+        "y1": 691.9102783203125,
+        "x2": 193.96009826660156,
+        "y2": 730.48974609375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.601,
+      "bbox": {
+        "x1": 311.25372314453125,
+        "y1": 752.0280151367188,
+        "x2": 330.34967041015625,
+        "y2": 832.1555786132812
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Duct",
+      "confidence": 0.515,
+      "bbox": {
+        "x1": 268.60833740234375,
+        "y1": 647.010986328125,
+        "x2": 331.4246520996094,
+        "y2": 732.9024047851562
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.466,
+      "bbox": {
+        "x1": 268.5705261230469,
+        "y1": 649.0587158203125,
+        "x2": 330.8029479980469,
+        "y2": 733.529541015625
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Sofa",
+      "confidence": 0.461,
+      "bbox": {
+        "x1": 455.4942321777344,
+        "y1": 260.04046630859375,
+        "x2": 511.21533203125,
+        "y2": 317.41864013671875
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Sink",
+      "confidence": 0.455,
+      "bbox": {
+        "x1": 140.19241333007812,
+        "y1": 565.2208251953125,
+        "x2": 179.24905395507812,
+        "y2": 669.1309814453125
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bathroom",
+      "confidence": 0.384,
+      "bbox": {
+        "x1": 135.52635192871094,
+        "y1": 747.99169921875,
+        "x2": 334.14288330078125,
+        "y2": 872.2389526367188
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Bathroom",
+      "confidence": 0.307,
+      "bbox": {
+        "x1": 713.8885498046875,
+        "y1": 524.1463623046875,
+        "x2": 885.6749267578125,
+        "y2": 646.2833862304688
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.682,
+      "bbox": {
+        "x1": 705.1063232421875,
+        "y1": 238.05319213867188,
+        "x2": 831.5899658203125,
+        "y2": 254.4197540283203
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.677,
+      "bbox": {
+        "x1": 187.7456512451172,
+        "y1": 238.159423828125,
+        "x2": 314.0340881347656,
+        "y2": 254.7947235107422
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.34,
+      "bbox": {
+        "x1": 396.01824951171875,
+        "y1": 237.26998901367188,
+        "x2": 565.5555419921875,
+        "y2": 256.06451416015625
+      },
+      "inference_size": 640
+    }
+  ],
+  "detected_count": 23,
+  "seed_count": 0,
+  "scale_estimate": {
+    "meters_per_pixel": 0.013997211113399851,
+    "source": "door_width_estimate",
+    "sample_count": 13
+  },
+  "measurements": {
+    "status": "ok",
+    "engine": "tesseract-local",
+    "linear": [
+      {
+        "value_m": 3.8608000000000002,
+        "text": "12'-8\"",
+        "bbox": [
+          523.0,
+          393.0,
+          559.0,
+          404.0
+        ],
+        "confidence": 0.686,
+        "axis": "x",
+        "ocr_line_bbox": [
+          468.0,
+          393.0,
+          559.0,
+          404.0
+        ],
+        "ocr_text": "12-2\" x 12'-8\"",
+        "source": "printed-text",
+        "id": "dimension-1",
+        "reference": null,
+        "scale_m_per_px": null
+      },
+      {
+        "value_m": 0.3556,
+        "text": "14\"",
+        "bbox": [
+          436.0,
+          777.0,
+          471.0,
+          788.0
+        ],
+        "confidence": 0.0,
+        "axis": "x",
+        "ocr_line_bbox": [
+          436.0,
+          777.0,
+          525.0,
+          788.0
+        ],
+        "ocr_text": "14\"-4\" x 16-8\"",
+        "source": "printed-text",
+        "id": "dimension-2",
+        "reference": null,
+        "scale_m_per_px": null
+      }
+    ],
+    "areas": [],
+    "calibration": null,
+    "warnings": [
+      "Only readable lengths with dimension-line endpoints bound to walls can be applied automatically. Unmatched readings remain for review."
+    ],
+    "ocr_text_regions": [
+      [
+        191.0,
+        239.0,
+        257.0,
+        247.0
+      ],
+      [
+        748.0,
+        239.0,
+        780.0,
+        247.0
+      ],
+      [
+        191.0,
+        376.0,
+        266.0,
+        387.0
+      ],
+      [
+        490.0,
+        376.0,
+        538.0,
+        387.0
+      ],
+      [
+        755.0,
+        376.0,
+        831.0,
+        387.0
+      ],
+      [
+        184.0,
+        393.0,
+        230.0,
+        403.0
+      ],
+      [
+        226.0,
+        385.0,
+        232.0,
+        413.0
+      ],
+      [
+        237.0,
+        393.0,
+        273.0,
+        404.0
+      ],
+      [
+        468.0,
+        393.0,
+        505.0,
+        404.0
+      ],
+      [
+        510.0,
+        396.0,
+        516.0,
+        404.0
+      ],
+      [
+        523.0,
+        393.0,
+        559.0,
+        404.0
+      ],
+      [
+        748.0,
+        393.0,
+        784.0,
+        404.0
+      ],
+      [
+        790.0,
+        396.0,
+        796.0,
+        404.0
+      ],
+      [
+        803.0,
+        393.0,
+        838.0,
+        404.0
+      ],
+      [
+        769.0,
+        578.0,
+        828.0,
+        590.0
+      ],
+      [
+        798.0,
+        599.0,
+        805.0,
+        607.0
+      ],
+      [
+        811.0,
+        595.0,
+        839.0,
+        607.0
+      ],
+      [
+        184.0,
+        669.0,
+        268.0,
+        680.0
+      ],
+      [
+        186.0,
+        686.0,
+        215.0,
+        697.0
+      ],
+      [
+        220.0,
+        689.0,
+        226.0,
+        696.0
+      ],
+      [
+        233.0,
+        686.0,
+        269.0,
+        697.0
+      ],
+      [
+        174.0,
+        732.0,
+        183.0,
+        738.0
+      ],
+      [
+        448.0,
+        759.0,
+        512.0,
+        771.0
+      ],
+      [
+        477.0,
+        780.0,
+        483.0,
+        788.0
+      ],
+      [
+        490.0,
+        777.0,
+        525.0,
+        788.0
+      ],
+      [
+        195.0,
+        790.0,
+        254.0,
+        801.0
+      ],
+      [
+        762.0,
+        795.0,
+        768.0,
+        797.0
+      ],
+      [
+        188.0,
+        807.0,
+        217.0,
+        818.0
+      ],
+      [
+        222.0,
+        811.0,
+        229.0,
+        818.0
+      ],
+      [
+        234.0,
+        808.0,
+        262.0,
+        818.0
+      ],
+      [
+        447.0,
+        832.0,
+        520.0,
+        833.0
+      ],
+      [
+        749.0,
+        823.0,
+        833.0,
+        835.0
+      ],
+      [
+        747.0,
+        841.0,
+        784.0,
+        852.0
+      ],
+      [
+        790.0,
+        844.0,
+        796.0,
+        852.0
+      ],
+      [
+        802.0,
+        840.0,
+        838.0,
+        852.0
+      ]
+    ]
+  },
+  "room_boundaries": [
+    {
+      "id": "auto-room-1",
+      "name": "Bedroom / Bathroom / Living Room",
+      "points": [
+        {
+          "x": 343.5,
+          "y": 753.5
+        },
+        {
+          "x": 345.0,
+          "y": 753.5
+        },
+        {
+          "x": 345.0,
+          "y": 739.5
+        },
+        {
+          "x": 343.5,
+          "y": 739.5
+        },
+        {
+          "x": 343.5,
+          "y": 649.5
+        },
+        {
+          "x": 345.0,
+          "y": 649.5
+        },
+        {
+          "x": 345.0,
+          "y": 638.5
+        },
+        {
+          "x": 343.5,
+          "y": 638.5
+        },
+        {
+          "x": 343.5,
+          "y": 612.5
+        },
+        {
+          "x": 346.0,
+          "y": 612.5
+        },
+        {
+          "x": 346.0,
+          "y": 597.5
+        },
+        {
+          "x": 296.5,
+          "y": 597.5
+        },
+        {
+          "x": 296.5,
+          "y": 513.0
+        },
+        {
+          "x": 281.5,
+          "y": 513.0
+        },
+        {
+          "x": 281.5,
+          "y": 597.5
+        },
+        {
+          "x": 264.0,
+          "y": 597.5
+        },
+        {
+          "x": 264.0,
+          "y": 612.5
+        },
+        {
+          "x": 281.5,
+          "y": 612.5
+        },
+        {
+          "x": 281.5,
+          "y": 614.0
+        },
+        {
+          "x": 296.5,
+          "y": 614.0
+        },
+        {
+          "x": 296.5,
+          "y": 612.5
+        },
+        {
+          "x": 329.5,
+          "y": 612.5
+        },
+        {
+          "x": 329.5,
+          "y": 638.5
+        },
+        {
+          "x": 265.0,
+          "y": 638.5
+        },
+        {
+          "x": 265.0,
+          "y": 649.5
+        },
+        {
+          "x": 329.5,
+          "y": 649.5
+        },
+        {
+          "x": 329.5,
+          "y": 739.5
+        },
+        {
+          "x": 139.0,
+          "y": 739.5
+        },
+        {
+          "x": 139.0,
+          "y": 253.5
+        },
+        {
+          "x": 375.5,
+          "y": 253.5
+        },
+        {
+          "x": 375.5,
+          "y": 524.0
+        },
+        {
+          "x": 389.5,
+          "y": 524.0
+        },
+        {
+          "x": 389.5,
+          "y": 253.5
+        },
+        {
+          "x": 571.5,
+          "y": 253.5
+        },
+        {
+          "x": 571.5,
+          "y": 326.0
+        },
+        {
+          "x": 582.5,
+          "y": 326.0
+        },
+        {
+          "x": 582.5,
+          "y": 253.5
+        },
+        {
+          "x": 645.5,
+          "y": 253.5
+        },
+        {
+          "x": 645.5,
+          "y": 524.0
+        },
+        {
+          "x": 653.0,
+          "y": 524.0
+        },
+        {
+          "x": 653.0,
+          "y": 531.5
+        },
+        {
+          "x": 703.5,
+          "y": 531.5
+        },
+        {
+          "x": 703.5,
+          "y": 616.5
+        },
+        {
+          "x": 647.0,
+          "y": 616.5
+        },
+        {
+          "x": 647.0,
+          "y": 628.5
+        },
+        {
+          "x": 703.5,
+          "y": 628.5
+        },
+        {
+          "x": 703.5,
+          "y": 707.75
+        },
+        {
+          "x": 647.0,
+          "y": 707.75
+        },
+        {
+          "x": 647.0,
+          "y": 721.75
+        },
+        {
+          "x": 703.5,
+          "y": 721.75
+        },
+        {
+          "x": 703.5,
+          "y": 723.0
+        },
+        {
+          "x": 717.5,
+          "y": 723.0
+        },
+        {
+          "x": 717.5,
+          "y": 721.75
+        },
+        {
+          "x": 722.5,
+          "y": 721.75
+        },
+        {
+          "x": 722.5,
+          "y": 873.5
+        },
+        {
+          "x": 648.5,
+          "y": 873.5
+        },
+        {
+          "x": 648.5,
+          "y": 802.0
+        },
+        {
+          "x": 633.5,
+          "y": 802.0
+        },
+        {
+          "x": 633.5,
+          "y": 873.5
+        },
+        {
+          "x": 343.5,
+          "y": 873.5
+        }
+      ],
+      "boundary_source": "auto_walls",
+      "boundary_reference": "inside_faces",
+      "area_px2": 297214.0
+    },
+    {
+      "id": "auto-room-2",
+      "name": "Bedroom",
+      "points": [
+        {
+          "x": 882.5,
+          "y": 253.5
+        },
+        {
+          "x": 882.5,
+          "y": 516.5
+        },
+        {
+          "x": 660.5,
+          "y": 516.5
+        },
+        {
+          "x": 660.5,
+          "y": 253.5
+        }
+      ],
+      "boundary_source": "auto_walls",
+      "boundary_reference": "inside_faces",
+      "area_px2": 58386.0
+    },
+    {
+      "id": "auto-room-3",
+      "name": "Bathroom",
+      "points": [
+        {
+          "x": 882.5,
+          "y": 640.0
+        },
+        {
+          "x": 717.5,
+          "y": 640.0
+        },
+        {
+          "x": 717.5,
+          "y": 628.5
+        },
+        {
+          "x": 719.0,
+          "y": 628.5
+        },
+        {
+          "x": 719.0,
+          "y": 616.5
+        },
+        {
+          "x": 717.5,
+          "y": 616.5
+        },
+        {
+          "x": 717.5,
+          "y": 531.5
+        },
+        {
+          "x": 882.5,
+          "y": 531.5
+        }
+      ],
+      "boundary_source": "auto_walls",
+      "boundary_reference": "inside_faces",
+      "area_px2": 17884.5
+    },
+    {
+      "id": "auto-room-4",
+      "name": "Bathroom",
+      "points": [
+        {
+          "x": 846.0,
+          "y": 807.5
+        },
+        {
+          "x": 846.0,
+          "y": 812.0
+        },
+        {
+          "x": 840.5,
+          "y": 812.0
+        },
+        {
+          "x": 840.5,
+          "y": 873.5
+        },
+        {
+          "x": 736.5,
+          "y": 873.5
+        },
+        {
+          "x": 736.5,
+          "y": 721.75
+        },
+        {
+          "x": 752.0,
+          "y": 721.75
+        },
+        {
+          "x": 752.0,
+          "y": 707.75
+        },
+        {
+          "x": 717.5,
+          "y": 707.75
+        },
+        {
+          "x": 717.5,
+          "y": 651.0
+        },
+        {
+          "x": 882.5,
+          "y": 651.0
+        },
+        {
+          "x": 882.5,
+          "y": 807.5
+        }
+      ],
+      "boundary_source": "auto_walls",
+      "boundary_reference": "inside_faces",
+      "area_px2": 30599.0
+    },
+    {
+      "id": "auto-room-5",
+      "name": "Bathroom",
+      "points": [
+        {
+          "x": 139.0,
+          "y": 753.5
+        },
+        {
+          "x": 329.5,
+          "y": 753.5
+        },
+        {
+          "x": 329.5,
+          "y": 873.5
+        },
+        {
+          "x": 139.0,
+          "y": 873.5
+        }
+      ],
+      "boundary_source": "auto_walls",
+      "boundary_reference": "inside_faces",
+      "area_px2": 22860.0
+    },
+    {
+      "id": "auto-room-6",
+      "name": "Room 6",
+      "points": [
+        {
+          "x": 851.5,
+          "y": 873.5
+        },
+        {
+          "x": 851.5,
+          "y": 816.5
+        },
+        {
+          "x": 882.5,
+          "y": 816.5
+        },
+        {
+          "x": 882.5,
+          "y": 873.5
+        }
+      ],
+      "boundary_source": "auto_walls",
+      "boundary_reference": "inside_faces",
+      "area_px2": 1767.0
+    }
+  ],
+  "room_scan": {
+    "unresolved": [],
+    "warnings": [
+      "A wall has no reliable pixel thickness; rooms depending on that wall need review."
+    ],
+    "closures": [],
+    "wall_thicknesses": [
+      {
+        "wall_index": 1,
+        "thickness_px": 16.0
+      },
+      {
+        "wall_index": 2,
+        "thickness_px": 18.0
+      },
+      {
+        "wall_index": 3,
+        "thickness_px": 14.0
+      },
+      {
+        "wall_index": 4,
+        "thickness_px": 20.5
+      },
+      {
+        "wall_index": 6,
+        "thickness_px": 15.0
+      },
+      {
+        "wall_index": 7,
+        "thickness_px": 11.0
+      },
+      {
+        "wall_index": 8,
+        "thickness_px": 15.0
+      },
+      {
+        "wall_index": 9,
+        "thickness_px": 14.0
+      },
+      {
+        "wall_index": 10,
+        "thickness_px": 14.0
+      },
+      {
+        "wall_index": 11,
+        "thickness_px": 11.0
+      },
+      {
+        "wall_index": 12,
+        "thickness_px": 15.0
+      },
+      {
+        "wall_index": 13,
+        "thickness_px": 12.0
+      },
+      {
+        "wall_index": 14,
+        "thickness_px": 14.0
+      },
+      {
+        "wall_index": 15,
+        "thickness_px": 15.0
+      },
+      {
+        "wall_index": 16,
+        "thickness_px": 15.0
+      },
+      {
+        "wall_index": 17,
+        "thickness_px": 14.0
+      },
+      {
+        "wall_index": 18,
+        "thickness_px": 11.0
+      },
+      {
+        "wall_index": 19,
+        "thickness_px": 14.0
+      },
+      {
+        "wall_index": 20,
+        "thickness_px": 11.0
+      },
+      {
+        "wall_index": 21,
+        "thickness_px": 9.0
+      },
+      {
+        "wall_index": 22,
+        "thickness_px": 19.0
+      }
+    ]
+  },
+  "ai_review": {
+    "enabled": false,
+    "applied": false,
+    "corrections_count": 0,
+    "summary": null,
+    "error": null
+  },
+  "adk_pipeline_enabled": true,
+  "adk_evaluation": null,
+  "detection_summary": {
+    "walls": 23,
+    "doors": 13,
+    "objects_total": 47,
+    "rooms": 8,
+    "windows": 3,
+    "glass_grills": 0,
+    "glass_banisters": 0,
+    "stairs": 0,
+    "lifts": 0,
+    "fixtures": 36,
+    "objects_by_class": {
+      "Bathroom": 4,
+      "Sofa": 3,
+      "Sink": 5,
+      "Side Table": 6,
+      "Wardrobe": 14,
+      "Bed": 2,
+      "TV": 3,
+      "Bedroom": 2,
+      "Commode": 2,
+      "Living Room": 2,
+      "Duct": 1,
+      "window": 3
+    }
+  }
+}

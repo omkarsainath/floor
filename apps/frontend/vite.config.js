@@ -10,6 +10,17 @@ export default defineConfig({
     host: 'localhost',
     port: 5173,
     strictPort: true,
+    fs: {
+      deny: ['.env', '.env.*', '*.{crt,pem}', '**/.git/**', '**/apps/backend/private/**'],
+    },
+    // Browser requests stay on the page's origin. The Python server binds IPv4;
+    // using its literal address also avoids localhost resolving to IPv6 first.
+    proxy: {
+      '/api': {
+        target: process.env.API_PROXY_TARGET || 'http://127.0.0.1:5050',
+        changeOrigin: true,
+      },
+    },
   },
   plugins: [{
     name: 'include-example-floorplan',
@@ -22,9 +33,13 @@ export default defineConfig({
     },
   }],
   build: {
+    target: 'es2022',
     rollupOptions: {
       input: {
         viewer: fileURLToPath(new URL('./index.html', import.meta.url)),
+        login: fileURLToPath(new URL('./login.html', import.meta.url)),
+        admin: fileURLToPath(new URL('./admin.html', import.meta.url)),
+        builder: fileURLToPath(new URL('./builder.html', import.meta.url)),
         tracer: fileURLToPath(new URL('./tracer.html', import.meta.url)),
       },
     },

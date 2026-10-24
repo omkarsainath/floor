@@ -1,6 +1,23 @@
 import * as THREE from 'three';
 import { ceilingLightFootprint, ceilingLightDepth } from './ceilingLights.js';
 
+// Pick only a visible fixture in front of the other visible scene geometry.
+// Raycaster itself does not exclude invisible meshes or invisible ancestors.
+export function pickCeilingLight(raycaster, roots) {
+  const meshes = [];
+  for (const root of roots) root.traverseVisible(node => {
+    if (node.isMesh) meshes.push(node);
+  });
+  const hit = raycaster.intersectObjects(meshes, false)[0];
+  if (!hit) return null;
+  for (let node = hit.object; node; node = node.parent) {
+    if (node.userData.isCeilingLight && node.userData.ceilingLightId != null && node.userData.roomId != null) {
+      return { roomId: node.userData.roomId, lightId: node.userData.ceilingLightId };
+    }
+  }
+  return null;
+}
+
 export function ceilingSurfaceMeshes(group) {
   const meshes = [];
   group?.traverse(node => {
@@ -58,6 +75,7 @@ export function orientCeilingLight(group, placement, attachment) {
   if (!['pendant', 'chandelier'].includes(placement.type)) {
     const mount = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, -1, 0), attachment.normal);
     group.quaternion.premultiply(mount);
+    group.traverse(node => { if (node.isSpotLight) node.shadow.camera.up.applyQuaternion(mount); });
   }
   return group;
 }

@@ -70,18 +70,20 @@ export function buildCeilingCoverage(layout, rooms, openings = [], diagnostics =
   const covered=rooms.filter(r=>!outdoor(r));
   if (!walls.length) return covered;
   const barriers=[...walls,...openingGapWalls(walls,openings)];
-  // A narrow window symbol can terminate at a perpendicular corner jamb.
+  // A narrow door/window symbol can terminate at a perpendicular corner jamb.
   // The render-only collinear-host rule is deliberately stricter, but ceiling
   // enclosure must also recognize these bounded openings. Both ends need
   // nearby structural support; a freestanding symbol is never a boundary.
-  const pending=openings.filter(o=>/window|glass/i.test(o.class || '')).flatMap(o=>{
+  // This is a plan boundary, independent of whether a lintel was rendered.
+  const pending=openings.filter(o=>/door|window|glass/i.test(o.class || '')).flatMap(o=>{
     const b=o.bbox;
-    if(!b) return [];
-    const dx=b.x2-b.x1,dy=b.y2-b.y1,short=Math.min(dx,dy),long=Math.max(dx,dy);
+    if(!b || ![b.x1,b.y1,b.x2,b.y2].every(Number.isFinite)) return [];
+    const x1=Math.min(b.x1,b.x2),x2=Math.max(b.x1,b.x2),y1=Math.min(b.y1,b.y2),y2=Math.max(b.y1,b.y2);
+    const dx=x2-x1,dy=y2-y1,short=Math.min(dx,dy),long=Math.max(dx,dy);
     if(short<=0 || long<short*2.5) return [];
     const horizontal=dx>dy;
-    return [{start:horizontal?{x:b.x1,y:(b.y1+b.y2)/2}:{x:(b.x1+b.x2)/2,y:b.y1},
-      end:horizontal?{x:b.x2,y:(b.y1+b.y2)/2}:{x:(b.x1+b.x2)/2,y:b.y2},
+    return [{start:horizontal?{x:x1,y:(y1+y2)/2}:{x:(x1+x2)/2,y:y1},
+      end:horizontal?{x:x2,y:(y1+y2)/2}:{x:(x1+x2)/2,y:y2},
       thickness:short,height:3,openingBoundary:true}];
   });
   const supported=pendingWall=>[pendingWall.start,pendingWall.end].every(p=>barriers.some(w=>{

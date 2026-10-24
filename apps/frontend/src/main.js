@@ -1,25 +1,43 @@
+import { STONES as SKIRTING_TILES } from './materials/stone.js';
+import { projectStorage } from './auth/storage.js';
+import { showKitchenAccessories } from './ui/kitchenAccessoriesPanel.js';
+import { isKitchen, cabinetList, cabinetFromHit, accessoryOperationFromHit, syncKitchenRecord, kitchenState, operateAccessory, tickKitchen } from './kitchen/system.js';
+import { createProductThumbnail } from './ui/productThumbnail.js';
+import { createLightSwitch } from './design/lightSwitch.js';
+const roomLightSwitch = createLightSwitch();
+import { setObjectHeight } from './design/objectHeight.js';
 import * as THREE from 'three';
 import { persistLayout } from './state/projectPersistence.js';
-import { buildWallSegments } from './measurements/modelMeasurements.js';
+import { setupProjectPanel } from './ui/projectPanel.js';
+import { buildWallSegments, resolveOpeningGeometry } from './measurements/modelMeasurements.js';
 import { setupMeasurementPanel } from './ui/measurementPanel.js';
 import { setupRoomDesignPanel } from './ui/roomDesignPanel.js';
 import { createRoomDesignInteraction } from './ui/roomDesignInteraction.js';
 import { isDesignableRoom } from './design/roomSurfaces.js';
 import { createRoomDesignController } from './design/roomDesignController.js';
+import { pickCeilingLight } from './design/ceilingLightPlacement.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { createBasicScene } from './scene/scene.js';
 import { loadLayout, parseLayout } from './loaders/jsonLoader.js';
 import { createFloor } from './generators/floor.js';
 import { createWall } from './generators/wall.js';
-import { createCeiling } from './generators/ceiling.js';
+import { updateCeiling } from './generators/ceiling.js';
 import { buildCeilingCoverage } from './generators/ceilingCoverage.js';
 import { createObject, getWindowSillAndTop } from './generators/object.js';
+import { queueObjectAnimations, advanceObjectAnimations } from './generators/objectAnimations.js';
 import { WALLPAPER_FINISHES, createWallpaperMaterial } from './materials/wallpaper.js';
 import { buildCustomMurals, disposeCustomMurals, normalizeCustomMurals, normalizeCustomPaintAreas } from './materials/customMurals.js';
 import { applyCeilingVisibility, setupViewerControls } from './controls/controls.js';
 import { createAIChatPanel } from './ai/chatPanel.js';
 import { createCatalogPanel, CATEGORIES } from './ui/catalogPanel.js';
-import { enterRenderMode, exitRenderMode, getComposer, onRenderResize } from './ui/renderMode.js';
+import { showDiningChairEditor } from './ui/diningChairEditor.js';
+import { showWardrobeFinishEditor } from './ui/wardrobeFinishEditor.js';
+import { showWardrobeStructureEditor } from './ui/wardrobeStructureEditor.js';
+import { applyWardrobeStructure } from './design/wardrobeEditing.js';
+import { wardrobeConfigFromRoot, wardrobeWallPlacement } from './generators/wardrobeConfig.js';
+import { updateWardrobeFinishes, wardrobeSurfaceMeshes, wardrobeSurfaceFromHit } from './generators/wardrobeFinishes.js';
+import { updateDiningChairs } from './generators/referenceFurniture.js';
+import { enterRenderMode, exitRenderMode, getComposer, onRenderResize, renderModelWithCeilingGlow } from './ui/renderMode.js';
 
 const container = document.getElementById('app') || document.body;
 
@@ -33,8 +51,9 @@ renderer.toneMappingExposure = 1.1;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 container.appendChild(renderer.domElement);
 
-const { scene, camera, controls } = createBasicScene(renderer.domElement, OrbitControls);
+const { scene, camera, controls } = createBasicScene(renderer.domElement, OrbitControls, renderer);
 let viewerControls = null;
+let ceilingMesh = null;
 let roomDesignController = null;
 let roomDesignPanel = null;
 let roomDesignInteraction = null;
@@ -47,7 +66,7 @@ const baseRoomFloors = new Map();
 
   const wrap = document.createElement('div');
   wrap.style.cssText = [
-    'position:fixed;top:14px;left:50%;transform:translateX(-50%)',
+    'position:fixed;bottom:18px;left:50%;transform:translateX(-50%)',
     'background:rgba(16,16,24,0.82);border:1px solid rgba(255,255,255,0.14)',
     'border-radius:22px;padding:3px;display:flex;gap:2px;z-index:40',
     'backdrop-filter:blur(10px);box-shadow:0 2px 14px rgba(0,0,0,0.35)',
@@ -70,6 +89,7 @@ const baseRoomFloors = new Map();
 
   const modelTab = makeTab('3D Model', '🧱', true);
   const renderTab = makeTab('3D Render', '✨', false);
+  renderTab.id='viewer-render-mode';
 
   const setActive = (which) => {
     if (which === 'render') {
@@ -125,6 +145,45 @@ const selectableMeshes = [];   // non-door scene objects that can be picked
 let selectedObject = null;
 let selectionHelper = null;
 
+let kitchenPanel = null;
+let kitchenCamera = null;
+const kitchenHelpers = [];
+function clearKitchenHighlights() {
+  for(const helper of kitchenHelpers){scene.remove(helper);helper.geometry.dispose();helper.material.dispose();}
+  kitchenHelpers.length=0;
+}
+function editKitchenAccessories(root, bayId) {
+  kitchenPanel?.close();
+  const roots=selectableMeshes.filter(isKitchen);
+  kitchenCamera={position:camera.position.clone(),target:controls.target.clone()};
+  document.getElementById('obj-ctrl-panel')?.remove();
+  kitchenPanel=showKitchenAccessories({roots,root:root||roots[0],bayId,
+    getObstacles:()=>[...selectableMeshes,...selectableWalls],
+    onSave(changed){for(const r of changed){const record=layoutRef.current?.objects?.find(o=>o.id===r.userData.layoutId);if(record)syncKitchenRecord(r,record);}return persistLayout(layoutRef.current);},
+    onHighlight(selected,id){
+      clearKitchenHighlights();
+      for(const r of roots)for(const c of cabinetList(r)){
+        const bounds=new THREE.Box3(new THREE.Vector3(c.x-c.width/2,c.y,c.z-c.depth/2),new THREE.Vector3(c.x+c.width/2,c.y+c.height,c.z+c.depth/2));
+        r.updateMatrixWorld(true);
+        const matrix=r.matrixWorld.clone().multiply(new THREE.Matrix4().makeScale(1/r.scale.x,1/r.scale.y,1/r.scale.z));bounds.applyMatrix4(matrix);
+        const helper=new THREE.Box3Helper(bounds,r===selected&&c.id===id?0x80ead1:0x597d9a);helper.userData.isHelper=true;scene.add(helper);kitchenHelpers.push(helper);
+      }
+    },
+    onInspect(r){
+      if(viewerControls?.isWalkMode())return;
+      const center=new THREE.Box3().setFromObject(r).getCenter(new THREE.Vector3());
+      const width=Math.max(...cabinetList(r).map(c=>c.width),.5),distance=Math.max(1.6,width*2.2);
+      camera.position.copy(center).add(new THREE.Vector3(distance*.45,distance*.35,distance).applyQuaternion(r.getWorldQuaternion(new THREE.Quaternion())));controls.target.copy(center);controls.update();
+      document.getElementById('viewer-render-mode')?.click();
+    },
+    onRestoreCamera(){if(kitchenCamera){camera.position.copy(kitchenCamera.position);controls.target.copy(kitchenCamera.target);controls.update();}},
+    onClose(){clearKitchenHighlights();kitchenPanel=null;if(selectedObject)_showObjectPanel(selectedObject);},
+  });
+}
+const kitchenButton=document.createElement('button');kitchenButton.id='kitchen-accessories-button';kitchenButton.textContent='Kitchen Accessories';
+kitchenButton.style.cssText='position:fixed;right:18px;bottom:68px;z-index:45;background:#243647;color:#c9f4e8;border:1px solid #568b82;border-radius:10px;padding:10px 14px;cursor:pointer;font:600 13px system-ui';
+kitchenButton.onclick=()=>editKitchenAccessories(isKitchen(selectedObject)?selectedObject:undefined);document.body.append(kitchenButton);
+
 function selectObject(obj) {
   deselectObject();
   selectedObject = obj;
@@ -135,6 +194,7 @@ function selectObject(obj) {
 }
 
 function deselectObject() {
+  kitchenPanel?.close();
   if (selectionHelper) {
     scene.remove(selectionHelper);
     selectionHelper.geometry.dispose();
@@ -143,7 +203,71 @@ function deselectObject() {
   }
   document.getElementById('obj-ctrl-panel')?.remove();
   document.getElementById('replace-panel')?.remove();
+  document.getElementById('dining-chair-editor')?.remove();
+  document.getElementById('wardrobe-finish-editor')?.remove();
+  document.getElementById('wardrobe-structure-editor')?.remove();
   selectedObject = null;
+}
+
+function editWardrobeFinishes(root,surfaceId) {
+  document.getElementById('wardrobe-structure-editor')?.remove();
+  const objectPanel=document.getElementById('obj-ctrl-panel');
+  if(objectPanel)objectPanel.style.display='none';
+  showWardrobeFinishEditor({root,surfaceId,
+    onStructure(){editWardrobeStructure(root);},
+    onChange(finishes){
+      const record=layoutRef.current?.objects?.find(o=>o.id===root.userData.layoutId);
+      if(!record)throw new Error('This wardrobe is not in the saved layout.');
+      record.wardrobeFinishes=updateWardrobeFinishes(root,finishes);
+      return persistLayout(layoutRef.current);
+    },
+    onHighlight(id){selectionHelper?.setFromObject(wardrobeSurfaceMeshes(root,id)[0]||root);},
+    onToggle(part){if(part)toggleWinDoorAnim(part);},
+    onInspect(){
+      document.getElementById('viewer-render-mode')?.click();
+      if(viewerControls?.isWalkMode())return;
+      const bounds=new THREE.Box3().setFromObject(root),size=bounds.getSize(new THREE.Vector3()),center=bounds.getCenter(new THREE.Vector3());
+      const distance=Math.max(size.y,size.x/camera.aspect)/(2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2)))*1.4;
+      const offset=new THREE.Vector3(distance*.32,size.y*.12,distance).applyQuaternion(root.getWorldQuaternion(new THREE.Quaternion()));
+      camera.position.copy(center).add(offset);controls.target.copy(center);controls.update();
+    },
+    onClose(){selectionHelper?.setFromObject(root);_showObjectPanel(root);},
+  });
+}
+
+function editWardrobeStructure(root) {
+  document.getElementById('wardrobe-finish-editor')?.remove();
+  const objectPanel=document.getElementById('obj-ctrl-panel');
+  if(objectPanel)objectPanel.style.display='none';
+  showWardrobeStructureEditor({root,walls:layoutRef.current?.walls||[],
+    onChange(config,elevation){
+      const record=layoutRef.current?.objects?.find(o=>o.id===root.userData.layoutId);
+      if(!record)throw new Error('This wardrobe is not in the saved layout.');
+      applyWardrobeStructure(root,record,config,{walls:layoutRef.current.walls,elevation,animations:_winAnimNodes});
+      selectionHelper?.setFromObject(root);_updateResizeHandles();
+      return persistLayout(layoutRef.current);
+    },
+    onHighlight(mesh){selectionHelper?.setFromObject(mesh);},
+    onClose(){selectionHelper?.setFromObject(root);_showObjectPanel(root);},
+    onFinishes(){editWardrobeFinishes(root);},
+  });
+}
+
+function editDiningChairs(root,chairId){
+  const objectPanel=document.getElementById('obj-ctrl-panel');
+  if(objectPanel)objectPanel.style.display='none';
+  showDiningChairEditor({root,chairId,
+    onChange(chairs){
+      const record=layoutRef.current?.objects?.find(o=>o.id===root.userData.layoutId);
+      if(!record)throw new Error('This dining set is not in the saved layout.');
+      record.diningChairs=updateDiningChairs(root,chairs);
+      return persistLayout(layoutRef.current);
+    },
+    onHighlight(id){
+      selectionHelper?.setFromObject(root.children.find(c=>c.userData.diningChairId===id)||root);
+    },
+    onClose(){selectionHelper?.setFromObject(root);_showObjectPanel(root);},
+  });
 }
 
 function deleteSelected() {
@@ -181,52 +305,28 @@ const furnitureDoorAnims = [];
 const _winAnimNodes = []; // {node, prop, from, to, t}
 
 function tickWinAnims() {
-  for (let i = _winAnimNodes.length - 1; i >= 0; i--) {
-    const a = _winAnimNodes[i];
-    a.t = Math.min(a.t + 0.055, 1.0); // ~18 frames to complete
-    const e = 1 - Math.pow(1 - a.t, 3); // easeOutCubic
-    const v = a.from + (a.to - a.from) * e;
-    if      (a.prop === 'px') a.node.position.x   = v;
-    else if (a.prop === 'pz') a.node.position.z   = v;
-    else if (a.prop === 'ry') a.node.rotation.y   = v;
-    else if (a.prop === 'rx') a.node.rotation.x   = v;
-    if (a.t >= 1.0) _winAnimNodes.splice(i, 1);
-  }
+  advanceObjectAnimations(_winAnimNodes);
+  if(selectedObject?.userData.isSofaBed||selectedObject?.userData.isWardrobe) selectionHelper?.update();
 }
 
-function toggleWinDoorAnim(mesh) {
-  // Collect all tagged animation nodes inside this mesh group
-  const nodes = [];
-  mesh.traverse(c => { if (c.userData._animType) nodes.push(c); });
-
-  // Catalog-placed swing door (hinge with isDoor) — use existing toggleDoor
-  if (!nodes.length) {
-    if (mesh.userData.isDoor) { toggleDoor(mesh); return true; }
-    // Try children (hinge may be a parent of the clickable group)
-    let h = null;
-    mesh.traverse(c => { if (c.userData.isDoor && !h) h = c; });
-    if (h) { toggleDoor(h); return true; }
-    return false;
+function toggleWinDoorAnim(mesh, part = null) {
+  if (queueObjectAnimations(mesh, _winAnimNodes, part)) {
+    if(mesh.userData.isSofaBed){
+      const entry=layoutRef.current?.objects?.find(item=>item.id===mesh.userData.layoutId);
+      if(entry){entry.sofaBedExpanded=mesh.userData._animOpen;persistLayout(layoutRef.current);}
+      const button=document.getElementById('sofa-bed-toggle');
+      if(button){button.textContent=mesh.userData._animOpen?'Return to sofa':'Convert to bed';button.setAttribute('aria-pressed',String(mesh.userData._animOpen));}
+    }
+    return true;
   }
 
-  const isOpen = nodes[0].userData._animOpen;
-  nodes.forEach(node => {
-    node.userData._animOpen = !isOpen;
-    const target = isOpen ? node.userData._closedState : node.userData._openState;
-
-    // Current value
-    const prop = node.userData._animProp;
-    const current = prop === 'px' ? node.position.x
-                  : prop === 'pz' ? node.position.z
-                  : prop === 'ry' ? node.rotation.y
-                  : node.rotation.x;
-
-    // Cancel existing anim for this node
-    const ei = _winAnimNodes.findIndex(a => a.node === node);
-    if (ei !== -1) _winAnimNodes.splice(ei, 1);
-    _winAnimNodes.push({ node, prop, from: current, to: target, t: 0 });
-  });
-  return true;
+  // Catalog-placed swing door (hinge with isDoor) — use existing toggleDoor
+  if (mesh.userData.isDoor) { toggleDoor(mesh); return true; }
+  // Try children (hinge may be a parent of the clickable group)
+  let h = null;
+  mesh.traverse(c => { if (c.userData.isDoor && !h) h = c; });
+  if (h) { toggleDoor(h); return true; }
+  return false;
 }
 
 function tickFurnitureDoors() {
@@ -247,7 +347,7 @@ function tickFurnitureDoors() {
 function toggleFurnitureDoors(obj) {
   const doors = [];
   obj.traverse((child) => {
-    if (child.userData.isFurnitureDoor) doors.push(child);  // Groups, not meshes
+    if (child.userData.isFurnitureDoor && child.visible) doors.push(child);  // Groups, not meshes
   });
   if (!doors.length) return false;
   const isOpen = doors[0].userData.doorOpen;
@@ -265,6 +365,7 @@ function toggleFurnitureDoors(obj) {
 
 function rotateSelected(deltaY) {
   if (!selectedObject) return;
+  if((selectedObject.userData.wardrobeConfig?.attachment??selectedObject.userData.wardrobeAttachment)?.wallId){editWardrobeStructure(selectedObject);return;}
   selectedObject.rotation.y += deltaY;
   if (selectionHelper) selectionHelper.update();
   // Persist rotation into layoutRef so the chat panel sees up-to-date state
@@ -359,7 +460,7 @@ function replaceSelected(newTypeId, newLabel, newW, newD) {
         ? { x1: sx - hw, y1: sz - hd, x2: sx + hw, y2: sz + hd }
         : { x1: sx - hd, y1: sz - hw, x2: sx + hd, y2: sz + hw };
     }
-    layoutRef.current.objects.push({ id: newId, class: newTypeId, bbox: objData.bbox, source: 'catalog', rotationY: newMesh.rotation.y, ...(elevation > 0.01 && { elevation }) });
+    layoutRef.current.objects.push({ id: newId, class: newTypeId, bbox: objData.bbox, source: 'catalog', rotationY: newMesh.rotation.y, ...(isKitchen(newMesh)&&{kitchen:kitchenState(newMesh)}), ...(elevation > 0.01 && { elevation }) });
     persistLayout(layoutRef.current);
     // Re-carve walls if the new/old object is a window or door type
     const needsCarve = (c) => c.includes('window') || c.includes('door') || c.includes('glass');
@@ -434,15 +535,10 @@ function _showReplacePanel() {
         card.style.borderColor = 'rgba(255,255,255,0.08)';
       };
 
-      const iconEl = document.createElement('span');
-      iconEl.style.cssText = 'font-size:22px;line-height:1';
-      iconEl.textContent = item.icon;
-
-      const nameEl = document.createElement('span');
-      nameEl.style.cssText = 'font-size:9.5px;color:#d1d5db;text-align:center;line-height:1.3';
-      nameEl.textContent = item.label;
-
-      card.append(iconEl, nameEl);
+      card.dataset.itemId = item.id;
+      card.setAttribute('aria-label', item.label);
+      card.title = `${item.label}. ${item.note || '3D model preview'}`;
+      card.append(createProductThumbnail(item));
       card.addEventListener('click', (e) => {
         e.stopPropagation();
         replaceSelected(item.id, item.label, item.w, item.d);
@@ -490,6 +586,7 @@ function _showObjectPanel(obj) {
     'position:fixed;bottom:90px;left:50%;transform:translateX(-50%)',
     'background:rgba(16,16,24,0.88);border:1px solid rgba(255,255,255,0.12)',
     'border-radius:12px;padding:10px 14px;display:flex;gap:8px;align-items:center',
+    'max-width:94vw;flex-wrap:wrap;justify-content:center',
     'font-family:Inter,system-ui,sans-serif;color:#e5e7eb;z-index:30',
     'backdrop-filter:blur(8px);box-shadow:0 4px 20px rgba(0,0,0,0.4)',
   ].join(';');
@@ -502,6 +599,7 @@ function _showObjectPanel(obj) {
     const b = document.createElement('button');
     b.textContent = text;
     b.title = title;
+    b.setAttribute('aria-label', title);
     b.style.cssText = [
       'padding:5px 11px;border-radius:8px;border:1px solid rgba(255,255,255,0.15)',
       'background:rgba(255,255,255,0.08);color:#f8fafc;cursor:pointer',
@@ -532,7 +630,25 @@ function _showObjectPanel(obj) {
     obj.traverse(c => { if (c.userData._animType || c.userData.isDoor) found = true; });
     return found;
   })();
-  const winBtn = hasWinAnim ? mkBtn('🪟', 'Open / Close (O)', () => toggleWinDoorAnim(obj)) : null;
+  const interactiveFurniture = obj.userData.isWardrobe || obj.userData.isInteractiveFurniture;
+  const winBtn = hasWinAnim && !interactiveFurniture ? mkBtn('🪟', 'Open / Close (O)', () => toggleWinDoorAnim(obj)) : null;
+  const wardrobeBtns = [];
+  if (obj.userData.isSofaBed) {
+    const bedBtn=mkBtn(obj.userData._animOpen?'Return to sofa':'Convert to bed','Convert sofa to bed / return to sofa',()=>toggleWinDoorAnim(obj,'bed'));
+    bedBtn.id='sofa-bed-toggle';bedBtn.setAttribute('aria-pressed',String(obj.userData._animOpen));
+    wardrobeBtns.push(bedBtn);
+  }
+  if (interactiveFurniture) {
+    for (const [part, text] of [['doors', 'Doors ↔'], ['drawers', 'Drawers ↔'], ['loft', 'Loft ↔'], ['tops', 'Slide top ↔'], ['trays', 'Trays ↔'], ['swivel', 'Swivel ↔'], ['stools', 'Stool ↔']]) {
+      let found = false;
+      obj.traverse(c => { if (c.userData.wardrobePart === part || c.userData.furniturePart === part) found = true; });
+      if (found) wardrobeBtns.push(mkBtn(text, `Open / Close ${part}`, () => toggleWinDoorAnim(obj, part)));
+    }
+    // Keep all controls accessible on smaller screens.
+    panel.style.maxWidth = '94vw';
+    panel.style.flexWrap = 'wrap';
+    panel.style.justifyContent = 'center';
+  }
   if (winBtn) {
     winBtn.style.cssText += ';color:#67e8f9;border-color:rgba(103,232,249,0.35)';
     winBtn.onmouseenter = () => (winBtn.style.background = 'rgba(103,232,249,0.15)');
@@ -583,7 +699,9 @@ function _showObjectPanel(obj) {
   const scBack  = mkBtn('⇓', 'Expand front edge',  () => _resizeEdge('pz',  STEP));
   const scShrL  = mkBtn('↠', 'Shrink from left',   () => _resizeEdge('nx', -STEP));
   const scShrR  = mkBtn('↞', 'Shrink from right',  () => _resizeEdge('px', -STEP));
-  [scLeft, scRight, scFwd, scBack, scShrL, scShrR].forEach(b => {
+  const scShrFwd = mkBtn('⇊', 'Shrink from back (10 cm)', () => _resizeEdge('nz', -STEP));
+  const scShrBack = mkBtn('⇈', 'Shrink from front (10 cm)', () => _resizeEdge('pz', -STEP));
+  [scLeft, scRight, scFwd, scBack, scShrL, scShrR, scShrFwd, scShrBack].forEach(b => {
     b.style.cssText += ';color:#67e8f9;border-color:rgba(103,232,249,0.35)';
     b.onmouseenter = () => (b.style.background = 'rgba(103,232,249,0.15)');
     b.onmouseleave = () => (b.style.background = 'rgba(255,255,255,0.08)');
@@ -603,11 +721,51 @@ function _showObjectPanel(obj) {
     hint,
     divMov,
     moveFwd, moveLeft, moveBack, moveRight,
-    divScale,
-    scLeft, scRight, scFwd, scBack, scShrL, scShrR,
+    ...(obj.userData.wardrobeConfig?[]:[divScale,scLeft,scRight,scFwd,scBack,scShrL,scShrR,scShrFwd,scShrBack]),
   ];
+  if (!obj.userData._isWinDoor && !obj.userData.wardrobeConfig) {
+    const heightLabel = document.createElement('label'); heightLabel.textContent = 'Height (cm) ';
+    const heightInput = document.createElement('input'); heightInput.type = 'number';
+    heightInput.addEventListener('keydown', event => event.stopPropagation());
+    heightInput.id = 'object-height-cm'; heightInput.min = '10'; heightInput.max = '1000'; heightInput.step = '1';
+    const refreshHeight = () => { const box = new THREE.Box3().setFromObject(obj); heightInput.value = (100*(box.max.y-box.min.y)).toFixed(1); };
+    refreshHeight(); heightInput.style.cssText='width:65px;padding:5px;border-radius:5px';
+    const applyHeight = value => {
+      const entry = layoutRef.current?.objects?.find(item=>item.id===obj.userData.layoutId);
+      if (!entry || !setObjectHeight(obj,value)) { refreshHeight(); return; }
+      entry.objectHeightM=value;
+      persistLayout(layoutRef.current); selectionHelper?.update(); _updateResizeHandles(); refreshHeight();
+    };
+    heightInput.onchange=()=>{if(heightInput.checkValidity())applyHeight(Number(heightInput.value)/100);else heightInput.reportValidity();};
+    heightLabel.append(heightInput);
+    const elevationLabel = document.createElement('label'); elevationLabel.textContent='Base above floor (cm) ';
+    const elevationInput=document.createElement('input'); elevationInput.type='number';elevationInput.min='0';elevationInput.max='1000';elevationInput.step='1';
+    elevationInput.id='object-elevation-cm';elevationInput.style.cssText='width:65px;padding:5px;border-radius:5px';
+    const baseY=()=>new THREE.Box3().setFromObject(obj).min.y;
+    elevationInput.value=(100*baseY()).toFixed(1);
+    elevationInput.addEventListener('keydown',event=>event.stopPropagation());
+    elevationInput.onchange=()=>{
+      if(!elevationInput.checkValidity()||!elevationInput.value){elevationInput.reportValidity();return;}
+      obj.position.y+=Number(elevationInput.value)/100-baseY();
+      _persistObjPosition(obj);selectionHelper?.update();_updateResizeHandles();
+    };
+    elevationLabel.append(elevationInput);btns.push(elevationLabel);
+    btns.push(heightLabel, mkBtn('Height −', 'Reduce object height by 10 cm',()=>applyHeight(Number(heightInput.value)/100-.1)),
+      mkBtn('Height +', 'Increase object height by 10 cm',()=>applyHeight(Number(heightInput.value)/100+.1)));
+  }
   if (doorBtn) btns.push(doorBtn);
   if (winBtn)  btns.push(winBtn);
+  btns.push(...wardrobeBtns);
+  if(obj.userData.isKitchenCabinet)btns.push(mkBtn('Kitchen Accessories','Install pull-outs and customize existing kitchen finishes',()=>editKitchenAccessories(obj)));
+  if(obj.userData.isWardrobe){
+    const structureButton=mkBtn('⚙ Edit wardrobe','Edit wardrobe dimensions, sections, drawers, mirrors and wall attachment',()=>editWardrobeStructure(obj));
+    structureButton.id='wardrobe-structure-button';btns.push(structureButton);
+    const finishButton=mkBtn('🎨 Laminates','Change the finish of individual wardrobe doors and sides',()=>editWardrobeFinishes(obj));
+    finishButton.id='wardrobe-finishes-button';btns.push(finishButton);
+  }
+  if(obj.userData.diningChairs){
+    btns.push(mkBtn('🪑 Edit chairs', 'Add, remove or change individual dining seats',()=>editDiningChairs(obj)));
+  }
   btns.push(divider, replaceBtn, deleteBtn, close);
   panel.append(...btns);
   document.body.appendChild(panel);
@@ -666,7 +824,7 @@ function _setMeshColor(mesh, color) {
   (Array.isArray(mesh.material) ? mesh.material : [mesh.material]).forEach(apply);
   // also recolour baseboard children
   mesh.traverse((child) => {
-    if (child !== mesh && child.isMesh) {
+    if (child !== mesh && child.isMesh && !child.userData.isSkirting) {
       _ensureOwnMaterial(child);
       (Array.isArray(child.material) ? child.material : [child.material]).forEach(apply);
     }
@@ -1174,7 +1332,47 @@ function _buildWallPanel() {
 
   row.append(customLabel, paintFaceBtn, markPaintBtn, removePaintBtn, allBtn, clearBtn);
   panel.append(hdr, tip, tabRow, grid, wallpaperTitle, wallpaperGrid, customTitle, customRow, row);
+  const skirtingBox=document.createElement('fieldset');skirtingBox.id='skirting-controls';
+  skirtingBox.style.cssText='margin-top:16px;padding:12px;border:1px solid #64748b;border-radius:10px';
+  skirtingBox.innerHTML=`<legend>Separate skirting</legend><p style="font-size:12px">Select walls in the scene, or choose All walls. Skirting is separate from wall paint and stops at door openings.</p>
+    <label>Apply to <select data-skirting="scope"><option value="selected">Selected walls</option><option value="all">All walls</option></select></label>
+    <label style="display:block;margin:8px 0">Height (cm) <input data-skirting="height" type="number" min="1" max="50" step="0.5" value="8" style="width:70px"></label>
+    <label style="display:block;margin:8px 0">Thickness (cm) <input data-skirting="depth" type="number" min="0.2" max="10" step="0.1" value="2" style="width:70px"></label>
+    <label style="display:block;margin:8px 0">Finish <select data-skirting="tile"><option value="">Plain colour</option></select></label>
+    <label style="display:block;margin:8px 0">Tile width (cm) <input data-skirting="tileWidth" type="number" min="10" max="200" value="60" style="width:70px"></label>
+    <img data-skirting="preview" alt="Selected skirting tile" hidden style="width:120px;height:65px;object-fit:cover;border-radius:6px">
+    <label>Plain colour <input data-skirting="color" type="color" value="#ebe7e0"></label>
+    <div style="display:flex;gap:8px;margin-top:10px"><button data-skirting="apply">Add / update skirting</button><button data-skirting="remove">Remove skirting</button></div><p role="status" data-skirting="status"></p>`;
+  const field=key=>skirtingBox.querySelector(`[data-skirting="${key}"]`);
+  for(const tile of SKIRTING_TILES)field('tile').add(new Option(`${tile.name} · ${tile.kind}`,tile.id));
+  field('tile').onchange=()=>{const tile=SKIRTING_TILES.find(t=>t.id===field('tile').value);field('preview').hidden=!tile;if(tile)field('preview').src=tile.image;field('color').disabled=Boolean(tile);field('tileWidth').disabled=!tile;};
+  const existing=layoutRef.current?.walls?.find(w=>w.skirting)?.skirting;
+  if(existing){field('height').value=(existing.height??.08)*100;field('depth').value=(existing.depth??.02)*100;field('color').value=existing.color||'#ebe7e0';field('tile').value=existing.tileId||'';field('tileWidth').value=(existing.tileWidth??.6)*100;}
+  field('tile').onchange();
+  const applySkirting=enabled=>{
+    const status=field('status');
+    const ids=new Set((field('scope').value==='all'?selectableWalls:pickedWalls).map(m=>m.userData.parentWallId));
+    if(!ids.size){status.textContent='Select a wall first, or choose All walls.';return;}
+    const height=Number(field('height').value)/100,depth=Number(field('depth').value)/100;
+    if(enabled&&(!Number.isFinite(height)||height<.01||height>.5||!Number.isFinite(depth)||depth<.002||depth>.1)){status.textContent='Use height 1–50 cm and thickness 0.2–10 cm.';return;}
+    const tileWidth=Number(field('tileWidth').value)/100;
+    if(enabled&&field('tile').value&&(!Number.isFinite(tileWidth)||tileWidth<.1||tileWidth>2)){status.textContent='Use a tile width between 10 and 200 cm.';return;}
+    for(const wall of layoutRef.current.walls||[])if(ids.has(wall.id))wall.skirting=enabled?{enabled,height,depth,color:field('color').value,...(field('tile').value?{tileId:field('tile').value,tileWidth}:{})}:{...wall.skirting,enabled:false};
+    rebuildWalls(layoutRef.current);
+    status.textContent=persistLayout(layoutRef.current)?'Skirting updated and saved. Select walls again for further changes.':'Applied, but saving failed. Download your project backup.';
+  };
+  field('apply').onclick=()=>applySkirting(true);field('remove').onclick=()=>applySkirting(false);
+  skirtingBox.addEventListener('keydown',event=>event.stopPropagation());
+  panel.append(skirtingBox);
   document.body.appendChild(panel);
+}
+
+// Dedicated access to skirting, using the existing wall selection mode.
+{
+ const button=document.createElement('button');button.textContent='Skirting';button.id='skirting-btn';
+ button.style.cssText='position:fixed;bottom:130px;left:160px;z-index:26;padding:8px 14px;border-radius:10px;border:1px solid #64748b;background:#24323d;color:white;cursor:pointer';
+ button.onclick=()=>{if(!wallPaintMode)enterWallPaintMode();document.getElementById('skirting-controls')?.scrollIntoView({block:'nearest'});};
+ document.body.append(button);
 }
 
 // ── Paint mode toggle button (fixed, bottom-left above Catalog) ──
@@ -1229,6 +1427,11 @@ function _persistObjPosition(obj) {
   if (!id || !layoutRef.current?.objects) return;
   const entry = layoutRef.current.objects.find(o => o.id === id);
   if (entry && entry.bbox) {
+    if((obj.userData.wardrobeConfig?.attachment??obj.userData.wardrobeAttachment)?.wallId){
+      const attached=wardrobeWallPlacement(wardrobeConfigFromRoot(obj),obj.position,layoutRef.current.walls||[]);
+      obj.position.x=attached.x;obj.position.z=attached.z;obj.rotation.y=attached.rotation;
+      entry.rotationY=attached.rotation;selectionHelper?.update();
+    }
     const hw = (entry.bbox.x2 - entry.bbox.x1) / 2;
     const hd = (entry.bbox.y2 - entry.bbox.y1) / 2;
     let nx = obj.position.x, nz = obj.position.z;
@@ -1266,6 +1469,7 @@ function _nudgeSelected(dx, dz) {
 // Resize one edge of the selected object by delta metres (positive = expand)
 function _resizeEdge(side, delta) {
   if (!selectedObject) return;
+  if(selectedObject.userData.wardrobeConfig){editWardrobeStructure(selectedObject);return;}
   const box = new THREE.Box3().setFromObject(selectedObject);
   const MIN = 0.1;
   if (side === 'px') {           // expand/shrink right edge
@@ -1311,6 +1515,7 @@ const _RH_MAT = new THREE.MeshBasicMaterial({ color: 0x4ade80 });
 
 function _createResizeHandles(obj) {
   _removeResizeHandles();
+  if(obj.userData.wardrobeConfig)return;
   const box = new THREE.Box3().setFromObject(obj);
   const cy  = (box.min.y + box.max.y) / 2;
   const cx  = (box.min.x + box.max.x) / 2;
@@ -1360,13 +1565,26 @@ function _persistResize(obj) {
   if (!id || !layoutRef.current?.objects) return;
   const entry = layoutRef.current.objects.find(o => o.id === id);
   if (!entry) return;
-  const box = new THREE.Box3().setFromObject(obj);
-  entry.bbox = { x1: box.min.x, y1: box.min.z, x2: box.max.x, y2: box.max.z };
+  if(obj.userData.wardrobeConfig){
+    const config=wardrobeConfigFromRoot(obj);
+    // Store local cabinet dimensions, never a rotated world-space bounding box.
+    entry.wardrobeConfig=config;
+    entry.bbox={x1:obj.position.x-config.width/2,y1:obj.position.z-config.depth/2,x2:obj.position.x+config.width/2,y2:obj.position.z+config.depth/2};
+    _persistObjPosition(obj);return;
+  }
+  if(obj.userData.diningBaseSize){
+    const hw=obj.userData.diningBaseSize.width*obj.scale.x/2,hd=obj.userData.diningBaseSize.depth*obj.scale.z/2;
+    entry.bbox={x1:obj.position.x-hw,y1:obj.position.z-hd,x2:obj.position.x+hw,y2:obj.position.z+hd};
+  }else{
+    const box = new THREE.Box3().setFromObject(obj);
+    entry.bbox = { x1: box.min.x, y1: box.min.z, x2: box.max.x, y2: box.max.z };
+  }
   if (obj.position.y > 0.01) entry.elevation = obj.position.y;
   persistLayout(layoutRef.current);
 }
 
 renderer.domElement.addEventListener('mousedown', (ev) => {
+  if(kitchenPanel?.isConnected||document.getElementById('dining-chair-editor')||document.getElementById('wardrobe-finish-editor')||document.getElementById('wardrobe-structure-editor'))return;
   if (roomDesignInteraction?.isActive()) return;
   if (viewerControls?.isWalkMode()) return;
   if (ev.button !== 0) return;
@@ -1525,6 +1743,23 @@ renderer.domElement.addEventListener('mousemove', (ev) => {
 });
 
 window.addEventListener('keydown', (e) => {
+  const structureEditor=document.getElementById('wardrobe-structure-editor');
+  if(structureEditor){
+    if(e.key==='Escape'){e.preventDefault();structureEditor.querySelector('[data-action="close"]').click();}
+    return;
+  }
+  if(kitchenPanel?.isConnected){if(e.key==='Escape'){e.preventDefault();kitchenPanel.close();}return;}
+  const laminateEditor=document.getElementById('wardrobe-finish-editor');
+  if(laminateEditor){
+    if(e.key==='Escape'){e.preventDefault();laminateEditor.querySelector('[data-action="close"]').click();}
+    return;
+  }
+  const chairEditor=document.getElementById('dining-chair-editor');
+  if(chairEditor){
+    if(e.key==='Escape'){e.preventDefault();chairEditor.querySelector('[data-action="close"]').click();}
+    // Whole-object delete/move/rotate shortcuts must not affect the table while editing a seat.
+    return;
+  }
   if (viewerControls?.isWalkMode()) return;
   // Ignore when typing in an input
   if (document.activeElement && ['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
@@ -1549,6 +1784,13 @@ window.addEventListener('keydown', (e) => {
 
 // Rebuild from original metre coordinates. Opening pieces keep the host wall's
 // height, thickness and colour; no visual endpoint extensions change dimensions.
+function rebuildCeiling(layout) {
+  if (!ceilingMesh) return;
+  const rooms = (layout.rooms || []).filter(isDesignableRoom);
+  const openings = (layout.objects || []).filter(obj => /door|window|glass/i.test(obj.class || '') && obj.bbox);
+  updateCeiling(ceilingMesh, buildCeilingCoverage(layout, rooms, openings));
+}
+
 function rebuildWalls(layout) {
   deselectWall();
   const toRemove = scene.children.filter(c => c.userData.isWall || c.userData.isWallFill);
@@ -1597,6 +1839,7 @@ function rebuildWalls(layout) {
     selectableWalls.push(mesh);
   });
   rebuildCustomMuralLayer(layout);
+  rebuildCeiling(layout);
   roomDesignController?.rebuild();
   roomDesignPanel?.refresh();
 }
@@ -1624,6 +1867,15 @@ function onMouseClick(event) {
     if (rHits.length > 0) return;
   }
 
+  if (!wallPaintMode && roomDesignPanel) {
+    const light = pickCeilingLight(raycaster, scene.children);
+    if (light) {
+      deselectWall();
+      roomDesignPanel.editLight(light.roomId, light.lightId);
+      return;
+    }
+  }
+
   // Find the nearest wall along this ray so we can skip furniture behind it.
   // Objects further than the wall face are occluded and must not be selected.
   let nearestWallDist = Infinity;
@@ -1636,11 +1888,59 @@ function onMouseClick(event) {
   //    Only consider a hit if it is at least as close as the nearest wall
   //    (+ a tiny epsilon for objects sitting flush against the wall surface).
   if (selectableMeshes.length) {
-    const hits = raycaster.intersectObjects(selectableMeshes, true);
+    const hits = raycaster.intersectObjects(selectableMeshes, true).filter(hit=>{
+      let node=hit.object;while(node){if(!node.visible)return false;node=node.parent;}return true;
+    });
     if (hits.length > 0 && hits[0].distance < nearestWallDist + 0.05) {
       let target = hits[0].object;
       while (target && target.parent && !target.userData.isSelectable) target = target.parent;
       if (target && target.userData.isSelectable) {
+        if(isKitchen(target)){
+          const id=cabinetFromHit(target,hits[0].object);
+          if(kitchenPanel?.isConnected){kitchenPanel.selectCabinet(target,id);return;}
+          const installed=cabinetList(target).find(c=>c.id===id)?.accessory;
+          if(installed){
+            if(selectedObject!==target){deselectWall();selectObject(target);}
+            const operation=accessoryOperationFromHit(target,hits[0].object);if(!operation)return;
+            try{operateAccessory(target,id,operation.value,{tier:operation.tier,obstacles:[...selectableMeshes,...selectableWalls]});
+              const record=layoutRef.current?.objects?.find(o=>o.id===target.userData.layoutId);if(record){record.kitchen=kitchenState(target);persistLayout(layoutRef.current);}
+            }catch(error){editKitchenAccessories(target,id);const status=kitchenPanel?.querySelector('[role="status"]');if(status)status.textContent=error.message;}
+            return;
+          }
+        }
+        if(target.userData.diningChairs){
+          let seat=hits[0].object;
+          while(seat&&seat!==target&&!seat.userData.diningChairId)seat=seat.parent;
+          if(selectedObject!==target){deselectWall();selectObject(target);}
+          if(seat?.userData.diningChairId)editDiningChairs(target,seat.userData.diningChairId);
+          else if(document.getElementById('dining-chair-editor')){selectObject(target);}
+          return;
+        }
+        if (target.userData.isWardrobe || target.userData.isInteractiveFurniture) {
+          if (selectedObject !== target) { deselectWall(); selectObject(target); }
+          const structureEditor=document.getElementById('wardrobe-structure-editor');
+          if(structureEditor&&target.userData.isWardrobe){
+            let node=hits[0].object;
+            while(node&&node!==target&&!node.userData.wardrobeSectionId)node=node.parent;
+            const surface=wardrobeSurfaceFromHit(hits[0].object,target);
+            if(surface?.startsWith('loft-')&&!target.userData.isStandaloneLoft){structureEditor.selectLoft();return;}
+            const id=node?.userData.wardrobeSectionId||surface?.match(/^(?:door|loft)-(\d+)$/)?.[1];
+            if(id)structureEditor.selectSection(id);
+            return;
+          }
+          const finishEditor=document.getElementById('wardrobe-finish-editor');
+          if(finishEditor&&target.userData.isWardrobe){
+            const surfaceId=wardrobeSurfaceFromHit(hits[0].object,target);
+            if(surfaceId)finishEditor.selectSurface(surfaceId);
+            return;
+          }
+          // Pick the actual front/handle/tray hit, not every door at once.
+          // This also works in walk mode; clicking the carcass just selects.
+          let part = hits[0].object;
+          while (part && part !== target && !part.userData.wardrobePart && !part.userData.furniturePart) part = part.parent;
+          if (part?.userData.wardrobePart || part?.userData.furniturePart) toggleWinDoorAnim(part);
+          return;
+        }
         let hasFurnitureDoors = false;
         target.traverse(child => { if (child.userData.isFurnitureDoor) hasFurnitureDoors = true; });
         const canAnimate = target.userData._isWinDoor || target.userData.isDoor || hasFurnitureDoors;
@@ -1723,17 +2023,17 @@ let updateMeasurementLabels = () => {};
 
 async function initLayout() {
   try {
-    // Check for tracer data in localStorage first
+    // Check for tracer data in projectStorage first
     let layout;
-    const storedData = localStorage.getItem('preciseFloorplan');
+    const storedData = projectStorage.getItem('preciseFloorplan');
     
     let layoutSource = 'file';
     if (storedData) {
-      // Use traced data from localStorage
+      // Use traced data from projectStorage
       const parsed = JSON.parse(storedData);
       layout = parseLayout(parsed);
       layoutSource = 'tracer';
-      console.log('Loaded traced floorplan from localStorage', {
+      console.log('Loaded traced floorplan from projectStorage', {
         rooms: layout.rooms.length,
         walls: layout.walls.length,
         objects: layout.objects.length
@@ -1775,6 +2075,12 @@ async function initLayout() {
     };
     
     // Initial wall render (uses rebuildWalls so catalog placements can re-use same logic)
+    // Use the same physical jamb span for the visible door/window and its cut.
+    // This also repairs older saved scans whose boxes stop short of wall ends.
+    const detectedOpenings = (layout.objects || []).filter(obj => /door|window|glass/i.test(obj.class || '') && obj.bbox);
+    const fittedOpenings = resolveOpeningGeometry(layout.walls || [], detectedOpenings);
+    const openingReplacement = new Map(detectedOpenings.map((obj, i) => [obj, fittedOpenings[i]]));
+    layout.objects = (layout.objects || []).map(obj => openingReplacement.get(obj) || obj);
     rebuildWalls(layout);
     
     // Room-type classes (spatial areas, not physical objects)
@@ -1804,12 +2110,11 @@ async function initLayout() {
       }
     });
     
-    let ceilingMesh = null;
     
     // A traced room may cover only part of the house. Retain a visual underfloor
     // for the remaining space; never use this bounding rectangle for floor area.
     let floorPoints = layout.footprint?.points;
-    if (!floorPoints?.length && layout.walls?.length) {
+    if (!floorPoints?.length && layout.walls?.length && !layout.suppress_bounding_floor) {
       floorPoints = [
         { x: minX, y: minY }, { x: maxX, y: minY },
         { x: maxX, y: maxY }, { x: minX, y: maxY },
@@ -1822,19 +2127,16 @@ async function initLayout() {
       scene.add(floorMesh);
     }
     (layout.rooms || []).forEach(room => {
-      const floor = createFloor(room.points, { roomType: room.type || room.name || '' });
+      const floor = createFloor(room.points, { roomType: room.type || room.name || '', holes: room.floorHoles || [] });
       floor.userData.roomId = room.id;
       baseRoomFloors.set(room.id, floor);
       scene.add(floor);
     });
     // Use actual room heights and outlines. A global rectangle would fill
     // courtyards and could cut through a higher room's new vaulted ceiling.
-    const measuredRooms = (layout.rooms || []).filter(isDesignableRoom);
-    const ceilingOpenings = (layout.objects || []).filter(obj =>
-      /door|window|glass/i.test(obj.class || '') && obj.bbox);
-    const ceilingRooms = buildCeilingCoverage(layout, measuredRooms, ceilingOpenings);
-    ceilingMesh = createCeiling(ceilingRooms);
-    if (ceilingMesh) scene.add(ceilingMesh);
+    ceilingMesh = new THREE.Group();
+    rebuildCeiling(layout);
+    scene.add(ceilingMesh);
 
     const spanX = Number.isFinite(maxX - minX) ? maxX - minX : 8;
     const spanZ = Number.isFinite(maxY - minY) ? maxY - minY : 8;
@@ -1844,9 +2146,15 @@ async function initLayout() {
     const distance = radius / Math.sin(Math.min(verticalFov, horizontalFov) / 2) * 1.08;
     const target = new THREE.Vector3(layoutCenter.x, 1, layoutCenter.y);
     const viewPosition = new THREE.Vector3(1, 1.35, 1).normalize().multiplyScalar(distance).add(target);
+    if(layout.builder?.id&&!document.getElementById('return-to-builder')){
+      const link=document.createElement('a');link.id='return-to-builder';link.href='/builder.html?plan='+encodeURIComponent(layout.builder.id);link.textContent='← Edit 2D plan';
+      link.style.cssText='position:fixed;top:76px;left:16px;z-index:45;background:#4054d5;color:white;padding:10px 16px;border-radius:10px;text-decoration:none;font:14px system-ui';document.body.append(link);
+    }
     layoutRef.current = layout;
     viewerControls = setupViewerControls({ camera, controls, domElement: renderer.domElement, ceilingMesh,
       getObstacles: () => [...selectableWalls, ...selectableMeshes, ...(roomDesignController?.getGroups() || [])], getLayout: () => layoutRef.current,
+      onLightCircuitChange: (circuit, enabled) => { roomLightSwitch.setCircuitEnabled(circuit, enabled); roomLightSwitch.update(scene); },
+      onLightsChange: enabled => { roomLightSwitch.setEnabled(enabled); roomLightSwitch.update(scene); },
       onCeilingVisibilityChange: visible => {
         // Cover base, profiled and finish ceilings, including nodes restored or
         // rebuilt after the controls were initialized.
@@ -1882,6 +2190,10 @@ async function initLayout() {
     const measurements = setupMeasurementPanel({ getLayout: () => layoutRef.current, camera,
       getObjectMeshes: () => selectableMeshes });
     updateMeasurementLabels = measurements.update;
+    setupProjectPanel({ getLayout: () => layoutRef.current, beforeSave: () => {
+      if (selectedObject && _resizeActive) _persistResize(selectedObject);
+      else if (selectedObject && _dragActive) _persistObjPosition(selectedObject);
+    } });
     createAIChatPanel(scene, layoutRef, selectableMeshes);
     const catalog = createCatalogPanel({ scene, camera, renderer, layoutRef, selectableMeshes, onWallOpening: rebuildWalls,
       onPlacementStart: () => { roomDesignInteraction?.cancel(false); if (viewerControls?.isWalkMode()) viewerControls.setOrbitMode(); } });
@@ -1900,7 +2212,9 @@ async function initLayout() {
     };
     roomDesignPanel = setupRoomDesignPanel({ getLayout: () => layoutRef.current,
       getWallChoices: roomDesignController.getWallChoices, onApply: roomDesignController.apply, onReset: roomDesignController.reset,
+      onUpdateLight: roomDesignController.updateLight,
       onPlaceLight: (...args) => beginDesign(() => roomDesignInteraction.beginLight(...args)),
+      onPickWall: (...args) => beginDesign(() => roomDesignInteraction.beginWallPick(...args)),
       onMarkWallArea: (...args) => beginDesign(() => roomDesignInteraction.beginWall(...args)),
       onCancelInteraction: () => roomDesignInteraction.cancel(false),
       onOpen: () => { roomDesignInteraction.cancel(false); catalogRef.exitPlacement(); deselectObject(); exitWallPaintMode(); } });
@@ -1927,11 +2241,13 @@ function animate() {
   viewerControls?.update(delta);
   tickFurnitureDoors();
   tickWinAnims();
+  selectableMeshes.forEach(root=>tickKitchen(root,delta));
   updateMeasurementLabels();
   wallHelpers.forEach((h) => h.update());
+  roomLightSwitch.update(scene);
   const composer = getComposer();
   if (composer) composer.render();
-  else renderer.render(scene, camera);
+  else renderModelWithCeilingGlow(scene, renderer, camera);
 }
 
 initLayout();

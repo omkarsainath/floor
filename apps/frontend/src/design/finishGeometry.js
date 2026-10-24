@@ -1,4 +1,9 @@
+import { addWallIllumination } from './wallIllumination.js';
+import { customMuralAssets } from './customWallStyles.js';
+import { muralBounds, muralGeometry, createMuralMaterial, HORSE_MURAL } from './wallMural.js';
+import { createReliefGeometry, reliefDepth } from './wallReliefs.js';
 import * as THREE from 'three';
+import {stoneMaterial} from '../materials/stone.js';
 import { isProfileCeiling } from './ceilingTypes.js';
 import { buildCeilingProfile } from './ceilingProfiles.js';
 import { normalizeWallPanelRegions, clipWallSurfacesToRegion } from './wallPanelRegions.js';
@@ -111,6 +116,7 @@ function surfaceTexture(style) {
 }
 
 function standardMaterial(style, { textured = false, accent = false, emissive = false } = {}) {
+  if(style.stoneId)return stoneMaterial(style.stoneId);
   const color = colorValue(accent ? style.accentColor : style.color, accent ? '#927454' : '#e7e3dc');
   return new THREE.MeshStandardMaterial({
     color: textured ? '#ffffff' : color,
@@ -132,12 +138,14 @@ function addMesh(parent, geometry, material, tags) {
   return mesh;
 }
 
-function addFloor(group, polygon, style) {
+function addFloor(group, polygon, style, holes = []) {
   let width = clamp(finite(style.tileWidthM, style.pattern === 'woodPlanks' ? 0.18 : 0.8), 0.05, 4);
   let depth = clamp(finite(style.tileDepthM, style.pattern === 'woodPlanks' ? 1.2 : 0.8), 0.05, 4);
   if (style.pattern === 'woodPlanks') width *= 2;
   if (style.pattern === 'herringbone') width = depth = Math.SQRT2 * Math.max(2, Math.round(depth / width)) * width;
-  addMesh(group, flatGeometry([polygon], 0.008, width, depth), standardMaterial(style, { textured: true }),
+  const vectors=polygon.map(p=>new THREE.Vector2(p.x,p.y)),rings=holes.map(h=>h.map(p=>new THREE.Vector2(p.x,p.y))),vertices=[...polygon,...holes.flat()];
+  const faces=THREE.ShapeUtils.triangulateShape(vectors,rings).map(t=>t.map(i=>vertices[i]));
+  addMesh(group, flatGeometry(faces, 0.008, width, depth), standardMaterial(style, { textured: true }),
     { type: 'floor', isRoomFinishFloor: true, walkIgnore: true, category: 'floor', styleId: style.id });
 }
 
@@ -275,7 +283,33 @@ function addWallFinish(group, surfaces, style, category, { regionId } = {}) {
   };
   rect(zoneLow, zoneHigh, bottom, top);
   const stripPattern = ['slats', 'mediaFluted', 'mediaMarble'].includes(style.pattern);
-  if (stripPattern) {
+  if (style.pattern === 'referenceMural') {
+    const assets = style.image ? customMuralAssets(style) : HORSE_MURAL;
+    const bounds = muralBounds(zoneLow, zoneHigh, bottom, top, assets.aspect);
+    const material = createMuralMaterial(assets);
+    for (const span of spans) {
+      const geometry = muralGeometry(span, bounds, side, offset + baseDepth + .002, assets);
+      if (geometry) addMesh(panelGroup, geometry, material, { type: 'wallFinish', category, styleId: style.id,
+        parentWallId: span.wallId, isWall: true, isWallMural: true,
+        finishDepthM: offset + baseDepth + .002 + assets.reliefM, ...(regionId ? { wallPanelRegionId: regionId } : {}) });
+    }
+    addWallIllumination(panelGroup, spans, bounds, side, offset + baseDepth + assets.reliefM);
+    if (!panelGroup.children.some(mesh => mesh.material === material)) {
+      material.muralLitMap.dispose(); material.muralUnlitMap.dispose(); material.dispose();
+    }
+  } else if (style.pattern === 'sculptedRelief') {
+    const material = base.clone();
+    material.color.set('#ffffff');
+    material.vertexColors = true;
+    for (const span of spans) {
+      const geometry = createReliefGeometry({ motif: style.motif, span, left: zoneLow, right: zoneHigh,
+        bottom, top, side, depth: offset + baseDepth + 0.001, color: style.color, accentColor: style.accentColor });
+      if (geometry) addMesh(panelGroup, geometry, material, { type: 'wallFinish', category, styleId: style.id,
+        parentWallId: span.wallId, isWall: true, finishDepthM: offset + baseDepth + 0.001 + reliefDepth(style.motif, zoneWidth, top - bottom),
+        ...(regionId ? { wallPanelRegionId: regionId } : {}) });
+    }
+    if (!panelGroup.children.some(mesh => mesh.material === material)) material.dispose();
+  } else if (stripPattern) {
     const slatEnd = style.pattern === 'mediaMarble' ? zoneLow + zoneWidth * 0.34 : zoneHigh;
     const spacing = Math.max(finite(style.spacingM, 0.065), zoneWidth / 60);
     for (let x = zoneLow; x < slatEnd; x += spacing) rect(x, Math.min(x + spacing * 0.55, slatEnd), bottom, top, 0.028, accent, baseDepth);
@@ -335,7 +369,7 @@ export function buildRoomFinish({ room, walls = [], wallSurfaces, wallSegments, 
   const firstId = surfaces[0]?.parentWallId ?? surfaces[0]?.wallId ?? surfaces[0]?.id;
   const accentSurfaces = surfaces.filter(s => (s.parentWallId ?? s.wallId ?? s.id) === firstId);
   const floor = resolve('floor'), ceiling = resolve('ceiling');
-  if (floor) addFloor(group, polygon, floor);
+  if (floor) addFloor(group, polygon, floor, room.floorHoles || []);
   if (isProfileCeiling(ceiling)) {
     group.add(buildCeilingProfile({ room, style: ceiling, selection }));
   } else if (ceiling) {
@@ -372,7 +406,7 @@ export function disposeRoomFinish(group) {
   if (!group?.userData?.isRoomFinish) return;
   const geometries = new Set(), materials = new Set(), textures = new Set();
   group.traverse(child => {
-    if (child.isLight) child.dispose?.();
+    if (child.isLight) { if (child.map?.isTexture) textures.add(child.map); child.dispose?.(); }
     if (child.geometry) geometries.add(child.geometry);
     for (const material of Array.isArray(child.material) ? child.material : child.material ? [child.material] : []) {
       materials.add(material);

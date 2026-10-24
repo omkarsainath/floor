@@ -1,3 +1,4 @@
+import { REFERENCE_CEILING_TYPES } from './referenceCeilings.js';
 // Architectural ceiling concepts from the user's reference image. The catalog
 // describes a visual profile, not a structural or installation specification.
 function ceiling(ceilingType, label, material, { raised = false, color = '#efede7', accentColor = '#c8c1b6', roughness = 0.78, metalness = 0 } = {}) {
@@ -25,8 +26,8 @@ export const CEILING_TYPES = Object.freeze([
   ceiling('wooden-panel', 'Wooden Panel Ceiling', 'A level ceiling with repeating wood-look panels.', { color: '#ae865e', accentColor: '#755238', roughness: 0.61 }),
 ]);
 
-const byId = new Map(CEILING_TYPES.map(type => [type.id, type]));
-const shapeNames = new Set(CEILING_TYPES.map(type => type.ceilingType));
+const byId = new Map([...CEILING_TYPES, ...REFERENCE_CEILING_TYPES].map(type => [type.id, type]));
+const shapeNames = new Set([...CEILING_TYPES, ...REFERENCE_CEILING_TYPES].map(type => type.ceilingType));
 
 export function getCeilingType(id) {
   return byId.get(id) || null;

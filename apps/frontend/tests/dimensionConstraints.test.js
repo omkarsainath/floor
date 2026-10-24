@@ -5,7 +5,7 @@ import { applyDimensionConstraints } from '../src/measurements/dimensionConstrai
 import { polygonArea, summarizeMeasurements } from '../src/measurements/modelMeasurements.js';
 import { createWall } from '../src/generators/wall.js';
 import { parseLayout } from '../src/loaders/jsonLoader.js';
-import { buildMetricLayout, metricDimensionConstraints, parseArea, areaAnnotationForRoom, snapRoomVertex } from '../src/tracer/planMeasurements.js';
+import { buildMetricLayout, metricDimensionConstraints, parseArea, areaAnnotationForRoom, snapRoomVertex, roomSizeTargets } from '../src/tracer/planMeasurements.js';
 
 const close=(actual,expected)=>assert.ok(Math.abs(actual-expected)<1e-6,`${actual} != ${expected}`);
 const p=(x,y)=>({x,y});
@@ -22,6 +22,81 @@ function fixture(adjacent=false) {
 }
 const length={id:'span',type:'length',start:p(0,-.6),end:p(2,-.6),target_m:4.50,text:'4.50 m'};
 const area={id:'area',type:'area',room_id:'verandah',target_m2:4.4};
+
+test('manual room width and depth control separate wall spans and survive JSON reload',()=>{
+  const source=fixture();
+  source.image_transform={center_px:{x:0,y:0},meters_per_pixel:1};
+  Object.assign(source.rooms[0],roomSizeTargets('400 cm','3 m'));
+  const before=structuredClone(source);
+  const {layout,report}=applyDimensionConstraints(source,metricDimensionConstraints(source));
+  const room=layout.rooms[0],xs=room.points.map(p=>p.x),ys=room.points.map(p=>p.y);
+  close(Math.max(...xs)-Math.min(...xs),4);close(Math.max(...ys)-Math.min(...ys),3);
+  close(polygonArea(room.points),12);
+  close(layout.walls.find(w=>w.id==='shared').start.x-.1-(layout.walls.find(w=>w.id==='left').start.x+.1),4);
+  close(layout.walls.find(w=>w.id==='bottom').start.y-.1-(layout.walls.find(w=>w.id==='top').start.y+.1),3);
+  assert.deepEqual(source,before);assert.equal(report.status,'satisfied');
+  const restored=parseLayout(JSON.parse(JSON.stringify(layout)));
+  assert.equal(restored.rooms[0].declared_width_m,4);assert.equal(restored.rooms[0].declared_depth_m,3);
+  close(polygonArea(restored.rooms[0].points),12);
+});
+
+test('room width and area can be combined to determine depth; incompatible targets fail atomically',()=>{
+  const source=fixture();source.image_transform={center_px:{x:0,y:0},meters_per_pixel:1};
+  Object.assign(source.rooms[0],roomSizeTargets('4 m',''),{declared_area_m2:12});
+  const {layout}=applyDimensionConstraints(source,metricDimensionConstraints(source));
+  const ys=layout.rooms[0].points.map(p=>p.y);close(Math.max(...ys)-Math.min(...ys),3);
+  Object.assign(source.rooms[0],roomSizeTargets('4 m','2 m'));
+  const before=structuredClone(source);
+  assert.throws(()=>applyDimensionConstraints(source,metricDimensionConstraints(source)),/cannot all be satisfied/);
+  assert.deepEqual(source,before);
+});
+
+test('room size inputs accept mixed units, either optional dimension, and reject invalid lengths',()=>{
+  close(roomSizeTargets('12 ft','10 ft 6 in').declared_width_m,3.6576);
+  close(roomSizeTargets('12 ft','10 ft 6 in').declared_depth_m,3.2004);
+  assert.deepEqual(roomSizeTargets('',''),{});
+  assert.deepEqual(roomSizeTargets('','3'),{declared_depth_m:3,declared_depth_text:'3'});
+  for(const input of ['0','-2 m','120 sqft','abc','Infinity'])assert.throws(()=>roomSizeTargets(input,''),/Invalid room width/);
+  assert.throws(()=>roomSizeTargets('4 m','0'),/Invalid room depth/);
+});
+
+test('two rooms with width and depth export together despite pixel-sized scan skew',()=>{
+  const source=fixture(true);source.image_transform={center_px:{x:0,y:0},meters_per_pixel:.01};
+  // Shared endpoints follow the skewed scanned top wall, rather than opening gaps.
+  source.walls[0].end.y+=.012;
+  source.walls.find(w=>w.id==='right').start.y+=.012;
+  Object.assign(source.rooms[0],roomSizeTargets('4 m','3 m'));
+  Object.assign(source.rooms[1],roomSizeTargets('3.5 m','3 m'));
+  const before=structuredClone(source);
+  const {layout,report}=applyDimensionConstraints(source,metricDimensionConstraints(source));
+  for(const [index,width] of [[0,4],[1,3.5]]){
+    const points=layout.rooms[index].points,xs=points.map(p=>p.x),ys=points.map(p=>p.y);
+    close(Math.max(...xs)-Math.min(...xs),width);close(Math.max(...ys)-Math.min(...ys),3);
+  }
+  assert.ok(report.alignment_adjustments.length>0);
+  layout.walls.forEach(w=>close(w.thickness,.2));
+  close(layout.rooms[0].points[1].x,layout.rooms[1].points[0].x-.2);
+  assert.deepEqual(source,before);
+});
+
+test('a growing room carries unmeasured neighbouring walls and furniture along',()=>{
+  const source=fixture(true);source.image_transform={center_px:{x:0,y:0},meters_per_pixel:1};
+  Object.assign(source.rooms[0],roomSizeTargets('5 m','3 m'));
+  const {layout}=applyDimensionConstraints(source,metricDimensionConstraints(source));
+  const next=layout.rooms[1].points;
+  close(next[1].x-next[0].x,2);
+  close(layout.rooms[0].points[1].x-layout.rooms[0].points[0].x,5);
+  close((layout.objects[0].bbox.x1+layout.objects[0].bbox.x2)/2,layout.walls.find(w=>w.id==='shared').start.x);
+});
+
+test('genuinely conflicting room depths still fail without changing saved input',()=>{
+  const source=fixture(true);source.image_transform={center_px:{x:0,y:0},meters_per_pixel:1};
+  Object.assign(source.rooms[0],roomSizeTargets('4 m','3 m'));
+  Object.assign(source.rooms[1],roomSizeTargets('3 m','4 m'));
+  const before=structuredClone(source);
+  assert.throws(()=>applyDimensionConstraints(source,metricDimensionConstraints(source)),/cannot all be satisfied/);
+  assert.deepEqual(source,before);
+});
 
 test('4.4 m² room and 4.50 m clear span jointly control actual floor and wall geometry',()=>{
   const source=fixture(); const before=structuredClone(source);
@@ -92,13 +167,103 @@ test('conflicting dimensions fail atomically instead of exporting a misleading m
   assert.throws(()=>applyDimensionConstraints(source,[length,area,{id:'depth',type:'length',start:p(-.6,0),end:p(-.6,2),target_m:2}]),/cannot all be satisfied/);
 });
 
-test('clear room area rejects wall-centre outlines, floating annotations and unsupported diagonal correction',()=>{
+test('clear room area rejects wall-centre outlines and floating annotations',()=>{
   const center=fixture();center.rooms[0].points=rect(-.1,-.1,2.1,2.1);
   assert.throws(()=>applyDimensionConstraints(center,[area]),/inside|wall/);
   const floating=fixture();floating.rooms[0].points=rect(.3,.3,1.7,1.7);
   assert.throws(()=>applyDimensionConstraints(floating,[area]),/inside wall face/);
-  const diagonal=fixture();diagonal.walls[0].end.y=.2;
-  assert.throws(()=>applyDimensionConstraints(diagonal,[length]),/horizontal and vertical/);
+});
+
+test('pixel-offset room traces bind inside faces and measure the corrected physical spans',()=>{
+  for (const reverse of [false,true]) {
+    const source=fixture(true);source.image_transform={meters_per_pixel:.008773};
+    source.rooms[0].points=rect(.045,.045,1.955,1.955);
+    source.rooms[1].points=rect(2.245,.045,4.155,1.955);
+    if(reverse)source.rooms.forEach(r=>r.points.reverse());
+    Object.assign(source.rooms[0],roomSizeTargets('3.29 m','4.995 m'));
+    Object.assign(source.rooms[1],roomSizeTargets('3.5 m','4.995 m'));
+    const before=structuredClone(source);
+    const {layout,report}=applyDimensionConstraints(source,metricDimensionConstraints(source));
+    close(layout.walls[2].start.x-.1-(layout.walls[1].start.x+.1),3.29);
+    close(layout.walls[3].start.y-.1-(layout.walls[0].start.y+.1),4.995);
+    close(polygonArea(layout.rooms[0].points),3.29*4.995);
+    close(polygonArea(layout.rooms[1].points),3.5*4.995);
+    assert.ok(report.boundary_adjustments.length>=8);
+    assert.deepEqual(source,before);
+  }
+});
+
+test('thin scanned walls choose the room-facing face instead of the nearer outside face',()=>{
+  const source=fixture();source.image_transform={meters_per_pixel:.008773};
+  source.walls.forEach(w=>{w.thickness=.04;});
+  // Trace is 3 cm outside the inside face, 1 cm from the wrong outside face.
+  source.rooms[0].points=rect(-.11,-.11,2.11,2.11);
+  Object.assign(source.rooms[0],roomSizeTargets('3.29 m','4.995 m'));
+  const {layout}=applyDimensionConstraints(source,metricDimensionConstraints(source));
+  close(layout.walls[2].start.x-.02-(layout.walls[1].start.x+.02),3.29);
+  close(polygonArea(layout.rooms[0].points),3.29*4.995);
+});
+
+test('unmatched room errors identify edges and keep distant floating rooms rejected',()=>{
+  const source=fixture();source.image_transform={meters_per_pixel:.008773};
+  source.rooms[0].points=rect(.3,.045,1.7,1.955);
+  assert.throws(()=>applyDimensionConstraints(source,[area]),error=>{
+    assert.equal(error.code,'UNBOUND_ROOM_AREA');
+    assert.equal(error.details.room_id,'verandah');
+    assert.deepEqual(error.details.edges,[1,3]);
+    assert.match(error.message,/vertical inside wall face/);
+    return true;
+  });
+  source.image_transform.meters_per_pixel=1;
+  assert.throws(()=>applyDimensionConstraints(source,[area]),/inside wall face/);
+});
+
+test('Hall dimensions export with wall_28 diagonal and an unrelated angled room outline',()=>{
+  const source=fixture(true);source.image_transform={center_px:{x:0,y:0},meters_per_pixel:.008892};
+  source.walls.push(wall('wall_28',5,.3,6,1.6));
+  source.rooms.push({id:'angled',points:[p(5,2.5),p(7,3),p(7,4),p(5,4)]});
+  source.footprint=[p(-1,-1),p(8,-1),p(9,5),p(-1,5)];
+  Object.assign(source.rooms[0],roomSizeTargets('3.29 m','4.995 m'));
+  Object.assign(source.rooms[1],roomSizeTargets('3.2 m','4.995 m'));
+  const before=structuredClone(source);
+  const {layout,report}=applyDimensionConstraints(source,metricDimensionConstraints(source));
+  assert.equal(report.status,'satisfied');assert.equal(layout.walls.length,source.walls.length);
+  close(polygonArea(layout.rooms[0].points),3.29*4.995);
+  const diagonal=layout.walls.find(w=>w.id==='wall_28');
+  assert.ok(Math.abs(diagonal.end.x-diagonal.start.x)>.1);assert.ok(Math.abs(diagonal.end.y-diagonal.start.y)>.1);
+  close(diagonal.thickness,.2);
+  close(createWall(diagonal).geometry.parameters.width,Math.hypot(diagonal.end.x-diagonal.start.x,diagonal.end.y-diagonal.start.y));
+  const restored=parseLayout(JSON.parse(JSON.stringify(layout)));
+  assert.equal(summarizeMeasurements(restored).constraint_status,'satisfied');
+  assert.equal(restored.rooms.find(r=>r.id==='angled').points.length,4);
+  assert.deepEqual(source,before);
+});
+
+test('diagonal walls use their actual footprint for room overlap, not a bounding rectangle',()=>{
+  const source=fixture();source.image_transform={center_px:{x:0,y:0},meters_per_pixel:1};
+  source.walls.push(wall('outside-diagonal',1.5,-1,3,.5));
+  Object.assign(source.rooms[0],roomSizeTargets('2 m','2 m'));
+  assert.equal(applyDimensionConstraints(source,metricDimensionConstraints(source)).report.status,'satisfied');
+  // Reversing the segment must not change which side is masonry.
+  [source.walls.at(-1).start,source.walls.at(-1).end]=[source.walls.at(-1).end,source.walls.at(-1).start];
+  assert.equal(applyDimensionConstraints(source,metricDimensionConstraints(source)).report.status,'satisfied');
+  source.walls.at(-1).start=p(.5,.5);source.walls.at(-1).end=p(1.5,1.5);
+  const before=structuredClone(source);
+  assert.throws(()=>applyDimensionConstraints(source,metricDimensionConstraints(source)),/overlaps wall outside-diagonal/);
+  assert.deepEqual(source,before);
+});
+
+test('diagonal wall endpoints can anchor horizontal spans without inventing axis-aligned faces',()=>{
+  const source={units:'m',rooms:[],walls:[wall('diagonal',0,0,2,1)]};
+  const {layout}=applyDimensionConstraints(source,[{...length,start:p(0,-1),end:p(2,-1),target_m:3.29}]);
+  close(layout.walls[0].end.x-layout.walls[0].start.x,3.29);
+  close(layout.walls[0].end.y-layout.walls[0].start.y,1);
+  assert.equal(layout.dimension_constraints[0].end_anchor.kind,'endpoint');
+});
+
+test('an exact target on an angled room explains the room limitation without rejecting unrelated rooms',()=>{
+  const source=fixture();source.rooms[0].points[2].x=1.8;
+  assert.throws(()=>applyDimensionConstraints(source,[area]),error=>error.code==='UNSUPPORTED_ROOM_GEOMETRY'&&error.details.room_id==='verandah');
 });
 
 test('printed area parsing and matching never use a nearby room’s annotation',()=>{

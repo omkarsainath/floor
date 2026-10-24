@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Greenlam wardrobe studio</title>
+<style>
+html,body{overflow:hidden}body{margin:0;background:#e9e5df;font:14px system-ui;color:#23312c}canvas{display:block;width:100%;height:100vh}.studio-bar{position:fixed;top:20px;left:25px;z-index:2;max-width:calc(100vw - 440px)}h1{font-size:27px;margin:0 0 4px}p{margin:5px 0 12px}button,select{padding:9px;border-radius:8px;border:1px solid #65776d;background:#f6f5ee;color:#263b2d;margin:3px}small{display:block;margin-top:10px}@media(max-width:800px){.studio-bar{max-width:calc(100vw - 40px)}h1{font-size:20px}}
+</style>
+<div class="studio-bar"><h1>Greenlam wardrobe studio</h1><p>Individual finishes. Real catalogue swatches.</p><select id="model" aria-label="Wardrobe model"></select><button id="edit">Edit finishes</button><button id="doors">Open / close doors</button><small>Drag to orbit · Scroll to inspect · Click a panel to select its finish</small></div>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
+import {RoomEnvironment} from 'three/examples/jsm/environments/RoomEnvironment.js';
+import {createWardrobe,WARDROBE_CATALOG,LOFT_CATALOG} from '../src/generators/wardrobe.js';
+import {showWardrobeFinishEditor} from '../src/ui/wardrobeFinishEditor.js';
+import {updateWardrobeFinishes,wardrobeSurfaceMeshes,wardrobeSurfaceFromHit} from '../src/generators/wardrobeFinishes.js';
+import {queueObjectAnimations,advanceObjectAnimations} from '../src/generators/objectAnimations.js';
+const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(innerWidth,innerHeight,false);document.body.append(renderer.domElement);
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=.9;
+const scene=new THREE.Scene();scene.background=new THREE.Color('#e9e5df');
+const pmrem=new THREE.PMREMGenerator(renderer),room=new RoomEnvironment();const env=pmrem.fromScene(room,.04);scene.environment=env.texture;room.dispose();pmrem.dispose();
+const camera=new THREE.PerspectiveCamera(36,innerWidth/innerHeight,.02,50);camera.position.set(4,2.9,6.2);
+const controls=new OrbitControls(camera,renderer.domElement);controls.target.set(.7,1.3,0);controls.enableDamping=true;controls.maxPolarAngle=Math.PI*.49;
+scene.add(new THREE.HemisphereLight(0xffffff,0x797263,1.1));
+const key=new THREE.DirectionalLight(0xfff0df,3.3);key.position.set(-3,6,5);key.castShadow=true;key.shadow.mapSize.set(2048,2048);Object.assign(key.shadow.camera,{left:-5,right:5,top:5,bottom:-5,near:.1,far:20});key.shadow.normalBias=.005;key.shadow.bias=-.0001;scene.add(key);
+const fill=new THREE.DirectionalLight(0xdce7f2,.8);fill.position.set(3,3,-1);scene.add(fill);
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.MeshStandardMaterial({color:0xcec5b5,roughness:.8}));floor.rotation.x=-Math.PI/2;floor.position.y=-.004;floor.receiveShadow=true;scene.add(floor);
+const wall=new THREE.Mesh(new THREE.BoxGeometry(12,5,.1),new THREE.MeshStandardMaterial({color:0xe6e0d5,roughness:.9}));wall.position.set(0,2.5,-1.1);wall.receiveShadow=true;scene.add(wall);
+let root,helper,editor;const queue=[],catalog=[...WARDROBE_CATALOG,...LOFT_CATALOG],model=document.querySelector('#model');
+for(const s of catalog)model.add(new Option(s.label,s.id));model.value='wardrobe-3-loft';
+const keyName='greenlam-wardrobe-preview';
+function edit(id){editor=showWardrobeFinishEditor({root,surfaceId:id,onChange(next){const state=updateWardrobeFinishes(root,next);localStorage.setItem(keyName,JSON.stringify({type:model.value,finishes:state}));return true;},onHighlight(id){helper.setFromObject(wardrobeSurfaceMeshes(root,id)[0]||root);helper.visible=true;},onToggle(node){queueObjectAnimations(node,queue);},onClose(){helper.visible=false;editor=null;}});}
+function load(type,finishes={}){
+ document.querySelector('#wardrobe-finish-editor')?.remove();queue.length=0;
+ if(root){scene.remove(root,helper);root.traverse(n=>{n.geometry?.dispose();for(const m of Array.isArray(n.material)?n.material:[n.material])m?.dispose();});helper.geometry.dispose();helper.material.dispose();}
+ const s=catalog.find(s=>s.id===type);root=createWardrobe(type,s.w,s.d,{wardrobeFinishes:finishes});scene.add(root);helper=new THREE.BoxHelper(root,0x819768);helper.visible=false;scene.add(helper);edit();
+ window.__wardrobePreview={THREE,root,scene,camera,renderer,helper,queue};document.body.dataset.ready='true';
+}
+let saved;try{saved=JSON.parse(localStorage.getItem(keyName));}catch{}
+if(saved&&catalog.some(s=>s.id===saved.type))model.value=saved.type;
+load(model.value,saved?.finishes||{});model.onchange=()=>load(model.value);document.querySelector('#edit').onclick=()=>edit();document.querySelector('#doors').onclick=()=>queueObjectAnimations(root,queue,root.userData.isStandaloneLoft?'loft':'doors');
+const ray=new THREE.Raycaster();let down;
+renderer.domElement.addEventListener('pointerdown',e=>down={x:e.clientX,y:e.clientY});
+renderer.domElement.addEventListener('click',e=>{if(!down||Math.hypot(e.clientX-down.x,e.clientY-down.y)>4)return;ray.setFromCamera(new THREE.Vector2(e.clientX/innerWidth*2-1,1-e.clientY/innerHeight*2),camera);const hit=ray.intersectObject(root,true)[0];if(!hit)return;const id=wardrobeSurfaceFromHit(hit.object,root);if(id){if(editor?.isConnected)editor.selectSurface(id);else edit(id);}});
+addEventListener('resize',()=>{renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();});
+function frame(){requestAnimationFrame(frame);controls.update();advanceObjectAnimations(queue);if(helper.visible)helper.update();renderer.render(scene,camera);}frame();
+</script></html>

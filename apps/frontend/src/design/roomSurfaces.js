@@ -45,3 +45,18 @@ export function roomWallSurfaces(room, wallSegments = []) {
   });
   return surfaces;
 }
+
+// Explicit face selection is anchored to the rendered wall, independently of
+// imperfect room outlines. Reuse carved segments so openings remain empty.
+export function selectedWallSurfaces(wall, segments, side) {
+  if (!wall || ![1,-1].includes(side)) return [];
+  const dx=wall.end.x-wall.start.x,dy=wall.end.y-wall.start.y,len=Math.hypot(dx,dy);
+  if(len<1e-6)return [];
+  const normal={x:-dy/len*side,y:dx/len*side};
+  return segments.filter(s=>String(s.parentWallId ?? s.id)===String(wall.id)).map(s=>{
+    const half=(s.thickness || wall.thickness || .15)/2;
+    const face=p=>({x:p.x+normal.x*half,y:p.y+normal.y*half});
+    return {start:face(s.start),end:face(s.end),normal:{...normal},yOffset:s.yOffset || 0,
+      height:s.height || wall.height || 3,parentWallId:wall.id,thickness:half*2};
+  });
+}

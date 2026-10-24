@@ -1,5 +1,22 @@
 import * as THREE from 'three';
 
+// Keep the root referenced by visibility and walk controls when openings change.
+export function updateCeiling(group, rooms) {
+  const replacement = createCeiling(rooms);
+  const resources = new Set();
+  group.traverse(node => {
+    if (node.geometry) resources.add(node.geometry);
+    for (const material of (Array.isArray(node.material) ? node.material : [node.material])) {
+      if (material) resources.add(material);
+    }
+  });
+  group.clear();
+  for (const resource of resources) resource.dispose();
+  if (replacement) group.add(...replacement.children.slice());
+  group.userData.type = 'ceiling';
+  return group;
+}
+
 /** Interior ceiling slabs follow each room footprint and its own height. */
 export function createCeiling(rooms, { color = 0xf0ece5, thickness = 0.05 } = {}) {
   if (!Array.isArray(rooms) || !rooms.length) return null;

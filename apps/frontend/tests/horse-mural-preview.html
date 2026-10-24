@@ -1,0 +1,12 @@
+<!doctype html><html><head><title>Horse mural lighting preview</title><style>body{margin:0}</style></head><body><script type="module">
+import * as T from 'three';
+import {muralBounds,muralGeometry,createMuralMaterial} from '../src/design/wallMural.js';
+import {createLightSwitch} from '../src/design/lightSwitch.js';
+const renderer=new T.WebGLRenderer({antialias:true});renderer.setSize(innerWidth,innerHeight);document.body.append(renderer.domElement);
+const scene=new T.Scene();scene.background=new T.Color('#38332c');
+const camera=new T.PerspectiveCamera(45,innerWidth/innerHeight,.1,100);camera.position.set(2,1.5,4);camera.lookAt(2,1.5,0);
+scene.add(new T.HemisphereLight(0xffffff,0x70604d,2));const key=new T.DirectionalLight(0xffefdd,2.5);key.position.set(-2,5,4);scene.add(key);camera.position.set(5,2,4);camera.lookAt(2,1.5,0);
+const material=createMuralMaterial(),mesh=new T.Mesh(muralGeometry({lo:0,hi:4,bottom:0,top:3},muralBounds(0,4,0,3),1,.02),material);mesh.userData.isWallMural=true;scene.add(mesh);
+const control=createLightSwitch();window.setMuralLights=value=>{control.setEnabled(value);control.update(scene);renderer.render(scene,camera);};
+T.DefaultLoadingManager.onLoad=async()=>{await mesh.geometry.userData.depthReady;window.setMuralLights(!location.search.includes('off'));document.body.dataset.ready='true';};
+</script></body></html>

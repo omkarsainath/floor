@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sign in · Plan Studio</title></head>
+<body class="login-page">
+    <main class="login-layout">
+        <section class="welcome-panel" aria-label="Plan Studio">
+            <a class="brand" href="/login.html"><span class="brand-icon">▧</span> Plan Studio</a>
+            <div class="welcome-copy"><span class="eyebrow">YOUR SPACE, REIMAGINED</span><h1>Every great home<br>starts with a plan.</h1><p>Build your floor plan, explore it in 3D,<br>and make every room your own.</p></div>
+            <div class="plan-art" aria-hidden="true"><div class="art-room living">Living room<span>14′ × 12′</span><i></i></div><div class="art-room bedroom">Bedroom<span>10′ × 12′</span><i></i></div><div class="art-room kitchen">Kitchen<span>10′ × 10′</span><i></i></div><div class="art-room bath">Bath<i></i></div></div>
+            <p class="welcome-footer">From your first sketch to a place that feels like home.</p>
+        </section>
+        <section class="login-panel">
+            <div class="login-card">
+                <span class="eyebrow">WELCOME TO PLAN STUDIO</span>
+                <h2 id="form-title">Sign in to your workspace</h2>
+                <p id="form-description">Your plans are ready when you are.</p>
+                <div class="auth-tabs" aria-label="Account options"><button id="login-tab" type="button" aria-pressed="true">Sign in</button><button id="register-tab" type="button" aria-pressed="false">Create account</button></div>
+                <form id="auth-form">
+                    <label id="name-field" hidden>Your name<input name="name" id="name" autocomplete="name" maxlength="100"></label>
+                    <label>Email address<input name="email" id="email" type="email" autocomplete="username" placeholder="you@example.com" required maxlength="254"></label>
+                    <label>Password<span class="password-field"><input name="password" id="password" type="password" autocomplete="current-password" required maxlength="128"><button id="show-password" type="button" aria-label="Show password">Show</button></span></label>
+                    <p id="password-hint" class="small" hidden>Use 12–128 characters.</p>
+                    <button id="submit-auth" class="primary" type="submit">Sign in →</button>
+                    <p id="auth-status" role="status" aria-live="polite"></p>
+                </form>
+                <div class="divider"><span>or</span></div>
+                <div id="google-button"></div>
+                <p id="google-status" class="small" role="status">Checking Google sign-in…</p>
+                <p class="login-note">Your saved plans stay on this browser and device. Download backups to take them with you.</p>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="/src/auth/login.js"></script>
+</body></html>

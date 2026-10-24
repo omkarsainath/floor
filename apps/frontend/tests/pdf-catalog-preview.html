@@ -1,0 +1,13 @@
+<!doctype html><html><head><style>body{font:14px system-ui;background:#ddd}#samples{display:grid;grid-template-columns:repeat(5,200px);gap:12px}img{width:200px;height:150px;object-fit:contain;background:white}figure{margin:0}</style></head><body><h1>PDF product photos and actual model previews</h1><div id="samples"></div><script type="module">
+import {SOFA_FACTORY_CATALOG,createSofaFactoryFurniture} from '../src/generators/sofaFactory.js';
+import {attachModelThumbnail} from '../src/ui/modelThumbnail.js';
+import {createObject} from '../src/generators/object.js';
+import {attachFinishThumbnail} from '../src/ui/finishThumbnail.js';
+import {getFinishStyle} from '../src/design/roomDesignCatalog.js';
+const ids=['sf-sofas-p11-1','sf-sofas-p11-3','sf-dining-glass-p48-01','sf-antique-chairs-p64-01','sf-center-marble-p73-02'];
+for(const id of ids){const p=SOFA_FACTORY_CATALOG.find(p=>p.id===id);const f=document.createElement('figure'),img=new Image();img.src=p.image;f.append(img);samples.append(f);}
+for(const id of ids){const p=SOFA_FACTORY_CATALOG.find(p=>p.id===id);const f=document.createElement('figure'),img=new Image();img.alt=p.label;f.append(img);samples.append(f);attachModelThumbnail(img,id,()=>createSofaFactoryFurniture(id,p.w,p.d));}
+for(const id of ['door-groove-01','sofa']){const img=new Image();samples.append(img);attachModelThumbnail(img,id,()=>createObject({class:id,source:'catalog',bbox:{x1:0,y1:0,x2:2,y2:.8}}));}
+for(const id of ['wall-relief-rose','wall-relief-mountains','wall-relief-horses']){const style=getFinishStyle(id);if(style){const img=new Image();samples.append(img);attachFinishThumbnail(img,style);}}
+const timer=setInterval(()=>{const imgs=[...document.images];if(imgs.every(img=>img.complete&&img.naturalWidth>0)){document.body.dataset.ready='true';clearInterval(timer);}},200);
+</script></body></html>

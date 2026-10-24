@@ -1,0 +1,2378 @@
+[
+  {
+    "id": "gl-175-arn",
+    "code": "175",
+    "name": "Heather",
+    "finish": "ARN",
+    "kind": "textile",
+    "pdfPage": 10,
+    "printedPage": 17,
+    "crop": [
+      111,
+      142,
+      924,
+      957
+    ],
+    "sampleAspect": 0.9974,
+    "color": "#bda4b9",
+    "image": "/catalog/greenlam/gl-175-arn.webp"
+  },
+  {
+    "id": "gl-5648-arn",
+    "code": "5648",
+    "name": "Luis Grey",
+    "finish": "ARN",
+    "kind": "textile",
+    "pdfPage": 10,
+    "printedPage": 18,
+    "crop": [
+      1149,
+      142,
+      1526,
+      517
+    ],
+    "sampleAspect": 1.00698,
+    "color": "#918f9a",
+    "image": "/catalog/greenlam/gl-5648-arn.webp"
+  },
+  {
+    "id": "gl-5649-arn",
+    "code": "5649",
+    "name": "Luis Brown",
+    "finish": "ARN",
+    "kind": "textile",
+    "pdfPage": 10,
+    "printedPage": 18,
+    "crop": [
+      1149,
+      582,
+      1526,
+      957
+    ],
+    "sampleAspect": 1.00698,
+    "color": "#423c3e",
+    "image": "/catalog/greenlam/gl-5649-arn.webp"
+  },
+  {
+    "id": "gl-5641-arn",
+    "code": "5641",
+    "name": "Kimono",
+    "finish": "ARN",
+    "kind": "textile",
+    "pdfPage": 10,
+    "printedPage": 18,
+    "crop": [
+      1559,
+      142,
+      1936,
+      957
+    ],
+    "sampleAspect": 0.45666,
+    "color": "#dcd5d9",
+    "image": "/catalog/greenlam/gl-5641-arn.webp"
+  },
+  {
+    "id": "gl-148-arn",
+    "code": "148",
+    "name": "Tidal Sand",
+    "finish": "ARN",
+    "kind": "textile",
+    "pdfPage": 11,
+    "printedPage": 19,
+    "crop": [
+      124,
+      142,
+      501,
+      517
+    ],
+    "sampleAspect": 1.00465,
+    "color": "#d7ccd0",
+    "image": "/catalog/greenlam/gl-148-arn.webp"
+  },
+  {
+    "id": "gl-5643-arn",
+    "code": "5643",
+    "name": "Manilla Beige",
+    "finish": "ARN",
+    "kind": "textile",
+    "pdfPage": 11,
+    "printedPage": 19,
+    "crop": [
+      124,
+      582,
+      501,
+      957
+    ],
+    "sampleAspect": 1.00465,
+    "color": "#d1b9a2",
+    "image": "/catalog/greenlam/gl-5643-arn.webp"
+  },
+  {
+    "id": "gl-5642-arn",
+    "code": "5642",
+    "name": "Manilla Taupe",
+    "finish": "ARN",
+    "kind": "textile",
+    "pdfPage": 11,
+    "printedPage": 19,
+    "crop": [
+      534,
+      142,
+      911,
+      957
+    ],
+    "sampleAspect": 0.45772,
+    "color": "#b5a9a2",
+    "image": "/catalog/greenlam/gl-5642-arn.webp"
+  },
+  {
+    "id": "gl-5591-arn",
+    "code": "5591",
+    "name": "Kota Pearl",
+    "finish": "ARN",
+    "kind": "textile",
+    "pdfPage": 11,
+    "printedPage": 20,
+    "crop": [
+      1149,
+      142,
+      1323,
+      517
+    ],
+    "sampleAspect": 0.45349,
+    "color": "#cac9cf",
+    "image": "/catalog/greenlam/gl-5591-arn.webp"
+  },
+  {
+    "id": "gl-5592-arn",
+    "code": "5592",
+    "name": "Kota Sage",
+    "finish": "ARN",
+    "kind": "textile",
+    "pdfPage": 11,
+    "printedPage": 20,
+    "crop": [
+      1353,
+      142,
+      1526,
+      517
+    ],
+    "sampleAspect": 0.45116,
+    "color": "#89968f",
+    "image": "/catalog/greenlam/gl-5592-arn.webp"
+  },
+  {
+    "id": "gl-5601-arn",
+    "code": "5601",
+    "name": "Woven Ash Grey",
+    "finish": "ARN",
+    "kind": "textile",
+    "pdfPage": 11,
+    "printedPage": 20,
+    "crop": [
+      1149,
+      584,
+      1323,
+      957
+    ],
+    "sampleAspect": 0.45561,
+    "color": "#ada7a9",
+    "image": "/catalog/greenlam/gl-5601-arn.webp"
+  },
+  {
+    "id": "gl-5602-arn",
+    "code": "5602",
+    "name": "Woven Anthracite",
+    "finish": "ARN",
+    "kind": "textile",
+    "pdfPage": 11,
+    "printedPage": 20,
+    "crop": [
+      1353,
+      584,
+      1526,
+      957
+    ],
+    "sampleAspect": 0.45327,
+    "color": "#313439",
+    "image": "/catalog/greenlam/gl-5602-arn.webp"
+  },
+  {
+    "id": "gl-401-arn",
+    "code": "401",
+    "name": "Black",
+    "finish": "ARN",
+    "kind": "textile",
+    "pdfPage": 11,
+    "printedPage": 20,
+    "crop": [
+      1559,
+      142,
+      1936,
+      957
+    ],
+    "sampleAspect": 0.45666,
+    "color": "#272f38",
+    "image": "/catalog/greenlam/gl-401-arn.webp"
+  },
+  {
+    "id": "gl-5106-brl",
+    "code": "5106",
+    "name": "Palermo Oak",
+    "finish": "BRL",
+    "kind": "wood",
+    "pdfPage": 12,
+    "printedPage": 21,
+    "crop": [
+      111,
+      142,
+      924,
+      957
+    ],
+    "sampleAspect": 0.9974,
+    "color": "#ad9b8d",
+    "image": "/catalog/greenlam/gl-5106-brl.webp"
+  },
+  {
+    "id": "gl-5101-brl",
+    "code": "5101",
+    "name": "Horizon Elm Beige",
+    "finish": "BRL",
+    "kind": "wood",
+    "pdfPage": 12,
+    "printedPage": 22,
+    "crop": [
+      1149,
+      142,
+      1526,
+      517
+    ],
+    "sampleAspect": 1.00698,
+    "color": "#baa193",
+    "image": "/catalog/greenlam/gl-5101-brl.webp"
+  },
+  {
+    "id": "gl-5102-brl",
+    "code": "5102",
+    "name": "Horizon Elm Brown",
+    "finish": "BRL",
+    "kind": "wood",
+    "pdfPage": 12,
+    "printedPage": 22,
+    "crop": [
+      1149,
+      582,
+      1526,
+      957
+    ],
+    "sampleAspect": 1.00698,
+    "color": "#726763",
+    "image": "/catalog/greenlam/gl-5102-brl.webp"
+  },
+  {
+    "id": "gl-277-brl",
+    "code": "277",
+    "name": "Charcoal",
+    "finish": "BRL",
+    "kind": "wood",
+    "pdfPage": 12,
+    "printedPage": 22,
+    "crop": [
+      1559,
+      142,
+      1936,
+      957
+    ],
+    "sampleAspect": 0.45666,
+    "color": "#282c35",
+    "image": "/catalog/greenlam/gl-277-brl.webp"
+  },
+  {
+    "id": "gl-774-brl",
+    "code": "774",
+    "name": "Munich Acacia",
+    "finish": "BRL",
+    "kind": "wood",
+    "pdfPage": 13,
+    "printedPage": 23,
+    "crop": [
+      124,
+      142,
+      501,
+      517
+    ],
+    "sampleAspect": 1.00465,
+    "color": "#d3c6c1",
+    "image": "/catalog/greenlam/gl-774-brl.webp"
+  },
+  {
+    "id": "gl-5076-brl",
+    "code": "5076",
+    "name": "Primeval Oak",
+    "finish": "BRL",
+    "kind": "wood",
+    "pdfPage": 13,
+    "printedPage": 23,
+    "crop": [
+      124,
+      582,
+      501,
+      957
+    ],
+    "sampleAspect": 1.00465,
+    "color": "#c4aa9a",
+    "image": "/catalog/greenlam/gl-5076-brl.webp"
+  },
+  {
+    "id": "gl-5383-brl",
+    "code": "5383",
+    "name": "Chelsea Chestnut Anthracite",
+    "finish": "BRL",
+    "kind": "wood",
+    "pdfPage": 13,
+    "printedPage": 23,
+    "crop": [
+      534,
+      142,
+      911,
+      957
+    ],
+    "sampleAspect": 0.45772,
+    "color": "#343338",
+    "image": "/catalog/greenlam/gl-5383-brl.webp"
+  },
+  {
+    "id": "gl-5311-brl",
+    "code": "5311",
+    "name": "California Ash",
+    "finish": "BRL",
+    "kind": "wood",
+    "pdfPage": 13,
+    "printedPage": 24,
+    "crop": [
+      1149,
+      142,
+      1323,
+      517
+    ],
+    "sampleAspect": 0.45349,
+    "color": "#675349",
+    "image": "/catalog/greenlam/gl-5311-brl.webp"
+  },
+  {
+    "id": "gl-608-brl",
+    "code": "608",
+    "name": "American Walnut",
+    "finish": "BRL",
+    "kind": "wood",
+    "pdfPage": 13,
+    "printedPage": 24,
+    "crop": [
+      1353,
+      142,
+      1526,
+      517
+    ],
+    "sampleAspect": 0.45116,
+    "color": "#5d3e38",
+    "image": "/catalog/greenlam/gl-608-brl.webp"
+  },
+  {
+    "id": "gl-5382-brl",
+    "code": "5382",
+    "name": "Chelsea Chestnut Brown",
+    "finish": "BRL",
+    "kind": "wood",
+    "pdfPage": 13,
+    "printedPage": 24,
+    "crop": [
+      1149,
+      584,
+      1323,
+      957
+    ],
+    "sampleAspect": 0.45561,
+    "color": "#423636",
+    "image": "/catalog/greenlam/gl-5382-brl.webp"
+  },
+  {
+    "id": "gl-5078-brl",
+    "code": "5078",
+    "name": "Esoteric Oak",
+    "finish": "BRL",
+    "kind": "wood",
+    "pdfPage": 13,
+    "printedPage": 24,
+    "crop": [
+      1353,
+      584,
+      1526,
+      957
+    ],
+    "sampleAspect": 0.45327,
+    "color": "#2e2e32",
+    "image": "/catalog/greenlam/gl-5078-brl.webp"
+  },
+  {
+    "id": "gl-682-brl",
+    "code": "682",
+    "name": "Hiland Pine",
+    "finish": "BRL",
+    "kind": "wood",
+    "pdfPage": 13,
+    "printedPage": 24,
+    "crop": [
+      1559,
+      142,
+      1936,
+      957
+    ],
+    "sampleAspect": 0.45666,
+    "color": "#f6ecea",
+    "image": "/catalog/greenlam/gl-682-brl.webp"
+  },
+  {
+    "id": "gl-5673-cny",
+    "code": "5673",
+    "name": "Samsara",
+    "finish": "CNY",
+    "kind": "stone",
+    "pdfPage": 14,
+    "printedPage": 25,
+    "crop": [
+      111,
+      142,
+      924,
+      957
+    ],
+    "sampleAspect": 0.9974,
+    "color": "#b5b0b6",
+    "image": "/catalog/greenlam/gl-5673-cny.webp"
+  },
+  {
+    "id": "gl-5672-cny",
+    "code": "5672",
+    "name": "Capitol Travertine",
+    "finish": "CNY",
+    "kind": "stone",
+    "pdfPage": 14,
+    "printedPage": 26,
+    "crop": [
+      1149,
+      142,
+      1526,
+      517
+    ],
+    "sampleAspect": 1.00698,
+    "color": "#beb1ae",
+    "image": "/catalog/greenlam/gl-5672-cny.webp"
+  },
+  {
+    "id": "gl-5671-cny",
+    "code": "5671",
+    "name": "Tivoli Travertine",
+    "finish": "CNY",
+    "kind": "stone",
+    "pdfPage": 14,
+    "printedPage": 26,
+    "crop": [
+      1149,
+      582,
+      1526,
+      957
+    ],
+    "sampleAspect": 1.00698,
+    "color": "#b9a9a2",
+    "image": "/catalog/greenlam/gl-5671-cny.webp"
+  },
+  {
+    "id": "gl-5675-cny",
+    "code": "5675",
+    "name": "Marco Marble",
+    "finish": "CNY",
+    "kind": "stone",
+    "pdfPage": 14,
+    "printedPage": 26,
+    "crop": [
+      1559,
+      142,
+      1936,
+      957
+    ],
+    "sampleAspect": 0.45666,
+    "color": "#485654",
+    "image": "/catalog/greenlam/gl-5675-cny.webp"
+  },
+  {
+    "id": "gl-265-cny",
+    "code": "265",
+    "name": "Grey Sand",
+    "finish": "CNY",
+    "kind": "stone",
+    "pdfPage": 15,
+    "printedPage": 27,
+    "crop": [
+      124,
+      142,
+      501,
+      517
+    ],
+    "sampleAspect": 1.00465,
+    "color": "#d8d4d3",
+    "image": "/catalog/greenlam/gl-265-cny.webp"
+  },
+  {
+    "id": "gl-277-cny",
+    "code": "277",
+    "name": "Charcoal",
+    "finish": "CNY",
+    "kind": "stone",
+    "pdfPage": 15,
+    "printedPage": 27,
+    "crop": [
+      124,
+      582,
+      501,
+      957
+    ],
+    "sampleAspect": 1.00465,
+    "color": "#252b2f",
+    "image": "/catalog/greenlam/gl-277-cny.webp"
+  },
+  {
+    "id": "gl-5674-cny",
+    "code": "5674",
+    "name": "Zeus Brown",
+    "finish": "CNY",
+    "kind": "stone",
+    "pdfPage": 15,
+    "printedPage": 27,
+    "crop": [
+      534,
+      142,
+      911,
+      957
+    ],
+    "sampleAspect": 0.45772,
+    "color": "#4a474b",
+    "image": "/catalog/greenlam/gl-5674-cny.webp"
+  },
+  {
+    "id": "gl-5596-cny",
+    "code": "5596",
+    "name": "Manitoba",
+    "finish": "CNY",
+    "kind": "stone",
+    "pdfPage": 15,
+    "printedPage": 28,
+    "crop": [
+      1149,
+      142,
+      1526,
+      517
+    ],
+    "sampleAspect": 1.00698,
+    "color": "#51555e",
+    "image": "/catalog/greenlam/gl-5596-cny.webp"
+  },
+  {
+    "id": "gl-132-cny",
+    "code": "132",
+    "name": "Cyclone",
+    "finish": "CNY",
+    "kind": "stone",
+    "pdfPage": 15,
+    "printedPage": 28,
+    "crop": [
+      1149,
+      582,
+      1526,
+      957
+    ],
+    "sampleAspect": 1.00698,
+    "color": "#cfcccb",
+    "image": "/catalog/greenlam/gl-132-cny.webp"
+  },
+  {
+    "id": "gl-5583-cny",
+    "code": "5583",
+    "name": "Visconti",
+    "finish": "CNY",
+    "kind": "stone",
+    "pdfPage": 15,
+    "printedPage": 28,
+    "crop": [
+      1559,
+      142,
+      1936,
+      957
+    ],
+    "sampleAspect": 0.45666,
+    "color": "#8e807c",
+    "image": "/catalog/greenlam/gl-5583-cny.webp"
+  },
+  {
+    "id": "gl-9851-afx",
+    "code": "9851",
+    "name": "White X",
+    "finish": "AFX",
+    "kind": "solid",
+    "pdfPage": 16,
+    "printedPage": 30,
+    "crop": [
+      1159,
+      129,
+      1317,
+      287
+    ],
+    "sampleAspect": 1.0,
+    "color": "#f6f7f7",
+    "image": "/catalog/greenlam/gl-9851-afx.webp"
+  },
+  {
+    "id": "gl-9854-afx",
+    "code": "9854",
+    "name": "Dove",
+    "finish": "AFX",
+    "kind": "solid",
+    "pdfPage": 16,
+    "printedPage": 30,
+    "crop": [
+      1358,
+      129,
+      1516,
+      287
+    ],
+    "sampleAspect": 1.0,
+    "color": "#d1c9c8",
+    "image": "/catalog/greenlam/gl-9854-afx.webp"
+  },
+  {
+    "id": "gl-9858-afx",
+    "code": "9858",
+    "name": "Victorian Violet",
+    "finish": "AFX",
+    "kind": "solid",
+    "pdfPage": 16,
+    "printedPage": 30,
+    "crop": [
+      1556,
+      129,
+      1714,
+      287
+    ],
+    "sampleAspect": 1.0,
+    "color": "#837583",
+    "image": "/catalog/greenlam/gl-9858-afx.webp"
+  },
+  {
+    "id": "gl-9857-afx",
+    "code": "9857",
+    "name": "Country Blue",
+    "finish": "AFX",
+    "kind": "solid",
+    "pdfPage": 16,
+    "printedPage": 30,
+    "crop": [
+      1755,
+      129,
+      1913,
+      287
+    ],
+    "sampleAspect": 1.0,
+    "color": "#68738f",
+    "image": "/catalog/greenlam/gl-9857-afx.webp"
+  },
+  {
+    "id": "gl-9855-afx",
+    "code": "9855",
+    "name": "Basalt Grey",
+    "finish": "AFX",
+    "kind": "solid",
+    "pdfPage": 16,
+    "printedPage": 30,
+    "crop": [
+      1159,
+      358,
+      1317,
+      518
+    ],
+    "sampleAspect": 0.98876,
+    "color": "#a69f9f",
+    "image": "/catalog/greenlam/gl-9855-afx.webp"
+  },
+  {
+    "id": "gl-9852-afx",
+    "code": "9852",
+    "name": "Eden Grey",
+    "finish": "AFX",
+    "kind": "solid",
+    "pdfPage": 16,
+    "printedPage": 30,
+    "crop": [
+      1358,
+      358,
+      1516,
+      518
+    ],
+    "sampleAspect": 0.98876,
+    "color": "#837f78",
+    "image": "/catalog/greenlam/gl-9852-afx.webp"
+  },
+  {
+    "id": "gl-9859-afx",
+    "code": "9859",
+    "name": "Sea Weed Green",
+    "finish": "AFX",
+    "kind": "solid",
+    "pdfPage": 16,
+    "printedPage": 30,
+    "crop": [
+      1556,
+      358,
+      1714,
+      518
+    ],
+    "sampleAspect": 0.98876,
+    "color": "#2f3433",
+    "image": "/catalog/greenlam/gl-9859-afx.webp"
+  },
+  {
+    "id": "gl-9860-afx",
+    "code": "9860",
+    "name": "Twilight Blue",
+    "finish": "AFX",
+    "kind": "solid",
+    "pdfPage": 16,
+    "printedPage": 30,
+    "crop": [
+      1755,
+      358,
+      1913,
+      518
+    ],
+    "sampleAspect": 0.98876,
+    "color": "#222c34",
+    "image": "/catalog/greenlam/gl-9860-afx.webp"
+  },
+  {
+    "id": "gl-9862-afx",
+    "code": "9862",
+    "name": "Titan",
+    "finish": "AFX",
+    "kind": "solid",
+    "pdfPage": 16,
+    "printedPage": 30,
+    "crop": [
+      1159,
+      583,
+      1317,
+      958
+    ],
+    "sampleAspect": 0.4093,
+    "color": "#938a85",
+    "image": "/catalog/greenlam/gl-9862-afx.webp"
+  },
+  {
+    "id": "gl-9853-afx",
+    "code": "9853",
+    "name": "Anthracite",
+    "finish": "AFX",
+    "kind": "solid",
+    "pdfPage": 16,
+    "printedPage": 30,
+    "crop": [
+      1358,
+      583,
+      1516,
+      958
+    ],
+    "sampleAspect": 0.4093,
+    "color": "#5f6063",
+    "image": "/catalog/greenlam/gl-9853-afx.webp"
+  },
+  {
+    "id": "gl-9856-afx",
+    "code": "9856",
+    "name": "Coffee Bean",
+    "finish": "AFX",
+    "kind": "solid",
+    "pdfPage": 16,
+    "printedPage": 30,
+    "crop": [
+      1556,
+      583,
+      1714,
+      958
+    ],
+    "sampleAspect": 0.4093,
+    "color": "#3e3737",
+    "image": "/catalog/greenlam/gl-9856-afx.webp"
+  },
+  {
+    "id": "gl-9861-afx",
+    "code": "9861",
+    "name": "Black X",
+    "finish": "AFX",
+    "kind": "solid",
+    "pdfPage": 16,
+    "printedPage": 30,
+    "crop": [
+      1755,
+      583,
+      1913,
+      958
+    ],
+    "sampleAspect": 0.4093,
+    "color": "#19191a",
+    "image": "/catalog/greenlam/gl-9861-afx.webp"
+  },
+  {
+    "id": "gl-90107-uni-sud",
+    "code": "90107",
+    "name": "Wool",
+    "finish": "UNI-SUD",
+    "kind": "solid",
+    "pdfPage": 17,
+    "printedPage": 32,
+    "crop": [
+      1164,
+      209,
+      1322,
+      367
+    ],
+    "sampleAspect": 1.00571,
+    "color": "#fbf9f4",
+    "image": "/catalog/greenlam/gl-90107-uni-sud.webp"
+  },
+  {
+    "id": "gl-90107-uni-hdg",
+    "code": "90107",
+    "name": "Wool",
+    "finish": "UNI-HDG",
+    "kind": "solid",
+    "pdfPage": 17,
+    "printedPage": 32,
+    "crop": [
+      1363,
+      209,
+      1521,
+      367
+    ],
+    "sampleAspect": 1.00571,
+    "color": "#fbf9f5",
+    "image": "/catalog/greenlam/gl-90107-uni-hdg.webp"
+  },
+  {
+    "id": "gl-90124-uni-sud",
+    "code": "90124",
+    "name": "Mysore Ivory",
+    "finish": "UNI-SUD",
+    "kind": "solid",
+    "pdfPage": 17,
+    "printedPage": 32,
+    "crop": [
+      1561,
+      209,
+      1719,
+      367
+    ],
+    "sampleAspect": 1.00571,
+    "color": "#fcfcd5",
+    "image": "/catalog/greenlam/gl-90124-uni-sud.webp"
+  },
+  {
+    "id": "gl-90124-uni-hdg",
+    "code": "90124",
+    "name": "Mysore Ivory",
+    "finish": "UNI-HDG",
+    "kind": "solid",
+    "pdfPage": 17,
+    "printedPage": 32,
+    "crop": [
+      1760,
+      209,
+      1918,
+      367
+    ],
+    "sampleAspect": 1.00571,
+    "color": "#fcfcd5",
+    "image": "/catalog/greenlam/gl-90124-uni-hdg.webp"
+  },
+  {
+    "id": "gl-90207-uni-sud",
+    "code": "90207",
+    "name": "Divine Yellow",
+    "finish": "UNI-SUD",
+    "kind": "solid",
+    "pdfPage": 17,
+    "printedPage": 32,
+    "crop": [
+      1164,
+      435,
+      1322,
+      593
+    ],
+    "sampleAspect": 1.0,
+    "color": "#fddf42",
+    "image": "/catalog/greenlam/gl-90207-uni-sud.webp"
+  },
+  {
+    "id": "gl-90207-uni-hdg",
+    "code": "90207",
+    "name": "Divine Yellow",
+    "finish": "UNI-HDG",
+    "kind": "solid",
+    "pdfPage": 17,
+    "printedPage": 32,
+    "crop": [
+      1363,
+      435,
+      1521,
+      593
+    ],
+    "sampleAspect": 1.0,
+    "color": "#fddf42",
+    "image": "/catalog/greenlam/gl-90207-uni-hdg.webp"
+  },
+  {
+    "id": "gl-90217-uni-sud",
+    "code": "90217",
+    "name": "Light Orange",
+    "finish": "UNI-SUD",
+    "kind": "solid",
+    "pdfPage": 17,
+    "printedPage": 32,
+    "crop": [
+      1561,
+      435,
+      1719,
+      593
+    ],
+    "sampleAspect": 1.0,
+    "color": "#f8af2f",
+    "image": "/catalog/greenlam/gl-90217-uni-sud.webp"
+  },
+  {
+    "id": "gl-90217-uni-hdg",
+    "code": "90217",
+    "name": "Light Orange",
+    "finish": "UNI-HDG",
+    "kind": "solid",
+    "pdfPage": 17,
+    "printedPage": 32,
+    "crop": [
+      1760,
+      435,
+      1918,
+      593
+    ],
+    "sampleAspect": 1.0,
+    "color": "#f8af2f",
+    "image": "/catalog/greenlam/gl-90217-uni-hdg.webp"
+  },
+  {
+    "id": "gl-90204-uni-sud",
+    "code": "90204",
+    "name": "Red Dynasty",
+    "finish": "UNI-SUD",
+    "kind": "solid",
+    "pdfPage": 17,
+    "printedPage": 32,
+    "crop": [
+      1164,
+      659,
+      1322,
+      817
+    ],
+    "sampleAspect": 1.0,
+    "color": "#cc3829",
+    "image": "/catalog/greenlam/gl-90204-uni-sud.webp"
+  },
+  {
+    "id": "gl-90204-uni-hdg",
+    "code": "90204",
+    "name": "Red Dynasty",
+    "finish": "UNI-HDG",
+    "kind": "solid",
+    "pdfPage": 17,
+    "printedPage": 32,
+    "crop": [
+      1363,
+      659,
+      1521,
+      817
+    ],
+    "sampleAspect": 1.0,
+    "color": "#cc3829",
+    "image": "/catalog/greenlam/gl-90204-uni-hdg.webp"
+  },
+  {
+    "id": "gl-90401-uni-sud",
+    "code": "90401",
+    "name": "Black",
+    "finish": "UNI-SUD",
+    "kind": "solid",
+    "pdfPage": 17,
+    "printedPage": 32,
+    "crop": [
+      1561,
+      659,
+      1719,
+      817
+    ],
+    "sampleAspect": 1.0,
+    "color": "#1e2628",
+    "image": "/catalog/greenlam/gl-90401-uni-sud.webp"
+  },
+  {
+    "id": "gl-90401-uni-hdg",
+    "code": "90401",
+    "name": "Black",
+    "finish": "UNI-HDG",
+    "kind": "solid",
+    "pdfPage": 17,
+    "printedPage": 32,
+    "crop": [
+      1760,
+      659,
+      1918,
+      817
+    ],
+    "sampleAspect": 1.0,
+    "color": "#1d2527",
+    "image": "/catalog/greenlam/gl-90401-uni-hdg.webp"
+  },
+  {
+    "id": "gl-111-sat",
+    "code": "111",
+    "name": "Designer White",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 18,
+    "printedPage": 33,
+    "crop": [
+      151,
+      569,
+      309,
+      728
+    ],
+    "sampleAspect": 0.9887,
+    "color": "#f9f8f8",
+    "image": "/catalog/greenlam/gl-111-sat.webp"
+  },
+  {
+    "id": "gl-107-sat",
+    "code": "107",
+    "name": "Wool",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 18,
+    "printedPage": 33,
+    "crop": [
+      342,
+      569,
+      500,
+      728
+    ],
+    "sampleAspect": 0.99435,
+    "color": "#fbf9f6",
+    "image": "/catalog/greenlam/gl-107-sat.webp"
+  },
+  {
+    "id": "gl-124-sat",
+    "code": "124",
+    "name": "Mysore Ivory",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 18,
+    "printedPage": 33,
+    "crop": [
+      537,
+      569,
+      695,
+      728
+    ],
+    "sampleAspect": 0.99435,
+    "color": "#fcfcd5",
+    "image": "/catalog/greenlam/gl-124-sat.webp"
+  },
+  {
+    "id": "gl-132-sat",
+    "code": "132",
+    "name": "Cyclone",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 18,
+    "printedPage": 33,
+    "crop": [
+      727,
+      569,
+      885,
+      728
+    ],
+    "sampleAspect": 0.9887,
+    "color": "#d4d7a3",
+    "image": "/catalog/greenlam/gl-132-sat.webp"
+  },
+  {
+    "id": "gl-271-sat",
+    "code": "271",
+    "name": "Light Grey",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 18,
+    "printedPage": 33,
+    "crop": [
+      151,
+      798,
+      309,
+      957
+    ],
+    "sampleAspect": 0.9887,
+    "color": "#eae6d8",
+    "image": "/catalog/greenlam/gl-271-sat.webp"
+  },
+  {
+    "id": "gl-272-sat",
+    "code": "272",
+    "name": "Cloud",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 18,
+    "printedPage": 33,
+    "crop": [
+      342,
+      798,
+      500,
+      957
+    ],
+    "sampleAspect": 0.99435,
+    "color": "#c5cab7",
+    "image": "/catalog/greenlam/gl-272-sat.webp"
+  },
+  {
+    "id": "gl-266-sat",
+    "code": "266",
+    "name": "Ash Grey",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 18,
+    "printedPage": 33,
+    "crop": [
+      537,
+      798,
+      695,
+      957
+    ],
+    "sampleAspect": 0.99435,
+    "color": "#a09e91",
+    "image": "/catalog/greenlam/gl-266-sat.webp"
+  },
+  {
+    "id": "gl-261-sat",
+    "code": "261",
+    "name": "Dark Grey",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 18,
+    "printedPage": 33,
+    "crop": [
+      727,
+      798,
+      885,
+      957
+    ],
+    "sampleAspect": 0.9887,
+    "color": "#828073",
+    "image": "/catalog/greenlam/gl-261-sat.webp"
+  },
+  {
+    "id": "gl-248-sat",
+    "code": "248",
+    "name": "Leaf Green",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 18,
+    "printedPage": 34,
+    "crop": [
+      1176,
+      127,
+      1334,
+      285
+    ],
+    "sampleAspect": 1.00571,
+    "color": "#81aa75",
+    "image": "/catalog/greenlam/gl-248-sat.webp"
+  },
+  {
+    "id": "gl-240-sat",
+    "code": "240",
+    "name": "Eucalyptus",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 18,
+    "printedPage": 34,
+    "crop": [
+      1367,
+      127,
+      1525,
+      285
+    ],
+    "sampleAspect": 1.0,
+    "color": "#7d8b92",
+    "image": "/catalog/greenlam/gl-240-sat.webp"
+  },
+  {
+    "id": "gl-467-sat",
+    "code": "467",
+    "name": "Mermaid",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 18,
+    "printedPage": 34,
+    "crop": [
+      1561,
+      127,
+      1719,
+      285
+    ],
+    "sampleAspect": 1.00571,
+    "color": "#3f6a74",
+    "image": "/catalog/greenlam/gl-467-sat.webp"
+  },
+  {
+    "id": "gl-296-sat",
+    "code": "296",
+    "name": "Fog",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 18,
+    "printedPage": 34,
+    "crop": [
+      1752,
+      127,
+      1910,
+      285
+    ],
+    "sampleAspect": 1.00571,
+    "color": "#869697",
+    "image": "/catalog/greenlam/gl-296-sat.webp"
+  },
+  {
+    "id": "gl-274-sat",
+    "code": "274",
+    "name": "Pine Nut",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 18,
+    "printedPage": 34,
+    "crop": [
+      1176,
+      356,
+      1334,
+      516
+    ],
+    "sampleAspect": 0.98876,
+    "color": "#7c7759",
+    "image": "/catalog/greenlam/gl-274-sat.webp"
+  },
+  {
+    "id": "gl-244-sat",
+    "code": "244",
+    "name": "Green Pepper",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 18,
+    "printedPage": 34,
+    "crop": [
+      1367,
+      356,
+      1525,
+      516
+    ],
+    "sampleAspect": 0.98315,
+    "color": "#45433a",
+    "image": "/catalog/greenlam/gl-244-sat.webp"
+  },
+  {
+    "id": "gl-245-sat",
+    "code": "245",
+    "name": "Dark Green",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 18,
+    "printedPage": 34,
+    "crop": [
+      1561,
+      356,
+      1719,
+      516
+    ],
+    "sampleAspect": 0.98876,
+    "color": "#4a7144",
+    "image": "/catalog/greenlam/gl-245-sat.webp"
+  },
+  {
+    "id": "gl-364-sat",
+    "code": "364",
+    "name": "Emerald",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 18,
+    "printedPage": 34,
+    "crop": [
+      1752,
+      356,
+      1910,
+      516
+    ],
+    "sampleAspect": 0.98876,
+    "color": "#3c6063",
+    "image": "/catalog/greenlam/gl-364-sat.webp"
+  },
+  {
+    "id": "gl-303-sat",
+    "code": "303",
+    "name": "Zephyr Blue",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 18,
+    "printedPage": 34,
+    "crop": [
+      1176,
+      582,
+      1334,
+      957
+    ],
+    "sampleAspect": 0.4093,
+    "color": "#9aa5c1",
+    "image": "/catalog/greenlam/gl-303-sat.webp"
+  },
+  {
+    "id": "gl-291-sat",
+    "code": "291",
+    "name": "Electric Blue",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 18,
+    "printedPage": 34,
+    "crop": [
+      1367,
+      582,
+      1525,
+      957
+    ],
+    "sampleAspect": 0.40698,
+    "color": "#2858a5",
+    "image": "/catalog/greenlam/gl-291-sat.webp"
+  },
+  {
+    "id": "gl-297-sat",
+    "code": "297",
+    "name": "Blue Galaxy",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 18,
+    "printedPage": 34,
+    "crop": [
+      1561,
+      582,
+      1719,
+      957
+    ],
+    "sampleAspect": 0.4093,
+    "color": "#2a4e6c",
+    "image": "/catalog/greenlam/gl-297-sat.webp"
+  },
+  {
+    "id": "gl-401-sat",
+    "code": "401",
+    "name": "Black",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 18,
+    "printedPage": 34,
+    "crop": [
+      1752,
+      582,
+      1910,
+      957
+    ],
+    "sampleAspect": 0.4093,
+    "color": "#1e2628",
+    "image": "/catalog/greenlam/gl-401-sat.webp"
+  },
+  {
+    "id": "gl-175-sat",
+    "code": "175",
+    "name": "Heather",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 19,
+    "printedPage": 35,
+    "crop": [
+      151,
+      142,
+      309,
+      517
+    ],
+    "sampleAspect": 0.40698,
+    "color": "#ac92aa",
+    "image": "/catalog/greenlam/gl-175-sat.webp"
+  },
+  {
+    "id": "gl-173-sat",
+    "code": "173",
+    "name": "Barbie Pink",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 19,
+    "printedPage": 35,
+    "crop": [
+      342,
+      142,
+      500,
+      517
+    ],
+    "sampleAspect": 0.4093,
+    "color": "#f14d8c",
+    "image": "/catalog/greenlam/gl-173-sat.webp"
+  },
+  {
+    "id": "gl-203-sat",
+    "code": "203",
+    "name": "Red",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 19,
+    "printedPage": 35,
+    "crop": [
+      537,
+      142,
+      695,
+      517
+    ],
+    "sampleAspect": 0.4093,
+    "color": "#cf4e26",
+    "image": "/catalog/greenlam/gl-203-sat.webp"
+  },
+  {
+    "id": "gl-452-sat",
+    "code": "452",
+    "name": "Plum",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 19,
+    "printedPage": 35,
+    "crop": [
+      727,
+      142,
+      885,
+      517
+    ],
+    "sampleAspect": 0.40698,
+    "color": "#996e81",
+    "image": "/catalog/greenlam/gl-452-sat.webp"
+  },
+  {
+    "id": "gl-174-sat",
+    "code": "174",
+    "name": "Powder Pink",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 19,
+    "printedPage": 35,
+    "crop": [
+      151,
+      582,
+      309,
+      957
+    ],
+    "sampleAspect": 0.40698,
+    "color": "#e3c0bd",
+    "image": "/catalog/greenlam/gl-174-sat.webp"
+  },
+  {
+    "id": "gl-205-sat",
+    "code": "205",
+    "name": "Brick",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 19,
+    "printedPage": 35,
+    "crop": [
+      342,
+      582,
+      500,
+      957
+    ],
+    "sampleAspect": 0.4093,
+    "color": "#b4732d",
+    "image": "/catalog/greenlam/gl-205-sat.webp"
+  },
+  {
+    "id": "gl-138-sat",
+    "code": "138",
+    "name": "Terracotta",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 19,
+    "printedPage": 35,
+    "crop": [
+      537,
+      582,
+      695,
+      957
+    ],
+    "sampleAspect": 0.4093,
+    "color": "#b36861",
+    "image": "/catalog/greenlam/gl-138-sat.webp"
+  },
+  {
+    "id": "gl-466-sat",
+    "code": "466",
+    "name": "Dark Cherry",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 19,
+    "printedPage": 35,
+    "crop": [
+      727,
+      582,
+      885,
+      957
+    ],
+    "sampleAspect": 0.40698,
+    "color": "#2b2023",
+    "image": "/catalog/greenlam/gl-466-sat.webp"
+  },
+  {
+    "id": "gl-146-sat",
+    "code": "146",
+    "name": "Oatmeal",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 19,
+    "printedPage": 36,
+    "crop": [
+      1149,
+      142,
+      1526,
+      517
+    ],
+    "sampleAspect": 1.00698,
+    "color": "#897140",
+    "image": "/catalog/greenlam/gl-146-sat.webp"
+  },
+  {
+    "id": "gl-181-sat",
+    "code": "181",
+    "name": "Chocolate",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 19,
+    "printedPage": 36,
+    "crop": [
+      1149,
+      582,
+      1526,
+      957
+    ],
+    "sampleAspect": 1.00698,
+    "color": "#4a3e24",
+    "image": "/catalog/greenlam/gl-181-sat.webp"
+  },
+  {
+    "id": "gl-137-sat",
+    "code": "137",
+    "name": "Mustard",
+    "finish": "SAT",
+    "kind": "solid",
+    "pdfPage": 19,
+    "printedPage": 36,
+    "crop": [
+      1559,
+      142,
+      1936,
+      957
+    ],
+    "sampleAspect": 0.45666,
+    "color": "#bc9053",
+    "image": "/catalog/greenlam/gl-137-sat.webp"
+  },
+  {
+    "id": "gl-5107-sat",
+    "code": "5107",
+    "name": "Vienna Beech",
+    "finish": "SAT",
+    "kind": "wood",
+    "pdfPage": 22,
+    "printedPage": 41,
+    "crop": [
+      111,
+      142,
+      924,
+      957
+    ],
+    "sampleAspect": 0.9974,
+    "color": "#786862",
+    "image": "/catalog/greenlam/gl-5107-sat.webp"
+  },
+  {
+    "id": "gl-5106-sat",
+    "code": "5106",
+    "name": "Palermo Oak",
+    "finish": "SAT",
+    "kind": "wood",
+    "pdfPage": 22,
+    "printedPage": 42,
+    "crop": [
+      1149,
+      142,
+      1526,
+      957
+    ],
+    "sampleAspect": 0.45772,
+    "color": "#ac9a8c",
+    "image": "/catalog/greenlam/gl-5106-sat.webp"
+  },
+  {
+    "id": "gl-5379-sat",
+    "code": "5379",
+    "name": "Manor",
+    "finish": "SAT",
+    "kind": "wood",
+    "pdfPage": 22,
+    "printedPage": 42,
+    "crop": [
+      1559,
+      142,
+      1936,
+      957
+    ],
+    "sampleAspect": 0.45666,
+    "color": "#6e574a",
+    "image": "/catalog/greenlam/gl-5379-sat.webp"
+  },
+  {
+    "id": "gl-101-hdg",
+    "code": "101",
+    "name": "White",
+    "finish": "HDG",
+    "kind": "solid",
+    "pdfPage": 25,
+    "printedPage": 47,
+    "crop": [
+      127,
+      568,
+      286,
+      727
+    ],
+    "sampleAspect": 0.99435,
+    "color": "#f5f5f5",
+    "image": "/catalog/greenlam/gl-101-hdg.webp"
+  },
+  {
+    "id": "gl-107-hdg",
+    "code": "107",
+    "name": "Wool",
+    "finish": "HDG",
+    "kind": "solid",
+    "pdfPage": 25,
+    "printedPage": 47,
+    "crop": [
+      318,
+      568,
+      477,
+      727
+    ],
+    "sampleAspect": 1.0,
+    "color": "#fcfaf0",
+    "image": "/catalog/greenlam/gl-107-hdg.webp"
+  },
+  {
+    "id": "gl-124-hdg",
+    "code": "124",
+    "name": "Mysore Ivory",
+    "finish": "HDG",
+    "kind": "solid",
+    "pdfPage": 25,
+    "printedPage": 47,
+    "crop": [
+      529,
+      568,
+      906,
+      727
+    ],
+    "sampleAspect": 2.44068,
+    "color": "#f9f8d6",
+    "image": "/catalog/greenlam/gl-124-hdg.webp"
+  },
+  {
+    "id": "gl-270-hdg",
+    "code": "270",
+    "name": "Silver Grey",
+    "finish": "HDG",
+    "kind": "solid",
+    "pdfPage": 25,
+    "printedPage": 47,
+    "crop": [
+      127,
+      798,
+      286,
+      957
+    ],
+    "sampleAspect": 0.99435,
+    "color": "#e9e3d8",
+    "image": "/catalog/greenlam/gl-270-hdg.webp"
+  },
+  {
+    "id": "gl-261-hdg",
+    "code": "261",
+    "name": "Dark Grey",
+    "finish": "HDG",
+    "kind": "solid",
+    "pdfPage": 25,
+    "printedPage": 47,
+    "crop": [
+      318,
+      798,
+      477,
+      957
+    ],
+    "sampleAspect": 1.0,
+    "color": "#817f72",
+    "image": "/catalog/greenlam/gl-261-hdg.webp"
+  },
+  {
+    "id": "gl-401-hdg",
+    "code": "401",
+    "name": "Black",
+    "finish": "HDG",
+    "kind": "solid",
+    "pdfPage": 25,
+    "printedPage": 47,
+    "crop": [
+      529,
+      798,
+      906,
+      957
+    ],
+    "sampleAspect": 2.44068,
+    "color": "#1d2527",
+    "image": "/catalog/greenlam/gl-401-hdg.webp"
+  },
+  {
+    "id": "gl-295-hdg",
+    "code": "295",
+    "name": "Azur",
+    "finish": "HDG",
+    "kind": "solid",
+    "pdfPage": 25,
+    "printedPage": 48,
+    "crop": [
+      1149,
+      142,
+      1323,
+      517
+    ],
+    "sampleAspect": 0.45349,
+    "color": "#c9dee0",
+    "image": "/catalog/greenlam/gl-295-hdg.webp"
+  },
+  {
+    "id": "gl-467-hdg",
+    "code": "467",
+    "name": "Mermaid",
+    "finish": "HDG",
+    "kind": "solid",
+    "pdfPage": 25,
+    "printedPage": 48,
+    "crop": [
+      1353,
+      142,
+      1526,
+      517
+    ],
+    "sampleAspect": 0.45116,
+    "color": "#3d6371",
+    "image": "/catalog/greenlam/gl-467-hdg.webp"
+  },
+  {
+    "id": "gl-243-hdg",
+    "code": "243",
+    "name": "Sea Green",
+    "finish": "HDG",
+    "kind": "solid",
+    "pdfPage": 25,
+    "printedPage": 48,
+    "crop": [
+      1149,
+      584,
+      1323,
+      957
+    ],
+    "sampleAspect": 0.45561,
+    "color": "#a5dd92",
+    "image": "/catalog/greenlam/gl-243-hdg.webp"
+  },
+  {
+    "id": "gl-364-hdg",
+    "code": "364",
+    "name": "Emerald",
+    "finish": "HDG",
+    "kind": "solid",
+    "pdfPage": 25,
+    "printedPage": 48,
+    "crop": [
+      1353,
+      584,
+      1526,
+      957
+    ],
+    "sampleAspect": 0.45327,
+    "color": "#3c6063",
+    "image": "/catalog/greenlam/gl-364-hdg.webp"
+  },
+  {
+    "id": "gl-240-hdg",
+    "code": "240",
+    "name": "Eucalyptus",
+    "finish": "HDG",
+    "kind": "solid",
+    "pdfPage": 25,
+    "printedPage": 48,
+    "crop": [
+      1559,
+      142,
+      1936,
+      957
+    ],
+    "sampleAspect": 0.45666,
+    "color": "#7c8b92",
+    "image": "/catalog/greenlam/gl-240-hdg.webp"
+  },
+  {
+    "id": "gl-5101-vrb",
+    "code": "5101",
+    "name": "Horizon Elm Beige",
+    "finish": "VRB",
+    "kind": "wood",
+    "pdfPage": 30,
+    "printedPage": 57,
+    "crop": [
+      111,
+      142,
+      924,
+      957
+    ],
+    "sampleAspect": 0.9974,
+    "color": "#baa193",
+    "image": "/catalog/greenlam/gl-5101-vrb.webp"
+  },
+  {
+    "id": "gl-5102-vrb",
+    "code": "5102",
+    "name": "Horizon Elm Brown",
+    "finish": "VRB",
+    "kind": "wood",
+    "pdfPage": 30,
+    "printedPage": 58,
+    "crop": [
+      1149,
+      142,
+      1526,
+      957
+    ],
+    "sampleAspect": 0.45772,
+    "color": "#716662",
+    "image": "/catalog/greenlam/gl-5102-vrb.webp"
+  },
+  {
+    "id": "gl-9605-vrb",
+    "code": "9605",
+    "name": "Livid Teak",
+    "finish": "VRB",
+    "kind": "wood",
+    "pdfPage": 30,
+    "printedPage": 58,
+    "crop": [
+      1559,
+      142,
+      1936,
+      957
+    ],
+    "sampleAspect": 0.45666,
+    "color": "#918375",
+    "image": "/catalog/greenlam/gl-9605-vrb.webp"
+  },
+  {
+    "id": "gl-5352-sy1",
+    "code": "5352",
+    "name": "Rovigo Elm",
+    "finish": "SY1",
+    "kind": "wood",
+    "pdfPage": 33,
+    "printedPage": 63,
+    "crop": [
+      124,
+      142,
+      501,
+      517
+    ],
+    "sampleAspect": 1.00465,
+    "color": "#d6c28f",
+    "image": "/catalog/greenlam/gl-5352-sy1.webp"
+  },
+  {
+    "id": "gl-5353-sy1",
+    "code": "5353",
+    "name": "Rosenheim Elm",
+    "finish": "SY1",
+    "kind": "wood",
+    "pdfPage": 33,
+    "printedPage": 63,
+    "crop": [
+      124,
+      582,
+      501,
+      957
+    ],
+    "sampleAspect": 1.00465,
+    "color": "#aa9a8a",
+    "image": "/catalog/greenlam/gl-5353-sy1.webp"
+  },
+  {
+    "id": "gl-5351-sy1",
+    "code": "5351",
+    "name": "Cardiff Elm",
+    "finish": "SY1",
+    "kind": "wood",
+    "pdfPage": 33,
+    "printedPage": 63,
+    "crop": [
+      534,
+      142,
+      911,
+      957
+    ],
+    "sampleAspect": 0.45772,
+    "color": "#e2d8bc",
+    "image": "/catalog/greenlam/gl-5351-sy1.webp"
+  },
+  {
+    "id": "gl-5355-sy2",
+    "code": "5355",
+    "name": "Valencia Ash",
+    "finish": "SY2",
+    "kind": "wood",
+    "pdfPage": 33,
+    "printedPage": 64,
+    "crop": [
+      1149,
+      142,
+      1526,
+      517
+    ],
+    "sampleAspect": 1.00698,
+    "color": "#a48a65",
+    "image": "/catalog/greenlam/gl-5355-sy2.webp"
+  },
+  {
+    "id": "gl-5356-sy2",
+    "code": "5356",
+    "name": "Toledo Ash",
+    "finish": "SY2",
+    "kind": "wood",
+    "pdfPage": 33,
+    "printedPage": 64,
+    "crop": [
+      1149,
+      582,
+      1526,
+      957
+    ],
+    "sampleAspect": 1.00698,
+    "color": "#a09281",
+    "image": "/catalog/greenlam/gl-5356-sy2.webp"
+  },
+  {
+    "id": "gl-5354-sy2",
+    "code": "5354",
+    "name": "Leon Ash",
+    "finish": "SY2",
+    "kind": "wood",
+    "pdfPage": 33,
+    "printedPage": 64,
+    "crop": [
+      1559,
+      142,
+      1936,
+      957
+    ],
+    "sampleAspect": 0.45666,
+    "color": "#6e371d",
+    "image": "/catalog/greenlam/gl-5354-sy2.webp"
+  },
+  {
+    "id": "gl-101-sgl",
+    "code": "101",
+    "name": "White",
+    "finish": "SGL",
+    "kind": "solid",
+    "pdfPage": 34,
+    "printedPage": 65,
+    "crop": [
+      126,
+      142,
+      300,
+      517
+    ],
+    "sampleAspect": 0.45349,
+    "color": "#f4f3f3",
+    "image": "/catalog/greenlam/gl-101-sgl.webp"
+  },
+  {
+    "id": "gl-107-sgl",
+    "code": "107",
+    "name": "Wool",
+    "finish": "SGL",
+    "kind": "solid",
+    "pdfPage": 34,
+    "printedPage": 65,
+    "crop": [
+      329,
+      142,
+      503,
+      517
+    ],
+    "sampleAspect": 0.45349,
+    "color": "#fbf8eb",
+    "image": "/catalog/greenlam/gl-107-sgl.webp"
+  },
+  {
+    "id": "gl-124-sgl",
+    "code": "124",
+    "name": "Mysore Ivory",
+    "finish": "SGL",
+    "kind": "solid",
+    "pdfPage": 34,
+    "printedPage": 65,
+    "crop": [
+      533,
+      142,
+      707,
+      517
+    ],
+    "sampleAspect": 0.45349,
+    "color": "#f9f8d6",
+    "image": "/catalog/greenlam/gl-124-sgl.webp"
+  },
+  {
+    "id": "gl-148-sgl",
+    "code": "148",
+    "name": "Tidal Sand",
+    "finish": "SGL",
+    "kind": "solid",
+    "pdfPage": 34,
+    "printedPage": 65,
+    "crop": [
+      737,
+      142,
+      911,
+      517
+    ],
+    "sampleAspect": 0.45349,
+    "color": "#c2bc87",
+    "image": "/catalog/greenlam/gl-148-sgl.webp"
+  },
+  {
+    "id": "gl-362-sgl",
+    "code": "362",
+    "name": "Niagara",
+    "finish": "SGL",
+    "kind": "solid",
+    "pdfPage": 34,
+    "printedPage": 65,
+    "crop": [
+      126,
+      582,
+      300,
+      957
+    ],
+    "sampleAspect": 0.45349,
+    "color": "#6a92b0",
+    "image": "/catalog/greenlam/gl-362-sgl.webp"
+  },
+  {
+    "id": "gl-300-sgl",
+    "code": "300",
+    "name": "Robin Blue",
+    "finish": "SGL",
+    "kind": "solid",
+    "pdfPage": 34,
+    "printedPage": 65,
+    "crop": [
+      329,
+      582,
+      503,
+      957
+    ],
+    "sampleAspect": 0.45349,
+    "color": "#342d80",
+    "image": "/catalog/greenlam/gl-300-sgl.webp"
+  },
+  {
+    "id": "gl-458-sgl",
+    "code": "458",
+    "name": "Noir Current",
+    "finish": "SGL",
+    "kind": "solid",
+    "pdfPage": 34,
+    "printedPage": 65,
+    "crop": [
+      533,
+      582,
+      707,
+      957
+    ],
+    "sampleAspect": 0.45349,
+    "color": "#4e2c3e",
+    "image": "/catalog/greenlam/gl-458-sgl.webp"
+  },
+  {
+    "id": "gl-401-sgl",
+    "code": "401",
+    "name": "Black",
+    "finish": "SGL",
+    "kind": "solid",
+    "pdfPage": 34,
+    "printedPage": 65,
+    "crop": [
+      737,
+      582,
+      911,
+      957
+    ],
+    "sampleAspect": 0.45349,
+    "color": "#111212",
+    "image": "/catalog/greenlam/gl-401-sgl.webp"
+  },
+  {
+    "id": "gl-229-sgl",
+    "code": "229",
+    "name": "Yellow",
+    "finish": "SGL",
+    "kind": "solid",
+    "pdfPage": 34,
+    "printedPage": 66,
+    "crop": [
+      1149,
+      142,
+      1526,
+      517
+    ],
+    "sampleAspect": 1.00698,
+    "color": "#fbee47",
+    "image": "/catalog/greenlam/gl-229-sgl.webp"
+  },
+  {
+    "id": "gl-217-sgl",
+    "code": "217",
+    "name": "Light Orange",
+    "finish": "SGL",
+    "kind": "solid",
+    "pdfPage": 34,
+    "printedPage": 66,
+    "crop": [
+      1559,
+      142,
+      1936,
+      517
+    ],
+    "sampleAspect": 1.00465,
+    "color": "#f5b02a",
+    "image": "/catalog/greenlam/gl-217-sgl.webp"
+  },
+  {
+    "id": "gl-257-sgl",
+    "code": "257",
+    "name": "Olive",
+    "finish": "SGL",
+    "kind": "solid",
+    "pdfPage": 34,
+    "printedPage": 66,
+    "crop": [
+      1149,
+      582,
+      1526,
+      957
+    ],
+    "sampleAspect": 1.00698,
+    "color": "#d5ea64",
+    "image": "/catalog/greenlam/gl-257-sgl.webp"
+  },
+  {
+    "id": "gl-361-sgl",
+    "code": "361",
+    "name": "Golf Green",
+    "finish": "SGL",
+    "kind": "solid",
+    "pdfPage": 34,
+    "printedPage": 66,
+    "crop": [
+      1559,
+      582,
+      1936,
+      957
+    ],
+    "sampleAspect": 1.00465,
+    "color": "#91885e",
+    "image": "/catalog/greenlam/gl-361-sgl.webp"
+  },
+  {
+    "id": "gl-5674-sgl",
+    "code": "5674",
+    "name": "Zeus Brown",
+    "finish": "SGL",
+    "kind": "stone",
+    "pdfPage": 35,
+    "printedPage": 67,
+    "crop": [
+      124,
+      142,
+      501,
+      957
+    ],
+    "sampleAspect": 0.45666,
+    "color": "#4a474b",
+    "image": "/catalog/greenlam/gl-5674-sgl.webp"
+  },
+  {
+    "id": "gl-5675-sgl",
+    "code": "5675",
+    "name": "Marco Marble",
+    "finish": "SGL",
+    "kind": "stone",
+    "pdfPage": 35,
+    "printedPage": 67,
+    "crop": [
+      534,
+      142,
+      911,
+      957
+    ],
+    "sampleAspect": 0.45772,
+    "color": "#44524f",
+    "image": "/catalog/greenlam/gl-5675-sgl.webp"
+  },
+  {
+    "id": "gl-5584-sgl",
+    "code": "5584",
+    "name": "Athena",
+    "finish": "SGL",
+    "kind": "stone",
+    "pdfPage": 35,
+    "printedPage": 68,
+    "crop": [
+      1149,
+      142,
+      1526,
+      957
+    ],
+    "sampleAspect": 0.45772,
+    "color": "#c1bdbb",
+    "image": "/catalog/greenlam/gl-5584-sgl.webp"
+  },
+  {
+    "id": "gl-5575-sgl",
+    "code": "5575",
+    "name": "Black Marmor",
+    "finish": "SGL",
+    "kind": "stone",
+    "pdfPage": 35,
+    "printedPage": 68,
+    "crop": [
+      1559,
+      142,
+      1936,
+      957
+    ],
+    "sampleAspect": 0.45666,
+    "color": "#55494a",
+    "image": "/catalog/greenlam/gl-5575-sgl.webp"
+  },
+  {
+    "id": "gl-5574-sgl",
+    "code": "5574",
+    "name": "Statuario",
+    "finish": "SGL",
+    "kind": "stone",
+    "pdfPage": 36,
+    "printedPage": 69,
+    "crop": [
+      124,
+      142,
+      501,
+      957
+    ],
+    "sampleAspect": 0.45666,
+    "color": "#dfdde2",
+    "image": "/catalog/greenlam/gl-5574-sgl.webp"
+  },
+  {
+    "id": "gl-5583-sgl",
+    "code": "5583",
+    "name": "Visconti",
+    "finish": "SGL",
+    "kind": "stone",
+    "pdfPage": 36,
+    "printedPage": 69,
+    "crop": [
+      534,
+      142,
+      911,
+      957
+    ],
+    "sampleAspect": 0.45772,
+    "color": "#a89c8d",
+    "image": "/catalog/greenlam/gl-5583-sgl.webp"
+  },
+  {
+    "id": "gl-5597-sgl",
+    "code": "5597",
+    "name": "Sanganer Pearl",
+    "finish": "SGL",
+    "kind": "stone",
+    "pdfPage": 36,
+    "printedPage": 70,
+    "crop": [
+      1149,
+      142,
+      1526,
+      957
+    ],
+    "sampleAspect": 0.45772,
+    "color": "#f0eaeb",
+    "image": "/catalog/greenlam/gl-5597-sgl.webp"
+  },
+  {
+    "id": "gl-5596-sgl",
+    "code": "5596",
+    "name": "Manitoba",
+    "finish": "SGL",
+    "kind": "stone",
+    "pdfPage": 36,
+    "printedPage": 70,
+    "crop": [
+      1559,
+      142,
+      1936,
+      957
+    ],
+    "sampleAspect": 0.45666,
+    "color": "#606166",
+    "image": "/catalog/greenlam/gl-5596-sgl.webp"
+  }
+]

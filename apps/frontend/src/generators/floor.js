@@ -147,7 +147,7 @@ function getFloorStyle(roomType) {
 
 // ── Public API ──────────────────────────────────────────
 
-export function createFloor(points, { roomType = '', color, opacity = 1.0 } = {}) {
+export function createFloorGeometry(points, holes = []) {
   if (!Array.isArray(points) || points.length < 3) {
     throw new Error('Floor requires at least 3 points');
   }
@@ -157,9 +157,15 @@ export function createFloor(points, { roomType = '', color, opacity = 1.0 } = {}
   rest.forEach((p) => shape.lineTo(p.x, -p.y));
   shape.lineTo(first.x, -first.y);
 
+  for(const points of holes)shape.holes.push(new THREE.Path(points.map(p=>new THREE.Vector2(p.x,-p.y))));
   const geometry = new THREE.ShapeGeometry(shape);
   geometry.rotateX(-Math.PI / 2);
 
+  return geometry;
+}
+
+export function createFloor(points, { roomType = '', color, opacity = 1.0, holes = [] } = {}) {
+  const geometry=createFloorGeometry(points,holes);
   // Determine floor material based on room type
   const style = getFloorStyle(roomType);
   let material;

@@ -1,0 +1,2636 @@
+{
+  "walls": [
+    {
+      "start": {
+        "x": 77.0,
+        "y": 92.5
+      },
+      "end": {
+        "x": 120.0,
+        "y": 92.5
+      },
+      "thickness_px": 11.0,
+      "detector": "cv-outline",
+      "outline_faces": {
+        "axis": "x",
+        "low": 87.0,
+        "high": 98.0,
+        "stroke_px": 3
+      },
+      "interior_white_fraction": 1.0,
+      "pixel_support": 0.787,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 77.0,
+        "y": 164.5
+      },
+      "end": {
+        "x": 122.0,
+        "y": 164.5
+      },
+      "thickness_px": 11.0,
+      "detector": "cv-outline",
+      "outline_faces": {
+        "axis": "x",
+        "low": 159.0,
+        "high": 170.0,
+        "stroke_px": 3
+      },
+      "interior_white_fraction": 1.0,
+      "pixel_support": 0.761,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 82.5,
+        "y": 87.0
+      },
+      "end": {
+        "x": 82.5,
+        "y": 173.0
+      },
+      "thickness_px": 11.0,
+      "detector": "cv-outline",
+      "outline_faces": {
+        "axis": "y",
+        "low": 77.0,
+        "high": 88.0,
+        "stroke_px": 3
+      },
+      "interior_white_fraction": 1.0,
+      "pixel_support": 0.793,
+      "wall_type": "exterior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 112.5,
+        "y": 158.0
+      },
+      "end": {
+        "x": 112.5,
+        "y": 424.0
+      },
+      "thickness_px": 11.0,
+      "detector": "cv-outline",
+      "outline_faces": {
+        "axis": "y",
+        "low": 107.0,
+        "high": 118.0,
+        "stroke_px": 3
+      },
+      "interior_white_fraction": 1.0,
+      "pixel_support": 0.97,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 113.0,
+        "y": 464.0
+      },
+      "end": {
+        "x": 113.0,
+        "y": 683.0
+      },
+      "thickness_px": 12.0,
+      "detector": "cv-outline",
+      "outline_faces": {
+        "axis": "y",
+        "low": 107.0,
+        "high": 119.0,
+        "stroke_px": 3
+      },
+      "interior_white_fraction": 1.0,
+      "pixel_support": 0.78,
+      "confidence": 0.4368766248226166,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 113.0,
+        "y": 637.0
+      },
+      "end": {
+        "x": 256.0,
+        "y": 637.0
+      },
+      "thickness_px": 12.0,
+      "detector": "cv-outline",
+      "outline_faces": {
+        "axis": "x",
+        "low": 631.0,
+        "high": 643.0,
+        "stroke_px": 3
+      },
+      "interior_white_fraction": 0.819,
+      "pixel_support": 0.93,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 287.0,
+        "y": 637.0
+      },
+      "end": {
+        "x": 360.5,
+        "y": 637.0
+      },
+      "thickness_px": 12.0,
+      "detector": "cv-outline",
+      "outline_faces": {
+        "axis": "x",
+        "low": 631.0,
+        "high": 643.0,
+        "stroke_px": 3
+      },
+      "interior_white_fraction": 0.984,
+      "pixel_support": 0.905,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 360.5,
+        "y": 468.0
+      },
+      "end": {
+        "x": 360.5,
+        "y": 680.0
+      },
+      "thickness_px": 11.0,
+      "detector": "cv-outline",
+      "outline_faces": {
+        "axis": "y",
+        "low": 355.0,
+        "high": 366.0,
+        "stroke_px": 3
+      },
+      "interior_white_fraction": 0.99,
+      "pixel_support": 0.97,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 360.5,
+        "y": 523.5
+      },
+      "end": {
+        "x": 486.0,
+        "y": 523.5
+      },
+      "thickness_px": 13.0,
+      "detector": "cv-outline",
+      "outline_faces": {
+        "axis": "x",
+        "low": 517.0,
+        "high": 530.0,
+        "stroke_px": 1
+      },
+      "interior_white_fraction": 0.964,
+      "pixel_support": 0.89,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 360.5,
+        "y": 624.5
+      },
+      "end": {
+        "x": 486.0,
+        "y": 624.5
+      },
+      "thickness_px": 13.0,
+      "detector": "cv-outline",
+      "outline_faces": {
+        "axis": "x",
+        "low": 618.0,
+        "high": 631.0,
+        "stroke_px": 1
+      },
+      "interior_white_fraction": 0.964,
+      "pixel_support": 0.89,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 486.0,
+        "y": 462.0
+      },
+      "end": {
+        "x": 486.0,
+        "y": 680.0
+      },
+      "thickness_px": 12.0,
+      "detector": "cv-outline",
+      "outline_faces": {
+        "axis": "y",
+        "low": 480.0,
+        "high": 492.0,
+        "stroke_px": 3
+      },
+      "interior_white_fraction": 1.0,
+      "pixel_support": 0.94,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 486.0,
+        "y": 637.0
+      },
+      "end": {
+        "x": 559.0,
+        "y": 637.0
+      },
+      "thickness_px": 12.0,
+      "detector": "cv-outline",
+      "outline_faces": {
+        "axis": "x",
+        "low": 631.0,
+        "high": 643.0,
+        "stroke_px": 3
+      },
+      "interior_white_fraction": 1.0,
+      "pixel_support": 0.87,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 641.0,
+        "y": 92.5
+      },
+      "end": {
+        "x": 733.5,
+        "y": 92.5
+      },
+      "thickness_px": 11.0,
+      "detector": "cv-outline",
+      "outline_faces": {
+        "axis": "x",
+        "low": 87.0,
+        "high": 98.0,
+        "stroke_px": 3
+      },
+      "interior_white_fraction": 0.988,
+      "pixel_support": 0.946,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 733.5,
+        "y": 47.0
+      },
+      "end": {
+        "x": 733.5,
+        "y": 165.0
+      },
+      "thickness_px": 11.0,
+      "detector": "cv-outline",
+      "outline_faces": {
+        "axis": "y",
+        "low": 728.0,
+        "high": 739.0,
+        "stroke_px": 3
+      },
+      "interior_white_fraction": 1.0,
+      "pixel_support": 0.92,
+      "wall_type": "exterior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 107.0,
+        "y": 296.0
+      },
+      "end": {
+        "x": 262.0,
+        "y": 296.0
+      },
+      "detector": "yolo",
+      "confidence": 0.6436240077018738,
+      "thickness_px": 3.0,
+      "pixel_support": 0.94,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 108.0,
+        "y": 406.0
+      },
+      "end": {
+        "x": 246.0,
+        "y": 406.0
+      },
+      "detector": "yolo",
+      "confidence": 0.62541663646698,
+      "thickness_px": 3.0,
+      "pixel_support": 0.94,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 108.0,
+        "y": 473.0
+      },
+      "end": {
+        "x": 360.5,
+        "y": 473.0
+      },
+      "detector": "yolo",
+      "confidence": 0.38908734917640686,
+      "thickness_px": 3.0,
+      "pixel_support": 0.67,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 108.0,
+        "y": 677.0
+      },
+      "end": {
+        "x": 294.0,
+        "y": 677.0
+      },
+      "detector": "yolo",
+      "confidence": 0.4160972833633423,
+      "thickness_px": 3.0,
+      "pixel_support": 0.97,
+      "wall_type": "exterior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 111.0,
+        "y": 52.0
+      },
+      "end": {
+        "x": 265.0,
+        "y": 52.0
+      },
+      "detector": "yolo",
+      "confidence": 0.6593735814094543,
+      "thickness_px": 3.0,
+      "pixel_support": 0.94,
+      "wall_type": "exterior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 113.0,
+        "y": 683.0
+      },
+      "end": {
+        "x": 297.0,
+        "y": 683.0
+      },
+      "detector": "cv",
+      "thickness_px": 3.0,
+      "pixel_support": 0.99,
+      "wall_type": "exterior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 120.0,
+        "y": 52.0
+      },
+      "end": {
+        "x": 120.0,
+        "y": 101.0
+      },
+      "detector": "yolo",
+      "confidence": 0.6505963206291199,
+      "thickness_px": 5.0,
+      "pixel_support": 0.96,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 246.0,
+        "y": 406.0
+      },
+      "end": {
+        "x": 246.0,
+        "y": 477.0
+      },
+      "detector": "yolo",
+      "confidence": 0.5633106231689453,
+      "thickness_px": 3.0,
+      "pixel_support": 0.958,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 256.0,
+        "y": 52.0
+      },
+      "end": {
+        "x": 256.0,
+        "y": 96.0
+      },
+      "detector": "yolo",
+      "confidence": 0.5467905402183533,
+      "thickness_px": 3.0,
+      "pixel_support": 0.822,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 257.0,
+        "y": 92.0
+      },
+      "end": {
+        "x": 328.0,
+        "y": 92.0
+      },
+      "detector": "yolo",
+      "confidence": 0.49375051259994507,
+      "pixel_support": 0.458,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 262.0,
+        "y": 93.0
+      },
+      "end": {
+        "x": 262.0,
+        "y": 296.0
+      },
+      "detector": "yolo",
+      "confidence": 0.4719632565975189,
+      "thickness_px": 3.0,
+      "pixel_support": 0.76,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 287.0,
+        "y": 637.0
+      },
+      "end": {
+        "x": 287.0,
+        "y": 677.0
+      },
+      "detector": "cv",
+      "thickness_px": 5.0,
+      "pixel_support": 1.0,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 294.0,
+        "y": 633.0
+      },
+      "end": {
+        "x": 294.0,
+        "y": 683.0
+      },
+      "detector": "yolo",
+      "confidence": 0.5396960973739624,
+      "thickness_px": 3.0,
+      "pixel_support": 0.824,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 322.0,
+        "y": 52.0
+      },
+      "end": {
+        "x": 322.0,
+        "y": 91.0
+      },
+      "detector": "yolo",
+      "confidence": 0.42144063115119934,
+      "thickness_px": 3.0,
+      "pixel_support": 0.925,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 322.0,
+        "y": 52.0
+      },
+      "end": {
+        "x": 420.0,
+        "y": 52.0
+      },
+      "detector": "yolo",
+      "confidence": 0.5602453351020813,
+      "thickness_px": 3.0,
+      "pixel_support": 0.97,
+      "wall_type": "exterior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 322.0,
+        "y": 94.0
+      },
+      "end": {
+        "x": 322.0,
+        "y": 226.0
+      },
+      "detector": "yolo",
+      "confidence": 0.42553412914276123,
+      "thickness_px": 3.0,
+      "pixel_support": 0.98,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 389.0,
+        "y": 220.0
+      },
+      "end": {
+        "x": 427.0,
+        "y": 220.0
+      },
+      "detector": "yolo",
+      "confidence": 0.5159486532211304,
+      "thickness_px": 3.0,
+      "pixel_support": 0.897,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 422.0,
+        "y": 267.0
+      },
+      "end": {
+        "x": 606.0,
+        "y": 267.0
+      },
+      "detector": "yolo",
+      "confidence": 0.6158435344696045,
+      "thickness_px": 3.0,
+      "pixel_support": 0.78,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 427.0,
+        "y": 47.0
+      },
+      "end": {
+        "x": 427.0,
+        "y": 470.0
+      },
+      "detector": "yolo",
+      "confidence": 0.6501759886741638,
+      "thickness_px": 3.0,
+      "pixel_support": 0.97,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 495.0,
+        "y": 52.0
+      },
+      "end": {
+        "x": 495.0,
+        "y": 101.0
+      },
+      "detector": "cv",
+      "thickness_px": 5.0,
+      "pixel_support": 0.96,
+      "confidence": 0.5944352746009827,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 495.0,
+        "y": 52.0
+      },
+      "end": {
+        "x": 739.0,
+        "y": 52.0
+      },
+      "detector": "yolo",
+      "confidence": 0.39341822266578674,
+      "thickness_px": 3.0,
+      "pixel_support": 0.96,
+      "wall_type": "exterior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 536.0,
+        "y": 87.0
+      },
+      "end": {
+        "x": 536.0,
+        "y": 101.0
+      },
+      "detector": "cv",
+      "thickness_px": 5.0,
+      "pixel_support": 0.867,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 554.0,
+        "y": 677.0
+      },
+      "end": {
+        "x": 739.0,
+        "y": 677.0
+      },
+      "detector": "yolo",
+      "confidence": 0.4732667803764343,
+      "thickness_px": 3.0,
+      "pixel_support": 0.98,
+      "wall_type": "exterior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 559.0,
+        "y": 637.0
+      },
+      "end": {
+        "x": 559.0,
+        "y": 677.0
+      },
+      "detector": "yolo",
+      "confidence": 0.6485753655433655,
+      "thickness_px": 3.0,
+      "pixel_support": 1.0,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 597.0,
+        "y": 87.0
+      },
+      "end": {
+        "x": 597.0,
+        "y": 101.0
+      },
+      "detector": "cv",
+      "thickness_px": 5.0,
+      "pixel_support": 0.867,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 600.0,
+        "y": 52.0
+      },
+      "end": {
+        "x": 600.0,
+        "y": 89.0
+      },
+      "detector": "yolo",
+      "confidence": 0.3716517388820648,
+      "thickness_px": 3.0,
+      "pixel_support": 0.974,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 601.0,
+        "y": 395.0
+      },
+      "end": {
+        "x": 740.0,
+        "y": 395.0
+      },
+      "detector": "yolo",
+      "confidence": 0.6577925086021423,
+      "thickness_px": 3.0,
+      "pixel_support": 0.92,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 603.0,
+        "y": 637.0
+      },
+      "end": {
+        "x": 739.0,
+        "y": 637.0
+      },
+      "detector": "yolo",
+      "confidence": 0.5784659385681152,
+      "thickness_px": 1.0,
+      "pixel_support": 0.49,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 606.0,
+        "y": 89.0
+      },
+      "end": {
+        "x": 606.0,
+        "y": 267.0
+      },
+      "detector": "yolo",
+      "confidence": 0.536100447177887,
+      "thickness_px": 3.0,
+      "pixel_support": 1.0,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 606.0,
+        "y": 328.0
+      },
+      "end": {
+        "x": 606.0,
+        "y": 467.0
+      },
+      "detector": "yolo",
+      "confidence": 0.5069358348846436,
+      "thickness_px": 3.0,
+      "pixel_support": 0.98,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 606.0,
+        "y": 328.0
+      },
+      "end": {
+        "x": 741.0,
+        "y": 328.0
+      },
+      "detector": "yolo",
+      "confidence": 0.6684740781784058,
+      "thickness_px": 3.0,
+      "pixel_support": 0.68,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 606.0,
+        "y": 467.0
+      },
+      "end": {
+        "x": 740.0,
+        "y": 467.0
+      },
+      "detector": "yolo",
+      "confidence": 0.3877717852592468,
+      "thickness_px": 3.0,
+      "pixel_support": 0.7,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 697.0,
+        "y": 267.0
+      },
+      "end": {
+        "x": 740.0,
+        "y": 267.0
+      },
+      "detector": "yolo",
+      "confidence": 0.6143097281455994,
+      "thickness_px": 3.0,
+      "pixel_support": 0.818,
+      "wall_type": "interior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 734.0,
+        "y": 45.0
+      },
+      "end": {
+        "x": 734.0,
+        "y": 646.0
+      },
+      "detector": "yolo",
+      "confidence": 0.5209031105041504,
+      "pixel_support": 0.41,
+      "wall_type": "exterior",
+      "wall_type_inferred": true
+    },
+    {
+      "start": {
+        "x": 739.0,
+        "y": 637.0
+      },
+      "end": {
+        "x": 739.0,
+        "y": 677.0
+      },
+      "detector": "yolo",
+      "confidence": 0.4446401596069336,
+      "thickness_px": 3.0,
+      "pixel_support": 1.0,
+      "wall_type": "exterior",
+      "wall_type_inferred": true
+    }
+  ],
+  "scan_api_version": 1,
+  "seedWalls": [],
+  "walls_include_seeds": true,
+  "params": {
+    "canny1": 40,
+    "canny2": 120,
+    "hough_threshold": 90,
+    "min_line_length": 40,
+    "max_line_gap": 20,
+    "wall_thickness": 10
+  },
+  "model": "yolo+cv",
+  "floor_plan_id": null,
+  "db_saved": false,
+  "db_corrections_loaded": false,
+  "detection_provenance": {
+    "mode": "fresh_detector",
+    "database_enabled": false,
+    "database_saved": false,
+    "saved_corrections_loaded": false,
+    "manual_walls_preserved": 0
+  },
+  "yolo_weights": "/Users/apple/Documents/ai-3d-project/models/best.pt",
+  "door_weights": "/Users/apple/Documents/ai-3d-project/models/best.pt",
+  "room_object_weights": "/Users/apple/Documents/ai-3d-project/apps/room-and-object/runs/room_object_yolo/weights/best.pt",
+  "window_glass_weights": "/Users/apple/Documents/ai-3d-project/models/best.pt",
+  "doors": [
+    {
+      "bbox": {
+        "x1": 497.2730712890625,
+        "y1": 89.68976593017578,
+        "x2": 530.3403930664062,
+        "y2": 100.07211303710938
+      },
+      "swing_bbox": {
+        "x1": 496.7351379394531,
+        "y1": 61.3690185546875,
+        "x2": 530.2900390625,
+        "y2": 94.23023986816406
+      },
+      "class": "Door",
+      "confidence": 0.842,
+      "swingDir": "left-outside"
+    },
+    {
+      "bbox": {
+        "x1": 332.261962890625,
+        "y1": 87.27252960205078,
+        "x2": 364.87994384765625,
+        "y2": 98.72695922851562
+      },
+      "swing_bbox": {
+        "x1": 330.1109619140625,
+        "y1": 60.46131134033203,
+        "x2": 363.89605712890625,
+        "y2": 93.66593933105469
+      },
+      "class": "Door",
+      "confidence": 0.42,
+      "swingDir": "left-outside"
+    },
+    {
+      "bbox": {
+        "x1": 557.7725219726562,
+        "y1": 262.78448486328125,
+        "x2": 596.5751342773438,
+        "y2": 269.1548156738281
+      },
+      "swing_bbox": {
+        "x1": 557.4627685546875,
+        "y1": 224.47036743164062,
+        "x2": 597.877685546875,
+        "y2": 265.2456970214844
+      },
+      "class": "Door",
+      "confidence": 0.877,
+      "swingDir": "right-outside"
+    },
+    {
+      "bbox": {
+        "x1": 610.397705078125,
+        "y1": 462.2027893066406,
+        "x2": 641.912841796875,
+        "y2": 468.8771057128906
+      },
+      "swing_bbox": {
+        "x1": 609.5030517578125,
+        "y1": 431.0882873535156,
+        "x2": 642.8356323242188,
+        "y2": 465.24517822265625
+      },
+      "class": "Door",
+      "confidence": 0.791,
+      "swingDir": "left-outside"
+    },
+    {
+      "bbox": {
+        "x1": 610.19580078125,
+        "y1": 87.67579650878906,
+        "x2": 642.5962524414062,
+        "y2": 98.8434829711914
+      },
+      "swing_bbox": {
+        "x1": 609.1422729492188,
+        "y1": 61.26387023925781,
+        "x2": 643.3091430664062,
+        "y2": 95.00489044189453
+      },
+      "class": "Door",
+      "confidence": 0.654,
+      "swingDir": "left-outside"
+    },
+    {
+      "bbox": {
+        "x1": 609.7348022460938,
+        "y1": 327.245849609375,
+        "x2": 642.4659423828125,
+        "y2": 334.823486328125
+      },
+      "swing_bbox": {
+        "x1": 609.2288818359375,
+        "y1": 332.2585144042969,
+        "x2": 643.5027465820312,
+        "y2": 365.4788513183594
+      },
+      "class": "Door",
+      "confidence": 0.545,
+      "swingDir": "left-inside"
+    },
+    {
+      "bbox": {
+        "x1": 205.40548706054688,
+        "y1": 473.07843017578125,
+        "x2": 237.91012573242188,
+        "y2": 480.2209777832031
+      },
+      "swing_bbox": {
+        "x1": 205.5101318359375,
+        "y1": 442.5890808105469,
+        "x2": 238.8861083984375,
+        "y2": 477.07159423828125
+      },
+      "class": "Door",
+      "confidence": 0.838,
+      "swingDir": "right-outside"
+    },
+    {
+      "bbox": {
+        "x1": 525.3480224609375,
+        "y1": 461.7752380371094,
+        "x2": 566.0219116210938,
+        "y2": 468.6784973144531
+      },
+      "swing_bbox": {
+        "x1": 527.4070434570312,
+        "y1": 464.2174072265625,
+        "x2": 566.7094116210938,
+        "y2": 506.1189880371094
+      },
+      "class": "Door",
+      "confidence": 0.601,
+      "swingDir": "left-inside"
+    },
+    {
+      "bbox": {
+        "x1": 312.17138671875,
+        "y1": 472.2947998046875,
+        "x2": 350.9689636230469,
+        "y2": 479.56884765625
+      },
+      "swing_bbox": {
+        "x1": 312.915283203125,
+        "y1": 476.9483947753906,
+        "x2": 351.97564697265625,
+        "y2": 517.3433227539062
+      },
+      "class": "Door",
+      "confidence": 0.787,
+      "swingDir": "right-inside"
+    },
+    {
+      "bbox": {
+        "x1": 286.33209228515625,
+        "y1": 221.33677673339844,
+        "x2": 319.9122314453125,
+        "y2": 227.6936492919922
+      },
+      "swing_bbox": {
+        "x1": 286.3193359375,
+        "y1": 189.56777954101562,
+        "x2": 319.5494079589844,
+        "y2": 223.7160186767578
+      },
+      "class": "Door",
+      "confidence": 0.806,
+      "swingDir": "right-outside"
+    },
+    {
+      "bbox": {
+        "x1": 252.47637939453125,
+        "y1": 630.4600219726562,
+        "x2": 286.334716796875,
+        "y2": 643.6317749023438
+      },
+      "swing_bbox": {
+        "x1": 253.32464599609375,
+        "y1": 635.6387329101562,
+        "x2": 286.3934020996094,
+        "y2": 667.769775390625
+      },
+      "class": "Door",
+      "confidence": 0.55,
+      "swingDir": "right-inside"
+    },
+    {
+      "bbox": {
+        "x1": 123.81664276123047,
+        "y1": 87.71198272705078,
+        "x2": 155.26895141601562,
+        "y2": 99.6148910522461
+      },
+      "swing_bbox": {
+        "x1": 121.4231185913086,
+        "y1": 60.933616638183594,
+        "x2": 155.3211669921875,
+        "y2": 94.04364013671875
+      },
+      "class": "Door",
+      "confidence": 0.647,
+      "swingDir": "left-outside"
+    },
+    {
+      "bbox": {
+        "x1": 255.90481567382812,
+        "y1": 252.9452362060547,
+        "x2": 263.3736877441406,
+        "y2": 293.9951477050781
+      },
+      "swing_bbox": {
+        "x1": 218.89755249023438,
+        "y1": 253.12557983398438,
+        "x2": 257.79351806640625,
+        "y2": 292.96881103515625
+      },
+      "class": "Door",
+      "confidence": 0.823,
+      "swingDir": "right-outside"
+    },
+    {
+      "bbox": {
+        "x1": 369.5589904785156,
+        "y1": 469.5682373046875,
+        "x2": 416.58502197265625,
+        "y2": 476.14892578125
+      },
+      "swing_bbox": {
+        "x1": 369.0148010253906,
+        "y1": 422.1627502441406,
+        "x2": 416.1130065917969,
+        "y2": 472.2593994140625
+      },
+      "class": "Door",
+      "confidence": 0.543,
+      "swingDir": "right-outside"
+    },
+    {
+      "bbox": {
+        "x1": 432.3805236816406,
+        "y1": 463.6650085449219,
+        "x2": 477.3388366699219,
+        "y2": 473.897705078125
+      },
+      "swing_bbox": {
+        "x1": 432.139892578125,
+        "y1": 423.9608154296875,
+        "x2": 478.23858642578125,
+        "y2": 468.2281799316406
+      },
+      "class": "Door",
+      "confidence": 0.658,
+      "swingDir": "left-outside"
+    }
+  ],
+  "rooms_detected": [
+    {
+      "class": "Bedroom",
+      "confidence": 0.937,
+      "bbox": {
+        "x1": 116.61012268066406,
+        "y1": 478.0455322265625,
+        "x2": 357.2992248535156,
+        "y2": 635.9016723632812
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Bathroom",
+      "confidence": 0.898,
+      "bbox": {
+        "x1": 260.7745056152344,
+        "y1": 95.6619873046875,
+        "x2": 323.93914794921875,
+        "y2": 224.57923889160156
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bedroom",
+      "confidence": 0.841,
+      "bbox": {
+        "x1": 492.1175842285156,
+        "y1": 466.6540832519531,
+        "x2": 733.1635131835938,
+        "y2": 635.9463500976562
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Bedroom",
+      "confidence": 0.774,
+      "bbox": {
+        "x1": 116.66448974609375,
+        "y1": 94.52394104003906,
+        "x2": 257.595947265625,
+        "y2": 297.7497863769531
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Bedroom",
+      "confidence": 0.677,
+      "bbox": {
+        "x1": 426.8944396972656,
+        "y1": 263.49530029296875,
+        "x2": 602.6837158203125,
+        "y2": 465.3517150878906
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bathroom",
+      "confidence": 0.514,
+      "bbox": {
+        "x1": 606.466552734375,
+        "y1": 333.9364318847656,
+        "x2": 730.5315551757812,
+        "y2": 397.4081115722656
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bedroom",
+      "confidence": 0.491,
+      "bbox": {
+        "x1": 425.91766357421875,
+        "y1": 97.25636291503906,
+        "x2": 601.6765747070312,
+        "y2": 264.51544189453125
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Bedroom",
+      "confidence": 0.433,
+      "bbox": {
+        "x1": 115.34906005859375,
+        "y1": 299.12469482421875,
+        "x2": 422.869384765625,
+        "y2": 408.42529296875
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bathroom",
+      "confidence": 0.382,
+      "bbox": {
+        "x1": 118.14012908935547,
+        "y1": 411.4351806640625,
+        "x2": 242.338134765625,
+        "y2": 475.1405334472656
+      },
+      "inference_size": 960
+    }
+  ],
+  "windows": [
+    {
+      "class": "window",
+      "confidence": 0.79,
+      "bbox": {
+        "x1": 277.9441223144531,
+        "y1": 86.44811248779297,
+        "x2": 307.2303771972656,
+        "y2": 99.26551055908203
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.728,
+      "bbox": {
+        "x1": 154.19117736816406,
+        "y1": 630.6480102539062,
+        "x2": 215.474609375,
+        "y2": 644.68212890625
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.708,
+      "bbox": {
+        "x1": 727.5789794921875,
+        "y1": 149.52938842773438,
+        "x2": 740.3176879882812,
+        "y2": 209.741455078125
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.702,
+      "bbox": {
+        "x1": 107.17327117919922,
+        "y1": 197.8170166015625,
+        "x2": 120.63728332519531,
+        "y2": 258.4164733886719
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.692,
+      "bbox": {
+        "x1": 728.0565795898438,
+        "y1": 416.6105651855469,
+        "x2": 740.5569458007812,
+        "y2": 446.42352294921875
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.677,
+      "bbox": {
+        "x1": 106.64443969726562,
+        "y1": 324.4929504394531,
+        "x2": 120.15119171142578,
+        "y2": 385.48870849609375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.677,
+      "bbox": {
+        "x1": 106.49453735351562,
+        "y1": 427.66094970703125,
+        "x2": 120.08197021484375,
+        "y2": 458.56060791015625
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.668,
+      "bbox": {
+        "x1": 728.1871948242188,
+        "y1": 349.270263671875,
+        "x2": 740.2526245117188,
+        "y2": 380.60028076171875
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.665,
+      "bbox": {
+        "x1": 727.9609985351562,
+        "y1": 519.5069580078125,
+        "x2": 740.330322265625,
+        "y2": 580.495849609375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.651,
+      "bbox": {
+        "x1": 634.7506713867188,
+        "y1": 630.898681640625,
+        "x2": 696.2175903320312,
+        "y2": 644.5753173828125
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.65,
+      "bbox": {
+        "x1": 536.8209228515625,
+        "y1": 86.58403778076172,
+        "x2": 597.2139892578125,
+        "y2": 99.41349792480469
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.64,
+      "bbox": {
+        "x1": 727.906005859375,
+        "y1": 274.4626159667969,
+        "x2": 740.773193359375,
+        "y2": 321.8916931152344
+      },
+      "inference_size": 640
+    }
+  ],
+  "glass_grills": [],
+  "glass_banisters": [],
+  "pillars": [],
+  "stairs": [
+    {
+      "class": "stairs",
+      "confidence": 0.84,
+      "bbox": {
+        "x1": 360.5,
+        "y1": 530.4,
+        "x2": 486.0,
+        "y2": 617.6
+      },
+      "source": "wall-tread-fallback",
+      "tread_directions": [
+        "h"
+      ]
+    }
+  ],
+  "lifts": [],
+  "fixtures": [
+    {
+      "class": "Kitchen-Slab",
+      "confidence": 0.722,
+      "bbox": {
+        "x1": 700.0626831054688,
+        "y1": 97.23554992675781,
+        "x2": 728.6567993164062,
+        "y2": 263.0990295410156
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Sink",
+      "confidence": 0.565,
+      "bbox": {
+        "x1": 645.772216796875,
+        "y1": 101.79905700683594,
+        "x2": 706.31201171875,
+        "y2": 125.50518798828125
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Kitchen-Slab",
+      "confidence": 0.561,
+      "bbox": {
+        "x1": 390.69915771484375,
+        "y1": 96.6885986328125,
+        "x2": 419.9956359863281,
+        "y2": 222.0013885498047
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Stove",
+      "confidence": 0.519,
+      "bbox": {
+        "x1": 702.0703125,
+        "y1": 170.1320343017578,
+        "x2": 725.4751586914062,
+        "y2": 209.58074951171875
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Sink",
+      "confidence": 0.454,
+      "bbox": {
+        "x1": 394.0130615234375,
+        "y1": 147.96681213378906,
+        "x2": 415.52545166015625,
+        "y2": 186.5957489013672
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.447,
+      "bbox": {
+        "x1": 428.77789306640625,
+        "y1": 518.6917724609375,
+        "x2": 478.6553955078125,
+        "y2": 530.8467407226562
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.321,
+      "bbox": {
+        "x1": 89.29767608642578,
+        "y1": 102.2807388305664,
+        "x2": 103.80379486083984,
+        "y2": 159.0207977294922
+      },
+      "inference_size": 640
+    }
+  ],
+  "rooms_and_objects": [
+    {
+      "class": "Bedroom",
+      "confidence": 0.937,
+      "bbox": {
+        "x1": 116.61012268066406,
+        "y1": 478.0455322265625,
+        "x2": 357.2992248535156,
+        "y2": 635.9016723632812
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Bathroom",
+      "confidence": 0.898,
+      "bbox": {
+        "x1": 260.7745056152344,
+        "y1": 95.6619873046875,
+        "x2": 323.93914794921875,
+        "y2": 224.57923889160156
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bedroom",
+      "confidence": 0.841,
+      "bbox": {
+        "x1": 492.1175842285156,
+        "y1": 466.6540832519531,
+        "x2": 733.1635131835938,
+        "y2": 635.9463500976562
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Bedroom",
+      "confidence": 0.774,
+      "bbox": {
+        "x1": 116.66448974609375,
+        "y1": 94.52394104003906,
+        "x2": 257.595947265625,
+        "y2": 297.7497863769531
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Kitchen-Slab",
+      "confidence": 0.722,
+      "bbox": {
+        "x1": 700.0626831054688,
+        "y1": 97.23554992675781,
+        "x2": 728.6567993164062,
+        "y2": 263.0990295410156
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bedroom",
+      "confidence": 0.677,
+      "bbox": {
+        "x1": 426.8944396972656,
+        "y1": 263.49530029296875,
+        "x2": 602.6837158203125,
+        "y2": 465.3517150878906
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Sink",
+      "confidence": 0.565,
+      "bbox": {
+        "x1": 645.772216796875,
+        "y1": 101.79905700683594,
+        "x2": 706.31201171875,
+        "y2": 125.50518798828125
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Kitchen-Slab",
+      "confidence": 0.561,
+      "bbox": {
+        "x1": 390.69915771484375,
+        "y1": 96.6885986328125,
+        "x2": 419.9956359863281,
+        "y2": 222.0013885498047
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Stove",
+      "confidence": 0.519,
+      "bbox": {
+        "x1": 702.0703125,
+        "y1": 170.1320343017578,
+        "x2": 725.4751586914062,
+        "y2": 209.58074951171875
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Bathroom",
+      "confidence": 0.514,
+      "bbox": {
+        "x1": 606.466552734375,
+        "y1": 333.9364318847656,
+        "x2": 730.5315551757812,
+        "y2": 397.4081115722656
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bedroom",
+      "confidence": 0.491,
+      "bbox": {
+        "x1": 425.91766357421875,
+        "y1": 97.25636291503906,
+        "x2": 601.6765747070312,
+        "y2": 264.51544189453125
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Sink",
+      "confidence": 0.454,
+      "bbox": {
+        "x1": 394.0130615234375,
+        "y1": 147.96681213378906,
+        "x2": 415.52545166015625,
+        "y2": 186.5957489013672
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.447,
+      "bbox": {
+        "x1": 428.77789306640625,
+        "y1": 518.6917724609375,
+        "x2": 478.6553955078125,
+        "y2": 530.8467407226562
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bedroom",
+      "confidence": 0.433,
+      "bbox": {
+        "x1": 115.34906005859375,
+        "y1": 299.12469482421875,
+        "x2": 422.869384765625,
+        "y2": 408.42529296875
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bathroom",
+      "confidence": 0.382,
+      "bbox": {
+        "x1": 118.14012908935547,
+        "y1": 411.4351806640625,
+        "x2": 242.338134765625,
+        "y2": 475.1405334472656
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Wardrobe",
+      "confidence": 0.321,
+      "bbox": {
+        "x1": 89.29767608642578,
+        "y1": 102.2807388305664,
+        "x2": 103.80379486083984,
+        "y2": 159.0207977294922
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.79,
+      "bbox": {
+        "x1": 277.9441223144531,
+        "y1": 86.44811248779297,
+        "x2": 307.2303771972656,
+        "y2": 99.26551055908203
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.728,
+      "bbox": {
+        "x1": 154.19117736816406,
+        "y1": 630.6480102539062,
+        "x2": 215.474609375,
+        "y2": 644.68212890625
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.708,
+      "bbox": {
+        "x1": 727.5789794921875,
+        "y1": 149.52938842773438,
+        "x2": 740.3176879882812,
+        "y2": 209.741455078125
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.702,
+      "bbox": {
+        "x1": 107.17327117919922,
+        "y1": 197.8170166015625,
+        "x2": 120.63728332519531,
+        "y2": 258.4164733886719
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.692,
+      "bbox": {
+        "x1": 728.0565795898438,
+        "y1": 416.6105651855469,
+        "x2": 740.5569458007812,
+        "y2": 446.42352294921875
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.677,
+      "bbox": {
+        "x1": 106.64443969726562,
+        "y1": 324.4929504394531,
+        "x2": 120.15119171142578,
+        "y2": 385.48870849609375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.677,
+      "bbox": {
+        "x1": 106.49453735351562,
+        "y1": 427.66094970703125,
+        "x2": 120.08197021484375,
+        "y2": 458.56060791015625
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.668,
+      "bbox": {
+        "x1": 728.1871948242188,
+        "y1": 349.270263671875,
+        "x2": 740.2526245117188,
+        "y2": 380.60028076171875
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.665,
+      "bbox": {
+        "x1": 727.9609985351562,
+        "y1": 519.5069580078125,
+        "x2": 740.330322265625,
+        "y2": 580.495849609375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.651,
+      "bbox": {
+        "x1": 634.7506713867188,
+        "y1": 630.898681640625,
+        "x2": 696.2175903320312,
+        "y2": 644.5753173828125
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.65,
+      "bbox": {
+        "x1": 536.8209228515625,
+        "y1": 86.58403778076172,
+        "x2": 597.2139892578125,
+        "y2": 99.41349792480469
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.64,
+      "bbox": {
+        "x1": 727.906005859375,
+        "y1": 274.4626159667969,
+        "x2": 740.773193359375,
+        "y2": 321.8916931152344
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "stairs",
+      "confidence": 0.84,
+      "bbox": {
+        "x1": 360.5,
+        "y1": 530.4,
+        "x2": 486.0,
+        "y2": 617.6
+      },
+      "source": "wall-tread-fallback",
+      "tread_directions": [
+        "h"
+      ]
+    }
+  ],
+  "detected_count": 49,
+  "seed_count": 0,
+  "scale_estimate": {
+    "meters_per_pixel": 0.026801556589970136,
+    "source": "door_width_estimate",
+    "sample_count": 15
+  },
+  "measurements": {
+    "status": "ok",
+    "engine": "tesseract-local",
+    "linear": [
+      {
+        "value_m": 0.20320000000000002,
+        "text": "8\"",
+        "bbox": [
+          273.0,
+          165.0,
+          306.0,
+          175.0
+        ],
+        "confidence": 0.642,
+        "axis": "x",
+        "ocr_line_bbox": [
+          273.0,
+          165.0,
+          306.0,
+          175.0
+        ],
+        "ocr_text": "4x8\"",
+        "source": "printed-text",
+        "id": "dimension-1",
+        "reference": null,
+        "scale_m_per_px": null
+      },
+      {
+        "value_m": 3.2766,
+        "text": "129\"",
+        "bbox": [
+          537.0,
+          359.0,
+          569.0,
+          369.0
+        ],
+        "confidence": 0.35,
+        "axis": "x",
+        "ocr_line_bbox": [
+          478.0,
+          359.0,
+          569.0,
+          369.0
+        ],
+        "ocr_text": "11.4%\" x 129\"",
+        "source": "printed-text",
+        "id": "dimension-2",
+        "reference": null,
+        "scale_m_per_px": null
+      },
+      {
+        "value_m": 1.1684,
+        "text": "46\"",
+        "bbox": [
+          24.0,
+          359.0,
+          32.0,
+          373.0
+        ],
+        "confidence": 0.557,
+        "axis": "y",
+        "ocr_line_bbox": [
+          24.0,
+          359.0,
+          32.0,
+          373.0
+        ],
+        "ocr_text": "46\"",
+        "source": "printed-text",
+        "id": "dimension-3",
+        "reference": null,
+        "scale_m_per_px": null
+      }
+    ],
+    "areas": [],
+    "calibration": null,
+    "warnings": [
+      "Only readable lengths with dimension-line endpoints bound to walls can be applied automatically. Unmatched readings remain for review."
+    ],
+    "ocr_text_regions": [
+      [
+        336.0,
+        67.0,
+        351.0,
+        76.0
+      ],
+      [
+        438.0,
+        65.0,
+        477.0,
+        75.0
+      ],
+      [
+        439.0,
+        81.0,
+        476.0,
+        91.0
+      ],
+      [
+        93.0,
+        111.0,
+        119.0,
+        119.0
+      ],
+      [
+        93.0,
+        120.0,
+        119.0,
+        128.0
+      ],
+      [
+        93.0,
+        128.0,
+        119.0,
+        138.0
+      ],
+      [
+        108.0,
+        137.0,
+        119.0,
+        150.0
+      ],
+      [
+        624.0,
+        160.0,
+        681.0,
+        170.0
+      ],
+      [
+        731.0,
+        158.0,
+        737.0,
+        166.0
+      ],
+      [
+        273.0,
+        165.0,
+        306.0,
+        175.0
+      ],
+      [
+        338.0,
+        165.0,
+        386.0,
+        175.0
+      ],
+      [
+        484.0,
+        166.0,
+        510.0,
+        176.0
+      ],
+      [
+        515.0,
+        166.0,
+        555.0,
+        176.0
+      ],
+      [
+        731.0,
+        170.0,
+        737.0,
+        178.0
+      ],
+      [
+        151.0,
+        177.0,
+        177.0,
+        187.0
+      ],
+      [
+        182.0,
+        177.0,
+        222.0,
+        187.0
+      ],
+      [
+        341.0,
+        183.0,
+        374.0,
+        193.0
+      ],
+      [
+        396.0,
+        149.0,
+        415.0,
+        186.0
+      ],
+      [
+        523.0,
+        186.0,
+        530.0,
+        193.0
+      ],
+      [
+        535.0,
+        183.0,
+        549.0,
+        193.0
+      ],
+      [
+        731.0,
+        182.0,
+        737.0,
+        190.0
+      ],
+      [
+        151.0,
+        195.0,
+        207.0,
+        205.0
+      ],
+      [
+        212.0,
+        195.0,
+        225.0,
+        205.0
+      ],
+      [
+        705.0,
+        171.0,
+        724.0,
+        208.0
+      ],
+      [
+        731.0,
+        194.0,
+        737.0,
+        202.0
+      ],
+      [
+        731.0,
+        288.0,
+        737.0,
+        296.0
+      ],
+      [
+        731.0,
+        300.0,
+        737.0,
+        308.0
+      ],
+      [
+        275.0,
+        342.0,
+        307.0,
+        352.0
+      ],
+      [
+        501.0,
+        342.0,
+        533.0,
+        352.0
+      ],
+      [
+        651.0,
+        353.0,
+        697.0,
+        363.0
+      ],
+      [
+        251.0,
+        359.0,
+        295.0,
+        369.0
+      ],
+      [
+        300.0,
+        359.0,
+        332.0,
+        369.0
+      ],
+      [
+        526.0,
+        362.0,
+        532.0,
+        369.0
+      ],
+      [
+        537.0,
+        359.0,
+        569.0,
+        369.0
+      ],
+      [
+        731.0,
+        361.0,
+        737.0,
+        369.0
+      ],
+      [
+        664.0,
+        371.0,
+        706.0,
+        381.0
+      ],
+      [
+        648.0,
+        417.0,
+        694.0,
+        427.0
+      ],
+      [
+        164.0,
+        426.0,
+        210.0,
+        436.0
+      ],
+      [
+        662.0,
+        434.0,
+        706.0,
+        444.0
+      ],
+      [
+        731.0,
+        428.0,
+        737.0,
+        436.0
+      ],
+      [
+        108.0,
+        428.0,
+        119.0,
+        458.0
+      ],
+      [
+        183.0,
+        444.0,
+        219.0,
+        454.0
+      ],
+      [
+        351.0,
+        477.0,
+        354.0,
+        517.0
+      ],
+      [
+        731.0,
+        528.0,
+        737.0,
+        536.0
+      ],
+      [
+        583.0,
+        535.0,
+        609.0,
+        545.0
+      ],
+      [
+        614.0,
+        535.0,
+        655.0,
+        545.0
+      ],
+      [
+        731.0,
+        540.0,
+        737.0,
+        548.0
+      ],
+      [
+        123.0,
+        540.0,
+        139.0,
+        550.0
+      ],
+      [
+        202.0,
+        540.0,
+        228.0,
+        550.0
+      ],
+      [
+        233.0,
+        540.0,
+        273.0,
+        550.0
+      ],
+      [
+        731.0,
+        552.0,
+        737.0,
+        560.0
+      ],
+      [
+        124.0,
+        560.0,
+        139.0,
+        572.0
+      ],
+      [
+        246.0,
+        558.0,
+        278.0,
+        568.0
+      ],
+      [
+        628.0,
+        553.0,
+        660.0,
+        563.0
+      ],
+      [
+        731.0,
+        564.0,
+        737.0,
+        572.0
+      ],
+      [
+        613.0,
+        655.0,
+        675.0,
+        665.0
+      ],
+      [
+        417.0,
+        716.0,
+        430.0,
+        725.0
+      ],
+      [
+        317.0,
+        734.0,
+        361.0,
+        746.0
+      ],
+      [
+        367.0,
+        734.0,
+        420.0,
+        746.0
+      ],
+      [
+        427.0,
+        734.0,
+        466.0,
+        746.0
+      ]
+    ]
+  },
+  "room_boundaries": [
+    {
+      "id": "auto-room-1",
+      "name": "Bathroom",
+      "points": [
+        {
+          "x": 118.0,
+          "y": 407.5
+        },
+        {
+          "x": 244.5,
+          "y": 407.5
+        },
+        {
+          "x": 244.5,
+          "y": 471.5
+        },
+        {
+          "x": 119.0,
+          "y": 471.5
+        },
+        {
+          "x": 119.0,
+          "y": 464.0
+        },
+        {
+          "x": 118.0,
+          "y": 464.0
+        }
+      ],
+      "boundary_source": "auto_walls",
+      "boundary_reference": "inside_faces",
+      "area_px2": 8088.5
+    },
+    {
+      "id": "auto-room-2",
+      "name": "Bedroom",
+      "points": [
+        {
+          "x": 119.0,
+          "y": 631.0
+        },
+        {
+          "x": 119.0,
+          "y": 474.5
+        },
+        {
+          "x": 244.5,
+          "y": 474.5
+        },
+        {
+          "x": 244.5,
+          "y": 477.0
+        },
+        {
+          "x": 247.5,
+          "y": 477.0
+        },
+        {
+          "x": 247.5,
+          "y": 474.5
+        },
+        {
+          "x": 355.0,
+          "y": 474.5
+        },
+        {
+          "x": 355.0,
+          "y": 631.0
+        }
+      ],
+      "boundary_source": "auto_walls",
+      "boundary_reference": "inside_faces",
+      "area_px2": 36926.5
+    },
+    {
+      "id": "auto-room-3",
+      "name": "Room 3",
+      "points": [
+        {
+          "x": 366.0,
+          "y": 530.0
+        },
+        {
+          "x": 480.0,
+          "y": 530.0
+        },
+        {
+          "x": 480.0,
+          "y": 618.0
+        },
+        {
+          "x": 366.0,
+          "y": 618.0
+        }
+      ],
+      "boundary_source": "auto_walls",
+      "boundary_reference": "inside_faces",
+      "area_px2": 10032.0
+    },
+    {
+      "id": "auto-room-4",
+      "name": "Room 4",
+      "points": [
+        {
+          "x": 119.0,
+          "y": 675.5
+        },
+        {
+          "x": 119.0,
+          "y": 643.0
+        },
+        {
+          "x": 284.5,
+          "y": 643.0
+        },
+        {
+          "x": 284.5,
+          "y": 675.5
+        }
+      ],
+      "boundary_source": "auto_walls",
+      "boundary_reference": "inside_faces",
+      "area_px2": 5378.75
+    }
+  ],
+  "room_scan": {
+    "unresolved": [],
+    "warnings": [
+      "A wall has no reliable pixel thickness; rooms depending on that wall need review."
+    ],
+    "closures": [
+      {
+        "start": {
+          "x": 256.0,
+          "y": 637.0
+        },
+        "end": {
+          "x": 287.0,
+          "y": 637.0
+        },
+        "thickness_px": 12.0,
+        "source": "opening-closure"
+      },
+      {
+        "start": {
+          "x": 112.5,
+          "y": 424.0
+        },
+        "end": {
+          "x": 112.5,
+          "y": 464.0
+        },
+        "thickness_px": 11.0,
+        "source": "opening-closure"
+      }
+    ],
+    "wall_thicknesses": [
+      {
+        "wall_index": 0,
+        "thickness_px": 11.0
+      },
+      {
+        "wall_index": 1,
+        "thickness_px": 11.0
+      },
+      {
+        "wall_index": 2,
+        "thickness_px": 11.0
+      },
+      {
+        "wall_index": 3,
+        "thickness_px": 11.0
+      },
+      {
+        "wall_index": 4,
+        "thickness_px": 12.0
+      },
+      {
+        "wall_index": 5,
+        "thickness_px": 12.0
+      },
+      {
+        "wall_index": 6,
+        "thickness_px": 12.0
+      },
+      {
+        "wall_index": 7,
+        "thickness_px": 11.0
+      },
+      {
+        "wall_index": 8,
+        "thickness_px": 13.0
+      },
+      {
+        "wall_index": 9,
+        "thickness_px": 13.0
+      },
+      {
+        "wall_index": 10,
+        "thickness_px": 12.0
+      },
+      {
+        "wall_index": 11,
+        "thickness_px": 12.0
+      },
+      {
+        "wall_index": 12,
+        "thickness_px": 11.0
+      },
+      {
+        "wall_index": 13,
+        "thickness_px": 11.0
+      },
+      {
+        "wall_index": 14,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 15,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 16,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 17,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 18,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 19,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 20,
+        "thickness_px": 5.0
+      },
+      {
+        "wall_index": 21,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 22,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 24,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 25,
+        "thickness_px": 5.0
+      },
+      {
+        "wall_index": 26,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 27,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 28,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 29,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 30,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 31,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 32,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 33,
+        "thickness_px": 5.0
+      },
+      {
+        "wall_index": 34,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 35,
+        "thickness_px": 5.0
+      },
+      {
+        "wall_index": 36,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 37,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 38,
+        "thickness_px": 5.0
+      },
+      {
+        "wall_index": 39,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 40,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 41,
+        "thickness_px": 1.0
+      },
+      {
+        "wall_index": 42,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 43,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 44,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 45,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 46,
+        "thickness_px": 3.0
+      },
+      {
+        "wall_index": 48,
+        "thickness_px": 3.0
+      }
+    ]
+  },
+  "ai_review": {
+    "enabled": false,
+    "applied": false,
+    "corrections_count": 0,
+    "summary": null,
+    "error": null
+  },
+  "adk_pipeline_enabled": true,
+  "adk_evaluation": null,
+  "detection_summary": {
+    "walls": 49,
+    "doors": 15,
+    "objects_total": 29,
+    "rooms": 9,
+    "windows": 12,
+    "glass_grills": 0,
+    "glass_banisters": 0,
+    "stairs": 1,
+    "lifts": 0,
+    "fixtures": 7,
+    "objects_by_class": {
+      "Bedroom": 6,
+      "Bathroom": 3,
+      "Kitchen-Slab": 2,
+      "Sink": 2,
+      "Stove": 1,
+      "Wardrobe": 2,
+      "window": 12,
+      "stairs": 1
+    }
+  }
+}

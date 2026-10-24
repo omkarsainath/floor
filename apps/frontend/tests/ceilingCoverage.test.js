@@ -75,3 +75,40 @@ for(const fixture of JSON.parse(fs.readFileSync(new URL('./fixtures/ceiling-plan
     for(const p of fixture.outside) assert.ok(!hit(mesh,p.x,p.y),`ceiling outside footprint at ${JSON.stringify(p)}`);
   });
 }
+
+for(const vertical of [false,true])test(`door at a corner closes ceiling without a lintel (${vertical?'vertical':'horizontal'})`,()=>{
+  const transform=p=>vertical?{x:p.y,y:p.x}:p;
+  const layout={walls:[wall(0,0,4,0),wall(5,0,5,4),wall(5,4,0,4),wall(0,4,0,0)].map(w=>({...w,start:transform(w.start),end:transform(w.end)}))};
+  const box=vertical?{x1:-.08,y1:4,x2:.08,y2:5}:{x1:4,y1:-.08,x2:5,y2:.08};
+  const opening={class:'door-designer-17',height_m:3,bbox:box};
+  const before=JSON.stringify(layout);
+  assert.deepEqual(buildCeilingCoverage(layout,[],[]),[]);
+  const mesh=createCeiling(buildCeilingCoverage(layout,[],[opening]));
+  assert.ok(mesh);mesh.updateMatrixWorld(true);
+  assert.ok(hit(mesh,2,2));assert.ok(!hit(mesh,6,6));
+  assert.equal(JSON.stringify(layout),before,'no invented structural wall or measured room');
+});
+
+test('door boundary does not seal unsupported gaps, square swing footprints or outdoor zones',()=>{
+  const layout={walls:[wall(0,0,4,0),wall(5,0,5,4),wall(5,4,0,4),wall(0,4,0,0)]};
+  for(const bbox of [{x1:4.3,y1:-.08,x2:4.7,y2:.08},{x1:4,y1:0,x2:5,y2:1}]){
+    assert.deepEqual(buildCeilingCoverage(layout,[],[{class:'door',bbox}]),[]);
+  }
+  const rooms=[{name:'courtyard',points:rect(1,1,3,3)}];
+  const mesh=createCeiling(buildCeilingCoverage(layout,rooms,[{class:'door',bbox:{x1:4,y1:-.08,x2:5,y2:.08}}]));
+  mesh.updateMatrixWorld(true);assert.ok(!hit(mesh,2,2));assert.ok(hit(mesh,.5,2));
+});
+
+test('live ceiling refresh retains the visibility/control root when door evidence changes',async()=>{
+  const {updateCeiling}=await import('../src/generators/ceiling.js');
+  const root=new THREE.Group();root.visible=false;
+  const layout={walls:[wall(0,0,4,0),wall(5,0,5,4),wall(5,4,0,4),wall(0,4,0,0)]};
+  const opening={class:'door',bbox:{x1:4,y1:-.08,x2:5,y2:.08}};
+  assert.equal(updateCeiling(root,buildCeilingCoverage(layout,[],[opening])),root);
+  root.updateMatrixWorld(true);assert.ok(hit(root,2,2));assert.equal(root.visible,false);
+  let disposed=0;root.children[0].geometry.addEventListener('dispose',()=>disposed++);
+  root.visible=true;updateCeiling(root,buildCeilingCoverage(layout,[],[]));
+  assert.equal(disposed,1);assert.equal(root.children.length,0);assert.equal(root.visible,true);
+  updateCeiling(root,buildCeilingCoverage(layout,[],[opening]));root.updateMatrixWorld(true);
+  assert.ok(hit(root,2,2));assert.equal(root.visible,true);
+});

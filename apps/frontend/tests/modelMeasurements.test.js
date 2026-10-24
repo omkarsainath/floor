@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import * as THREE from 'three';
 import { createWall } from '../src/generators/wall.js';
 import { createObject, getWindowSillAndTop } from '../src/generators/object.js';
 import { buildWallSegments, openingSpanOnWall, polygonArea, summarizeMeasurements, wallLength } from '../src/measurements/modelMeasurements.js';
@@ -182,16 +183,78 @@ test('scan thickness and centreline jitter still produce window sill and header'
   approx(fills[0].height,.9);approx(fills[1].yOffset,2.1);
 });
 
-test('unmatched gaps, isolated doors, perpendicular jambs and changed wall sections are not bridged', () => {
+test('unmatched gaps, isolated doors, unsupported corners and changed wall sections are not bridged', () => {
   const { walls, openings } = splitDoorway();
   const noBridges = (w, o) => assert.equal(buildWallSegments(w, o).filter(s => s.isDetectedGap).length, 0);
   noBridges(walls, []);
   noBridges(walls, [{ ...openings[0], bbox: { x1: 2.3, y1: -0.1, x2: 2.7, y2: 0.1 } }]);
   noBridges([walls[0]], openings);
-  noBridges([walls[0], { ...walls[1], end: { x: 3, y: 3 } }], openings);
+  noBridges([walls[0], { ...walls[1], start: { x: 3.5, y: .5 }, end: { x: 3.5, y: 3 } }], openings);
   noBridges([walls[0], { ...walls[1], start: { x: 3, y: 0.2 }, end: { x: 5, y: 0.2 } }], openings);
   noBridges([walls[0], { ...walls[1], height: 2 }], openings);
   noBridges([walls[0], { ...walls[1], thickness: 0.5 }], openings);
+});
+
+test('door at a perpendicular corner gets a header without blocking the doorway', () => {
+  const { walls, openings } = splitDoorway();
+  walls[1].end = { x: 3, y: 3 };
+  const original = structuredClone({ walls, openings });
+  const fills = buildWallSegments(walls, openings).filter(s => s.isDetectedGap);
+  assert.equal(fills.length, 1);
+  assert.ok(fills[0].isCornerOpeningGap);
+  approx(fills[0].yOffset, 2.4); approx(fills[0].height, .6);
+  approx(wallLength(fills[0]), 1);
+  assert.deepEqual(fills[0].faceColors, walls[0].faceColors);
+  assert.deepEqual({ walls, openings }, original);
+});
+
+test('window between two corner returns gets a sill and header, with a clear pane', () => {
+  const walls = [
+    { ...wall, start: { x: 2, y: 0 }, end: { x: 2, y: 3 }, height: 3 },
+    { ...wall, id: 'second', start: { x: 3, y: 0 }, end: { x: 3, y: 3 }, height: 3 },
+  ];
+  const opening = { class: 'window', bbox: { x1: 2, y1: -.1, x2: 3, y2: .1 }, sillBase: .9, winTop: 2.1 };
+  const fills = buildWallSegments(walls, [opening]).filter(s => s.isDetectedGap);
+  assert.equal(fills.length, 2);
+  approx(fills[0].height, .9); approx(fills[1].yOffset, 2.1);
+  const meshes = fills.map(createWall);
+  meshes.forEach(m => m.updateMatrixWorld(true));
+  const hit = y => new THREE.Raycaster(new THREE.Vector3(2.5,y,-1),new THREE.Vector3(0,0,1)).intersectObjects(meshes).length > 0;
+  assert.ok(hit(.45)); assert.ok(hit(2.6)); assert.equal(hit(1.5),false);
+  meshes.forEach(m => m.traverse(c => { c.geometry?.dispose(); (Array.isArray(c.material)?c.material:[c.material]).filter(Boolean).forEach(mat => mat.dispose()); }));
+});
+
+test('corner supports work vertically, with reversed hosts, and with small jamb offsets', () => {
+  for (const vertical of [false,true]) for (const reversed of [false,true]) {
+    const { walls, openings } = splitDoorway();
+    walls[1].start.x = 3.06; walls[1].end = { x: 3.06, y: 3 };
+    if (reversed) [walls[0].start,walls[0].end]=[walls[0].end,walls[0].start];
+    if (vertical) {
+      walls.forEach(w => [w.start,w.end].forEach(p => { [p.x,p.y]=[p.y,p.x]; }));
+      openings[0].bbox = { x1: -.1, y1: 2, x2: .1, y2: 3 };
+    }
+    const fills=buildWallSegments(walls,openings).filter(s=>s.isDetectedGap);
+    assert.equal(fills.length,1); approx(wallLength(fills[0]),1.06);
+    const host=walls[0],fill=fills[0];
+    assert.ok((host.end.x-host.start.x)*(fill.end.x-fill.start.x)+(host.end.y-host.start.y)*(fill.end.y-fill.start.y)>0);
+  }
+});
+
+test('corner fallback rejects mismatched levels, ambiguous swing boxes and existing host walls', () => {
+  const { walls, openings }=splitDoorway(); walls[1].end={x:3,y:3};
+  const none=(ws,os)=>assert.equal(buildWallSegments(ws,os).filter(s=>s.isDetectedGap).length,0);
+  none([walls[0]],openings);
+  none([walls[0],{...walls[1],height:2}],openings);
+  none([walls[0],{...walls[1],yOffset:1}],openings);
+  none(walls,[{...openings[0],bbox:{x1:2,y1:0,x2:3,y2:1}}]);
+  const continuous={...walls[0],id:'continuous',start:{x:0,y:0},end:{x:5,y:0}};
+  none([...walls,continuous],openings);
+});
+
+test('duplicate corner window detections do not duplicate masonry', () => {
+  const { walls, openings }=splitDoorway(); walls[1].end={x:3,y:3};
+  const window={...openings[0],class:'window',sillBase:.9,winTop:2.1};
+  assert.equal(buildWallSegments(walls,[window,{...window}]).filter(s=>s.isDetectedGap).length,2);
 });
 
 test('one opening never adds lintels to two nearby parallel wall lines', () => {

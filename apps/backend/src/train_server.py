@@ -7,6 +7,7 @@ import shutil
 import traceback
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
+from auth import auth_http
 
 import cv2
 import numpy as np
@@ -550,6 +551,7 @@ class Handler(BaseHTTPRequestHandler):
     def _send(self, status=200, payload=None):
         self.send_response(status)
         self.send_header("Content-Type", "application/json")
+        self.send_header("Cache-Control", "no-store")
         self.send_header("Access-Control-Allow-Origin", "http://localhost:5173")
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
         self.send_header("Access-Control-Allow-Methods", "POST, OPTIONS")
@@ -559,6 +561,11 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         path = self.path.split("?")[0]
+
+        if auth_http().handle(self):
+            return
+        if path != '/api/health' and not auth_http().protect(self, admin=path in ('/api/stats', '/api/floor-plans', '/api/training-status')):
+            return
 
         if path == '/api/health':
             self._send(200, scan_runtime_info())
@@ -619,6 +626,10 @@ class Handler(BaseHTTPRequestHandler):
         self._send(200, {})
 
     def do_POST(self):
+        if auth_http().handle(self):
+            return
+        if not auth_http().protect(self, admin=self.path.split('?')[0] in ('/api/train', '/api/correct', '/api/save')):
+            return
         try:
             length = int(self.headers.get("Content-Length", 0))
         except (ValueError, TypeError):
@@ -639,6 +650,17 @@ class Handler(BaseHTTPRequestHandler):
             self._send(400, {"error": "Request body must be a valid JSON object"})
             return
         path = self.path
+
+        if path == '/api/wall-relief':
+            try:
+                from wall_relief import generate_relief
+                self._send(200, generate_relief(data.get('image')))
+            except ValueError as error:
+                self._send(400, {'error': str(error)})
+            except Exception:
+                traceback.print_exc()
+                self._send(503, {'error': 'Depth estimation is unavailable. Check the backend model installation and try again.'})
+            return
 
         # ---- AI Chat Assistant ----
         if path == "/api/ai-chat":
@@ -1191,7 +1213,7 @@ class Handler(BaseHTTPRequestHandler):
             scale_estimate = estimate_scale_from_doors(final_doors)
             final_walls = exclude_dimension_walls(final_walls, measurements)
             evidence = assess_walls(image,
-                final_walls + paired_wall_proposals(image, measurements),
+                final_walls + paired_wall_proposals(image, measurements, windows=final_objects),
                 measurements, final_objects, final_doors)
             final_walls = evidence['walls']
             detection_summary['walls'] = len(final_walls)
@@ -1362,6 +1384,7 @@ def _handle_termination(signum, frame):
 
 def main():
     signal.signal(signal.SIGTERM, _handle_termination)
+    auth_http()
     server = HTTPServer(("127.0.0.1", 5050), Handler)
     print("Self-train server running on http://localhost:5050")
     server.serve_forever()

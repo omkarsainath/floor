@@ -1,7 +1,8 @@
+import { projectStorage } from '../auth/storage.js';
 // Keep the tracer/viewer handoff format, including calibration and catalog data.
 export function persistLayout(layout, storage) {
   try {
-    storage ??= globalThis.localStorage;
+    storage ??= projectStorage;
     storage.setItem('preciseFloorplan', JSON.stringify(layout));
     storage.setItem('floorplanTimestamp', String(Date.now()));
     return true;

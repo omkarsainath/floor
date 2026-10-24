@@ -5,9 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite apps/frontend",
+    "backend": ".venv311/bin/python -u apps/backend/src/train_server.py",
     "build": "vite build apps/frontend",
     "preview": "vite preview apps/frontend",
-    "test": "node --test apps/frontend/tests/*.test.js"
+    "test": "node --test apps/frontend/tests/*.test.js",
+    "admin:setup": ".venv311/bin/python apps/backend/src/manage_users.py",
+    "auth:server": ".venv311/bin/python -u apps/backend/src/auth_server.py"
   },
   "dependencies": {
     "three": "^0.160.0"

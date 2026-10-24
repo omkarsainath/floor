@@ -1,0 +1,50 @@
+<!doctype html><html><head><style>body{margin:0;background:#e5e1da;font:14px system-ui}#gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:12px}figure{margin:0;background:#f8f6f1;border-radius:12px;overflow:hidden}.reference{width:100%;height:120px;object-fit:contain;background:white}.render{width:100%;height:340px;object-fit:contain}figcaption{padding:12px}</style></head><body><div id="gallery"></div><script type="module">
+import * as T from 'three';
+import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
+import { SOFA_FACTORY_CATALOG, createSofaFactoryFurniture } from '../src/generators/sofaFactory.js';
+import { createDetailedFurniture } from '../src/generators/detailedFurniture.js';
+import { SOFA_DESIGNS } from '../src/generators/sofaDesigns.js';
+import {EffectComposer} from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass.js';
+import {OutputPass} from 'three/examples/jsm/postprocessing/OutputPass.js';
+import {FurnitureContactPass,FurnitureAntialiasPass} from '../src/ui/furnitureContactPass.js';
+const params=new URLSearchParams(location.search),page=Number(params.get('page')||0);
+const ids=page?Object.keys(SOFA_DESIGNS).slice((page-1)*15,page*15):['sf-sofa-beds-p39-01','sf-sofa-beds-p39-02','sf-sofa-beds-p39-03','sf-sofas-p13-8','sf-sofas-p24-35','sf-economic-sofas-p27-03'];
+if(page){document.head.insertAdjacentHTML('beforeend','<style>.render{height:240px}.reference{height:110px}</style>');}
+const renderer=new T.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setSize(950,660);renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1;
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;
+const pmrem=new T.PMREMGenerator(renderer),room=new RoomEnvironment(),environment=pmrem.fromScene(room,.04);room.dispose();pmrem.dispose();
+window.sofaPreviewResults=[];
+window.sofaAuditViews={};
+for(const id of ids){
+ const s=SOFA_FACTORY_CATALOG.find(s=>s.id===id)||{id,w:2.2,d:.9,h:.86,label:'Standard three-seat sofa'},figure=document.createElement('figure');
+ if(s.image){const photo=new Image();photo.src=s.image;photo.className='reference';figure.append(photo);}else{const spacer=document.createElement('div');spacer.style.height='120px';figure.append(spacer);}
+ const scene=new T.Scene();scene.background=new T.Color('#f1eee8');scene.environment=environment.texture;
+ scene.add(new T.HemisphereLight(0xffffff,0x8e8272,.6));
+ const key=new T.DirectionalLight(0xfff3e4,2);key.position.set(-3,5,4);key.castShadow=true;key.shadow.mapSize.set(2048,2048);Object.assign(key.shadow.camera,{left:-5,right:5,top:5,bottom:-5,near:.1,far:20});key.shadow.normalBias=.008;key.shadow.bias=-.0001;scene.add(key);
+ const model=createSofaFactoryFurniture(id,s.w,s.d)||createDetailedFurniture(id,s.w,s.d);scene.add(model);
+ const floor=new T.Mesh(new T.PlaneGeometry(30,30),new T.MeshStandardMaterial({color:'#ddd6c9',roughness:.95}));floor.rotation.x=-Math.PI/2;floor.position.y=-.005;floor.receiveShadow=true;scene.add(floor);
+ const maps=new Set();model.traverse(n=>{if(n.material?.map?.image?.tagName==='IMG')maps.add(n.material.map.image);});
+ await Promise.all([...maps].map(img=>img.decode()));
+ const size=new T.Box3().setFromObject(model).getSize(new T.Vector3());
+ const camera=new T.PerspectiveCamera(35,950/660,.01,100),target=new T.Vector3(0,s.h*.48,0);
+ camera.position.copy(target).add(new T.Vector3(.45,.39,1).normalize().multiplyScalar(Math.max(size.x/1.44,size.y,size.z)*2.15));camera.lookAt(target);
+ const composer=new EffectComposer(renderer);composer.addPass(new RenderPass(scene,camera));composer.addPass(new FurnitureContactPass(scene,camera,950,660));composer.addPass(new OutputPass());composer.addPass(new FurnitureAntialiasPass());
+ composer.render();const image=new Image();image.className='render';image.src=renderer.domElement.toDataURL();figure.append(image);
+ if(params.has('allviews')){
+   const sheet=document.createElement('canvas');sheet.width=900;sheet.height=660;const ctx=sheet.getContext('2d');ctx.fillStyle='#faf8f4';ctx.fillRect(0,0,900,660);
+   const ref=new Image();ref.src=s.image;await ref.decode();const scale=Math.min(850/ref.width,165/ref.height);ctx.drawImage(ref,(900-ref.width*scale)/2,15,ref.width*scale,ref.height*scale);
+   const views={front:[0,.45,1],rear:[0,.45,-1],left:[-1,.45,0],right:[1,.45,0],top:[0,1,.0001],corner:[1,.5,1]};let i=0;
+   for(const [name,vector] of Object.entries(views)){
+     camera.position.copy(target).add(new T.Vector3(...vector).normalize().multiplyScalar(Math.max(size.x,size.z)*2.3));camera.lookAt(target);composer.render();
+     ctx.drawImage(renderer.domElement,(i%3)*300,200+Math.floor(i/3)*225,300,208);ctx.fillStyle='#30302e';ctx.font='14px system-ui';ctx.fillText(name,(i%3)*300+12,420+Math.floor(i/3)*225);i++;
+   }
+   window.sofaAuditViews[id]=sheet.toDataURL('image/png');
+ }
+ const parts={},sources=new Set();model.traverse(n=>{if(n.name)parts[n.name]=(parts[n.name]||0)+1;if(n.material?.userData.sourceProduct)sources.add(n.material.userData.sourceProduct);});
+ window.sofaPreviewResults.push({id,dimensions:size.toArray(),expected:[s.w,s.h,s.d],floor:new T.Box3().setFromObject(model).min.y,views:params.has('allviews')?6:1,triangles:renderer.info.render.triangles,calls:renderer.info.render.calls,parts,sources:[...sources]});
+ const caption=document.createElement('figcaption');caption.textContent=s.label;figure.append(caption);gallery.append(figure);
+ composer.passes.forEach(p=>p.dispose?.());composer.dispose();model.traverse(n=>{n.geometry?.dispose();n.material?.dispose();});key.shadow.map?.dispose();floor.geometry.dispose();floor.material.dispose();
+}
+const timer=setInterval(()=>{if([...document.images].every(i=>i.complete&&i.naturalWidth)){document.body.dataset.ready='true';clearInterval(timer);}},100);
+</script></body></html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Pooja variants — visual check</title>
+<style>
+  body{margin:20px;background:#eeebe5;color:#26343c;font:15px system-ui}
+  main{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:12px}
+  article{background:#fff;border-radius:12px;overflow:hidden;padding:10px}
+  canvas{width:100%;aspect-ratio:3/4;display:block}button{padding:8px;margin:3px;border:1px solid #aaa;border-radius:5px;cursor:pointer}
+</style>
+<h1>Pooja units</h1>
+<p>Reference-inspired pooja units. Drag to orbit; use the buttons to open doors, drawers and the pull-out stool.</p>
+<main></main>
+<script type="module">
+import * as THREE from 'three';
+import {createPoojaUnit,POOJA_CATALOG} from '../src/generators/pooja.js';
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
+import {queueObjectAnimations,advanceObjectAnimations} from '../src/generators/objectAnimations.js';
+const previews=[];
+for(const item of POOJA_CATALOG){
+ const type=item.id;
+ const card=document.createElement('article'), title=document.createElement('h3');title.textContent=item.label;
+ const canvas=document.createElement('canvas');card.append(title,canvas);document.querySelector('main').append(card);
+ const renderer=new THREE.WebGLRenderer({canvas,antialias:true});renderer.setSize(420,560,false);
+ renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+ renderer.setPixelRatio(1);renderer.setClearColor(0xf5f2ed);renderer.toneMapping=THREE.ACESFilmicToneMapping;
+ const scene=new THREE.Scene();scene.add(new THREE.HemisphereLight(0xffffff,0x716453,1.2));
+ const light=new THREE.DirectionalLight(0xffffff,2.3);light.position.set(-3,5,5);light.castShadow=true;light.shadow.mapSize.set(1024,1024);light.shadow.camera.left=-2;light.shadow.camera.right=2;light.shadow.camera.top=3;light.shadow.camera.bottom=-1;light.shadow.normalBias=.015;scene.add(light);
+ const camera=new THREE.PerspectiveCamera(36,420/560,.01,30);camera.position.set(2.1,2.0,4.4);camera.lookAt(0,1.15,0);
+ const controls=new OrbitControls(camera,canvas);controls.target.set(0,1.15,0);controls.update();
+ const root=createPoojaUnit(type,item.w,item.d);scene.add(root);const queue=[];
+ const floor=new THREE.Mesh(new THREE.PlaneGeometry(20,20),new THREE.MeshStandardMaterial({color:0xddd6cb}));
+ floor.receiveShadow=true;floor.rotation.x=-Math.PI/2;floor.position.y=-.003;scene.add(floor);
+ for(const part of ['doors','drawers','stools']){
+  let has=false;root.traverse(n=>{if(n.userData.furniturePart===part)has=true;});if(!has)continue;
+  const button=document.createElement('button');button.textContent=part;button.onclick=()=>queueObjectAnimations(root,queue,part);card.append(button);
+ }
+ if(new URLSearchParams(location.search).has('open')){queueObjectAnimations(root,queue);advanceObjectAnimations(queue,1);}
+ previews.push({renderer,scene,camera,queue});
+}
+function frame(){for(const p of previews){advanceObjectAnimations(p.queue);p.renderer.render(p.scene,p.camera);}requestAnimationFrame(frame);}
+frame();
+document.body.dataset.ready='true';
+</script>
+</html>

@@ -1,0 +1,26 @@
+[
+  {
+    "image": "test11.jpg",
+    "walls": 42,
+    "review": 147,
+    "rejected": 4
+  },
+  {
+    "image": "test-5.jpg",
+    "walls": 82,
+    "review": 280,
+    "rejected": 5
+  },
+  {
+    "image": "20261006_095849_upload.jpg",
+    "walls": 57,
+    "review": 173,
+    "rejected": 0
+  },
+  {
+    "image": "20261006_101500_upload.jpg",
+    "walls": 37,
+    "review": 199,
+    "rejected": 5
+  }
+]

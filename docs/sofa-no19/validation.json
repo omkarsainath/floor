@@ -1,0 +1,32 @@
+{
+  "size": [
+    2.7940000000000005,
+    0.8382,
+    2.7940000000000005
+  ],
+  "floor": -3.753696624364533e-10,
+  "parts": {
+    "corner-base": 1,
+    "base-x-wing": 1,
+    "base-z-wing": 1,
+    "backrest-x-wing": 1,
+    "backrest-z-wing": 1,
+    "seat-x-wing": 1,
+    "upholstery-piping": 9,
+    "seat-z-wing": 1,
+    "shared-corner-seat": 1,
+    "loose-back-cushion": 7,
+    "patterned-insert": 23,
+    "arm-body": 2,
+    "arm-top": 2,
+    "arm-outer-panel": 2,
+    "light-wood-stile": 4,
+    "dark-vertical-accent": 2,
+    "end-foot": 2,
+    "support-foot": 4
+  },
+  "orbit": {
+    "views": 36,
+    "degrees": 360
+  }
+}

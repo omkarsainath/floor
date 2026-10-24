@@ -29,11 +29,50 @@ export function parseArea(value) {
   return amount > 0 ? amount * (/ft|feet/.test(match[2]) ? 0.3048 ** 2 : 1) : null;
 }
 
+// Width is left-to-right on the plan; depth is top-to-bottom. Keep the entered
+// units for editing, and metric targets separately from the traced pixel size.
+export function roomSizeTargets(widthText = '', depthText = '') {
+  const result = {};
+  for (const [axis, value] of [['width', widthText], ['depth', depthText]]) {
+    const text = String(value).trim();
+    if (!text) continue;
+    const metres = parseLength(text);
+    if (!metres || !Number.isFinite(metres)) throw new Error(`Invalid room ${axis}. Enter a positive length, such as 4 m, 400 cm or 12 ft.`);
+    result[`declared_${axis}_m`] = metres;
+    result[`declared_${axis}_text`] = text;
+  }
+  return result;
+}
+
+export function roomSizeConstraints(room) {
+  const points = validateBoundary(room.points);
+  const x1 = Math.min(...points.map(p => p.x)), x2 = Math.max(...points.map(p => p.x));
+  const y1 = Math.min(...points.map(p => p.y)), y2 = Math.max(...points.map(p => p.y));
+  return ['width', 'depth'].filter(axis => room[`declared_${axis}_m`] > 0).map(axis => ({
+    id: `${axis}-${room.id}`, type: 'length', room_id: room.id, source: 'manual-room-size',
+    start: { x: x1, y: y1 }, end: axis === 'width' ? { x: x2, y: y1 } : { x: x1, y: y2 },
+    target_m: room[`declared_${axis}_m`],
+    text: `${room.name || 'Room'} ${axis}: ${room[`declared_${axis}_text`] || `${room[`declared_${axis}_m`]} m`}`,
+  }));
+}
+
 export function polygonArea(points) {
   return Math.abs(points.reduce((sum, p, i) => {
     const q = points[(i + 1) % points.length];
     return sum + p.x * q.y - q.x * p.y;
   }, 0)) / 2;
+}
+
+// Canvas users often click the first corner again to close a polygon, or
+// double-click the last corner. Store an open vertex list for geometry/export.
+export function finishRoomBoundary(points) {
+  const same = (a, b) => a && b && Math.hypot(a.x-b.x, a.y-b.y) < 1e-8;
+  const clean = [];
+  for (const point of points) {
+    if (!same(point, clean.at(-1))) clean.push({ ...point });
+  }
+  if (clean.length > 1 && same(clean[0], clean.at(-1))) clean.pop();
+  return validateBoundary(clean);
 }
 
 export function validateBoundary(points) {
@@ -107,6 +146,7 @@ export function metricDimensionConstraints(layout, pixelLengths = []) {
   return [
     ...pixelLengths.map(c => ({ ...c, start: point(c.start), end: point(c.end),
       source_reference_px: { start: { ...c.start }, end: { ...c.end } } })),
+    ...layout.rooms.flatMap(roomSizeConstraints),
     ...layout.rooms.filter(r => r.declared_area_m2 > 0).map(r => ({ id: `area-${r.id}`, type: 'area', room_id: r.id,
       target_m2: r.declared_area_m2, text: r.declared_area_text || `${r.declared_area_m2} m²` })),
   ];
@@ -116,8 +156,10 @@ export function buildMetricLayout({ walls, doors = [], objects = [], rooms = [],
   calibration = {}, measurements = {}, image = {}, defaults = {} }) {
   const valid = walls.filter(w => w?.start && w?.end && [w.start.x, w.start.y, w.end.x, w.end.y].every(Number.isFinite)
     && Math.hypot(w.end.x - w.start.x, w.end.y - w.start.y) > 1);
-  if (!valid.length) throw new Error('No valid walls to export.');
-  const xs = valid.flatMap(w => [w.start.x, w.end.x]), ys = valid.flatMap(w => [w.start.y, w.end.y]);
+  const markedPoints = rooms.filter(r => r.boundary_source === 'manual').flatMap(r => validateBoundary(r.points));
+  if (!valid.length && !markedPoints.length) throw new Error('No valid walls or marked rooms to export.');
+  const xs = [...valid.flatMap(w => [w.start.x, w.end.x]), ...markedPoints.map(p => p.x)];
+  const ys = [...valid.flatMap(w => [w.start.y, w.end.y]), ...markedPoints.map(p => p.y)];
   const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
   const calibrated = Number.isFinite(metersPerPixel) && metersPerPixel > 0;
   const scale = calibrated ? metersPerPixel : 20 / Math.max(maxX - minX, maxY - minY);

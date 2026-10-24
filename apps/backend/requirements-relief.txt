@@ -1,0 +1,2 @@
+# Additional dependency for local /api/wall-relief inference; existing backend supplies torch, Pillow, numpy and OpenCV.
+transformers==4.57.6

@@ -1,7 +1,19 @@
+import { registerKitchen, restoreKitchen } from '../kitchen/system.js';
+import { PULLOUT_SLAB_ID, EDITABLE_CABINET_ID, pulloutSlabState } from '../kitchen/presets.js';
+import {buildSectionGeometry,fitSectionSizes} from '../kitchen/sectionGeometry.js';
+import { restoreSofaBed } from './sofaBed.js';
+import { createSofaFactoryFurniture } from './sofaFactory.js';
+import { createPhotoSofa, PHOTO_SOFA_CLASS } from './photoSofa.js';
+import { setObjectHeight } from '../design/objectHeight.js';
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import { createDetailedFurniture } from './detailedFurniture.js';
 import { furniturePlacement } from './furniturePlacement.js';
+import { createWardrobe } from './wardrobe.js';
+import { createReferenceFurniture } from './referenceFurniture.js';
+import { createPoojaUnit } from './pooja.js';
+import { createTvUnit } from './tvUnits.js';
+import { designerDoorSpec, placeDesignerDoor } from './designerDoors.js';
 
 // Toggle object labels; disabled for a clean rendered look.
 const SHOW_LABELS = false;
@@ -38,6 +50,7 @@ const CLASS_PROPS = {
   fridge: { color: 0xe8e8e8, opacity: 1.0, height: 1.8 },
   stove: { color: 0x2d2d2d, opacity: 1.0, height: 0.9 },
   'kitchen-slab': { color: 0x8b8378, opacity: 1.0, height: 0.9 },
+  [PULLOUT_SLAB_ID]: { color: 0x4e7fa8, opacity: 1.0, height: 0.9 },
   sink: { color: 0xd0d0d0, opacity: 1.0, height: 0.85 },
   'washing machine': { color: 0xf0f0f0, opacity: 1.0, height: 0.85 },
   commode: { color: 0xfaf8f5, opacity: 1.0, height: 0.4 },
@@ -134,13 +147,22 @@ export function getWindowSillAndTop(cls, dimensions = {}) {
   const suppliedSill = Number(dimensions.sill_height_m);
   const sillBase = dimensions.sill_height_m != null && Number.isFinite(suppliedSill) && suppliedSill >= 0
     ? suppliedSill : isDoor ? 0.0 : 0.9;
-  const props = CLASS_PROPS[c] || CLASS_PROPS.window;
+  const props = CLASS_PROPS[c] || (designerDoorSpec(c) ? CLASS_PROPS.door : CLASS_PROPS.window);
   const suppliedHeight = Number(dimensions.height_m);
   const openingH = Number.isFinite(suppliedHeight) && suppliedHeight > 0 ? suppliedHeight : props?.height ?? 1.1;
   return { sillBase, winTop: sillBase + openingH };
 }
 
 export function createObject(obj) {
+  const group = createObjectGeometry(obj);
+  if (group && Number.isFinite(obj?.objectHeightM) && ![PULLOUT_SLAB_ID,EDITABLE_CABINET_ID].includes(String(obj?.class).trim().toLowerCase())) setObjectHeight(group, obj.objectHeightM);
+  restoreSofaBed(group, obj?.sofaBedExpanded);
+  restoreKitchen(group, String(obj?.class).trim().toLowerCase()===PULLOUT_SLAB_ID && obj.kitchen==null
+    ? {...obj,kitchen:pulloutSlabState()} : obj);
+  return group;
+}
+
+function createObjectGeometry(obj) {
   const { bbox = {}, class: cls = 'default', layoutCenter = null, walls = [],
           swingDir = 'auto' } = obj || {};
   const lowerCls = String(cls).trim().toLowerCase();
@@ -149,6 +171,10 @@ export function createObject(obj) {
   const dx = x2 - x1;
   const dy = y2 - y1;
   const horizontal = Math.abs(dx) >= Math.abs(dy);
+
+  if (designerDoorSpec(lowerCls)) {
+    return placeDesignerDoor({ ...obj, class: lowerCls }, getWindowSillAndTop(lowerCls, obj));
+  }
 
   if (lowerCls.includes('door') && !['upvc-slide-door', 'sliding-glass-door', 'french-door'].includes(lowerCls)) {
     const thickness = 0.06;
@@ -197,6 +223,7 @@ export function createObject(obj) {
     // Main inset panel
     const panelGeom = new THREE.BoxGeometry(panelW, panelH, thickness);
     const panelMesh = new THREE.Mesh(panelGeom, panelMat);
+    panelMesh.userData.kitchenObstacleLabel = 'door panel';
     panelMesh.position.set(doorWidth / 2, DOOR_HEIGHT / 2, 0);
     panelMesh.castShadow = true;
     panelMesh.receiveShadow = true;
@@ -207,6 +234,7 @@ export function createObject(obj) {
     const addFrame = (sx, sy, sz, px, py, pz) => {
       const g = new THREE.BoxGeometry(sx, sy, sz);
       const m = new THREE.Mesh(g, frameMat);
+      m.userData.kitchenObstacleLabel = 'door frame';
       m.position.set(px, py, pz);
       m.castShadow = true; m.receiveShadow = true;
       doorGroup.add(m);
@@ -222,6 +250,7 @@ export function createObject(obj) {
       handleMat
     );
     handle.position.set(doorWidth - 0.12, DOOR_HEIGHT / 2, thickness / 2 + 0.03);
+    handle.userData.kitchenObstacleLabel = 'door handle';
     handle.castShadow = true;
     doorGroup.add(handle);
 
@@ -229,6 +258,8 @@ export function createObject(obj) {
     const clickGeom = new THREE.BoxGeometry(doorWidth + 0.3, DOOR_HEIGHT, 0.3);
     const clickMat = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0.0 });
     const clickMesh = new THREE.Mesh(clickGeom, clickMat);
+    // Ray picking only: this oversized target is not physical door geometry.
+    clickMesh.userData.isInteractionProxy = true;
     clickMesh.position.set(doorWidth / 2, DOOR_HEIGHT / 2, 0);
     doorGroup.add(clickMesh);
 
@@ -773,7 +804,7 @@ export function createObject(obj) {
   const color = props.color ?? 0xffcc00;
   const opacity = props.opacity ?? 1.0;
 
-  const detailed = createDetailedFurniture(lowerCls, fw, fd);
+  const detailed = (lowerCls===PHOTO_SOFA_CLASS?createPhotoSofa(obj.photoSofaSpec,fw,fd):null) || createSofaFactoryFurniture(lowerCls, fw, fd) || createTvUnit(lowerCls, fw, fd) || createPoojaUnit(lowerCls, fw, fd) || createReferenceFurniture(lowerCls, fw, fd, obj) || createWardrobe(lowerCls, fw, fd, obj) || createDetailedFurniture(lowerCls, fw, fd);
   const group = detailed || new THREE.Group();
 
   const mat = (c, rough, metal) => new THREE.MeshStandardMaterial({
@@ -1159,6 +1190,14 @@ export function createObject(obj) {
     addBox(fw * 0.4, 0.22, 0.025, 0, 0.75 + 0.11, -fd * 0.44, mat(0x1a1a1a, 0.2, 0.1));
 
   // ── MODULAR KITCHEN ───────────────────────────────────────
+  } else if (lowerCls === PULLOUT_SLAB_ID) {
+    const count=Math.max(1,Math.min(12,Math.round(obj.kitchenSectionCount||obj.kitchen?.sectionSizes?.length||3)));
+    const saved=obj.kitchen?.sectionSizes;
+    const sizes=saved||Array.from({length:count},()=>({width:fw/count,height:obj.objectHeightM||h,depth:fd}));
+    registerKitchen(group,buildSectionGeometry(group,fitSectionSizes(fw,obj.objectHeightM||h,fd,sizes)));
+  } else if (lowerCls === EDITABLE_CABINET_ID) {
+    const saved=obj.kitchen?.sectionSizes?.[0];
+    registerKitchen(group,buildSectionGeometry(group,[saved||{width:fw,height:obj.objectHeightM||h,depth:fd}]));
   } else if (lowerCls === 'kitchen-base-cabinet') {
     // Blue/coloured lower cabinet with granite countertop + panel doors
     const kbcBodyMat   = mat(0x5b8dba, 0.55, 0.05);   // blue body
@@ -1170,9 +1209,9 @@ export function createObject(obj) {
     // Toe-kick recess at bottom
     addBox(fw, 0.1, fd - 0.06, 0, 0.05, 0.03, mat(0x1a1a1a, 0.5, 0.0));
     // Cabinet body
-    addBox(fw, kbcBaseH - 0.1, fd, 0, 0.1 + (kbcBaseH - 0.1) / 2, 0, kbcBodyMat);
+    const kitchenBody = addBox(fw, kbcBaseH - 0.1, fd, 0, 0.1 + (kbcBaseH - 0.1) / 2, 0, kbcBodyMat);
     // Granite countertop (overhangs 2cm on front)
-    addBox(fw + 0.02, 0.05, fd + 0.02, 0, kbcBaseH - 0.025, 0.01, kbcCounterMat);
+    const kitchenCounter = addBox(fw + 0.02, 0.05, fd + 0.02, 0, kbcBaseH - 0.025, 0.01, kbcCounterMat);
     // Black trim edge on counter front
     addBox(fw + 0.02, 0.05, 0.02, 0, kbcBaseH - 0.025, fd / 2 + 0.02, kbcTrimMat);
     // Panel doors — hinged, openable
@@ -1185,6 +1224,7 @@ export function createObject(obj) {
     kbcHL.position.set(kbcDW * 0.65, kbcDH * 0.35, 0.03); kbcLd.add(kbcHL);
     const kbcHR = new THREE.Mesh(new THREE.BoxGeometry(kbcDW * 0.55, 0.025, 0.03), kbcHandleMat);
     kbcHR.position.set(-kbcDW * 0.65, kbcDH * 0.35, 0.03); kbcRd.add(kbcHR);
+    registerKitchen(group,{body:kitchenBody,counter:kitchenCounter,fronts:[kbcLd,kbcRd],width:fw,depth:fd});
 
   } else if (lowerCls === 'kitchen-upper-cabinet') {
     // Wall-mounted upper cabinet at 1.65m–2.3m height (matching photo)
@@ -1360,23 +1400,25 @@ export function createObject(obj) {
     // Toe-kick recess
     addBox(fw, 0.1, fd - 0.06, 0, 0.05, 0.02, mat(0x1a1a1a, 0.5, 0.0));
     // Body
-    addBox(fw, kiH - 0.1, fd, 0, 0.1 + (kiH - 0.1) / 2, 0, kiBodyMat);
+    const kitchenBody = addBox(fw, kiH - 0.1, fd, 0, 0.1 + (kiH - 0.1) / 2, 0, kiBodyMat);
     // White marble/stone countertop (overhangs on all sides)
-    addBox(fw + 0.04, 0.06, fd + 0.04, 0, kiH - 0.02, 0, kiCounterMat);
+    const kitchenCounter = addBox(fw + 0.04, 0.06, fd + 0.04, 0, kiH - 0.02, 0, kiCounterMat);
     addBox(fw + 0.04, 0.06, 0.025, 0, kiH - 0.02, fd / 2 + 0.03, kiTrimMat);
     addBox(fw + 0.04, 0.06, 0.025, 0, kiH - 0.02, -fd / 2 - 0.03, kiTrimMat);
     // Front doors
     const kiDH = kiH - 0.1 - 0.06;
-    addBox(fw / 2 - 0.03, kiDH, 0.02, -fw / 4, 0.13 + kiDH / 2, fd / 2 + 0.01, kiDoorMat);
-    addBox(fw / 2 - 0.03, kiDH, 0.02,  fw / 4, 0.13 + kiDH / 2, fd / 2 + 0.01, kiDoorMat);
+    const kitchenLeft = addBox(fw / 2 - 0.03, kiDH, 0.02, -fw / 4, 0.13 + kiDH / 2, fd / 2 + 0.01, kiDoorMat);
+    const kitchenRight = addBox(fw / 2 - 0.03, kiDH, 0.02,  fw / 4, 0.13 + kiDH / 2, fd / 2 + 0.01, kiDoorMat);
     // Back doors (island is accessible from both sides)
     addBox(fw / 2 - 0.03, kiDH, 0.02, -fw / 4, 0.13 + kiDH / 2, -fd / 2 - 0.01, kiDoorMat);
     addBox(fw / 2 - 0.03, kiDH, 0.02,  fw / 4, 0.13 + kiDH / 2, -fd / 2 - 0.01, kiDoorMat);
     // Handles on all sides
-    addBox(fw * 0.28, 0.025, 0.03, -fw / 4, 0.13 + kiDH * 0.85, fd / 2 + 0.03, kiHandleMat);
-    addBox(fw * 0.28, 0.025, 0.03,  fw / 4, 0.13 + kiDH * 0.85, fd / 2 + 0.03, kiHandleMat);
+    group.updateMatrixWorld(true); kitchenLeft.attach(addBox(fw * 0.28, 0.025, 0.03, -fw / 4, 0.13 + kiDH * 0.85, fd / 2 + 0.03, kiHandleMat));
+    group.updateMatrixWorld(true); kitchenRight.attach(addBox(fw * 0.28, 0.025, 0.03,  fw / 4, 0.13 + kiDH * 0.85, fd / 2 + 0.03, kiHandleMat));
     addBox(fw * 0.28, 0.025, 0.03, -fw / 4, 0.13 + kiDH * 0.85, -fd / 2 - 0.03, kiHandleMat);
     addBox(fw * 0.28, 0.025, 0.03,  fw / 4, 0.13 + kiDH * 0.85, -fd / 2 - 0.03, kiHandleMat);
+
+    registerKitchen(group,{body:kitchenBody,counter:kitchenCounter,fronts:[kitchenLeft,kitchenRight],width:fw,depth:fd});
 
   // ── WALL-MOUNTED ITEMS ────────────────────────────────────
   } else if (lowerCls === 'wall-shelf') {
@@ -1773,23 +1815,6 @@ export function createObject(obj) {
     [[-lx, -lz], [lx, -lz], [-lx, lz], [lx, lz]].forEach(([px, pz]) => {
       addBox(0.035, legH, 0.035, px, legH / 2, pz, woodMat);
     });
-  } else if (lowerCls === 'wardrobe') {
-    // Wardrobe: dark wood, panel doors, metal handles
-    const bodyMat = mat(0x3e2723, 0.6, 0.0);
-    const doorMat = mat(0x4e342e, 0.55, 0.0);
-    const handleMat = mat(0xc0c0c0, 0.2, 0.8);
-    addBox(fw, h, fd, 0, h / 2, 0, bodyMat);
-    // Left door — hinge at left edge, swings outward (negative Z → negative X open)
-    const wdw = fw / 2 - 0.03;
-    const wdh = h - 0.06;
-    const ldPivot = addDoorPanel(wdw, wdh, 0.02, -fw / 2 + 0.03, h / 2, fd / 2 + 0.01, doorMat, 1);
-    const rdPivot = addDoorPanel(wdw, wdh, 0.02,  fw / 2 - 0.03, h / 2, fd / 2 + 0.01, doorMat, -1);
-    // Handles on each door panel child mesh
-    const wHandle = mat(0xc0c0c0, 0.2, 0.8);
-    const whl = new THREE.Mesh(new THREE.BoxGeometry(0.02, 0.15, 0.03), wHandle);
-    whl.position.set(wdw * 0.75, 0, 0.03); ldPivot.add(whl);
-    const whr = new THREE.Mesh(new THREE.BoxGeometry(0.02, 0.15, 0.03), wHandle);
-    whr.position.set(-wdw * 0.75, 0, 0.03); rdPivot.add(whr);
   } else if (lowerCls === 'fridge') {
     // Fridge: stainless steel look
     const bodyMat = mat(0xe8e8e8, 0.25, 0.5);
@@ -1812,8 +1837,9 @@ export function createObject(obj) {
     // Kitchen counter with a fitted glass gas hob.
     const counterMat = mat(0x68625c, 0.3, 0.12);
     const baseMat = mat(0xeee9e1, 0.58, 0.02);
-    addBox(fw, h - 0.05, fd, 0, (h - 0.05) / 2, 0, baseMat);
-    addBox(fw, 0.05, fd, 0, h - 0.025, 0, counterMat);
+    const kitchenBody = addBox(fw, h - 0.05, fd, 0, (h - 0.05) / 2, 0, baseMat);
+    const kitchenCounter = addBox(fw, 0.05, fd, 0, h - 0.025, 0, counterMat);
+    registerKitchen(group,{body:kitchenBody,counter:kitchenCounter,width:fw,depth:fd,kind:lowerCls==='stove'?'hob-adjacent':'base'});
     if (lowerCls === 'stove') {
       const glassMat = mat(0x101418, 0.08, 0.42);
       const ironMat = mat(0x242424, 0.3, 0.68);
@@ -1966,7 +1992,7 @@ export function createObject(obj) {
     const shadowMat = mat(0x9ba5a8, 0.22, 0.5);
     const chromeMat = mat(0xd6dde0, 0.08, 0.92);
     const cabinetH = Math.max(0.25, h * 0.78);
-    addBox(fw * 0.9, cabinetH, fd * 0.78, 0, cabinetH / 2, -fd * 0.06, vanityMat).userData.fixturePart = 'vanity';
+    const kitchenBody = addBox(fw * 0.9, cabinetH, fd * 0.78, 0, cabinetH / 2, -fd * 0.06, vanityMat); kitchenBody.userData.fixturePart = 'vanity';
     addBox(fw, 0.045, fd * 0.9, 0, cabinetH + 0.0225, 0, ceramicMat).userData.fixturePart = 'countertop';
     const basinW = Math.max(0.11, fw * 0.58), basinD = Math.max(0.1, fd * 0.48);
     const basin = new THREE.Mesh(new THREE.SphereGeometry(0.5, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2), ceramicMat);
@@ -1987,7 +2013,8 @@ export function createObject(obj) {
       new THREE.Vector3(0, cabinetH + 0.2, fd * 0.01));
     const spout = new THREE.Mesh(new THREE.TubeGeometry(spoutCurve, 20, tapR, 8, false), chromeMat);
     spout.castShadow = true; spout.userData.fixturePart = 'faucet-spout'; group.add(spout);
-    addBox(fw * 0.34, 0.018, 0.02, 0, cabinetH * 0.58, fd * 0.34, chromeMat).userData.fixturePart = 'handle';
+    const sinkHandle = addBox(fw * 0.34, 0.018, 0.02, 0, cabinetH * 0.58, fd * 0.34, chromeMat); sinkHandle.userData.fixturePart = 'handle';
+    if(lowerCls==='sink')registerKitchen(group,{body:kitchenBody,attachments:[sinkHandle],width:fw*.9,depth:fd*.78,kind:'sink'});
   } else if (lowerCls === 'washing machine') {
     // Washing machine: white body, dark drum porthole
     const bodyMat = mat(0xf5f5f5, 0.3, 0.25);

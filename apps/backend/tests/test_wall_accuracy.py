@@ -212,6 +212,15 @@ class DetectionIntegrationTests(unittest.TestCase):
             import train_server
         cls.server = train_server
 
+    def setUp(self):
+        # Authentication has its own HTTP tests; these fixtures exercise scans
+        # after an authenticated request has passed the middleware.
+        auth = patch.object(self.server, 'auth_http')
+        middleware = auth.start().return_value
+        middleware.handle.return_value = False
+        middleware.protect.return_value = {'id': 'scan-test', 'role': 'admin'}
+        self.addCleanup(auth.stop)
+
     def request(self, data, path='/api/auto-detect'):
         handler = object.__new__(self.server.Handler)
         body = json.dumps(data).encode()

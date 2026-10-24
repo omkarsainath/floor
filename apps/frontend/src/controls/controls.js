@@ -1,3 +1,4 @@
+import { projectStorage } from '../auth/storage.js';
 import * as THREE from 'three';
 import { createWalkCamera } from './walkCamera.js';
 import { checkWalkPosition, resolveWalkMovement } from './walkCollision.js';
@@ -31,20 +32,25 @@ export function applyCeilingVisibility(root, visible) {
 
 /** Metre-based first-person viewing, with OrbitControls used only in Orbit. */
 export function setupViewerControls({ camera, controls, domElement = controls?.domElement,
-  ceilingMesh = null, getObstacles = () => [], getLayout = () => ({}), onModeChange = () => {}, onCeilingVisibilityChange = () => {},
+  ceilingMesh = null, getObstacles = () => [], getLayout = () => ({}), onModeChange = () => {}, onCeilingVisibilityChange = () => {}, onLightsChange = () => {}, onLightCircuitChange = () => {},
   initialCameraPosition = { x: 12, y: 16, z: 12 }, initialTarget = { x: 0, y: 1, z: 0 },
 }) {
   if (!camera || !controls) return;
   const walker = createWalkCamera(camera);
-  let bodyWidthM = 0.46, walkMode = false, ceilingVisible = false;
+  let bodyWidthM = 0.46, walkMode = false, ceilingVisible = false, lightsEnabled = true;
+  let ceilingLightsEnabled = true, wallLightsEnabled = true;
   let lastWalkPosition = null, message = '', looking = null;
   let orbitPosition = new THREE.Vector3().copy(initialCameraPosition);
   let orbitTarget = new THREE.Vector3().copy(initialTarget);
   const pressed = new Set();
   if (ceilingMesh) ceilingMesh.visible = false;
   try {
-    const saved = JSON.parse(localStorage.getItem(PREFERENCES_KEY) || 'null');
+    const saved = JSON.parse(projectStorage.getItem(PREFERENCES_KEY) || 'null');
     if (saved) {
+      ceilingVisible = saved.ceilingVisible === true;
+      lightsEnabled = saved.lightsEnabled !== false;
+      ceilingLightsEnabled = saved.ceilingLightsEnabled !== false;
+      wallLightsEnabled = saved.wallLightsEnabled !== false;
       walker.setPersonHeight(saved.personHeightM);
       walker.setEyeHeight(saved.eyeHeightM ?? null);
       if (Number.isFinite(saved.bodyWidthM) && saved.bodyWidthM >= 0.2 && saved.bodyWidthM <= 1) bodyWidthM = saved.bodyWidthM;
@@ -52,8 +58,8 @@ export function setupViewerControls({ camera, controls, domElement = controls?.d
   } catch { /* Private browsing and invalid old preferences keep safe defaults. */ }
   const save = () => {
     const state = walker.getState();
-    try { localStorage.setItem(PREFERENCES_KEY, JSON.stringify({ personHeightM: state.personHeightM,
-      eyeHeightM: state.eyeHeightSource === 'measured' ? state.eyeHeightM : null, bodyWidthM })); } catch { /* Optional preferences. */ }
+    try { projectStorage.setItem(PREFERENCES_KEY, JSON.stringify({ personHeightM: state.personHeightM,
+      eyeHeightM: state.eyeHeightSource === 'measured' ? state.eyeHeightM : null, bodyWidthM, ceilingVisible, lightsEnabled, ceilingLightsEnabled, wallLightsEnabled })); } catch { /* Optional preferences. */ }
   };
   const collisionOptions = position => ({ position, obstacles: [...getObstacles(), ...(ceilingMesh ? [ceilingMesh] : [])],
     bodyHeight: walker.getState().personHeightM, bodyRadius: bodyWidthM / 2, floorY: 0, includeCeilings: true });
@@ -83,6 +89,7 @@ export function setupViewerControls({ camera, controls, domElement = controls?.d
   function setCeilingsVisible(visible) {
     ceilingVisible = Boolean(visible); if (ceilingMesh) ceilingMesh.visible = ceilingVisible;
     onCeilingVisibilityChange(ceilingVisible);
+    save();
     if (ceilingBtn) {
       ceilingBtn.textContent = `Ceiling: ${ceilingVisible ? 'ON' : 'OFF'}`;
       ceilingBtn.setAttribute('aria-pressed', String(ceilingVisible));
@@ -94,6 +101,34 @@ export function setupViewerControls({ camera, controls, domElement = controls?.d
   });
   ceilingBtn.setAttribute('aria-pressed', 'false');
   toolbar.append(orbitBtn, walkBtn, button('Reset View', () => resetView()), ceilingBtn);
+  const lightsBtn = button('', () => { lightsEnabled = !lightsEnabled; refreshLights(); save(); });
+  lightsBtn.id = 'room-lights-toggle';
+  function refreshLights() {
+    lightsBtn.textContent = `All lights: ${lightsEnabled ? 'ON' : 'OFF'}`;
+    lightsBtn.setAttribute('aria-pressed',String(lightsEnabled));
+    onLightsChange(lightsEnabled);
+  }
+  toolbar.append(lightsBtn); refreshLights();
+  for (const [circuit, label] of [['ceiling', 'Ceiling lights'], ['wall', 'Wall lights']]) {
+    const refreshCircuit = () => {
+      const on = circuit === 'ceiling' ? ceilingLightsEnabled : wallLightsEnabled;
+      toggle.textContent = `${label}: ${on ? 'ON' : 'OFF'}`;
+      toggle.setAttribute('aria-pressed', String(on));
+      onLightCircuitChange(circuit, on);
+    };
+    const toggle = button('', () => {
+      if (circuit === 'ceiling') ceilingLightsEnabled = !ceilingLightsEnabled;
+      else wallLightsEnabled = !wallLightsEnabled;
+      // Activating a circuit also releases the master override.
+      if ((circuit === 'ceiling' ? ceilingLightsEnabled : wallLightsEnabled) && !lightsEnabled) {
+        lightsEnabled = true; refreshLights();
+      }
+      refreshCircuit(); save();
+    });
+    toggle.id = `${circuit}-lights-toggle`;
+    toolbar.append(toggle); refreshCircuit();
+  }
+  setCeilingsVisible(ceilingVisible);
   field('Body (cm) ', heightInput, toolbar);
   const settings = document.createElement('details');
   const summary = document.createElement('summary'); summary.textContent = 'Walk settings'; summary.style.cursor = 'pointer'; settings.append(summary);

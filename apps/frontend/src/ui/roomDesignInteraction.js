@@ -1,3 +1,4 @@
+import { inferRoomType } from '../design/roomDesignCatalog.js';
 import * as THREE from 'three';
 import { buildCeilingLight, disposeCeilingLight, normalizeCeilingLights } from '../design/ceilingLights.js';
 import { ceilingAttachment, ceilingSurfaceMeshes, orientCeilingLight } from '../design/ceilingLightPlacement.js';
@@ -8,9 +9,16 @@ const uid = prefix => `${prefix}-${globalThis.crypto?.randomUUID?.() || `${Date.
 
 // A wall's outer face, narrow end caps and its neighbour's face are not the
 // selected room's paneling surface. Use actual carved room-facing pieces.
-export function matchRoomWallHit(hit, surfaces) {
+export function matchRoomWallHit(hit, surfaces, { allowTop = false, roomId } = {}) {
   if (!hit?.face || !hit.object) return null;
-  let wallId;
+  let wallId, finishRoomId, finishDepth = 0;
+  for (let node = hit.object; node; node = node.parent) {
+    if (node.userData.isRoomFinish) {
+      finishRoomId ??= node.userData.roomId;
+      finishDepth = Math.max(finishDepth, node.userData.finishDepthM || 0);
+    }
+  }
+  if (finishRoomId != null && roomId != null && String(finishRoomId) !== String(roomId)) return null;
   for (let node = hit.object; node; node = node.parent) {
     if (node.userData.parentWallId !== undefined) { wallId = node.userData.parentWallId; break; }
   }
@@ -18,13 +26,38 @@ export function matchRoomWallHit(hit, surfaces) {
   const normal = hit.face.normal.clone().applyNormalMatrix(new THREE.Matrix3().getNormalMatrix(hit.object.matrixWorld)).normalize();
   return surfaces.find(s => {
     if (String(s.parentWallId) !== String(wallId)) return false;
-    if (normal.x * s.normal.x + normal.z * s.normal.y < 0.7) return false;
+    const topHit = allowTop && normal.y > .9 && Math.abs(hit.point.y - (s.yOffset + s.height)) < .015;
+    // Sculpted finish triangles tilt independently of the underlying wall face.
+    const reliefHit = finishRoomId != null && finishDepth > 0;
+    if (!reliefHit && !topHit && normal.x * s.normal.x + normal.z * s.normal.y < 0.7) return false;
     const dx = s.end.x - s.start.x, dz = s.end.y - s.start.y, length = Math.hypot(dx, dz);
     const along = ((hit.point.x - s.start.x) * dx + (hit.point.z - s.start.y) * dz) / length;
     const offset = (hit.point.x - s.start.x) * s.normal.x + (hit.point.z - s.start.y) * s.normal.y;
-    return along >= -0.005 && along <= length + 0.005 && offset >= -0.015 && offset <= 0.25
+    return along >= -0.005 && along <= length + 0.005 && offset >= (topHit ? -(s.thickness || .15) - .015 : -.015) && offset <= Math.max(.25, finishDepth + .02)
       && hit.point.y >= s.yOffset - 0.005 && hit.point.y <= s.yOffset + s.height + 0.005;
   }) || null;
+}
+
+export function directWallFaceHit(hit, walls) {
+  if (!hit?.face || !hit.object) return null;
+  let id;
+  for (let node=hit.object;node;node=node.parent) if(node.userData.isWall && node.userData.parentWallId != null){id=node.userData.parentWallId;break;}
+  const wall=walls.find(w=>String(w.id)===String(id));if(!wall)return null;
+  const normal=hit.face.normal.clone().applyNormalMatrix(new THREE.Matrix3().getNormalMatrix(hit.object.matrixWorld)).normalize();
+  const dx=wall.end.x-wall.start.x,dy=wall.end.y-wall.start.y,length=Math.hypot(dx,dy);
+  if(length<1e-6)return null;
+  const alignment=normal.x*(-dy/length)+normal.z*(dx/length);
+  // Select broad wall faces, never door/window objects or narrow end caps.
+  if(Math.abs(alignment)<.9)return null;
+  return {wall,side:alignment>0?1:-1};
+}
+
+export function wallDraftForTarget(draft, targetRoom) {
+  // Choosing another room must not copy the source room's floors or lights.
+  const result = structuredClone(targetRoom.design || { roomType: inferRoomType(targetRoom) || draft.roomType });
+  for (const key of ['wallPanel', 'tvPanel', 'color']) if (draft[key]) result[key] = draft[key];
+  result.customWallStyles = [...(result.customWallStyles || []), ...(draft.customWallStyles || [])];
+  return result;
 }
 
 export function createRoomDesignInteraction({ scene, camera, controls, domElement, controller, getLayout,
@@ -65,8 +98,9 @@ export function createRoomDesignInteraction({ scene, camera, controls, domElemen
   function begin(kind, roomId, draft) {
     cancel(false);
     if (!controller.getRoom(roomId)) return { ok: false, message: 'Choose a room first.' };
-    mode = { kind, roomId, draft: structuredClone(draft), id: uid(kind), ready: false, candidate: null };
-    bar.hidden = false; confirm.hidden = kind !== 'wall'; confirm.disabled = true;
+    mode = { kind, roomId, sourceRoomId: roomId, sourceDraft: structuredClone(draft), draft: structuredClone(draft), id: uid(kind), ready: false, candidate: null };
+    bar.hidden = false; confirm.hidden = kind === 'light'; confirm.disabled = true;
+    confirm.textContent = kind === 'wallPick' ? 'Apply to selected wall' : 'Apply marked area';
     domElement.style.cursor = 'crosshair'; return { ok: true };
   }
   function beginLight(roomId, draft, settings, lightId = null) {
@@ -104,8 +138,23 @@ export function createRoomDesignInteraction({ scene, camera, controls, domElemen
     if ((draft.wallPanelRegions || []).length >= 32) return { ok: false, message: 'This room already has 32 marked areas. Remove one before marking another.' };
     const result = begin('wall', roomId, draft); if (!result.ok) return result;
     mode.styleId = styleId;
-    say('Click the first corner on an inside wall of this room, then its opposite corner. Right-drag or use Walk to look around.');
+    say('Click the first corner on a visible inside wall, then its opposite corner. Right-drag or use Walk to look around.');
     return { ok: true };
+  }
+  function beginWallPick(roomId, draft) {
+    const result = begin('wallPick', roomId, draft);
+    if (result.ok) say('Click a visible inside wall. Its room is detected automatically and the wall highlights blue.' + ((draft.wallPanelRegions || []).length ? ' Applying a full wall replaces this room’s marked wall areas.' : ''));
+    return result;
+  }
+  function updateWallPick(hit) {
+    if (mode.ready) return;
+    disposeHelper(marker); marker = null;
+    mode.candidate = hit?.wall.id ?? null;
+    if (!hit) { say('Point at a visible wall face. Move off furniture or window glass.', true); return; }
+    mode.targetRoomId = hit.roomId;
+    mode.targetWallSide = hit.wallSide;
+    drawRegion(hit.directSurfaces || controller.getWallSurfaces(hit.roomId).filter(s => String(s.parentWallId) === String(hit.wall.id)));
+    say(`Click to select this wall in ${controller.getRoom(hit.roomId)?.name || hit.roomId}, then confirm.`);
   }
   function updateRay(event) {
     const bounds = domElement.getBoundingClientRect();
@@ -124,11 +173,35 @@ export function createRoomDesignInteraction({ scene, camera, controls, domElemen
     // Only the frontmost visible surface may be picked, never through furniture,
     // glazing, or the back of the building to a convenient wall behind it.
     const hit = ray.intersectObjects(meshes, false)[0];
-    const surface = matchRoomWallHit(hit, controller.getWallSurfaces(mode.roomId));
-    if (!surface) return null;
-    const wall = (getLayout().walls || []).find(w => String(w.id) === String(surface.parentWallId));
-    return wall ? { point: hit.point, surface, wall } : null;
+    const rooms = [controller.getRoom(mode.roomId), ...(getLayout().rooms || []).filter(r => r.id !== mode.roomId)].filter(Boolean);
+    // Full-wall selection can also use the exposed top cap in an Orbit view.
+    // First try actual inside faces across rooms, then the current room's cap.
+    for (const room of rooms) {
+      if (mode.first && room.id !== mode.roomId) continue;
+      if (!mode.sourceDraft.wallPanel && !mode.sourceDraft.tvPanel && room.id !== mode.roomId) continue;
+      const surface = matchRoomWallHit(hit, controller.getWallSurfaces(room.id), { roomId: room.id });
+      if (!surface) continue;
+      const wall = (getLayout().walls || []).find(w => String(w.id) === String(surface.parentWallId));
+      if (wall) return { point: hit.point, surface, wall, roomId: room.id, wallSide: String(room.design?.accentWallId) === String(wall.id) ? room.design.accentWallSide : undefined };
+    }
+    if (mode.kind === 'wallPick') {
+      const surface = matchRoomWallHit(hit, controller.getWallSurfaces(mode.roomId), { roomId: mode.roomId, allowTop: true });
+      const wall = surface && (getLayout().walls || []).find(w => String(w.id) === String(surface.parentWallId));
+      if (wall) return { point: hit.point, surface, wall, roomId: mode.roomId };
+    }
+    if (mode.kind === 'wallPick' && (mode.sourceDraft.wallPanel || mode.sourceDraft.tvPanel)) {
+      const direct = directWallFaceHit(hit, getLayout().walls || []);
+      const surfaces = direct && controller.getDirectWallSurfaces?.(direct.wall.id,direct.side);
+      if (surfaces?.length) return {point:hit.point,wall:direct.wall,wallSide:direct.side,roomId:mode.roomId,directSurfaces:surfaces};
+    }
+    return null;
   }
+  function useTargetRoom(roomId) {
+    mode.roomId = roomId;
+    mode.draft = roomId === mode.sourceRoomId ? structuredClone(mode.sourceDraft)
+      : wallDraftForTarget(mode.sourceDraft, controller.getRoom(roomId));
+  }
+
   function updateLight() {
     const hit = ray.intersectObject(guide, true)[0];
     cleanGhost(); mode.candidate = null;
@@ -153,7 +226,7 @@ export function createRoomDesignInteraction({ scene, camera, controls, domElemen
     const material = new THREE.MeshBasicMaterial({ color: 0x22d3ee, side: THREE.DoubleSide, transparent: true, opacity: 0.4, depthWrite: false });
     const lineMaterial = new THREE.LineBasicMaterial({ color: 0x0891b2 });
     for (const s of surfaces) {
-      const n = s.normal, offset = 0.09;
+      const n = s.normal, offset = 0.30;
       const a = new THREE.Vector3(s.start.x + n.x * offset, s.yOffset, s.start.y + n.y * offset);
       const b = new THREE.Vector3(s.end.x + n.x * offset, s.yOffset, s.end.y + n.y * offset);
       const c = b.clone().add(new THREE.Vector3(0, s.height, 0)), d = a.clone().add(new THREE.Vector3(0, s.height, 0));
@@ -178,6 +251,14 @@ export function createRoomDesignInteraction({ scene, camera, controls, domElemen
     say(`${(region.endM - region.startM).toFixed(2)} × ${(region.topM - region.bottomM).toFixed(2)} m · ${validation.areaM2.toFixed(2)} m² of wall. Openings excluded. Click to finish marking.`);
   }
   function commitWall() {
+    if (mode?.kind === 'wallPick' && mode.ready && mode.candidate !== null) {
+      const draft = { ...mode.draft, accentWallId: String(mode.candidate) };
+      delete draft.wallPanelRegions;
+      const result = controller.apply(mode.roomId, draft);
+      if (result.ok) finish({ ...result, message: 'Selected wall design saved.' });
+      else say(result.message, true);
+      return;
+    }
     if (mode?.kind !== 'wall' || !mode.ready || !mode.candidate) return;
     const draft = { ...mode.draft, wallPanelRegions: [...(mode.draft.wallPanelRegions || []), mode.candidate] };
     const result = controller.apply(mode.roomId, draft);
@@ -188,7 +269,7 @@ export function createRoomDesignInteraction({ scene, camera, controls, domElemen
     if (!mode || (pressed && Math.hypot(event.clientX - pressed.x, event.clientY - pressed.y) > 5)) return;
     if (event.buttons && event.buttons !== 1) return;
     updateRay(event);
-    if (mode.kind === 'light') updateLight(); else updateWall(wallHit());
+    if (mode.kind === 'light') updateLight(); else if (mode.kind === 'wallPick') updateWallPick(wallHit()); else updateWall(wallHit());
   }
   function pointerDown(event) {
     if (!mode || event.button !== 0) return;
@@ -208,10 +289,22 @@ export function createRoomDesignInteraction({ scene, camera, controls, domElemen
       const result = controller.apply(mode.roomId, { ...mode.draft, ceilingLights: lights });
       if (result.ok) finish({ ...result, message: `Ceiling light ${mode.lightId ? 'moved' : 'placed'} and saved.` });
       else say(result.message, true);
+    } else if (mode.kind === 'wallPick') {
+      if (mode.ready) mode.ready = false;
+      updateWallPick(wallHit());
+      mode.ready = mode.candidate !== null;
+      confirm.disabled = !mode.ready;
+      if (mode.ready) {
+        useTargetRoom(mode.targetRoomId);
+        if (mode.targetWallSide) mode.draft.accentWallSide = mode.targetWallSide;
+        else delete mode.draft.accentWallSide;
+        say(`Wall selected in ${controller.getRoom(mode.roomId)?.name || mode.roomId}. ${mode.targetWallSide ? "Using the clicked face independently of the room outline. " : ""}Choose Apply to selected wall to save, or click another wall.`);
+      }
     } else {
       const hit = wallHit();
       if (!mode.first) {
         if (!hit) { say('Click an exposed inside wall in the selected room. Use Walk to reach its inside face.', true); return; }
+        useTargetRoom(hit.roomId);
         mode.first = hit; say('First corner selected. Click the opposite corner on this wall.');
       } else if (!mode.ready) {
         updateWall(hit);
@@ -225,7 +318,7 @@ export function createRoomDesignInteraction({ scene, camera, controls, domElemen
   const keydown = event => {
     if (!mode || /INPUT|SELECT|TEXTAREA/.test(event.target?.tagName)) return;
     if (event.key === 'Escape') { event.preventDefault(); event.stopImmediatePropagation(); cancel(); }
-    else if (event.key === 'Enter' && mode.kind === 'wall') { event.preventDefault(); commitWall(); }
+    else if (event.key === 'Enter' && mode.kind !== 'light') { event.preventDefault(); commitWall(); }
   };
   const pointerCancel = () => { if (pressed) { controls.enabled = pressed.enabled; pressed = null; } };
   domElement.addEventListener('pointerdown', pointerDown, true);
@@ -234,7 +327,7 @@ export function createRoomDesignInteraction({ scene, camera, controls, domElemen
   domElement.addEventListener('pointercancel', pointerCancel);
   window.addEventListener('click', suppressClick, true); window.addEventListener('keydown', keydown, true);
   window.addEventListener('pointerup', pointerCancel);
-  return { beginLight, beginWall, cancel, isActive: () => Boolean(mode),
+  return { beginLight, beginWall, beginWallPick, cancel, isActive: () => Boolean(mode),
     destroy() {
       cancel(false); bar.remove();
       domElement.removeEventListener('pointerdown', pointerDown, true); domElement.removeEventListener('pointermove', pointerMove);

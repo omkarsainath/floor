@@ -1,12 +1,25 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parseLength, parseArea, polygonArea, validateBoundary, scaleFromReference, scaleFromRoomArea, buildMetricLayout } from '../src/tracer/planMeasurements.js';
+import { parseLength, parseArea, polygonArea, validateBoundary, finishRoomBoundary, scaleFromReference, scaleFromRoomArea, buildMetricLayout } from '../src/tracer/planMeasurements.js';
 import { parseLayout, loadLayout } from '../src/loaders/jsonLoader.js';
 import { persistLayout } from '../src/state/projectPersistence.js';
 
 const close = (a, b) => assert.ok(Math.abs(a - b) < 1e-8, `${a} != ${b}`);
 const rectangle = [{x:0,y:0},{x:400,y:0},{x:400,y:300},{x:0,y:300}];
 const wall = { start: {x:0,y:0}, end: {x:1000,y:0}, thickness_px: 12, thickness: 0.15, source: 'cv' };
+
+test('manual polygon completion accepts closing clicks and double clicks without mutating the draft', () => {
+  const draft = [...rectangle, rectangle[3], rectangle[0], rectangle[0]];
+  const before = structuredClone(draft);
+  assert.deepEqual(finishRoomBoundary(draft), rectangle);
+  assert.deepEqual(draft, before);
+  assert.deepEqual(finishRoomBoundary(rectangle), rectangle);
+});
+
+test('manual completion still rejects too few corners and crossing outlines', () => {
+  assert.throws(() => finishRoomBoundary([rectangle[0], rectangle[1], rectangle[0]]), /three/);
+  assert.throws(() => finishRoomBoundary([rectangle[0], rectangle[2], rectangle[1], rectangle[3], rectangle[0]]), /crosses/);
+});
 
 test('dimension parser accepts image notation and never truncates feet to metres', () => {
   close(parseLength(`41' 0"`), 12.4968);

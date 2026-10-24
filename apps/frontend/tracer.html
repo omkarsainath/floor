@@ -1,13 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-auth-pending>
 <head>
     <meta charset="UTF-8">
     <title>Floor Plan Tracer - Simple</title>
     <style>
-        body { margin: 0; font-family: sans-serif; display: flex; height: 100vh; }
+        html[data-auth-pending] body { visibility:hidden; }
+        body { margin: 0; font-family: sans-serif; display: flex; height: 100vh; padding-top:64px; box-sizing:border-box; }
+        .workspace-header { position:fixed; top:0; left:0; right:0; height:64px; box-sizing:border-box; display:flex; align-items:center; gap:12px; padding:0 80px 0 24px; background:#fff; border-bottom:1px solid #e5e7ef; color:#202b46; z-index:90; }
+        .workspace-brand { font:700 17px system-ui; }
+        .workspace-page { padding-left:12px; border-left:1px solid #dce1ec; font:13px system-ui; color:#758099; }
         #left { width: 70%; position: relative; overflow: auto; background: #222; }
         #right { width: 30%; padding: 15px; background: #f5f5f5; overflow-y: auto; }
-        #container { position: relative; display: inline-block; }
+        #container { position: relative; display: inline-block; min-width:700px; min-height:500px; }
+        .plan-actions { display:flex; flex-wrap:wrap; gap:12px; margin:20px; }
+        .builder-start, .saved-files-start { display:block; box-sizing:border-box; max-width:100%; width:fit-content; margin:0; padding:16px 22px; background:#5260e8; color:white; border-radius:12px; text-decoration:none; font: bold 18px sans-serif; text-align:left; }
+        .saved-files-start { background:#344454; }
+        .saved-files-start small { display:block; font-size:13px; font-weight:normal; margin-top:4px; }
+        .plan-actions :focus-visible { outline:3px solid #8ddfff; outline-offset:3px; }
+        .builder-start small { display:block; font-size:13px; font-weight:normal; margin-top:4px; }
         #plan { display: block; max-width: none; }
         #overlay { position: absolute; top: 0; left: 0; cursor: crosshair; }
         .controls { margin-bottom: 15px; }
@@ -25,10 +35,15 @@
     </style>
 </head>
 <body>
+    <header class="workspace-header"><span class="workspace-brand">▧ Plan Studio</span><span class="workspace-page">Floor plan tracer</span></header>
     <div id="left">
         <div id="container">
             <img id="plan" src="" style="display:none;">
             <canvas id="overlay"></canvas>
+        </div>
+        <div class="plan-actions">
+            <a class="builder-start" href="/builder.html">＋ Build a 2D Plan<small>No image needed · Add rooms, doors and furniture</small></a>
+            <button class="saved-files-start" id="saved-files-toggle" type="button" aria-haspopup="dialog">Saved Files<small>Open your saved plans and backups</small></button>
         </div>
     </div>
     <div id="right">
@@ -53,8 +68,31 @@
             <button id="btnDeleteDoor" onclick="setMode('deleteDoor')" style="background:#e53935;">Delete Door</button>
             <br>
             <button id="btnCalibrate" onclick="setMode('calibrate')" style="background:#ff9800;">Set Exact Length</button>
-            <button id="btnRoom" onclick="setMode('room')">Trace Room</button>
+            <button id="btnRoom" onclick="setMode('room')">Mark Room Manually</button>
             <button onclick="finishRoom()">Finish Room</button>
+            <fieldset id="manualRoomControls" hidden style="margin:8px 0;border:1px solid #00897b;">
+                <legend>Manual room boundary</legend>
+                <label>Name <input id="manualRoomName" placeholder="e.g. Living Room"></label>
+                <label>Shape <select id="manualRoomShape" onchange="setMode('room')"><option value="polygon">Corner by corner</option><option value="rectangle">Rectangle (two corners)</option></select></label>
+                <label>Exact area (optional) <input id="manualRoomArea" placeholder="e.g. 120 sqft or 12 m2"></label>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;">
+                    <label>Exact width (optional) <input id="manualRoomWidth" placeholder="e.g. 12 ft or 4 m" style="width:160px;"></label>
+                    <label>Exact depth (optional) <input id="manualRoomDepth" placeholder="e.g. 10 ft or 3 m" style="width:160px;"></label>
+                </div>
+                <fieldset style="margin-top:8px;">
+                    <legend><label><input type="checkbox" id="manualCutoutEnabled"> Bathroom cut-out</label></legend>
+                    <label>Corner <select id="manualCutoutCorner">
+                        <option value="top-left">Top left</option><option value="top-right">Top right</option>
+                        <option value="bottom-left">Bottom left</option><option value="bottom-right">Bottom right</option>
+                    </select></label>
+                    <label>Cut-out width <input id="manualCutoutWidth" placeholder="e.g. 2 m or 6 ft" style="width:140px;"></label>
+                    <label>Cut-out depth <input id="manualCutoutDepth" placeholder="e.g. 1.5 m or 5 ft" style="width:140px;"></label>
+                    <p>Mark the overall bedroom rectangle and enter its full width and depth above. Enable this to subtract the bathroom from the selected corner. Corner positions follow the image. An existing outline is replaced by this rectangle minus the cut-out.</p>
+                </fieldset>
+                <p>Width runs left to right on the image; depth runs top to bottom. Enter either or both. Units: m, cm, mm, ft or feet and inches. A plain number means metres. For a rectangle, width × depth determines the area; a separate area is optional.</p>
+                <p>Mark the room you want, even if detected walls do not match. For a rectangle, click two opposite corners. Otherwise click each corner in order, including angled edges. Choose Finish Room to save. Your width and depth set the 3D room size and take priority over area or scanned measurements. Rooms may shift to fit their entered sizes. Undo removes the last point; right-click cancels.</p>
+                <div id="manualRoomStatus" role="status" style="font-weight:bold;color:#00695c;"></div>
+            </fieldset>
             <br>
             <button onclick="undo()">Undo</button>
             <button onclick="clearAll()">Clear All</button>
@@ -62,6 +100,7 @@
             <br>
             <button id="btnAutoDetect" onclick="autoDetectWalls()" style="background:#3f51b5;">Auto Detect</button>
             <button onclick="snapAllWallEndpoints()" style="background:#00838f;" title="Join nearby L/T intersections while preserving wall directions; Undo restores the previous layout">⌖ Snap Corners</button>
+            <label title="Original image pixels. Leave blank for an automatic radius.">Snap radius <input id="cornerSnapRadius" type="number" min="1" max="100" placeholder="Auto" style="width:60px;"> px</label>
             <br>
             <button onclick="view3D()" style="background: #FF5722; font-weight: bold;">View in 3D ➜</button>
         </div>
@@ -75,12 +114,12 @@
             <p>The scan reads printed lengths and areas, finds enclosed room boundaries, and applies clear matches to the actual 3D geometry. Uncertain readings appear below for correction.</p>
             <div id="automaticScanResult" role="status">Upload a plan to scan its measurements locally.</div>
             <div id="measurementCandidates"></div>
-            <p>For missed readings, use <b>Set Exact Length</b> at the dimension arrow endpoints, or <b>Trace Room</b> along inside wall faces and Finish Room. Open-plan zones may need a boundary choice. Right-click cancels tracing.</p>
+            <p>For missed readings, use <b>Set Exact Length</b> at the dimension arrow endpoints, or <b>Mark Room Manually</b> along inside wall faces and Finish Room. Open-plan zones may need a boundary choice. Right-click cancels tracing.</p>
             <div id="roomMeasurements">No room boundaries yet.</div>
             <div id="dimensionConstraints"></div>
             <button onclick="generateJSON()" style="background:#00897b;">Apply Printed Measurements</button>
             <div id="constraintResult" role="status">Confirmed lengths and room areas will be applied together before opening 3D.</div>
-            <p>Exact adjustment currently supports horizontal/vertical plans. Connected walls, room outlines and objects move together. Conflicting measurements stop the export so you can correct them.</p>
+            <p>Marked rooms define their own 3D floors and walls. Entered width and depth take priority over detected walls and conflicting scan measurements. Angled edges and windows without detected walls do not block marked-room export.</p>
             <label>Default wall height (m) <input id="defaultWallHeight" type="number" min="0.1" step="0.1" value="3" style="width:60px"></label><br>
             <label>Default wall thickness (m) <input id="defaultWallThickness" type="number" min="0.01" step="0.01" value="0.15" style="width:60px"></label>
             <p>Heights are defaults unless supplied by you. Calibrated detected wall strokes supply thickness; floor plans do not establish furniture heights.</p>
@@ -100,6 +139,8 @@
         <h3>Door List:</h3>
         <p style="font-size:12px">Wall overlay: green = estimated faces; dashed blue = centreline; amber = uncertain (excluded from 3D). IDs identify scan candidates.</p>
         <label><input type="checkbox" id="showWallReview" onchange="drawAll()"> Show uncertain walls</label>
+        <label><input type="checkbox" id="showOpeningWalls" checked onchange="drawAll()"> Draw walls at doors and windows</label>
+        <p style="font-size:12px">Purple spans connect walls across supported door and window openings. In 3D, doors stay open with walls above; windows have walls above and below.</p>
         <button onclick="downloadWallScan()">Download wall scan JSON</button>
         <button onclick="downloadWallOverlay()">Download wall overlay PNG</button>
         <div id="wallReviewSummary" role="status"></div>
@@ -112,6 +153,14 @@
     </div>
 
     <script type="module">
+        import { requireSession, mountAccountMenu } from './src/auth/client.js';
+        import { projectStorage } from './src/auth/storage.js';
+        const signedInUser = await requireSession();
+        mountAccountMenu(signedInUser);
+        import { setupSavedFilesPanel } from './src/ui/savedFilesPanel.js';
+        setupSavedFilesPanel(document.getElementById('saved-files-toggle'));
+        import { parseRoomCutout, roomCutoutOutline, validateRoomCutout, CUTOUT_CORNERS } from './src/tracer/roomCutout.js';
+        import { openingWallsForPlan } from './src/tracer/openingWalls.js';
         const img = document.getElementById('plan');
         const canvas = document.getElementById('overlay');
         const ctx = canvas.getContext('2d');
@@ -144,12 +193,14 @@
         let editRevision = 0;
         let uploadRevision = 0;
         let editHistory = [];
+        let roomBoundaryIssue = null;
         const geometryTools = import('./src/tracer/wallGeometry.js');
         const measurementTools = import('./src/tracer/planMeasurements.js');
         const automaticMeasurementTools = import('./src/tracer/autoMeasurements.js');
         const scanResponseTools = import('./src/tracer/scanResponse.js');
 
         function rememberEdit() {
+            roomBoundaryIssue = null;
             document.getElementById('output').value = '';
             document.getElementById('constraintResult').textContent = 'Measurements changed. Apply Printed Measurements to update the model geometry.';
             document.getElementById('constraintResult').dataset.constraintStatus = 'pending';
@@ -165,7 +216,7 @@
             const el = document.getElementById('scaleStatus');
             if (!el) return;
             if (metersPerPixel) {
-                const label = scaleSource === 'manual' ? 'your dimension' : ['printed-dimensions', 'auto-printed-dimensions'].includes(scaleSource) ? 'printed dimensions' : ['printed-room-area', 'auto-printed-area'].includes(scaleSource) ? 'room area and outline' : 'door-width guess';
+                const label = ['manual','manual-room-size'].includes(scaleSource) ? 'your dimension' : ['printed-dimensions', 'auto-printed-dimensions'].includes(scaleSource) ? 'printed dimensions' : ['printed-room-area', 'auto-printed-area'].includes(scaleSource) ? 'room area and outline' : 'door-width guess';
                 el.textContent = `Initial scale: ${metersPerPixel.toFixed(6)} m/px (${label}; ${calibration.status === 'confirmed' ? 'reference confirmed' : calibration.status === 'automatic' ? 'scanned reference — check the drawing' : 'estimate — verify'})`;
             } else {
                 el.textContent = 'Scale: uncalibrated preview (20 m display span). Measurements are not real-world values yet.';
@@ -247,7 +298,7 @@
         }
 
         function getManualWalls() {
-            return walls.filter((w) => ['manual', 'corrected'].includes(w.source));
+            return walls.filter((w) => w.geometry_edited || ['manual', 'corrected'].includes(w.source));
         }
         
         // Wait for image to load
@@ -265,9 +316,10 @@
             currentWall = null;
             calibrateStart = null;
             currentRoom = [];
+            document.getElementById('manualRoomControls').hidden = m !== 'room';
             previewReference = null;
             if (m === 'calibrate') setStatus('Click the two dimension-arrow endpoints or intended wall faces, then enter the exact length.');
-            if (m === 'room') setStatus('Click each inside corner in order, then Finish Room.');
+            if (m === 'room') setStatus('Mark the inside room boundary, then choose Finish Room. Exact area is optional.');
             if (m === 'deleteDoor') {
                 canvas.style.cursor = 'not-allowed';
             } else {
@@ -321,13 +373,16 @@
         async function snapAllWallEndpoints() {
             if (!walls.length) return;
             const { snapWallIntersections, snapRadiusForPlan } = await geometryTools;
-            const radius = snapRadiusForPlan(canvas.width, canvas.height, SNAP_RADIUS);
+            const radiusInput = document.getElementById('cornerSnapRadius');
+            if (!radiusInput.checkValidity()) { radiusInput.reportValidity(); return; }
+            const radius = Number(radiusInput.value) || snapRadiusForPlan(canvas.width, canvas.height, SNAP_RADIUS);
             rememberEdit();
             let changedCount = 0;
-            walls = mergeWalls(snapWallIntersections(walls, radius).map((wall, i) => {
+            const openings = [...doors, ...roomObjects.filter(o => /window|glass/i.test(o.class || ''))];
+            walls = mergeWalls(snapWallIntersections(walls, radius, openings).map((wall, i) => {
                 const changed = lineKey(wall) !== lineKey(walls[i]);
                 if (changed) changedCount++;
-                return changed ? { ...wall, source: 'manual' } : wall;
+                return wall;
             }));
             drawAll();
             updateCounts();
@@ -344,7 +399,20 @@
 
             if (mode === 'room') {
                 const { snapRoomVertex } = await measurementTools;
-                currentRoom.push(snapRoomVertex(currentRoom, pos));
+                if (document.getElementById('manualRoomShape').value === 'rectangle') {
+                    if (currentRoom.length >= 4) { setStatus('Choose Finish Room to save, or Undo to change the opposite corner.'); return; }
+                    if (!currentRoom.length) currentRoom.push(pos);
+                    else {
+                        const first = currentRoom[0];
+                        if (Math.abs(pos.x-first.x) < 2 || Math.abs(pos.y-first.y) < 2) { setStatus('Choose an opposite corner with nonzero width and height.'); return; }
+                        currentRoom = [first, { x: pos.x, y: first.y }, pos, { x: first.x, y: pos.y }];
+                    }
+                } else {
+                    const next = snapRoomVertex(currentRoom, pos);
+                    const last = currentRoom.at(-1);
+                    if (!last || Math.hypot(next.x-last.x, next.y-last.y) > 1e-8) currentRoom.push(next);
+                }
+                setStatus(`${currentRoom.length} corner clicks marked. Choose Finish Room after at least three distinct corners.`);
                 drawAll();
             } else if (mode === 'wall') {
                 // Snap to nearest endpoint if close enough
@@ -509,6 +577,19 @@
                     ctx.fill();
                 }
 
+            } else if (mode === 'room' && currentRoom.length) {
+                const pos = getCoords(e);
+                drawAll();
+                ctx.strokeStyle = '#00897b'; ctx.lineWidth = 2; ctx.setLineDash([6, 4]);
+                ctx.beginPath();
+                if (document.getElementById('manualRoomShape').value === 'rectangle') {
+                    if (currentRoom.length === 1) ctx.rect(currentRoom[0].x, currentRoom[0].y, pos.x-currentRoom[0].x, pos.y-currentRoom[0].y);
+                } else {
+                    const last = currentRoom[currentRoom.length-1];
+                    ctx.moveTo(last.x, last.y); ctx.lineTo(pos.x, pos.y);
+                    ctx.lineTo(currentRoom[0].x, currentRoom[0].y);
+                }
+                ctx.stroke(); ctx.setLineDash([]);
             } else if (mode === 'calibrate' && calibrateStart) {
                 const pos = getCoords(e);
                 drawAll();
@@ -528,19 +609,25 @@
                 currentWall = null;
                 drawAll();
             }
+            if (mode === 'room') drawAll();
         });
         
         function drawAll() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             document.getElementById('wallReviewSummary').textContent = lastWallScan
                 ? `${wallReview.length} uncertain candidates need review and are excluded from 3D. Scores are evidence scores, not accuracy percentages.` : '';
-            for (const room of [...roomBoundaries, { points: currentRoom, name: 'Room being traced' }]) {
+            for (const room of [...roomBoundaries.map(room => ({...room, points: roomCutoutOutline(room.points, room)})), { points: currentRoom, name: 'Room being traced' }]) {
                 if (!room.points.length) continue;
                 ctx.beginPath();
                 room.points.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y));
-                if (room.points !== currentRoom) ctx.closePath();
+                if (room.points !== currentRoom || (document.getElementById('manualRoomShape').value === 'rectangle' && currentRoom.length === 4)) ctx.closePath();
                 ctx.fillStyle = '#00968822'; ctx.fill();
                 ctx.strokeStyle = '#00897b'; ctx.lineWidth = 2; ctx.stroke();
+                if (room.points === currentRoom) currentRoom.forEach((p, i) => {
+                    ctx.beginPath(); ctx.arc(p.x, p.y, 5, 0, Math.PI*2);
+                    ctx.fillStyle = '#fff'; ctx.fill(); ctx.stroke();
+                    ctx.fillStyle = '#00695c'; ctx.fillText(String(i+1), p.x+7, p.y-7);
+                });
                 ctx.fillStyle = '#00695c'; ctx.font = 'bold 14px sans-serif';
                 ctx.fillText(room.name, room.points[0].x + 8, room.points[0].y + 18);
             }
@@ -647,8 +734,53 @@
                     ctx.fillText(txt, cx - 12, cy + 5);
                 }
             });
+            drawOpeningWalls();
+            drawRoomBoundaryIssue();
+        }
+
+        let openingWallCache = { key: null, spans: [] };
+        function drawOpeningWalls() {
+            if (!document.getElementById('showOpeningWalls').checked) return;
+            const defaults = { height: Number(document.getElementById('defaultWallHeight').value),
+                thickness: Number(document.getElementById('defaultWallThickness').value) };
+            const key = JSON.stringify([editRevision, metersPerPixel, defaults, walls, doors, roomObjects]);
+            if (openingWallCache.key !== key) {
+                openingWallCache = { key, spans: openingWallsForPlan({ walls, doors, objects: roomObjects,
+                    metersPerPixel, defaults }) };
+            }
+            ctx.save();
+            ctx.strokeStyle = '#7b1fa2';
+            for (const wall of openingWallCache.spans) {
+                const dx = wall.end.x - wall.start.x, dy = wall.end.y - wall.start.y;
+                const length = Math.hypot(dx, dy);
+                if (!length) continue;
+                const half = wall.thickness_px / 2;
+                ctx.setLineDash([]); ctx.lineWidth = 2;
+                for (const side of [-1, 1]) {
+                    const ox = -dy / length * half * side, oy = dx / length * half * side;
+                    ctx.beginPath(); ctx.moveTo(wall.start.x + ox, wall.start.y + oy);
+                    ctx.lineTo(wall.end.x + ox, wall.end.y + oy); ctx.stroke();
+                }
+                ctx.setLineDash([6, 4]); ctx.lineWidth = 2;
+                ctx.beginPath(); ctx.moveTo(wall.start.x, wall.start.y);
+                ctx.lineTo(wall.end.x, wall.end.y); ctx.stroke();
+            }
+            ctx.restore();
         }
         
+        function drawRoomBoundaryIssue() {
+            const room = roomBoundaries.find(r => r.id === roomBoundaryIssue?.room_id);
+            if (!room) return;
+            ctx.save(); ctx.strokeStyle = '#d50000'; ctx.fillStyle = '#d50000';
+            ctx.lineWidth = 4; ctx.setLineDash([8, 4]); ctx.font = 'bold 14px sans-serif';
+            for (const edge of roomBoundaryIssue.edges || []) {
+                const a = room.points[edge], b = room.points[(edge + 1) % room.points.length];
+                ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+                ctx.fillText(`Check edge ${edge + 1}`, (a.x + b.x) / 2 + 8, (a.y + b.y) / 2 - 8);
+            }
+            ctx.restore();
+        }
+
         function updateCounts() {
             document.getElementById('wallCount').textContent = walls.length;
             document.getElementById('doorCount').textContent = doors.length;
@@ -656,6 +788,11 @@
         }
         
         function undo() {
+            if (mode === 'room' && currentRoom.length) {
+                if (document.getElementById('manualRoomShape').value === 'rectangle' && currentRoom.length === 4) currentRoom = [currentRoom[0]];
+                else currentRoom.pop();
+                drawAll(); return;
+            }
             const snapshot = editHistory.pop();
             if (!snapshot) return;
             ({ walls, wallReview, lastWallScan, doors, roomObjects, roomBoundaries, dimensionConstraints, planMeasurements, automaticScan, calibration, metersPerPixel, scaleSource, manualScaleLocked } = snapshot);
@@ -743,9 +880,10 @@
         }
         
         async function generateJSON() {
+            roomBoundaryIssue = null;
             document.getElementById('output').value = '';
-            if (walls.length === 0) {
-                alert('Please trace some walls first!');
+            if (walls.length === 0 && !roomBoundaries.some(room => room.boundary_source === 'manual')) {
+                alert('Please mark a room or trace some walls first!');
                 return null;
             }
             try {
@@ -758,13 +896,20 @@
                     metersPerPixel, scaleSource, calibration, measurements: planMeasurements,
                     image: { name: img.dataset.uploadedName || '', width: canvas.width, height: canvas.height },
                     defaults: { height, thickness } });
-                const { layout, report } = applyDimensionConstraints(original, metricDimensionConstraints(original, dimensionConstraints));
+                const constraints = metricDimensionConstraints(original, dimensionConstraints);
+                const { buildMarkedRoomLayout } = await import('./src/tracer/markedRooms.js');
+                const { layout, report } = original.rooms.some(room => room.boundary_source === 'manual')
+                    ? buildMarkedRoomLayout(original, constraints)
+                    : applyDimensionConstraints(original, constraints);
                 if (automaticScan) layout.automatic_scan = structuredClone(automaticScan);
                 const json = JSON.stringify(layout, null, 2);
                 document.getElementById('output').value = json;
                 renderConstraintResult(report);
+                drawAll();
                 return json;
             } catch (error) {
+                roomBoundaryIssue = error.details || null;
+                drawAll();
                 const result = document.getElementById('constraintResult');
                 result.textContent = `Not applied: ${error.message}`;
                 result.dataset.constraintStatus = 'error';
@@ -774,32 +919,52 @@
         }
 
         async function finishRoom() {
-            const { validateBoundary, parseArea, areaAnnotationForRoom, polygonArea, scaleFromRoomArea } = await measurementTools;
-            try { validateBoundary(currentRoom); } catch (error) { setStatus(error.message); return; }
-            const name = prompt('Room name', `Room ${roomBoundaries.length + 1}`);
-            if (name === null) return;
-            const annotation = areaAnnotationForRoom(currentRoom, planMeasurements.areas);
-            const areaText = prompt('Printed area for this inside room boundary (e.g. 4.4 m² or 120 sqft). This value will control its actual 3D area. Check any prefilled OCR text; leave blank if no area is specified.', annotation?.text || '');
-            if (areaText === null) return;
+            const { finishRoomBoundary, parseArea, areaAnnotationForRoom, polygonArea, scaleFromRoomArea, roomSizeTargets } = await measurementTools;
+            let points;
+            try { points = finishRoomBoundary(currentRoom); } catch (error) { setStatus(`${error.message} Use Undo to remove the last corner and try again.`); return; }
+            const name = document.getElementById('manualRoomName').value.trim() || `Room ${roomBoundaries.length + 1}`;
+            const annotation = areaAnnotationForRoom(points, planMeasurements.areas);
+            const areaText = document.getElementById('manualRoomArea').value;
             const declaredArea = areaText.trim() ? parseArea(areaText) : null;
             if (areaText.trim() && !declaredArea) { setStatus('Invalid area: include sqft or m2. Your outline is still available.'); return; }
+            let size, cutout;
+            try {
+                size = roomSizeTargets(document.getElementById('manualRoomWidth').value, document.getElementById('manualRoomDepth').value);
+                cutout = parseRoomCutout(document.getElementById('manualCutoutEnabled').checked,
+                    document.getElementById('manualCutoutCorner').value, document.getElementById('manualCutoutWidth').value,
+                    document.getElementById('manualCutoutDepth').value, size);
+            }
+            catch (error) { setStatus(error.message); return; }
             rememberEdit();
-            const room = { id: `room_${crypto.randomUUID()}`, name: name.trim() || 'Room', points: [...currentRoom],
-                boundary_source: 'manual', boundary_reference: 'inside_faces',
+            const room = { id: `room_${crypto.randomUUID()}`, name: name.trim() || 'Room', points,
+                boundary_source: 'manual', boundary_reference: 'inside_faces', ...size, ...(cutout ? {cutout} : {}),
                 ...(declaredArea ? { declared_area_m2: declaredArea, declared_area_text: areaText, area_annotation_id: annotation?.id } : {}) };
             roomBoundaries.push(room);
-            if (declaredArea && !manualScaleLocked) {
+            if ((size.declared_width_m || size.declared_depth_m) && !manualScaleLocked) {
+                const axis = size.declared_width_m ? 'width' : 'depth', coordinate = axis === 'width' ? 'x' : 'y';
+                const pixels = Math.max(...points.map(p => p[coordinate])) - Math.min(...points.map(p => p[coordinate]));
+                calibration = { status: 'confirmed', reference: { room_id: room.id, axis, meters: size[`declared_${axis}_m`], pixels, text: size[`declared_${axis}_text`] } };
+                setScale(size[`declared_${axis}_m`] / pixels, 'manual-room-size');
+                manualScaleLocked = true;
+            } else if (declaredArea && !manualScaleLocked) {
                 calibration = { status: 'confirmed', reference: { area_m2: declaredArea, area_px: polygonArea(room.points), room_id: room.id, text: areaText } };
                 setScale(scaleFromRoomArea(room.points, declaredArea), 'printed-room-area');
                 manualScaleLocked = true;
             }
             currentRoom = [];
+            document.getElementById('manualRoomName').value = '';
+            document.getElementById('manualRoomArea').value = '';
+            document.getElementById('manualRoomWidth').value = '';
+            document.getElementById('manualRoomDepth').value = '';
+            document.getElementById('manualCutoutEnabled').checked = false;
+            document.getElementById('manualCutoutWidth').value = '';
+            document.getElementById('manualCutoutDepth').value = '';
             renderRoomMeasurements(); drawAll();
-            setStatus(declaredArea ? 'Room area is now an exact target. Apply Printed Measurements to adjust the connected model geometry.' : 'Inside room outline saved.');
+            setStatus(`Saved “${room.name}” with ${points.length} corners. ${declaredArea || Object.keys(size).length ? 'Apply Printed Measurements or View in 3D to apply your dimensions.' : 'You can now view it in 3D.'}`);
         }
 
         async function renderRoomMeasurements() {
-            const { polygonArea, SQFT_PER_M2, parseArea } = await measurementTools;
+            const { polygonArea, SQFT_PER_M2, parseArea, roomSizeTargets } = await measurementTools;
             const container = document.getElementById('roomMeasurements');
             container.replaceChildren();
             if (!roomBoundaries.length) container.textContent = 'No enclosed room outlines found yet. Correct missing walls and rescan, or trace an inside boundary.';
@@ -810,6 +975,8 @@
                 if (room.declared_area_m2) {
                     text += `; exact 3D target ${room.declared_area_m2.toFixed(3)} m²`;
                 }
+                for (const axis of ['width', 'depth']) if (room[`declared_${axis}_m`]) text += `; exact ${axis} ${room[`declared_${axis}_text`]}`;
+                if (room.cutout) text += `; ${room.cutout.corner} bathroom cut-out ${room.cutout.width_text} × ${room.cutout.depth_text}; net room area ${(room.declared_width_m * room.declared_depth_m - room.cutout.width_m * room.cutout.depth_m).toFixed(3)} m²`;
                 row.textContent = text;
                 const edit = document.createElement('button'); edit.textContent = 'Set area';
                 edit.onclick = () => {
@@ -824,6 +991,43 @@
                     renderRoomMeasurements();
                 };
                 row.append(edit);
+                const sizeButton = document.createElement('button'); sizeButton.textContent = 'Set width / depth';
+                sizeButton.onclick = () => {
+                    const width = prompt('Exact room width (left to right), e.g. 4 m or 12 ft. Leave blank to remove its width target.', room.declared_width_text || '');
+                    if (width === null) return;
+                    const depth = prompt('Exact room depth (top to bottom), e.g. 3 m or 10 ft. Leave blank to remove its depth target.', room.declared_depth_text || '');
+                    if (depth === null) return;
+                    let size;
+                    try { size = roomSizeTargets(width, depth); validateRoomCutout({cutout: room.cutout, ...size}); } catch (error) { setStatus(error.message); return; }
+                    rememberEdit();
+                    for (const axis of ['width', 'depth']) { delete room[`declared_${axis}_m`]; delete room[`declared_${axis}_text`]; }
+                    Object.assign(room, size); room.boundary_source = 'manual'; renderRoomMeasurements(); drawAll();
+                    setStatus('Room dimensions saved. Apply Printed Measurements or View in 3D to update the geometry.');
+                };
+                row.append(sizeButton);
+                const cutoutEditor = document.createElement('details');
+                const title = document.createElement('summary'); title.textContent = 'Bathroom cut-out'; cutoutEditor.append(title);
+                const enabled = document.createElement('input'); enabled.type = 'checkbox'; enabled.checked = !!room.cutout;
+                const corner = document.createElement('select');
+                CUTOUT_CORNERS.forEach(value => { const option = document.createElement('option'); option.value = value; option.textContent = value.replace('-', ' '); corner.append(option); });
+                corner.value = room.cutout?.corner || 'top-left';
+                const cw = document.createElement('input'), cd = document.createElement('input');
+                cw.value = room.cutout?.width_text || ''; cw.placeholder = 'e.g. 2 m';
+                cd.value = room.cutout?.depth_text || ''; cd.placeholder = 'e.g. 1.5 m';
+                for (const [labelText, control] of [['Enabled ', enabled], [' Corner ', corner], [' Width ', cw], [' Depth ', cd]]) {
+                    const label = document.createElement('label'); label.append(labelText, control); cutoutEditor.append(label);
+                }
+                const applyCutout = document.createElement('button'); applyCutout.textContent = 'Save cut-out';
+                applyCutout.onclick = () => {
+                    let cutout;
+                    try { cutout = parseRoomCutout(enabled.checked, corner.value, cw.value, cd.value, room); }
+                    catch (error) { setStatus(error.message); return; }
+                    rememberEdit();
+                    if (cutout) room.cutout = cutout; else delete room.cutout;
+                    room.boundary_source = 'manual'; renderRoomMeasurements(); drawAll();
+                    setStatus('Cut-out saved. View in 3D to see the updated room.');
+                };
+                cutoutEditor.append(applyCutout); row.append(cutoutEditor);
                 const remove = document.createElement('button'); remove.textContent = 'Remove';
                 remove.onclick = () => { rememberEdit(); roomBoundaries.splice(i, 1); renderRoomMeasurements(); drawAll(); };
                 row.append(remove); container.append(row);
@@ -894,6 +1098,7 @@
         function setStatus(text) {
             const statusEl = document.getElementById('status');
             if (statusEl) statusEl.textContent = text;
+            if (mode === 'room') document.getElementById('manualRoomStatus').textContent = text;
         }
 
         function addLengthConstraint(reference, source, annotationId) {
@@ -944,16 +1149,28 @@
             container.dataset.constraintStatus = report.status;
             if (report.status === 'none') { container.textContent = 'No exact measurement targets supplied. The model uses the current scale.'; return; }
             const note = document.createElement('p');
-            note.textContent = 'Applied to geometry. All selected dimensions match within 0.000001 m or m².';
+            note.textContent = report.mode === 'marked-boundary'
+                ? 'Your marked rooms define the 3D geometry. Entered room dimensions are applied directly.'
+                : 'Applied to geometry. All selected dimensions match within 0.000001 m or m².';
             container.append(note);
             report.constraints.forEach(c => {
                 const row = document.createElement('div'); const unit = c.unit === 'm2' ? 'm²' : 'm';
                 const room = roomBoundaries.find(r => `area-${r.id}` === c.id);
-                row.textContent = `${room?.name || 'Length'}: target ${c.target.toFixed(3)} ${unit}; 3D ${c.actual.toFixed(6)} ${unit}`;
+                const dimensionRoom = roomBoundaries.find(r => c.id === `width-${r.id}` || c.id === `depth-${r.id}`);
+                const label = dimensionRoom ? `${dimensionRoom.name} ${c.id.startsWith('width-') ? 'width' : 'depth'}` : room?.name || 'Length';
+                row.textContent = `${label}: target ${c.target.toFixed(3)} ${unit}; 3D ${c.actual.toFixed(6)} ${unit}`;
                 container.append(row);
             });
             if (report.boundary_adjustments?.length) {
                 const note = document.createElement('p'); note.textContent = 'Nearby traced corners were aligned to the model’s inside wall faces.'; container.append(note);
+            }
+            for (const message of report.notes || []) {
+                const note = document.createElement('p'); note.textContent = message; container.append(note);
+            }
+            for (const cut of report.cutouts || []) {
+                const row = document.createElement('p');
+                row.textContent = `${cut.name}: ${cut.overall_area_m2.toFixed(3)} m² overall − ${cut.removed_area_m2.toFixed(3)} m² bathroom cut-out = ${cut.area_m2.toFixed(3)} m² room area.`;
+                container.append(row);
             }
         }
 
@@ -973,10 +1190,10 @@
                 document.getElementById('scanBackendStatus').hidden = true;
                 setStatus('Checking the local measurement scanner…');
                 const { validateScanBackend, validateScanResponse } = await scanResponseTools;
-                const health = await fetch('http://localhost:5050/api/health', {
+                const health = await fetch('/api/health', {
                     cache: 'no-store', signal: AbortSignal.any([controller.signal, AbortSignal.timeout(10000)])
                 });
-                if (!health.ok) throw new Error(`Local backend health check failed (${health.status}).`);
+                if (!health.ok) throw new Error(`Local scanner unavailable (HTTP ${health.status}). From the project folder, run npm run backend and keep that terminal open`);
                 validateScanBackend(await health.json());
                 if (requestRevision !== editRevision || requestImage !== img.src || controller.signal.aborted) return;
                 let payload;
@@ -993,7 +1210,7 @@
                     payload = { imagePath: img.getAttribute('src') };
                 }
                 payload.manualWalls = getManualWalls();
-                const response = await fetch('http://localhost:5050/api/auto-detect', {
+                const response = await fetch('/api/auto-detect', {
                     signal: controller.signal,
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -1169,7 +1386,7 @@
                 console.error('Auto-detect error:', err);
                 if (err.name !== 'AbortError' && detectionController === controller) {
                     const message = err.name === 'ScanResponseError' ? err.message
-                        : `Auto-detect failed: ${err.message}. Check that the local backend is running, then retry Auto Detect.`;
+                        : `Auto-detect failed: ${String(err.message).replace(/[.\s]+$/, '')}. Check that the local backend is running, then retry Auto Detect.`;
                     const notice = document.getElementById('scanBackendStatus');
                     notice.textContent = message;
                     notice.dataset.errorCode = err.code || 'SCAN_UNAVAILABLE';
@@ -1208,7 +1425,7 @@
                     class: 'Door',
                     swing_dir: d.swing || 'auto'
                 }));
-                const response = await fetch('http://localhost:5050/api/train', {
+                const response = await fetch('/api/train', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -1303,23 +1520,27 @@
         
         // View in 3D - saves JSON and opens 3D viewer
         async function view3D() {
-            if (walls.length === 0) {
-                alert('Please trace at least one wall first!');
+            if (walls.length === 0 && !roomBoundaries.some(room => room.boundary_source === 'manual')) {
+                alert('Please mark a room or trace a wall first!');
                 return;
             }
             
-            // Generate JSON
+            // Open during the click gesture, before asynchronous geometry work.
+            // Browsers can block a new tab if window.open follows an await.
+            const viewer = window.open('about:blank', '_blank');
+            if (viewer) { viewer.document.title = 'Preparing 3D model'; viewer.document.body.textContent = 'Preparing your 3D model…'; }
             const jsonData = await generateJSON();
-            if (!jsonData) return;
+            if (!jsonData) { viewer?.close(); return; }
             try {
-                localStorage.setItem('preciseFloorplan', jsonData);
-                localStorage.setItem('floorplanTimestamp', String(Date.now()));
+                projectStorage.setItem('preciseFloorplan', jsonData);
+                projectStorage.setItem('floorplanTimestamp', String(Date.now()));
             } catch (error) {
+                viewer?.close();
                 setStatus('Could not save this plan in the browser. Copy the JSON output before continuing.');
                 return;
             }
-            const viewer = window.open('/index.html', '_blank');
-            if (!viewer) setStatus('Project saved. Allow popups or open index.html in this browser to view it.');
+            if (viewer) viewer.location.replace('/index.html');
+            else { window.location.assign('/index.html'); return; }
 
             // Save corrections to DB with image hash
             try {
@@ -1338,7 +1559,7 @@
                     class: 'Door',
                     swing_dir: d.swingDir || 'auto'
                 }));
-                const saveResp = await fetch('http://localhost:5050/api/save-corrections', {
+                const saveResp = await fetch('/api/save-corrections', {
                     signal: AbortSignal.timeout(5000),
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -1380,7 +1601,7 @@
             context.drawImage(canvas, 0, 0);
             context.fillStyle = 'white'; context.fillRect(0,canvas.height,canvas.width,32);
             context.fillStyle = '#222'; context.font = '12px sans-serif';
-            context.fillText('Green: estimated faces | Dashed blue: centreline | Amber: review | Coordinates: original image pixels',8,canvas.height+21);
+            context.fillText('Green: wall faces | Blue: centreline | Purple: walls at openings | Amber: review | Image pixels',8,canvas.height+21);
             output.toBlob(blob => {
                 if (!blob) return;
                 const url = URL.createObjectURL(blob), link = document.createElement('a');

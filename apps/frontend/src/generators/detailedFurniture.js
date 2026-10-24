@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import { fabricMaterial, woodMaterial } from './surfaceMaterials.js';
+import { createSofaMaterials, addUpholsteredSeat } from './sofaUpholstery.js';
 
 const beds = new Set(['bed', 'single-bed', 'double-bed', 'queen-bed', 'king-bed']);
 const sofas = new Set(['sofa', 'sofa-2', 'sofa-3', 'loveseat', 'l-sofa']);
@@ -14,6 +15,27 @@ export function createDetailedFurniture(cls, width, depth) {
   const d = Math.max(depth, beds.has(cls) ? 1.5 : 0.45);
   const group = new THREE.Group();
   group.userData.detailedFurniture = true;
+  if (sofas.has(cls)) {
+    const materials = createSofaMaterials({ id: cls, label: 'Upholstered sofa', color: '#b8b0a2', category: 'sofas' });
+    const seats = cls === 'sofa-2' || cls === 'loveseat' ? 2 : Math.max(2, Math.min(3, Math.round(w / .75)));
+    const seatDepth = cls === 'l-sofa' ? Math.min(.95, d * .6) : d;
+    const main = cls === 'l-sofa' ? new THREE.Group() : group;
+    addUpholsteredSeat(main, w, seatDepth, .86, seats, materials, { openRight: cls === 'l-sofa' });
+    if (main !== group) {
+      main.position.z = -(d - seatDepth) / 2;
+      group.add(main);
+    }
+    if (cls === 'l-sofa') {
+      const chaise = new THREE.Group(), cw = Math.max(.45, w / seats);
+      addUpholsteredSeat(chaise, cw, d - seatDepth + .04, .86, 1, materials, { openLeft: true, chaise: true });
+      chaise.position.set((w - cw) / 2, 0, seatDepth / 2 - .02);
+      group.add(chaise);
+    }
+    const bounds = new THREE.Box3().setFromObject(group), size = bounds.getSize(new THREE.Vector3()), center = bounds.getCenter(new THREE.Vector3());
+    for (const child of group.children) child.position.sub(new THREE.Vector3(center.x, bounds.min.y, center.z));
+    group.scale.set(width / size.x, 1, depth / size.z);
+    return group;
+  }
   const mesh = (geometry, material, x, y, z) => {
     const m = new THREE.Mesh(geometry, material);
     m.position.set(x, y, z);

@@ -1,0 +1,232 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Wall detection validation</title>
+    <style>body{font:16px system-ui;max-width:1500px;margin:24px auto;padding:16px;color:#152238} .pair{display:grid;grid-template-columns:1fr 1fr;gap:12px} img{width:100%}figure{margin:0}section{border-top:1px solid #bbb;margin-top:32px}table{border-collapse:collapse}td,th{padding:6px;border:1px solid #ccc}a{color:#1559a3}p{max-width:1000px}</style></head><body>
+    <h1>Wall detection: recorded before/after results</h1>
+    <p>Both columns use the same original pixels. Green lines are estimated boundary faces, blue lines are centrelines, red labels are wall IDs. Amber candidates appear only in the linked review overlays. Downloaded JSON identifies original-image coordinates, thickness source, model confidence when present, heuristic evidence score and review reasons.</p>
+    <p>Counts are not accuracy: splitting at an opening increases segment count; removing furniture reduces it. These plans do not have manually labelled wall ground truth. Review the drawings at full resolution. The implementation does not claim every remaining accepted segment is correct or every real wall has been recovered.</p>
+    <p>See <a href="../wall-evidence-implementation.md">implementation, parameters, observed limitations and training-label recommendations</a>.</p>
+    <table><tr><th>Example</th><th>Before</th><th>Accepted</th><th>Review</th><th>Rejected</th></tr><tr><td><a href="#20261006_095745_upload">20261006_095745_upload</a></td><td>38</td><td>71</td><td>140</td><td>0</td></tr><tr><td><a href="#20261006_095849_upload">20261006_095849_upload</a></td><td>13</td><td>89</td><td>141</td><td>0</td></tr><tr><td><a href="#20261006_095955_upload">20261006_095955_upload</a></td><td>24</td><td>56</td><td>211</td><td>17</td></tr><tr><td><a href="#20261006_100253_upload">20261006_100253_upload</a></td><td>49</td><td>132</td><td>168</td><td>0</td></tr><tr><td><a href="#20261006_100744_upload">20261006_100744_upload</a></td><td>18</td><td>43</td><td>152</td><td>4</td></tr><tr><td><a href="#20261006_100812_upload">20261006_100812_upload</a></td><td>21</td><td>41</td><td>289</td><td>0</td></tr><tr><td><a href="#20261006_100842_upload">20261006_100842_upload</a></td><td>53</td><td>63</td><td>234</td><td>2</td></tr><tr><td><a href="#20261006_100957_upload">20261006_100957_upload</a></td><td>53</td><td>63</td><td>234</td><td>2</td></tr><tr><td><a href="#20261006_101003_upload">20261006_101003_upload</a></td><td>61</td><td>164</td><td>173</td><td>15</td></tr><tr><td><a href="#20261006_101036_upload">20261006_101036_upload</a></td><td>22</td><td>67</td><td>203</td><td>32</td></tr><tr><td><a href="#20261006_101116_upload">20261006_101116_upload</a></td><td>38</td><td>44</td><td>193</td><td>2</td></tr><tr><td><a href="#20261006_101500_upload">20261006_101500_upload</a></td><td>25</td><td>63</td><td>173</td><td>5</td></tr><tr><td><a href="#20261006_101841_upload">20261006_101841_upload</a></td><td>25</td><td>63</td><td>173</td><td>5</td></tr><tr><td><a href="#20261006_101933_upload">20261006_101933_upload</a></td><td>3</td><td>36</td><td>230</td><td>0</td></tr><tr><td><a href="#20261006_102010_upload">20261006_102010_upload</a></td><td>38</td><td>71</td><td>140</td><td>0</td></tr><tr><td><a href="#20261006_102142_upload">20261006_102142_upload</a></td><td>1</td><td>48</td><td>398</td><td>3</td></tr><tr><td><a href="#20261006_102254_upload">20261006_102254_upload</a></td><td>45</td><td>60</td><td>250</td><td>1</td></tr><tr><td><a href="#20261006_102559_upload">20261006_102559_upload</a></td><td>23</td><td>41</td><td>184</td><td>13</td></tr><tr><td><a href="#20261006_102958_upload">20261006_102958_upload</a></td><td>149</td><td>192</td><td>218</td><td>5</td></tr><tr><td><a href="#20261006_103216_upload">20261006_103216_upload</a></td><td>34</td><td>45</td><td>267</td><td>23</td></tr><tr><td><a href="#20261006_103443_upload">20261006_103443_upload</a></td><td>17</td><td>20</td><td>112</td><td>0</td></tr><tr><td><a href="#20261006_103724_upload">20261006_103724_upload</a></td><td>18</td><td>43</td><td>152</td><td>4</td></tr><tr><td><a href="#20261006_104237_upload">20261006_104237_upload</a></td><td>42</td><td>41</td><td>183</td><td>3</td></tr><tr><td><a href="#20261006_104539_upload">20261006_104539_upload</a></td><td>25</td><td>63</td><td>173</td><td>5</td></tr><tr><td><a href="#FP-image3">FP-image3</a></td><td>18</td><td>40</td><td>102</td><td>0</td></tr><tr><td><a href="#FPimage4">FPimage4</a></td><td>19</td><td>27</td><td>173</td><td>0</td></tr><tr><td><a href="#Puli Floor plan_page-0001">Puli Floor plan_page-0001</a></td><td>19</td><td>84</td><td>95</td><td>5</td></tr><tr><td><a href="#floor_image2">floor_image2</a></td><td>19</td><td>57</td><td>58</td><td>0</td></tr><tr><td><a href="#floorplan1">floorplan1</a></td><td>55</td><td>67</td><td>409</td><td>3</td></tr><tr><td><a href="#test-1">test-1</a></td><td>14</td><td>23</td><td>79</td><td>0</td></tr><tr><td><a href="#test-2">test-2</a></td><td>21</td><td>46</td><td>152</td><td>2</td></tr><tr><td><a href="#test-3">test-3</a></td><td>17</td><td>38</td><td>253</td><td>8</td></tr><tr><td><a href="#test-4">test-4</a></td><td>21</td><td>65</td><td>220</td><td>5</td></tr><tr><td><a href="#test-5">test-5</a></td><td>13</td><td>74</td><td>287</td><td>5</td></tr><tr><td><a href="#test-6">test-6</a></td><td>16</td><td>49</td><td>238</td><td>3</td></tr><tr><td><a href="#test-aplah">test-aplah</a></td><td>21</td><td>62</td><td>203</td><td>29</td></tr><tr><td><a href="#test11">test11</a></td><td>17</td><td>44</td><td>145</td><td>4</td></tr><tr><td><a href="#test12">test12</a></td><td>16</td><td>34</td><td>58</td><td>15</td></tr><tr><td><a href="#test13">test13</a></td><td>21</td><td>38</td><td>291</td><td>0</td></tr><tr><td><a href="#test14">test14</a></td><td>61</td><td>158</td><td>174</td><td>17</td></tr><tr><td><a href="#test15">test15</a></td><td>54</td><td>68</td><td>235</td><td>0</td></tr><tr><td><a href="#test16">test16</a></td><td>21</td><td>62</td><td>203</td><td>29</td></tr><tr><td><a href="#test20">test20</a></td><td>38</td><td>45</td><td>182</td><td>1</td></tr><tr><td><a href="#test21">test21</a></td><td>16</td><td>34</td><td>58</td><td>15</td></tr><tr><td><a href="#test22">test22</a></td><td>23</td><td>59</td><td>328</td><td>3</td></tr></table><section id="20261006_095745_upload"><h2>20261006_095745_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 38 segments. After: 71 accepted, 140 review, 0 rejected.
+        <a href="after/20261006_095745_upload.json">Structured JSON</a> · <a href="after/20261006_095745_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_095745_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_095745_upload-accepted.png"></figure></div></section><section id="20261006_095849_upload"><h2>20261006_095849_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 13 segments. After: 89 accepted, 141 review, 0 rejected.
+        <a href="after/20261006_095849_upload.json">Structured JSON</a> · <a href="after/20261006_095849_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_095849_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_095849_upload-accepted.png"></figure></div></section><section id="20261006_095955_upload"><h2>20261006_095955_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 24 segments. After: 56 accepted, 211 review, 17 rejected.
+        <a href="after/20261006_095955_upload.json">Structured JSON</a> · <a href="after/20261006_095955_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_095955_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_095955_upload-accepted.png"></figure></div></section><section id="20261006_100253_upload"><h2>20261006_100253_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 49 segments. After: 132 accepted, 168 review, 0 rejected.
+        <a href="after/20261006_100253_upload.json">Structured JSON</a> · <a href="after/20261006_100253_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_100253_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_100253_upload-accepted.png"></figure></div></section><section id="20261006_100744_upload"><h2>20261006_100744_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 18 segments. After: 43 accepted, 152 review, 4 rejected.
+        <a href="after/20261006_100744_upload.json">Structured JSON</a> · <a href="after/20261006_100744_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_100744_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_100744_upload-accepted.png"></figure></div></section><section id="20261006_100812_upload"><h2>20261006_100812_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 21 segments. After: 41 accepted, 289 review, 0 rejected.
+        <a href="after/20261006_100812_upload.json">Structured JSON</a> · <a href="after/20261006_100812_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_100812_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_100812_upload-accepted.png"></figure></div></section><section id="20261006_100842_upload"><h2>20261006_100842_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 53 segments. After: 63 accepted, 234 review, 2 rejected.
+        <a href="after/20261006_100842_upload.json">Structured JSON</a> · <a href="after/20261006_100842_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_100842_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_100842_upload-accepted.png"></figure></div></section><section id="20261006_100957_upload"><h2>20261006_100957_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 53 segments. After: 63 accepted, 234 review, 2 rejected.
+        <a href="after/20261006_100957_upload.json">Structured JSON</a> · <a href="after/20261006_100957_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_100957_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_100957_upload-accepted.png"></figure></div></section><section id="20261006_101003_upload"><h2>20261006_101003_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 61 segments. After: 164 accepted, 173 review, 15 rejected.
+        <a href="after/20261006_101003_upload.json">Structured JSON</a> · <a href="after/20261006_101003_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_101003_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_101003_upload-accepted.png"></figure></div></section><section id="20261006_101036_upload"><h2>20261006_101036_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 22 segments. After: 67 accepted, 203 review, 32 rejected.
+        <a href="after/20261006_101036_upload.json">Structured JSON</a> · <a href="after/20261006_101036_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_101036_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_101036_upload-accepted.png"></figure></div></section><section id="20261006_101116_upload"><h2>20261006_101116_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 38 segments. After: 44 accepted, 193 review, 2 rejected.
+        <a href="after/20261006_101116_upload.json">Structured JSON</a> · <a href="after/20261006_101116_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_101116_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_101116_upload-accepted.png"></figure></div></section><section id="20261006_101500_upload"><h2>20261006_101500_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 25 segments. After: 63 accepted, 173 review, 5 rejected.
+        <a href="after/20261006_101500_upload.json">Structured JSON</a> · <a href="after/20261006_101500_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_101500_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_101500_upload-accepted.png"></figure></div></section><section id="20261006_101841_upload"><h2>20261006_101841_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 25 segments. After: 63 accepted, 173 review, 5 rejected.
+        <a href="after/20261006_101841_upload.json">Structured JSON</a> · <a href="after/20261006_101841_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_101841_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_101841_upload-accepted.png"></figure></div></section><section id="20261006_101933_upload"><h2>20261006_101933_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 3 segments. After: 36 accepted, 230 review, 0 rejected.
+        <a href="after/20261006_101933_upload.json">Structured JSON</a> · <a href="after/20261006_101933_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_101933_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_101933_upload-accepted.png"></figure></div></section><section id="20261006_102010_upload"><h2>20261006_102010_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 38 segments. After: 71 accepted, 140 review, 0 rejected.
+        <a href="after/20261006_102010_upload.json">Structured JSON</a> · <a href="after/20261006_102010_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_102010_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_102010_upload-accepted.png"></figure></div></section><section id="20261006_102142_upload"><h2>20261006_102142_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 1 segments. After: 48 accepted, 398 review, 3 rejected.
+        <a href="after/20261006_102142_upload.json">Structured JSON</a> · <a href="after/20261006_102142_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_102142_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_102142_upload-accepted.png"></figure></div></section><section id="20261006_102254_upload"><h2>20261006_102254_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 45 segments. After: 60 accepted, 250 review, 1 rejected.
+        <a href="after/20261006_102254_upload.json">Structured JSON</a> · <a href="after/20261006_102254_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_102254_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_102254_upload-accepted.png"></figure></div></section><section id="20261006_102559_upload"><h2>20261006_102559_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 23 segments. After: 41 accepted, 184 review, 13 rejected.
+        <a href="after/20261006_102559_upload.json">Structured JSON</a> · <a href="after/20261006_102559_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_102559_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_102559_upload-accepted.png"></figure></div></section><section id="20261006_102958_upload"><h2>20261006_102958_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 149 segments. After: 192 accepted, 218 review, 5 rejected.
+        <a href="after/20261006_102958_upload.json">Structured JSON</a> · <a href="after/20261006_102958_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_102958_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_102958_upload-accepted.png"></figure></div></section><section id="20261006_103216_upload"><h2>20261006_103216_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 34 segments. After: 45 accepted, 267 review, 23 rejected.
+        <a href="after/20261006_103216_upload.json">Structured JSON</a> · <a href="after/20261006_103216_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_103216_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_103216_upload-accepted.png"></figure></div></section><section id="20261006_103443_upload"><h2>20261006_103443_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 17 segments. After: 20 accepted, 112 review, 0 rejected.
+        <a href="after/20261006_103443_upload.json">Structured JSON</a> · <a href="after/20261006_103443_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_103443_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_103443_upload-accepted.png"></figure></div></section><section id="20261006_103724_upload"><h2>20261006_103724_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 18 segments. After: 43 accepted, 152 review, 4 rejected.
+        <a href="after/20261006_103724_upload.json">Structured JSON</a> · <a href="after/20261006_103724_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_103724_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_103724_upload-accepted.png"></figure></div></section><section id="20261006_104237_upload"><h2>20261006_104237_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 42 segments. After: 41 accepted, 183 review, 3 rejected.
+        <a href="after/20261006_104237_upload.json">Structured JSON</a> · <a href="after/20261006_104237_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_104237_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_104237_upload-accepted.png"></figure></div></section><section id="20261006_104539_upload"><h2>20261006_104539_upload</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 25 segments. After: 63 accepted, 173 review, 5 rejected.
+        <a href="after/20261006_104539_upload.json">Structured JSON</a> · <a href="after/20261006_104539_upload.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/20261006_104539_upload.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/20261006_104539_upload-accepted.png"></figure></div></section><section id="FP-image3"><h2>FP-image3</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 18 segments. After: 40 accepted, 102 review, 0 rejected.
+        <a href="after/FP-image3.json">Structured JSON</a> · <a href="after/FP-image3.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/FP-image3.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/FP-image3-accepted.png"></figure></div></section><section id="FPimage4"><h2>FPimage4</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 19 segments. After: 27 accepted, 173 review, 0 rejected.
+        <a href="after/FPimage4.json">Structured JSON</a> · <a href="after/FPimage4.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/FPimage4.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/FPimage4-accepted.png"></figure></div></section><section id="Puli Floor plan_page-0001"><h2>Puli Floor plan_page-0001</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 19 segments. After: 84 accepted, 95 review, 5 rejected.
+        <a href="after/Puli Floor plan_page-0001.json">Structured JSON</a> · <a href="after/Puli Floor plan_page-0001.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/Puli Floor plan_page-0001.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/Puli Floor plan_page-0001-accepted.png"></figure></div></section><section id="floor_image2"><h2>floor_image2</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 19 segments. After: 57 accepted, 58 review, 0 rejected.
+        <a href="after/floor_image2.json">Structured JSON</a> · <a href="after/floor_image2.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/floor_image2.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/floor_image2-accepted.png"></figure></div></section><section id="floorplan1"><h2>floorplan1</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 55 segments. After: 67 accepted, 409 review, 3 rejected.
+        <a href="after/floorplan1.json">Structured JSON</a> · <a href="after/floorplan1.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/floorplan1.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/floorplan1-accepted.png"></figure></div></section><section id="test-1"><h2>test-1</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 14 segments. After: 23 accepted, 79 review, 0 rejected.
+        <a href="after/test-1.json">Structured JSON</a> · <a href="after/test-1.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/test-1.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/test-1-accepted.png"></figure></div></section><section id="test-2"><h2>test-2</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 21 segments. After: 46 accepted, 152 review, 2 rejected.
+        <a href="after/test-2.json">Structured JSON</a> · <a href="after/test-2.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/test-2.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/test-2-accepted.png"></figure></div></section><section id="test-3"><h2>test-3</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 17 segments. After: 38 accepted, 253 review, 8 rejected.
+        <a href="after/test-3.json">Structured JSON</a> · <a href="after/test-3.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/test-3.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/test-3-accepted.png"></figure></div></section><section id="test-4"><h2>test-4</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 21 segments. After: 65 accepted, 220 review, 5 rejected.
+        <a href="after/test-4.json">Structured JSON</a> · <a href="after/test-4.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/test-4.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/test-4-accepted.png"></figure></div></section><section id="test-5"><h2>test-5</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 13 segments. After: 74 accepted, 287 review, 5 rejected.
+        <a href="after/test-5.json">Structured JSON</a> · <a href="after/test-5.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/test-5.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/test-5-accepted.png"></figure></div></section><section id="test-6"><h2>test-6</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 16 segments. After: 49 accepted, 238 review, 3 rejected.
+        <a href="after/test-6.json">Structured JSON</a> · <a href="after/test-6.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/test-6.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/test-6-accepted.png"></figure></div></section><section id="test-aplah"><h2>test-aplah</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 21 segments. After: 62 accepted, 203 review, 29 rejected.
+        <a href="after/test-aplah.json">Structured JSON</a> · <a href="after/test-aplah.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/test-aplah.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/test-aplah-accepted.png"></figure></div></section><section id="test11"><h2>test11</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 17 segments. After: 44 accepted, 145 review, 4 rejected.
+        <a href="after/test11.json">Structured JSON</a> · <a href="after/test11.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/test11.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/test11-accepted.png"></figure></div></section><section id="test12"><h2>test12</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 16 segments. After: 34 accepted, 58 review, 15 rejected.
+        <a href="after/test12.json">Structured JSON</a> · <a href="after/test12.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/test12.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/test12-accepted.png"></figure></div></section><section id="test13"><h2>test13</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 21 segments. After: 38 accepted, 291 review, 0 rejected.
+        <a href="after/test13.json">Structured JSON</a> · <a href="after/test13.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/test13.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/test13-accepted.png"></figure></div></section><section id="test14"><h2>test14</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 61 segments. After: 158 accepted, 174 review, 17 rejected.
+        <a href="after/test14.json">Structured JSON</a> · <a href="after/test14.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/test14.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/test14-accepted.png"></figure></div></section><section id="test15"><h2>test15</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 54 segments. After: 68 accepted, 235 review, 0 rejected.
+        <a href="after/test15.json">Structured JSON</a> · <a href="after/test15.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/test15.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/test15-accepted.png"></figure></div></section><section id="test16"><h2>test16</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 21 segments. After: 62 accepted, 203 review, 29 rejected.
+        <a href="after/test16.json">Structured JSON</a> · <a href="after/test16.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/test16.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/test16-accepted.png"></figure></div></section><section id="test20"><h2>test20</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 38 segments. After: 45 accepted, 182 review, 1 rejected.
+        <a href="after/test20.json">Structured JSON</a> · <a href="after/test20.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/test20.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/test20-accepted.png"></figure></div></section><section id="test21"><h2>test21</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 16 segments. After: 34 accepted, 58 review, 15 rejected.
+        <a href="after/test21.json">Structured JSON</a> · <a href="after/test21.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/test21.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/test21-accepted.png"></figure></div></section><section id="test22"><h2>test22</h2>
+        <p>Validation mode: end_to_end_API_capture</p>
+        <p>Before: 23 segments. After: 59 accepted, 328 review, 3 rejected.
+        <a href="after/test22.json">Structured JSON</a> · <a href="after/test22.png">Overlay including review</a></p>
+        <div class="pair"><figure><figcaption>Before</figcaption><img loading="lazy" src="before/test22.png"></figure>
+        <figure><figcaption>After — accepted walls</figcaption><img loading="lazy" src="after/test22-accepted.png"></figure></div></section></body></html>

@@ -42,6 +42,10 @@ node_modules/
 # Python envs
 .venv/
 .venv311/
+.wall-test-py311/
+
+# Local checkpoint archives (source history is stored in Git)
+/backups/
 
 # Misc
 *.log
@@ -181,6 +185,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+apps/backend/private/
 .env
 .envrc
 .venv

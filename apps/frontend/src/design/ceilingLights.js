@@ -1,4 +1,7 @@
 import * as THREE from 'three';
+import { RectAreaLightUniformsLib } from 'three/examples/jsm/lights/RectAreaLightUniformsLib.js';
+
+let areaLightingInitialized = false;
 
 // Dimensions are metres. These locally generated fixtures need no downloads.
 export const CEILING_LIGHT_TYPES = Object.freeze([
@@ -20,6 +23,46 @@ const normalizeRotation = value => {
   return ((value % turn) + 3 * Math.PI) % turn - Math.PI;
 };
 
+// Width/depth are the fixture's local horizontal axes, before rotation.
+// Keep the original dimensions for older projects with no size fields.
+export function ceilingLightDimensions(placement = {}) {
+  let width = .18, depth = .18;
+  if (placement.type === 'surface-spot') width = depth = .16;
+  if (placement.type === 'pendant') width = depth = .46;
+  if (placement.type === 'linear-led') { width = 1.2; depth = .08; }
+  if (placement.type === 'chandelier') {
+    const radius = Math.min(.046, bounded(placement.dropM, .1, 1.5, .45) * .18);
+    width = .7 + 2 * radius; depth = Math.sqrt(3) * .35 + 2 * radius;
+  }
+  return { widthM: bounded(placement.widthM, .03, 5, width), depthM: bounded(placement.depthM, .03, 5, depth) };
+}
+
+export const isDirectionalCeilingLight = type => type === 'downlight' || type === 'surface-spot';
+// Beam dimensions are measured in a plane perpendicular to the beam, 1 m
+// from the emitter. A wall's distance and angle also affect its lit footprint.
+export function ceilingLightBeam(placement = {}) {
+  const defaultSpan = 2 * Math.tan(placement.type === 'surface-spot' ? Math.PI / 6 : Math.PI / 3);
+  return {
+    beamWidthM: bounded(placement.beamWidthM, .1, 8, defaultSpan),
+    beamHeightM: bounded(placement.beamHeightM, .1, 8, defaultSpan),
+    aimTiltDegrees: bounded(placement.aimTiltDegrees, 0, 85, 0),
+    aimDirectionDegrees: bounded(placement.aimDirectionDegrees, -360, 360, 0),
+  };
+}
+
+function beamMask(widthRatio, heightRatio) {
+  const size = 256, data = new Uint8Array(size * size * 4);
+  for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+    const radius = Math.hypot(((x + .5) / size * 2 - 1) / widthRatio, ((y + .5) / size * 2 - 1) / heightRatio);
+    const t = THREE.MathUtils.clamp((1 - radius) / .2, 0, 1), value = Math.round(255 * t * t * (3 - 2 * t)), i = (y * size + x) * 4;
+    data[i] = data[i + 1] = data[i + 2] = value; data[i + 3] = 255;
+  }
+  const texture = new THREE.DataTexture(data, size, size, THREE.RGBAFormat);
+  texture.name = 'Elliptical light beam'; texture.minFilter = texture.magFilter = THREE.LinearFilter;
+  texture.needsUpdate = true;
+  return texture;
+}
+
 export function normalizeCeilingLights(value) {
   if (!Array.isArray(value)) return [];
   const result = [], used = new Set();
@@ -32,6 +75,8 @@ export function normalizeCeilingLights(value) {
     used.add(id);
     result.push({
       id, type: source.type, x: source.x, z: source.z,
+      ...ceilingLightDimensions(source),
+      ...(isDirectionalCeilingLight(source.type) ? ceilingLightBeam(source) : {}),
       lumens: bounded(source.lumens, 50, 5000, 600),
       temperatureK: bounded(source.temperatureK, 2200, 6500, 2700),
       dropM: hanging(source.type) ? bounded(source.dropM, 0.1, 1.5, 0.45) : 0,
@@ -46,12 +91,16 @@ export function normalizeCeilingLights(value) {
 // a fixture tilted onto a vault fits. Hanging fixtures remain vertical. The
 // placement controller checks this conservative circle against the room walls.
 export function ceilingLightFootprint(placement) {
+  const { widthM, depthM } = ceilingLightDimensions(placement);
   switch (placement?.type) {
-    case 'downlight': return Math.hypot(0.09, 0.027);
-    case 'surface-spot': return Math.hypot(0.08, 0.17);
-    case 'pendant': return 0.23;
-    case 'chandelier': return 0.41;
-    case 'linear-led': return Math.hypot(0.6, 0.04, 0.065);
+    case 'downlight': return Math.hypot(Math.max(widthM, depthM) / 2, 0.027);
+    case 'surface-spot': return Math.hypot(Math.max(widthM, depthM) / 2, 0.17);
+    case 'pendant': return Math.max(widthM, depthM) / 2;
+    case 'chandelier': {
+      const original = ceilingLightDimensions({ type: placement.type, dropM: placement.dropM });
+      return Math.max(widthM / original.widthM, depthM / original.depthM) * original.widthM / 2;
+    }
+    case 'linear-led': return Math.hypot(widthM / 2, depthM / 2, 0.065);
     default: return 0;
   }
 }
@@ -88,13 +137,14 @@ export function buildCeilingLight({ placement, ceilingY, roomId }) {
   const diffuser = new THREE.MeshStandardMaterial({ color: '#fff5dc', emissive: color, emissiveIntensity: light.enabled ? 2.4 : 0, roughness: 0.4 });
   const materials = [white, dark, brass, diffuser];
   const usedMaterials = new Set();
+  const fixture = new THREE.Group(); fixture.name = 'fixture-body'; group.add(fixture);
   const mesh = (geometry, material, x, y, z) => {
     const object = new THREE.Mesh(geometry, material);
     object.position.set(x, y, z);
     object.castShadow = material !== diffuser;
     object.receiveShadow = true;
     object.userData = { type: 'ceiling', isCeilingLight: true, ceilingLightId: light.id, roomId };
-    group.add(object); usedMaterials.add(material);
+    fixture.add(object); usedMaterials.add(material);
     return object;
   };
   const cylinder = (radiusTop, radiusBottom, height, material, y, x = 0, z = 0) => mesh(new THREE.CylinderGeometry(radiusTop, radiusBottom, height, 32), material, x, y, z);
@@ -146,22 +196,43 @@ export function buildCeilingLight({ placement, ceilingY, roomId }) {
       box(1.17, 0.006, 0.055, diffuser, 0, -0.062, 0);
       break;
   }
-  // Only downward fixtures are directional. Pendant/chandelier/linear styles
-  // approximate a diffuse luminaire with one point emitter to bound GPU cost.
-  const directional = light.type === 'downlight' || light.type === 'surface-spot';
-  const angle = light.type === 'surface-spot' ? Math.PI / 6 : Math.PI / 3;
-  const solidAngle = directional ? 2 * Math.PI * (1 - Math.cos(angle)) : 4 * Math.PI;
-  const intensity = light.enabled ? light.lumens / solidAngle : 0;
+  const bodySize = new THREE.Box3().setFromObject(fixture).getSize(new THREE.Vector3());
+  const scaleX = light.widthM / bodySize.x, scaleZ = light.depthM / bodySize.z;
+  fixture.scale.set(scaleX, 1, scaleZ);
+  // Match emission to the fixture: focused cones for spots, a broad luminous
+  // face for linear LEDs, and omnidirectional bulbs for hanging fixtures.
+  const directional = isDirectionalCeilingLight(light.type);
+  const area = light.type === 'linear-led';
+  if (area && !areaLightingInitialized) { RectAreaLightUniformsLib.init(); areaLightingInitialized = true; }
+  const span = directional ? Math.max(light.beamWidthM, light.beamHeightM) : 1;
+  const angle = Math.atan(span / 2);
+  const solidAngle = directional ? 2 * Math.PI * (1 - Math.cos(angle)) * light.beamWidthM * light.beamHeightM / (span * span) : 4 * Math.PI;
+  const emitterWidth = 1.17 * scaleX, emitterDepth = .055 * scaleZ;
+  const intensity = light.enabled ? light.lumens / (area ? Math.PI * emitterWidth * emitterDepth : solidAngle) : 0;
   const emitter = directional
     ? new THREE.SpotLight(color, intensity, 10, angle, 0.5, 2)
-    : new THREE.PointLight(color, intensity, 10, 2);
+    : area ? new THREE.RectAreaLight(color, intensity, emitterWidth, emitterDepth)
+      : new THREE.PointLight(color, intensity, 10, 2);
   emitter.position.y = -depth - 0.012;
-  emitter.castShadow = false;
+  if (area) emitter.rotation.x = -Math.PI / 2;
+  emitter.castShadow = directional && light.enabled;
+  if (directional) {
+    emitter.shadow.mapSize.set(512, 512);
+    emitter.shadow.camera.near = .03;
+    emitter.shadow.camera.far = 10;
+    emitter.shadow.bias = -.0001;
+    emitter.shadow.normalBias = .015;
+  }
   emitter.userData = { isAuthoredLight: true, ceilingLightId: light.id, roomId, lumens: light.lumens, temperatureK: light.temperatureK };
   group.add(emitter);
   if (directional) {
     const target = new THREE.Object3D();
-    target.position.y = emitter.position.y - 1;
+    const tilt = THREE.MathUtils.degToRad(light.aimTiltDegrees), heading = THREE.MathUtils.degToRad(light.aimDirectionDegrees);
+    target.position.copy(emitter.position).add(new THREE.Vector3(Math.sin(heading) * Math.sin(tilt), -Math.cos(tilt), Math.cos(heading) * Math.sin(tilt)));
+    // Keep ellipse width horizontal to the aiming direction, including when
+    // the beam points straight down (where the default camera up is singular).
+    emitter.shadow.camera.up.set(-Math.sin(heading) * Math.cos(tilt), -Math.sin(tilt), -Math.cos(heading) * Math.cos(tilt)).applyQuaternion(group.quaternion);
+    if (Math.abs(light.beamWidthM - light.beamHeightM) > 1e-6) emitter.map = beamMask(light.beamWidthM / span, light.beamHeightM / span);
     group.add(target); emitter.target = target;
   }
   // No materials are shared between fixtures, and unused alternatives need not
@@ -176,7 +247,7 @@ export function disposeCeilingLight(group) {
   group.traverse(object => {
     if (object.geometry) geometries.add(object.geometry);
     for (const material of Array.isArray(object.material) ? object.material : object.material ? [object.material] : []) materials.add(material);
-    if (object.isLight) object.dispose?.();
+    if (object.isLight) { object.map?.dispose(); object.dispose?.(); }
   });
   for (const geometry of geometries) geometry.dispose();
   for (const material of materials) material.dispose();

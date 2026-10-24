@@ -1,0 +1,26 @@
+<!doctype html><html><body style="margin:0"><script type="module">
+import * as T from 'three';
+import {createRoomDesignInteraction} from '../src/ui/roomDesignInteraction.js';
+const scene=new T.Scene(),camera=new T.PerspectiveCamera(45,innerWidth/innerHeight,.1,100);
+camera.position.set(2,4,6);camera.lookAt(2,1.5,0);
+const renderer=new T.WebGLRenderer();renderer.setSize(innerWidth,innerHeight);document.body.append(renderer.domElement);
+const wall=new T.Mesh(new T.BoxGeometry(4,3,.2),new T.MeshBasicMaterial({color:'#d9cbb9'}));wall.position.set(2,1.5,0);wall.userData.parentWallId='wall';wall.userData.isWall=true;scene.add(wall);
+const rooms=[{id:'source',name:'Source',design:{roomType:'living'}},{id:'target',name:'Target',design:{roomType:'bedroom',floor:'keep-floor'}}];
+const surface={start:{x:0,y:.1},end:{x:4,y:.1},normal:{x:0,y:1},height:3,yOffset:0,parentWallId:'wall',thickness:.2};
+let saved;
+const interaction=createRoomDesignInteraction({scene,camera,controls:{enabled:true},domElement:renderer.domElement,
+ controller:{getRoom:id=>rooms.find(r=>r.id===id),getWallSurfaces:id=>!window.directTest&&id==='target'?[surface]:[],getDirectWallSurfaces:()=>[surface],apply:(id,draft)=>{saved={id,draft};return{ok:true};}},
+ getLayout:()=>({rooms,walls:[{id:'wall',start:{x:0,y:0},end:{x:4,y:0}}]})});
+interaction.beginWallPick('source',{roomType:'living',wallPanel:'wall-relief-horses',floor:'do-not-copy'});
+renderer.render(scene,camera);
+const point=new T.Vector3(2,1.5,.1).project(camera),x=(point.x+1)*innerWidth/2,y=(1-point.y)*innerHeight/2;
+for(const type of ['pointermove','pointerdown','pointerup'])renderer.domElement.dispatchEvent(new PointerEvent(type,{clientX:x,clientY:y,button:0,bubbles:true}));
+const confirm=document.getElementById('design-area-confirm');if(confirm.disabled)throw Error('Visible wall not selectable');confirm.click();
+if(saved?.id!=='target'||saved.draft.floor!=='keep-floor'||saved.draft.wallPanel!=='wall-relief-horses')throw Error('Wrong room or settings saved');
+window.directTest=true;
+interaction.beginWallPick('source',{roomType:'living',wallPanel:'wall-relief-horses'});
+for(const type of ['pointermove','pointerdown','pointerup'])renderer.domElement.dispatchEvent(new PointerEvent(type,{clientX:x,clientY:y,button:0,bubbles:true}));
+if(confirm.disabled)throw Error('Unmatched wall is still blocked');confirm.click();
+if(saved?.id!=='source'||saved.draft.accentWallSide!==1)throw Error('Explicit face was not saved');
+renderer.render(scene,camera);document.body.dataset.ready='true';
+</script></body></html>

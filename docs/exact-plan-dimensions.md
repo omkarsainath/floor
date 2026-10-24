@@ -20,7 +20,27 @@ A single area does not uniquely determine a room's width and depth. The solver r
 
 For a missed length, use **Review reference → Use … for orange span**, or **Set Exact Length** and select both arrow endpoints. For a missing/ambiguous room, correct the walls and rescan, or use **Trace Room** along inside wall faces, then **Finish Room** and enter its printed area. The room detector's bounding rectangle is never used as its floor boundary. **Apply Printed Measurements** recalculates after manual changes.
 
-Use **Edit** beside a length, or **Set area** beside a room, to correct a target. Remove a mistaken target or use **Undo**. Repeated scans replace automatic targets and preserve edited targets, traced rooms and manual calibration. A contradictory automatic batch is rejected together and shown as needing review; any remaining preview does not claim those targets were applied. Conflicting manually accepted targets stop export.
+Use **Edit** beside a length, or **Set area** beside a room, to correct a target. Remove a mistaken target or use **Undo**. Repeated scans replace automatic targets and preserve edited targets, traced rooms and manual calibration. With no manually marked rooms, a contradictory automatic batch is rejected together and shown as needing review. Marked rooms use the direct sizing flow below instead.
+
+**Mark Room Manually** offers optional **Exact width** and **Exact depth** fields. Width runs left-to-right on the image; depth runs top-to-bottom. Enter either or both, using metres, centimetres, millimetres, feet, or feet and inches (plain numbers mean metres). Finish the boundary, then use **Apply Printed Measurements** or **View in 3D**. Your marked outline creates its own floor and walls, with no detected walls required. Angled and concave outlines are supported; width/depth describe their overall horizontal/vertical spans. **Set width / depth** beside a saved room edits these targets; Undo restores the prior values.
+
+Each marked room is sized independently. Explicit width and depth take priority over a conflicting area; with one dimension and an area, the other axis is derived from the polygon area. Other scanned and length constraints are retained as superseded references, not enforced or reported as satisfied. Rooms keep their positions where possible and move to the closest free bounding-box placement when sizes conflict; this can create stepped boundaries or spacing between irregular rooms. Wall thickness extends outward from the floor boundary. Shared collinear wall runs are deduplicated, objects belonging to a marked room follow its resize, and scan walls crossing edited regions are clipped/replaced. Windows do not require an existing scanned wall to export. Unedited scan geometry outside these regions is retained.
+
+A marked floor edge does not automatically imply a solid wall. Where existing boundary walls are available, their runs and gaps follow the room resize. This preserves the open Hall-to-Kitchen passage, including a gap at the end of a wall. A wholly open edge stays open when other room edges establish the surrounding walls. Detected doors/windows retain their opening hosts for normal lintels and sills; an unlabelled passage remains open full-height. Rooms without boundary-wall evidence still receive new walls, as do new cut-out partitions. `node scripts/check-room-dimensions.mjs --passage` checks the Hall passage through export and the viewer.
+
+Originally adjoining marked rooms follow their neighbour when it shrinks or grows, retaining a shared wall rather than leaving the second room at its old image position. The longest shared source edge supplies the primary attachment when several neighbours compete. Entered room dimensions stay fixed. Small scan seams at corners and jambs are closed using six image pixels, bounded to 2.5–12 cm; larger passages remain open. Resized door/window boxes are centred on their nearby regenerated wall so rendered frames and wall cuts use the same wall line.
+
+When detected jamb ends define a supported opening wider than its detection box, the viewer fits the door/window box to that same physical span before creating its mesh and wall cut. This applies to existing saved layouts on load as well. Shared door/side-light spans are kept separate, and unsupported passages are not widened or filled. `node scripts/check-door-jambs.mjs` checks the actual viewer door's visible bounds against both jambs and captures a close-up.
+
+Marked-room dimensions are saved with a room-bound measurement basis. The viewer recomputes them from the saved floor polygon on reload; changing that polygon later can therefore reveal a mismatch. Finite positive dimensions and a non-self-intersecting room polygon are still necessary to construct geometry.
+
+### Bathroom corner cut-out
+
+Choose **Rectangle (two corners)** and mark the overall bedroom rectangle. Enter its overall width/depth, enable **Bathroom cut-out**, select the corner as seen on the image, and enter the cut-out width/depth in the same supported units. **Finish Room → View in 3D** produces a six-corner L-shaped floor and matching walls. For the bathroom at the upper left of the supplied bedroom example, choose **Top left**. The result shows `overall width × depth − cut-out width × depth = net room area`.
+
+The cut-out uses exact measurements, rather than estimating the recess from tracing proportions. Enabling it on an existing irregular outline replaces that outline with its overall rectangle minus the specified corner. Both cut-out dimensions must be smaller than the overall room dimensions. It does not create a separate bathroom room automatically; an existing scanned bathroom floor within the cut-out can remain. The viewer suppresses its generic rectangular background floor so it cannot fill an otherwise empty cut-out.
+
+Under a saved room, expand **Bathroom cut-out** to edit the corner or dimensions, or disable it and select **Save cut-out**. Undo restores the previous state. The definition survives JSON export/reload. `node scripts/check-room-dimensions.mjs --cutout` checks subtraction, saved-room removal, undo, and opening the 3D viewer.
 
 ### If an updated page talks to an older backend
 
@@ -38,17 +58,25 @@ Before uploading, the tracer now checks `/api/health` for the scan contract and 
 
 ## How connected geometry stays consistent
 
+The shared solver described in this section applies when there are **no manually marked rooms**. Manual room exports use independent room sizing above, so wall-face matching, rectilinear constraints and shared-dimension conflicts do not block them.
+
 The initial pixel-to-metre conversion is followed by a shared, monotonic coordinate transformation in X and Y. Every wall endpoint, room corner, opening/furniture box and supplied footprint uses that transformation. Adjacent rooms therefore retain their shared wall; the solver does not independently scale each room and create overlapping partitions. Wall thickness and vertical heights remain fixed during this adjustment.
 
-Room edges must follow the inside faces of the walls. Small tracing differences within 3 cm (and within one third of the host thickness) can snap to an unambiguous nearby face; adjustments are recorded. A constrained room must connect to both a horizontal and a vertical wall face, and its floor polygon must not overlap solid walls. This permits defined open-plan zones while rejecting entirely floating area polygons.
+For the shared solver, room edges must follow the inside faces of the walls. Small tracing differences within six source-image pixels (bounded to 3–8 cm) can snap to a nearby inward face; adjustments are recorded. A constrained room must connect to both a horizontal and a vertical wall face, and its floor polygon must not overlap solid walls. These matching rules do not apply to manually marked rooms.
 
 Length endpoints project onto actual structural coordinates. They must be within 3 cm of an unambiguous wall face or endpoint. A floating dimension graphic is rejected because moving the graphic alone would not change the intended wall. The saved constraint records those wall anchors. The viewer recomputes lengths from the referenced walls and areas from actual room polygons rather than trusting a previous solver report.
 
 The solver preserves coordinate ordering and rejects incompatible constraints without modifying its input or partially exporting a result. It recomputes from the original traced geometry for each export, avoiding cumulative deformation from repeated saves. The export stores both the original calibration and the subsequent coordinate mapping.
 
+Before solving, small near-axis endpoint errors are aligned while keeping shared endpoints connected. This is limited to 3 degrees and a small positional tolerance based on image scale (2–6 cm); adjustments are recorded in the report. Genuine diagonal walls remain in the model and their endpoints follow the coordinate mapping, with wall thickness retained. Room overlap uses their oriented footprint, not a bounding rectangle. Unmeasured coordinates follow measured wall movement, allowing adjoining rooms to expand together without leaving intermediate walls at their old positions. The building supplies the fixed reference, so a larger footprint does not trap an expanding room. Conflicting targets still stop export.
+
+**View in 3D** opens its tab during the click, before asynchronous export work, and closes the temporary tab if validation fails. If popups are blocked, a successful export opens the viewer in the current tab. `node scripts/check-room-dimensions.mjs` verifies two marked rooms with different depths, no scanned walls, exact saved geometry, actual viewer opening, and the popup-blocked fallback in an isolated browser.
+
 ## Current boundaries
 
-- Exact adjustment supports horizontal/vertical walls and room edges, including concave outlines. Diagonal/curved plans receive an explicit unsupported-geometry message when exact adjustment is requested; they are not silently flattened.
+The following shared-solver limits apply to automatic scan/length adjustment without marked rooms. Marked-room exports bypass these matching restrictions.
+
+- Exact room targets currently require horizontal/vertical room edges, including concave outlines. Unconstrained angled room outlines and diagonal walls elsewhere do not block export. A target on an angled room identifies that specific room as unsupported; it is not silently flattened. Horizontal/vertical length references can also bind to diagonal wall endpoints.
 - OCR can miss or misread text. Skewed photos, small/blurred labels, missing units, unrecognised openings, disconnected wall networks and open-plan areas may still require correction. Automatic scanning is implemented; arbitrary-image accuracy is not guaranteed.
 - Wall thickness is held fixed. A request to change that thickness must be made through the wall/default thickness values, not by introducing a contradictory span through the same wall.
 - An area printed on a plan may mean carpet, built-up or another convention. This feature uses the inside wall-face floor polygon (not skirting projection or the enclosing rectangle). Choose the correct boundary for that convention.

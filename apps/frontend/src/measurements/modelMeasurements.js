@@ -69,7 +69,11 @@ export function summarizeMeasurements(layout) {
     const pointsValid = finitePoint(constraint.start) && finitePoint(constraint.end);
     const bound = constraint.start_anchor || constraint.end_anchor;
     const a = anchorCoordinate(constraint.start_anchor), b = anchorCoordinate(constraint.end_anchor);
+    const measuredRoom = constraint.measurement_basis === 'room-bounds'
+      ? (layout.rooms || []).find(r => r.id === constraint.room_id) : null;
+    const roomCoordinates = (measuredRoom?.points || measuredRoom?.polygon || []).map(p => p[constraint.axis]);
     const actual = area ? room?.area_m2
+      : constraint.measurement_basis === 'room-bounds' ? (roomCoordinates.length ? Math.max(...roomCoordinates) - Math.min(...roomCoordinates) : null)
       : constraint.type === 'length' && bound ? (Number.isFinite(a) && Number.isFinite(b) ? Math.abs(b - a) : null)
       : constraint.type === 'length' && pointsValid ? wallLength(constraint) : null;
     const valid = Number.isFinite(target) && target > 0 && Number.isFinite(actual);
@@ -185,11 +189,114 @@ export function openingGapWalls(walls, openings) {
   return result;
 }
 
+// Some openings end at a return/corner, not at a second collinear fragment.
+// These spans exist only in the renderer: do not alter measured wall geometry
+// or reuse this fallback to infer room/ceiling boundaries.
+function cornerOpeningGapWalls(walls, openings, existingGaps) {
+  const result = [];
+  const cross = (a, b) => a.x * b.y - a.y * b.x;
+  for (const opening of openings) {
+    const box = opening.bbox;
+    if (!box || !['x1', 'y1', 'x2', 'y2'].every(k => Number.isFinite(box[k]))) continue;
+    const dx = box.x2 - box.x1, dy = box.y2 - box.y1;
+    const depth = Math.min(dx, dy), span = Math.max(dx, dy);
+    // A square swing footprint does not establish the wall orientation.
+    if (depth <= 0 || span < depth * 2.5) continue;
+    const u = dx > dy ? { x: 1, y: 0 } : { x: 0, y: 1 };
+    const start = dx > dy ? { x: box.x1, y: (box.y1 + box.y2) / 2 }
+      : { x: (box.x1 + box.x2) / 2, y: box.y1 };
+    const end = { x: start.x + u.x * span, y: start.y + u.y * span };
+    const dot = p => p.x * u.x + p.y * u.y;
+    const subtract = (p, q) => ({ x: p.x - q.x, y: p.y - q.y });
+    const supports = (p, side) => walls.flatMap((wall, index) => {
+      const length = wallLength(wall), thickness = positive(wall.thickness, .15);
+      if (length < thickness || depth < thickness * .4 || depth > thickness * 2.5) return [];
+      const v = { x: (wall.end.x - wall.start.x) / length, y: (wall.end.y - wall.start.y) / length };
+      const tolerance = Math.max(.03, Math.min(.2, thickness * 1.5));
+      let q, perpendicular = false;
+      if (Math.abs(cross(u, v)) < .045) {
+        q = [wall.start, wall.end].sort((a, b) => Math.hypot(a.x-p.x,a.y-p.y)-Math.hypot(b.x-p.x,b.y-p.y))[0];
+        const other = q === wall.start ? wall.end : wall.start;
+        // The support must point away from, not into, the opening.
+        if (side * dot(subtract(other, q)) <= 0) return [];
+        if (Math.abs(cross(subtract(q, p), u)) > thickness * .45) return [];
+      } else if (Math.abs(cross(u, v)) > .9) {
+        const offset = subtract(wall.start, p), det = cross(u, v);
+        const along = cross(offset, v) / det, onWall = cross(offset, u) / det;
+        if (onWall < -thickness * .75 || onWall > length + thickness * .75) return [];
+        q = { x: p.x + u.x * along, y: p.y + u.y * along };
+        perpendicular = true;
+      } else return [];
+      const distance = Math.hypot(q.x-p.x, q.y-p.y);
+      return distance <= tolerance ? [{ wall, index, q, perpendicular, distance, thickness }] : [];
+    });
+    const choices = [];
+    for (const left of supports(start, -1)) for (const right of supports(end, 1)) {
+      if (left.index === right.index || !(left.perpendicular || right.perpendicular)) continue;
+      if (Math.abs(positive(left.wall.height, 3) - positive(right.wall.height, 3)) > .01
+        || Math.abs((Number(left.wall.yOffset) || 0) - (Number(right.wall.yOffset) || 0)) > .01) continue;
+      // Prefer the aligned host for thickness, paint and face orientation.
+      const host = !left.perpendicular ? left : right;
+      const gap = { ...host.wall, start: { ...left.q }, end: { ...right.q },
+        parentWallId: host.wall.id || `wall-${host.index}`, isDetectedGap: true,
+        isCornerOpeningGap: true, supportingOpenings: [opening] };
+      // Project the corner intersection onto the aligned host's centreline.
+      if (!left.perpendicular || !right.perpendicular) {
+        const p = host.q;
+        for (const k of ['start', 'end']) {
+          const t = dot(subtract(gap[k], p));
+          gap[k] = { x: p.x + u.x*t, y: p.y + u.y*t };
+        }
+      }
+      const length = wallLength(gap), cut = openingSpanOnWall(gap, box);
+      if (!cut || (cut.end-cut.start)/length < .8) continue;
+      // No duplicate header over an existing wall or another supported gap.
+      const occupied = [...walls, ...existingGaps, ...result].some(w => {
+        const l = wallLength(w);
+        if (!l || Math.abs(cross(u, { x:(w.end.x-w.start.x)/l, y:(w.end.y-w.start.y)/l })) > .045) return false;
+        if (Math.abs(cross(subtract(w.start, gap.start), u)) > Math.min(positive(w.thickness,.15),host.thickness)*.45) return false;
+        const positions = [w.start, w.end].map(p => dot(subtract(p, gap.start)));
+        return Math.min(length, Math.max(...positions))-Math.max(0, Math.min(...positions)) > .01;
+      });
+      if (occupied) continue;
+      if (!host.perpendicular && dot(subtract(host.wall.end,host.wall.start)) < 0) [gap.start,gap.end] = [gap.end,gap.start];
+      choices.push({ gap, distance: left.distance + right.distance });
+    }
+    choices.sort((a,b) => a.distance-b.distance);
+    if (choices.length) result.push(choices[0].gap);
+  }
+  return result;
+}
+
 // Split in both horizontal and vertical directions so overlapping openings do
 // not add opaque fill over each other. Original wall endpoints stay unchanged.
 // openings: [{ bbox, sillBase, winTop, id }], with heights in metres.
-export function buildWallSegments(walls = [], openings = []) {
-  const renderWalls = [...walls, ...openingGapWalls(walls, openings)];
+export function resolveOpeningGeometry(walls = [], openings = []) {
+  const gaps = openingGapWalls(walls, openings);
+  const supported = [...gaps, ...cornerOpeningGapWalls(walls, openings, gaps)];
+  return openings.map(opening => {
+    // A shared door/side-light gap must retain its separate opening widths.
+    const candidates = supported.filter(gap => gap.supportingOpenings?.length === 1 && gap.supportingOpenings[0] === opening);
+    if (!candidates.length) return opening;
+    const gap = candidates.sort((a, b) => openingSpanOnWall(a, opening.bbox).distance - openingSpanOnWall(b, opening.bbox).distance)[0];
+    const dx = gap.end.x - gap.start.x, dy = gap.end.y - gap.start.y;
+    // Axis-aligned boxes cannot express a rotated door footprint exactly.
+    if (Math.abs(dx) > 1e-6 && Math.abs(dy) > 1e-6) return opening;
+    const axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y', normal = axis === 'x' ? 'y' : 'x';
+    const box = { ...opening.bbox };
+    const half = Math.max(positive(gap.thickness, .15), Math.abs(box[`${normal}2`] - box[`${normal}1`])) / 2;
+    box[`${axis}1`] = Math.min(gap.start[axis], gap.end[axis]);
+    box[`${axis}2`] = Math.max(gap.start[axis], gap.end[axis]);
+    box[`${normal}1`] = gap.start[normal] - half;
+    box[`${normal}2`] = gap.start[normal] + half;
+    return { ...opening, bbox: box };
+  });
+}
+
+function assignWallOpenings(walls, openings) {
+  openings = resolveOpeningGeometry(walls, openings);
+  const gaps = openingGapWalls(walls, openings);
+  const renderWalls = [...walls, ...gaps, ...cornerOpeningGapWalls(walls, openings, gaps)];
   const assignments = renderWalls.map(() => []);
   openings.forEach(opening => {
     const candidates = renderWalls.flatMap((wall, index) => {
@@ -222,6 +329,34 @@ export function buildWallSegments(walls = [], openings = []) {
           end: span.length-span.end<=jambTolerance ? span.length : span.end, supportsGap: true } : {}) });
     });
   });
+  return { renderWalls, assignments };
+}
+
+// Plan-view wall spans at openings, using the same host selection as the 3D
+// wall cutter. These are projections, not additional floor-to-ceiling walls.
+export function openingWallSpans(walls = [], openings = []) {
+  const { renderWalls, assignments } = assignWallOpenings(walls,
+    openings.map(opening => ({ ...opening, sillBase: 0, winTop: Infinity })));
+  return renderWalls.flatMap(({ supportingOpenings, ...wall }, index) => {
+    const cuts = assignments[index];
+    if (wall.isDetectedGap && !cuts.some(cut => cut.supportsGap)) return [];
+    const intervals = [];
+    for (const cut of [...cuts].sort((a, b) => a.start - b.start)) {
+      const last = intervals.at(-1);
+      if (last && cut.start <= last.end + 1e-6) last.end = Math.max(last.end, cut.end);
+      else intervals.push({ start: cut.start, end: cut.end });
+    }
+    const length = wallLength(wall);
+    const point = distance => ({
+      x: wall.start.x + (wall.end.x - wall.start.x) * distance / length,
+      y: wall.start.y + (wall.end.y - wall.start.y) * distance / length,
+    });
+    return intervals.map(span => ({ ...wall, start: point(span.start), end: point(span.end) }));
+  });
+}
+
+export function buildWallSegments(walls = [], openings = []) {
+  const { renderWalls, assignments } = assignWallOpenings(walls, openings);
   return renderWalls.flatMap(({ supportingOpenings, ...wall }, index) => {
     const length = wallLength(wall);
     if (length <= 1e-6) return [];

@@ -1,0 +1,5314 @@
+[
+  {
+    "id": "sf-sofas-p11-1",
+    "label": "Butterfly Corner Sofa \u00b7 1",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p11-1.webp",
+    "page": 11,
+    "code": "1",
+    "w": 2.8956,
+    "d": 2.3368,
+    "h": 0.8128,
+    "color": "#d0b09c",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 11, printed 02. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.8956,
+    "productDepth": 2.3368,
+    "referenceAudit": {
+      "pdfPage": 11,
+      "printedPage": 2,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        114,
+        92,
+        32
+      ],
+      "seatingDepthInches": 36
+    },
+    "seatingDepth": 0.9144
+  },
+  {
+    "id": "sf-sofas-p11-2",
+    "label": "Art Design Corner Sofa \u00b7 2",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p11-2.webp",
+    "page": 11,
+    "code": "2",
+    "w": 2.9464,
+    "d": 2.3876,
+    "h": 0.8636,
+    "color": "#dbccbb",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 11, printed 02. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.9464,
+    "productDepth": 2.3876,
+    "referenceAudit": {
+      "pdfPage": 11,
+      "printedPage": 2,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        116,
+        94,
+        34
+      ],
+      "seatingDepthInches": 35
+    },
+    "seatingDepth": 0.889
+  },
+  {
+    "id": "sf-sofas-p11-3",
+    "label": "Camel Back Sofa 3 + 2 \u00b7 3",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p11-3.webp",
+    "page": 11,
+    "code": "3",
+    "w": 3.2156,
+    "d": 2.5603,
+    "h": 0.8636,
+    "color": "#344f57",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        87,
+        36,
+        34
+      ],
+      [
+        66,
+        36,
+        34
+      ]
+    ],
+    "note": "SOFA PDF page 11, printed 02. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 2.2098,
+    "productDepth": 0.9144,
+    "setSeats": [
+      3,
+      2
+    ],
+    "referenceAudit": {
+      "pdfPage": 11,
+      "printedPage": 2,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          87,
+          36,
+          34
+        ],
+        [
+          66,
+          36,
+          34
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-sofas-p12-4",
+    "label": "Fountain Corner Sofa \u00b7 4",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p12-4.webp",
+    "page": 12,
+    "code": "4",
+    "w": 2.8956,
+    "d": 2.3368,
+    "h": 0.8382,
+    "color": "#274758",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 12, printed 03. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.8956,
+    "productDepth": 2.3368,
+    "referenceAudit": {
+      "pdfPage": 12,
+      "printedPage": 3,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        114,
+        92,
+        33
+      ],
+      "seatingDepthInches": 36
+    },
+    "seatingDepth": 0.9144
+  },
+  {
+    "id": "sf-sofas-p12-5",
+    "label": "Ghana Corner Sofa \u00b7 5",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p12-5.webp",
+    "page": 12,
+    "code": "5",
+    "w": 3.048,
+    "d": 2.4384,
+    "h": 0.8636,
+    "color": "#e7c37b",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 12, printed 03. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 3.048,
+    "productDepth": 2.4384,
+    "referenceAudit": {
+      "pdfPage": 12,
+      "printedPage": 3,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        120,
+        96,
+        34
+      ],
+      "seatingDepthInches": 34
+    },
+    "seatingDepth": 0.8636
+  },
+  {
+    "id": "sf-sofas-p13-6",
+    "label": "Cuba Corner Sofa \u00b7 6",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p13-6.webp",
+    "page": 13,
+    "code": "6",
+    "w": 2.794,
+    "d": 2.794,
+    "h": 0.8382,
+    "color": "#8e6a49",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 13, printed 04. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.794,
+    "productDepth": 2.794,
+    "referenceAudit": {
+      "pdfPage": 13,
+      "printedPage": 4,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        110,
+        110,
+        33
+      ],
+      "seatingDepthInches": 36
+    },
+    "seatingDepth": 0.9144
+  },
+  {
+    "id": "sf-sofas-p13-7",
+    "label": "Vintage-2 Corner Sofa \u00b7 7",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p13-7.webp",
+    "page": 13,
+    "code": "7",
+    "w": 2.9972,
+    "d": 2.9972,
+    "h": 0.8636,
+    "color": "#827f7b",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 13, printed 04. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.9972,
+    "productDepth": 2.9972,
+    "referenceAudit": {
+      "pdfPage": 13,
+      "printedPage": 4,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        118,
+        118,
+        34
+      ],
+      "seatingDepthInches": 35
+    },
+    "seatingDepth": 0.889
+  },
+  {
+    "id": "sf-sofas-p13-8",
+    "label": "Capetown Sofa 3 + 2 \u00b7 8",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p13-8.webp",
+    "page": 13,
+    "code": "8",
+    "w": 2.9591,
+    "d": 2.4892,
+    "h": 0.9398,
+    "color": "#b8a99d",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        78,
+        35,
+        37
+      ],
+      [
+        60,
+        35,
+        37
+      ]
+    ],
+    "note": "SOFA PDF page 13, printed 04. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 1.9812,
+    "productDepth": 0.889,
+    "setSeats": [
+      3,
+      2
+    ],
+    "referenceAudit": {
+      "pdfPage": 13,
+      "printedPage": 4,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          78,
+          35,
+          37
+        ],
+        [
+          60,
+          35,
+          37
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-sofas-p14-9",
+    "label": "Camel Back Corner Sofa \u00b7 9",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p14-9.webp",
+    "page": 14,
+    "code": "9",
+    "w": 3.048,
+    "d": 2.4384,
+    "h": 0.8382,
+    "color": "#875a4b",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 14, printed 05. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 3.048,
+    "productDepth": 2.4384,
+    "referenceAudit": {
+      "pdfPage": 14,
+      "printedPage": 5,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        120,
+        96,
+        33
+      ],
+      "seatingDepthInches": 36
+    },
+    "seatingDepth": 0.9144
+  },
+  {
+    "id": "sf-sofas-p14-10",
+    "label": "Fitting Corner Sofa \u00b7 10",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p14-10.webp",
+    "page": 14,
+    "code": "10",
+    "w": 2.7432,
+    "d": 2.1844,
+    "h": 0.889,
+    "color": "#66524e",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 14, printed 05. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.7432,
+    "productDepth": 2.1844,
+    "referenceAudit": {
+      "pdfPage": 14,
+      "printedPage": 5,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        86,
+        35
+      ],
+      "seatingDepthInches": 36
+    },
+    "seatingDepth": 0.9144
+  },
+  {
+    "id": "sf-sofas-p14-11",
+    "label": "Italian Sofa 3 + 2 \u00b7 11",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p14-11.webp",
+    "page": 14,
+    "code": "11",
+    "w": 2.9718,
+    "d": 2.1336,
+    "h": 0.9398,
+    "color": "#863a2c",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        84,
+        30,
+        37
+      ],
+      [
+        60,
+        30,
+        37
+      ]
+    ],
+    "note": "SOFA PDF page 14, printed 05. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 2.1336,
+    "productDepth": 0.762,
+    "setSeats": [
+      3,
+      2
+    ],
+    "referenceAudit": {
+      "pdfPage": 14,
+      "printedPage": 5,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          84,
+          30,
+          37
+        ],
+        [
+          60,
+          30,
+          37
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-sofas-p15-12",
+    "label": "Peacock Corner Sofa \u00b7 12",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p15-12.webp",
+    "page": 15,
+    "code": "12",
+    "w": 2.8956,
+    "d": 2.3114,
+    "h": 0.8382,
+    "color": "#893c1b",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 15, printed 06. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.8956,
+    "productDepth": 2.3114,
+    "referenceAudit": {
+      "pdfPage": 15,
+      "printedPage": 6,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        114,
+        91,
+        33
+      ],
+      "seatingDepthInches": 34
+    },
+    "seatingDepth": 0.8636
+  },
+  {
+    "id": "sf-sofas-p15-13",
+    "label": "Red Fort Corner Sofa \u00b7 13",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p15-13.webp",
+    "page": 15,
+    "code": "13",
+    "w": 2.6924,
+    "d": 2.6924,
+    "h": 0.9144,
+    "color": "#884e33",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 15, printed 06. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.6924,
+    "productDepth": 2.6924,
+    "referenceAudit": {
+      "pdfPage": 15,
+      "printedPage": 6,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        106,
+        106,
+        36
+      ],
+      "seatingDepthInches": 36
+    },
+    "seatingDepth": 0.9144
+  },
+  {
+    "id": "sf-sofas-p16-14",
+    "label": "Capetown Corner Sofa \u00b7 14",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p16-14.webp",
+    "page": 16,
+    "code": "14",
+    "w": 2.7432,
+    "d": 2.7432,
+    "h": 0.9144,
+    "color": "#35373d",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 16, printed 07. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.7432,
+    "productDepth": 2.7432,
+    "referenceAudit": {
+      "pdfPage": 16,
+      "printedPage": 7,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        108,
+        36
+      ],
+      "seatingDepthInches": 36
+    },
+    "seatingDepth": 0.9144
+  },
+  {
+    "id": "sf-sofas-p16-15",
+    "label": "Gloria Corner Sofa \u00b7 15",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p16-15.webp",
+    "page": 16,
+    "code": "15",
+    "w": 2.794,
+    "d": 2.794,
+    "h": 0.9652,
+    "color": "#51382b",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 16, printed 07. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.794,
+    "productDepth": 2.794,
+    "referenceAudit": {
+      "pdfPage": 16,
+      "printedPage": 7,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        110,
+        110,
+        38
+      ],
+      "seatingDepthInches": 37
+    },
+    "seatingDepth": 0.9398
+  },
+  {
+    "id": "sf-sofas-p17-16",
+    "label": "Lisa Corner Sofa \u00b7 16",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p17-16.webp",
+    "page": 17,
+    "code": "16",
+    "w": 2.8448,
+    "d": 2.8448,
+    "h": 0.889,
+    "color": "#c7c2c1",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 17, printed 08. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.8448,
+    "productDepth": 2.8448,
+    "referenceAudit": {
+      "pdfPage": 17,
+      "printedPage": 8,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        112,
+        112,
+        35
+      ],
+      "seatingDepthInches": 35
+    },
+    "seatingDepth": 0.889
+  },
+  {
+    "id": "sf-sofas-p17-17",
+    "label": "Atlantic Corner Sofa \u00b7 17",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p17-17.webp",
+    "page": 17,
+    "code": "17",
+    "w": 3.048,
+    "d": 2.4384,
+    "h": 0.8128,
+    "color": "#8a8888",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 17, printed 08. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 3.048,
+    "productDepth": 2.4384,
+    "referenceAudit": {
+      "pdfPage": 17,
+      "printedPage": 8,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        120,
+        96,
+        32
+      ],
+      "seatingDepthInches": 36
+    },
+    "seatingDepth": 0.9144
+  },
+  {
+    "id": "sf-sofas-p17-18",
+    "label": "J Sofa 3 + 2 \u00b7 18",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p17-18.webp",
+    "page": 17,
+    "code": "18",
+    "w": 3.1902,
+    "d": 2.5603,
+    "h": 0.8636,
+    "color": "#4c403d",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        86,
+        36,
+        34
+      ],
+      [
+        66,
+        36,
+        34
+      ]
+    ],
+    "note": "SOFA PDF page 17, printed 08. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 2.1844,
+    "productDepth": 0.9144,
+    "setSeats": [
+      3,
+      2
+    ],
+    "referenceAudit": {
+      "pdfPage": 17,
+      "printedPage": 8,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          86,
+          36,
+          34
+        ],
+        [
+          66,
+          36,
+          34
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-sofas-p18-19",
+    "label": "Twin Wood Handle Corner Sofa \u00b7 19",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p18-19.webp",
+    "page": 18,
+    "code": "19",
+    "w": 2.794,
+    "d": 2.794,
+    "h": 0.8382,
+    "color": "#837872",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 18, printed 09. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.794,
+    "productDepth": 2.794,
+    "seatingDepth": 0.8636,
+    "referenceAudit": {
+      "pdfPage": 18,
+      "printedPage": 9,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        110,
+        110,
+        33
+      ],
+      "seatingDepthInches": 34
+    }
+  },
+  {
+    "id": "sf-sofas-p18-20",
+    "label": "Bali Corner Sofa \u00b7 20",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p18-20.webp",
+    "page": 18,
+    "code": "20",
+    "w": 2.794,
+    "d": 2.794,
+    "h": 0.8636,
+    "color": "#1c728b",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 18, printed 09. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.794,
+    "productDepth": 2.794,
+    "referenceAudit": {
+      "pdfPage": 18,
+      "printedPage": 9,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        110,
+        110,
+        34
+      ],
+      "seatingDepthInches": 35
+    },
+    "seatingDepth": 0.889
+  },
+  {
+    "id": "sf-sofas-p19-21",
+    "label": "Vintage Corner Sofa \u00b7 21",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p19-21.webp",
+    "page": 19,
+    "code": "21",
+    "w": 2.8448,
+    "d": 2.8448,
+    "h": 0.889,
+    "color": "#938b88",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 19, printed 10. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.8448,
+    "productDepth": 2.8448,
+    "referenceAudit": {
+      "pdfPage": 19,
+      "printedPage": 10,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        112,
+        112,
+        35
+      ],
+      "seatingDepthInches": 35
+    },
+    "seatingDepth": 0.889
+  },
+  {
+    "id": "sf-sofas-p19-22",
+    "label": "Watch Fitting Sofa 3 + 2 \u00b7 22",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p19-22.webp",
+    "page": 19,
+    "code": "22",
+    "w": 3.1115,
+    "d": 2.4892,
+    "h": 0.8382,
+    "color": "#6198a9",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        84,
+        35,
+        33
+      ],
+      [
+        60,
+        35,
+        33
+      ]
+    ],
+    "note": "SOFA PDF page 19, printed 10. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 2.1336,
+    "productDepth": 0.889,
+    "setSeats": [
+      3,
+      2
+    ],
+    "referenceAudit": {
+      "pdfPage": 19,
+      "printedPage": 10,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          84,
+          35,
+          33
+        ],
+        [
+          60,
+          35,
+          33
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-sofas-p19-23",
+    "label": "Rio Corner Sofa \u00b7 23",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p19-23.webp",
+    "page": 19,
+    "code": "23",
+    "w": 2.8956,
+    "d": 2.8956,
+    "h": 0.889,
+    "color": "#90a2b0",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 19, printed 10. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.8956,
+    "productDepth": 2.8956,
+    "referenceAudit": {
+      "pdfPage": 19,
+      "printedPage": 10,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        114,
+        114,
+        35
+      ],
+      "seatingDepthInches": 35
+    },
+    "seatingDepth": 0.889
+  },
+  {
+    "id": "sf-sofas-p20-24",
+    "label": "Innova Sofa 3 + 1 + 1 \u00b7 24",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p20-24.webp",
+    "page": 20,
+    "code": "24",
+    "w": 3.9573,
+    "d": 2.4181,
+    "h": 0.9906,
+    "color": "#b8ad9f",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        81,
+        34,
+        39
+      ],
+      [
+        40,
+        34,
+        39
+      ],
+      [
+        40,
+        34,
+        39
+      ]
+    ],
+    "note": "SOFA PDF page 20, printed 11. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 2.0574,
+    "productDepth": 0.8636,
+    "setSeats": [
+      3,
+      1,
+      1
+    ],
+    "referenceAudit": {
+      "pdfPage": 20,
+      "printedPage": 11,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          81,
+          34,
+          39
+        ],
+        [
+          40,
+          34,
+          39
+        ],
+        [
+          40,
+          34,
+          39
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-sofas-p20-25",
+    "label": "Gtc Corner Sofa \u00b7 25",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p20-25.webp",
+    "page": 20,
+    "code": "25",
+    "w": 2.8956,
+    "d": 2.8956,
+    "h": 0.9652,
+    "color": "#6d5044",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 20, printed 11. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.8956,
+    "productDepth": 2.8956,
+    "referenceAudit": {
+      "pdfPage": 20,
+      "printedPage": 11,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        114,
+        114,
+        38
+      ],
+      "seatingDepthInches": 37
+    },
+    "seatingDepth": 0.9398
+  },
+  {
+    "id": "sf-sofas-p21-26",
+    "label": "Titanic Corner Sofa \u00b7 26",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p21-26.webp",
+    "page": 21,
+    "code": "26",
+    "w": 2.8448,
+    "d": 2.8448,
+    "h": 0.9398,
+    "color": "#cbbdbc",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 21, printed 12. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.8448,
+    "productDepth": 2.8448,
+    "referenceAudit": {
+      "pdfPage": 21,
+      "printedPage": 12,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        112,
+        112,
+        37
+      ],
+      "seatingDepthInches": 34
+    },
+    "seatingDepth": 0.8636
+  },
+  {
+    "id": "sf-sofas-p21-27",
+    "label": "Craft Sofa 3 Seater \u00b7 27",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p21-27.webp",
+    "page": 21,
+    "code": "27",
+    "w": 1.905,
+    "d": 0.8636,
+    "h": 0.8636,
+    "color": "#b3a4a0",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        75,
+        34,
+        34
+      ]
+    ],
+    "note": "SOFA PDF page 21, printed 12. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 1.905,
+    "productDepth": 0.8636,
+    "referenceAudit": {
+      "pdfPage": 21,
+      "printedPage": 12,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          75,
+          34,
+          34
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-sofas-p21-28",
+    "label": "002 Model Corner Sofa \u00b7 28",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p21-28.webp",
+    "page": 21,
+    "code": "28",
+    "w": 2.8702,
+    "d": 2.3114,
+    "h": 0.889,
+    "color": "#9e909a",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 21, printed 12. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.8702,
+    "productDepth": 2.3114,
+    "referenceAudit": {
+      "pdfPage": 21,
+      "printedPage": 12,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        113,
+        91,
+        35
+      ],
+      "seatingDepthInches": 35
+    },
+    "seatingDepth": 0.889
+  },
+  {
+    "id": "sf-sofas-p22-29",
+    "label": "Rinkle Corner Sofa \u00b7 29",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p22-29.webp",
+    "page": 22,
+    "code": "29",
+    "w": 2.9972,
+    "d": 2.4384,
+    "h": 0.8636,
+    "color": "#2b4836",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 22, printed 13. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.9972,
+    "productDepth": 2.4384,
+    "referenceAudit": {
+      "pdfPage": 22,
+      "printedPage": 13,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        118,
+        96,
+        34
+      ],
+      "seatingDepthInches": 36
+    },
+    "seatingDepth": 0.9144
+  },
+  {
+    "id": "sf-sofas-p22-30",
+    "label": "Rome Corner Sofa \u00b7 30",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p22-30.webp",
+    "page": 22,
+    "code": "30",
+    "w": 2.8448,
+    "d": 2.8448,
+    "h": 0.9398,
+    "color": "#665e5d",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 22, printed 13. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.8448,
+    "productDepth": 2.8448,
+    "referenceAudit": {
+      "pdfPage": 22,
+      "printedPage": 13,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        112,
+        112,
+        37
+      ],
+      "seatingDepthInches": 35
+    },
+    "seatingDepth": 0.889
+  },
+  {
+    "id": "sf-sofas-p23-31",
+    "label": "Chester Corner Sofa \u00b7 31",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p23-31.webp",
+    "page": 23,
+    "code": "31",
+    "w": 2.7432,
+    "d": 2.1336,
+    "h": 0.7112,
+    "color": "#846454",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 23, printed 14. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.7432,
+    "productDepth": 2.1336,
+    "referenceAudit": {
+      "pdfPage": 23,
+      "printedPage": 14,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        84,
+        28
+      ],
+      "seatingDepthInches": 33
+    },
+    "seatingDepth": 0.8382
+  },
+  {
+    "id": "sf-sofas-p23-32",
+    "label": "Voltas Corner Sofa \u00b7 32",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p23-32.webp",
+    "page": 23,
+    "code": "32",
+    "w": 2.8448,
+    "d": 2.8448,
+    "h": 0.9144,
+    "color": "#877b73",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 23, printed 14. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.8448,
+    "productDepth": 2.8448,
+    "referenceAudit": {
+      "pdfPage": 23,
+      "printedPage": 14,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        112,
+        112,
+        36
+      ],
+      "seatingDepthInches": 35
+    },
+    "seatingDepth": 0.889
+  },
+  {
+    "id": "sf-sofas-p23-33",
+    "label": "Sky Golden Corner Sofa \u00b7 33",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p23-33.webp",
+    "page": 23,
+    "code": "33",
+    "w": 2.794,
+    "d": 2.794,
+    "h": 0.8636,
+    "color": "#375650",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 23, printed 14. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.794,
+    "productDepth": 2.794,
+    "referenceAudit": {
+      "pdfPage": 23,
+      "printedPage": 14,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        110,
+        110,
+        34
+      ],
+      "seatingDepthInches": 35
+    },
+    "seatingDepth": 0.889
+  },
+  {
+    "id": "sf-sofas-p24-34",
+    "label": "Craft Model Sofa 3 + 2 \u00b7 34",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p24-34.webp",
+    "page": 24,
+    "code": "34",
+    "w": 2.855,
+    "d": 2.4181,
+    "h": 0.889,
+    "color": "#d88e73",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        75,
+        34,
+        35
+      ],
+      [
+        56,
+        34,
+        35
+      ]
+    ],
+    "note": "SOFA PDF page 24, printed 15. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 1.905,
+    "productDepth": 0.8636,
+    "setSeats": [
+      3,
+      2
+    ],
+    "referenceAudit": {
+      "pdfPage": 24,
+      "printedPage": 15,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          75,
+          34,
+          35
+        ],
+        [
+          56,
+          34,
+          35
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-sofas-p24-35",
+    "label": "Deluxe Lounger Sofa \u00b7 35",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p24-35.webp",
+    "page": 24,
+    "code": "35",
+    "w": 2.8194,
+    "d": 1.9812,
+    "h": 0.9398,
+    "color": "#665d59",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 24, printed 15. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.8194,
+    "productDepth": 1.9812,
+    "referenceAudit": {
+      "pdfPage": 24,
+      "printedPage": 15,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        111,
+        78,
+        37
+      ],
+      "seatingDepthInches": 36
+    },
+    "seatingDepth": 0.9144
+  },
+  {
+    "id": "sf-sofas-p25-36",
+    "label": "Royal Corner Sofa \u00b7 36",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p25-36.webp",
+    "page": 25,
+    "code": "36",
+    "w": 2.921,
+    "d": 2.3876,
+    "h": 0.889,
+    "color": "#385241",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 25, printed 16. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.921,
+    "productDepth": 2.3876,
+    "referenceAudit": {
+      "pdfPage": 25,
+      "printedPage": 16,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        115,
+        94,
+        35
+      ],
+      "seatingDepthInches": 34
+    },
+    "seatingDepth": 0.8636
+  },
+  {
+    "id": "sf-sofas-p25-37",
+    "label": "Viva Sofa 3 + 2 \u00b7 37",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p25-37.webp",
+    "page": 25,
+    "code": "37",
+    "w": 3.0607,
+    "d": 2.4892,
+    "h": 0.9398,
+    "color": "#84847b",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        82,
+        35,
+        37
+      ],
+      [
+        60,
+        35,
+        37
+      ]
+    ],
+    "note": "SOFA PDF page 25, printed 16. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 2.0828,
+    "productDepth": 0.889,
+    "setSeats": [
+      3,
+      2
+    ],
+    "referenceAudit": {
+      "pdfPage": 25,
+      "printedPage": 16,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          82,
+          35,
+          37
+        ],
+        [
+          60,
+          35,
+          37
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-sofas-p25-38",
+    "label": "Twin Wood 2 Handle Corner Sofa \u00b7 38",
+    "category": "sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofas-p25-38.webp",
+    "page": 25,
+    "code": "38",
+    "w": 2.794,
+    "d": 2.794,
+    "h": 0.8382,
+    "color": "#755444",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 25, printed 16. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.794,
+    "productDepth": 2.794,
+    "referenceAudit": {
+      "pdfPage": 25,
+      "printedPage": 16,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        110,
+        110,
+        33
+      ],
+      "seatingDepthInches": 34
+    },
+    "seatingDepth": 0.8636
+  },
+  {
+    "id": "sf-economic-sofas-p26-01",
+    "label": "E Fountain Corner Sofa \u00b7 01",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p26-01.webp",
+    "page": 26,
+    "code": "01",
+    "w": 2.6924,
+    "d": 2.1336,
+    "h": 0.7874,
+    "color": "#9e8c44",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 26, printed 17. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.6924,
+    "productDepth": 2.1336,
+    "referenceAudit": {
+      "pdfPage": 26,
+      "printedPage": 17,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        106,
+        84,
+        31
+      ],
+      "seatingDepthInches": 33
+    },
+    "seatingDepth": 0.8382
+  },
+  {
+    "id": "sf-economic-sofas-p26-02",
+    "label": "3 + 2 + Diwan Sofa \u00b7 02",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p26-02.webp",
+    "page": 26,
+    "code": "02",
+    "w": 2.7711,
+    "d": 2.2047,
+    "h": 0.8128,
+    "color": "#5f6468",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        75,
+        31,
+        32
+      ],
+      [
+        54,
+        31,
+        32
+      ]
+    ],
+    "note": "SOFA PDF page 26, printed 17. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions. The diwan width is 50 inches; its depth and height are not listed and are provisionally 23 inches each.",
+    "productWidth": 1.905,
+    "productDepth": 0.7874,
+    "setSeats": [
+      3,
+      2
+    ],
+    "referenceAudit": {
+      "pdfPage": 26,
+      "printedPage": 17,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details",
+        "Separate diwan depth and height are absent from PDF; use 23 inches provisionally, matching the catalogue standalone diwan"
+      ],
+      "componentsInches": [
+        [
+          75,
+          31,
+          32
+        ],
+        [
+          54,
+          31,
+          32
+        ]
+      ],
+      "extraDiwanInches": [
+        50,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "id": "sf-economic-sofas-p27-03",
+    "label": "Piping Lounger Sofa \u00b7 03",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p27-03.webp",
+    "page": 27,
+    "code": "03",
+    "w": 2.6162,
+    "d": 1.8288,
+    "h": 0.7874,
+    "color": "#5d5554",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 27, printed 18. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.6162,
+    "productDepth": 1.8288,
+    "referenceAudit": {
+      "pdfPage": 27,
+      "printedPage": 18,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        103,
+        72,
+        31
+      ],
+      "seatingDepthInches": 34
+    },
+    "seatingDepth": 0.8636
+  },
+  {
+    "id": "sf-economic-sofas-p27-04",
+    "label": "Carvin Corner Sofa \u00b7 04",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p27-04.webp",
+    "page": 27,
+    "code": "04",
+    "w": 2.7432,
+    "d": 2.2098,
+    "h": 0.7874,
+    "color": "#72594a",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 27, printed 18. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.7432,
+    "productDepth": 2.2098,
+    "referenceAudit": {
+      "pdfPage": 27,
+      "printedPage": 18,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        87,
+        31
+      ],
+      "seatingDepthInches": 33
+    },
+    "seatingDepth": 0.8382
+  },
+  {
+    "id": "sf-economic-sofas-p27-05",
+    "label": "Laser Sofa 3 + 2 \u00b7 05",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p27-05.webp",
+    "page": 27,
+    "code": "05",
+    "w": 2.9337,
+    "d": 2.4892,
+    "h": 0.762,
+    "color": "#2f5361",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        77,
+        35,
+        30
+      ],
+      [
+        57,
+        35,
+        30
+      ]
+    ],
+    "note": "SOFA PDF page 27, printed 18. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 1.9558,
+    "productDepth": 0.889,
+    "setSeats": [
+      3,
+      2
+    ],
+    "referenceAudit": {
+      "pdfPage": 27,
+      "printedPage": 18,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          77,
+          35,
+          30
+        ],
+        [
+          57,
+          35,
+          30
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-economic-sofas-p28-06",
+    "label": "Orma Corner Sofa \u00b7 06",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p28-06.webp",
+    "page": 28,
+    "code": "06",
+    "w": 2.7432,
+    "d": 2.2098,
+    "h": 0.7874,
+    "color": "#696560",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 28, printed 19. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.7432,
+    "productDepth": 2.2098,
+    "referenceAudit": {
+      "pdfPage": 28,
+      "printedPage": 19,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        87,
+        31
+      ],
+      "seatingDepthInches": 33
+    },
+    "seatingDepth": 0.8382
+  },
+  {
+    "id": "sf-economic-sofas-p28-07",
+    "label": "Golden Piping Sofa 3 + 2 \u00b7 07",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p28-07.webp",
+    "page": 28,
+    "code": "07",
+    "w": 3.0074,
+    "d": 2.4181,
+    "h": 0.762,
+    "color": "#b6b3af",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        81,
+        34,
+        30
+      ],
+      [
+        60,
+        34,
+        30
+      ]
+    ],
+    "note": "SOFA PDF page 28, printed 19. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 2.0574,
+    "productDepth": 0.8636,
+    "setSeats": [
+      3,
+      2
+    ],
+    "referenceAudit": {
+      "pdfPage": 28,
+      "printedPage": 19,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          81,
+          34,
+          30
+        ],
+        [
+          60,
+          34,
+          30
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-economic-sofas-p29-08",
+    "label": "Flort Sofa 3 + 2 \u00b7 08",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p29-08.webp",
+    "page": 29,
+    "code": "08",
+    "w": 2.8753,
+    "d": 2.2758,
+    "h": 0.8636,
+    "color": "#5b544f",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        78,
+        32,
+        34
+      ],
+      [
+        56,
+        32,
+        34
+      ]
+    ],
+    "note": "SOFA PDF page 29, printed 20. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 1.9812,
+    "productDepth": 0.8128,
+    "setSeats": [
+      3,
+      2
+    ],
+    "referenceAudit": {
+      "pdfPage": 29,
+      "printedPage": 20,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          78,
+          32,
+          34
+        ],
+        [
+          56,
+          32,
+          34
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-economic-sofas-p29-09",
+    "label": "Fly Lounger Corner Sofa \u00b7 09",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p29-09.webp",
+    "page": 29,
+    "code": "09",
+    "w": 2.7432,
+    "d": 1.8288,
+    "h": 0.8636,
+    "color": "#8a8b7d",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 29, printed 20. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.7432,
+    "productDepth": 1.8288,
+    "referenceAudit": {
+      "pdfPage": 29,
+      "printedPage": 20,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        72,
+        34
+      ],
+      "seatingDepthInches": 34
+    },
+    "seatingDepth": 0.8636
+  },
+  {
+    "id": "sf-economic-sofas-p29-10",
+    "label": "Air Corner Sofa \u00b7 10",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p29-10.webp",
+    "page": 29,
+    "code": "10",
+    "w": 2.7432,
+    "d": 2.1844,
+    "h": 0.7874,
+    "color": "#646265",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 29, printed 20. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.7432,
+    "productDepth": 2.1844,
+    "referenceAudit": {
+      "pdfPage": 29,
+      "printedPage": 20,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        86,
+        31
+      ],
+      "seatingDepthInches": 33
+    },
+    "seatingDepth": 0.8382
+  },
+  {
+    "id": "sf-economic-sofas-p30-11",
+    "label": "Deco Sofa 3 + 2 \u00b7 11",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p30-11.webp",
+    "page": 30,
+    "code": "11",
+    "w": 2.9312,
+    "d": 2.4181,
+    "h": 0.9144,
+    "color": "#384656",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        78,
+        34,
+        36
+      ],
+      [
+        60,
+        34,
+        36
+      ]
+    ],
+    "note": "SOFA PDF page 30, printed 21. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 1.9812,
+    "productDepth": 0.8636,
+    "setSeats": [
+      3,
+      2
+    ],
+    "referenceAudit": {
+      "pdfPage": 30,
+      "printedPage": 21,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          78,
+          34,
+          36
+        ],
+        [
+          60,
+          34,
+          36
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-economic-sofas-p30-12",
+    "label": "Silver Corner Sofa \u00b7 12",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p30-12.webp",
+    "page": 30,
+    "code": "12",
+    "w": 2.7432,
+    "d": 2.1336,
+    "h": 0.8636,
+    "color": "#a2988e",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 30, printed 21. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.7432,
+    "productDepth": 2.1336,
+    "referenceAudit": {
+      "pdfPage": 30,
+      "printedPage": 21,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        84,
+        34
+      ],
+      "seatingDepthInches": 34
+    },
+    "seatingDepth": 0.8636
+  },
+  {
+    "id": "sf-economic-sofas-p31-13",
+    "label": "Oaks Corner Sofa \u00b7 13",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p31-13.webp",
+    "page": 31,
+    "code": "13",
+    "w": 2.7432,
+    "d": 2.1336,
+    "h": 0.8636,
+    "color": "#605955",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 31, printed 22. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.7432,
+    "productDepth": 2.1336,
+    "referenceAudit": {
+      "pdfPage": 31,
+      "printedPage": 22,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        84,
+        34
+      ],
+      "seatingDepthInches": 34
+    },
+    "seatingDepth": 0.8636
+  },
+  {
+    "id": "sf-economic-sofas-p31-14",
+    "label": "Cum Bed Lounger Sofa \u00b7 14",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p31-14.webp",
+    "page": 31,
+    "code": "14",
+    "w": 2.7432,
+    "d": 1.8288,
+    "h": 0.8128,
+    "color": "#4e331c",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 31, printed 22. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.7432,
+    "productDepth": 1.8288,
+    "referenceAudit": {
+      "pdfPage": 31,
+      "printedPage": 22,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        72,
+        32
+      ],
+      "seatingDepthInches": 34
+    },
+    "seatingDepth": 0.8636
+  },
+  {
+    "id": "sf-economic-sofas-p31-15",
+    "label": "Seven Star Sofa \u00b7 15",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p31-15.webp",
+    "page": 31,
+    "code": "15",
+    "w": 2.794,
+    "d": 2.2352,
+    "h": 0.8636,
+    "color": "#30363b",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 31, printed 22. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.794,
+    "productDepth": 2.2352,
+    "referenceAudit": {
+      "pdfPage": 31,
+      "printedPage": 22,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        110,
+        88,
+        34
+      ],
+      "seatingDepthInches": 35
+    },
+    "seatingDepth": 0.889
+  },
+  {
+    "id": "sf-economic-sofas-p32-16",
+    "label": "Golden Piping Lounger Sofa \u00b7 16",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p32-16.webp",
+    "page": 32,
+    "code": "16",
+    "w": 2.667,
+    "d": 1.8288,
+    "h": 0.7874,
+    "color": "#5b4f43",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 32, printed 23. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.667,
+    "productDepth": 1.8288,
+    "referenceAudit": {
+      "pdfPage": 32,
+      "printedPage": 23,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        105,
+        72,
+        31
+      ],
+      "seatingDepthInches": 34
+    },
+    "seatingDepth": 0.8636
+  },
+  {
+    "id": "sf-economic-sofas-p32-17",
+    "label": "Twist Corner Sofa \u00b7 17",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p32-17.webp",
+    "page": 32,
+    "code": "17",
+    "w": 2.7432,
+    "d": 2.1336,
+    "h": 0.762,
+    "color": "#612634",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 32, printed 23. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.7432,
+    "productDepth": 2.1336,
+    "referenceAudit": {
+      "pdfPage": 32,
+      "printedPage": 23,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        84,
+        30
+      ],
+      "seatingDepthInches": 33
+    },
+    "seatingDepth": 0.8382
+  },
+  {
+    "id": "sf-economic-sofas-p33-18",
+    "label": "Star Sofa 3 + 2 \u00b7 18",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p33-18.webp",
+    "page": 33,
+    "code": "18",
+    "w": 2.8753,
+    "d": 2.2758,
+    "h": 0.8636,
+    "color": "#7e7a77",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        78,
+        32,
+        34
+      ],
+      [
+        56,
+        32,
+        34
+      ]
+    ],
+    "note": "SOFA PDF page 33, printed 24. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 1.9812,
+    "productDepth": 0.8128,
+    "setSeats": [
+      3,
+      2
+    ],
+    "referenceAudit": {
+      "pdfPage": 33,
+      "printedPage": 24,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          78,
+          32,
+          34
+        ],
+        [
+          56,
+          32,
+          34
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-economic-sofas-p33-19",
+    "label": "Office Sofa 3 + 2 \u00b7 19",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p33-19.webp",
+    "page": 33,
+    "code": "19",
+    "w": 2.3622,
+    "d": 2.1336,
+    "h": 0.8128,
+    "color": "#ac9c8f",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        60,
+        30,
+        32
+      ],
+      [
+        48,
+        30,
+        32
+      ]
+    ],
+    "note": "SOFA PDF page 33, printed 24. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 1.524,
+    "productDepth": 0.762,
+    "setSeats": [
+      3,
+      2
+    ],
+    "referenceAudit": {
+      "pdfPage": 33,
+      "printedPage": 24,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          60,
+          30,
+          32
+        ],
+        [
+          48,
+          30,
+          32
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-economic-sofas-p33-20",
+    "label": "Casa Corner Sofa \u00b7 20",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p33-20.webp",
+    "page": 33,
+    "code": "20",
+    "w": 2.6416,
+    "d": 2.0828,
+    "h": 0.8636,
+    "color": "#876766",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 33, printed 24. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.6416,
+    "productDepth": 2.0828,
+    "referenceAudit": {
+      "pdfPage": 33,
+      "printedPage": 24,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        104,
+        82,
+        34
+      ],
+      "seatingDepthInches": 33
+    },
+    "seatingDepth": 0.8382
+  },
+  {
+    "id": "sf-economic-sofas-p34-21",
+    "label": "Library Corner Sofa \u00b7 21",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p34-21.webp",
+    "page": 34,
+    "code": "21",
+    "w": 2.7432,
+    "d": 2.1336,
+    "h": 0.8636,
+    "color": "#343d51",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 34, printed 25. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.7432,
+    "productDepth": 2.1336,
+    "referenceAudit": {
+      "pdfPage": 34,
+      "printedPage": 25,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        84,
+        34
+      ],
+      "seatingDepthInches": 34
+    },
+    "seatingDepth": 0.8636
+  },
+  {
+    "id": "sf-economic-sofas-p34-22",
+    "label": "E-L Cum Bed Sofa \u00b7 22",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p34-22.webp",
+    "page": 34,
+    "code": "22",
+    "w": 2.7432,
+    "d": 1.8288,
+    "h": 0.8636,
+    "color": "#6d5448",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 34, printed 25. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.7432,
+    "productDepth": 1.8288,
+    "referenceAudit": {
+      "pdfPage": 34,
+      "printedPage": 25,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        72,
+        34
+      ],
+      "seatingDepthInches": 34
+    },
+    "seatingDepth": 0.8636
+  },
+  {
+    "id": "sf-economic-sofas-p35-23",
+    "label": "Diwan \u00b7 23",
+    "category": "economic-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-economic-sofas-p35-23.webp",
+    "page": 35,
+    "code": "23",
+    "w": 1.397,
+    "d": 0.5842,
+    "h": 0.5842,
+    "color": "#30312f",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        55,
+        23,
+        23
+      ]
+    ],
+    "note": "SOFA PDF page 35, printed 26. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 1.397,
+    "productDepth": 0.5842,
+    "referenceAudit": {
+      "pdfPage": 35,
+      "printedPage": 26,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          55,
+          23,
+          23
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-recliners-p37-01",
+    "label": "Burfi Recliner Sofa 3 + 1 + 1 \u00b7 01",
+    "category": "recliners",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-recliners-p37-01.webp",
+    "page": 37,
+    "code": "01",
+    "w": 4.1046,
+    "d": 2.7026,
+    "h": 1.016,
+    "color": "#524845",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        78,
+        38,
+        40
+      ],
+      [
+        36,
+        38,
+        40
+      ],
+      [
+        36,
+        38,
+        40
+      ]
+    ],
+    "note": "SOFA PDF page 37, printed 28. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 1.9812,
+    "productDepth": 0.9652,
+    "setSeats": [
+      3,
+      1,
+      1
+    ],
+    "referenceAudit": {
+      "pdfPage": 37,
+      "printedPage": 28,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          78,
+          38,
+          40
+        ],
+        [
+          36,
+          38,
+          40
+        ],
+        [
+          36,
+          38,
+          40
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-recliners-p37-02",
+    "label": "H - Pattern Recliner Sofa 3 + 1 + 1 \u00b7 02",
+    "category": "recliners",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-recliners-p37-02.webp",
+    "page": 37,
+    "code": "02",
+    "w": 4.1808,
+    "d": 2.7026,
+    "h": 0.9906,
+    "color": "#794f37",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        81,
+        38,
+        39
+      ],
+      [
+        40,
+        38,
+        39
+      ],
+      [
+        40,
+        38,
+        39
+      ]
+    ],
+    "note": "SOFA PDF page 37, printed 28. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 2.0574,
+    "productDepth": 0.9652,
+    "setSeats": [
+      3,
+      1,
+      1
+    ],
+    "referenceAudit": {
+      "pdfPage": 37,
+      "printedPage": 28,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          81,
+          38,
+          39
+        ],
+        [
+          40,
+          38,
+          39
+        ],
+        [
+          40,
+          38,
+          39
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-recliners-p37-03",
+    "label": "Single Seater Recliner \u00b7 03",
+    "category": "recliners",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-recliners-p37-03.webp",
+    "page": 37,
+    "code": "03",
+    "w": 1.016,
+    "d": 0.9144,
+    "h": 0.9144,
+    "color": "#c98662",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        40,
+        36,
+        36
+      ]
+    ],
+    "note": "SOFA PDF page 37, printed 28. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 1.016,
+    "productDepth": 0.9144,
+    "referenceAudit": {
+      "pdfPage": 37,
+      "printedPage": 28,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          40,
+          36,
+          36
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-sofa-beds-p39-01",
+    "label": "L-Cum Bed Lounger \u00b7 01",
+    "category": "sofa-beds",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofa-beds-p39-01.webp",
+    "page": 39,
+    "code": "01",
+    "w": 2.7432,
+    "d": 1.8288,
+    "h": 0.8636,
+    "color": "#c4bac0",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 39, printed 30. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.7432,
+    "productDepth": 1.8288,
+    "referenceAudit": {
+      "pdfPage": 39,
+      "printedPage": 30,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        72,
+        34
+      ],
+      "seatingDepthInches": 36
+    },
+    "seatingDepth": 0.9144
+  },
+  {
+    "id": "sf-sofa-beds-p39-02",
+    "label": "L - Cum Bed Corner \u00b7 02",
+    "category": "sofa-beds",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofa-beds-p39-02.webp",
+    "page": 39,
+    "code": "02",
+    "w": 2.7432,
+    "d": 2.1336,
+    "h": 0.8636,
+    "color": "#6f655d",
+    "corner": true,
+    "dimensionSource": "PDF",
+    "dimensionRows": [],
+    "note": "SOFA PDF page 39, printed 30. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.7432,
+    "productDepth": 2.1336,
+    "referenceAudit": {
+      "pdfPage": 39,
+      "printedPage": 30,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        84,
+        34
+      ],
+      "seatingDepthInches": 36
+    },
+    "seatingDepth": 0.9144
+  },
+  {
+    "id": "sf-sofa-beds-p39-03",
+    "label": "Wooden Cum Bed \u00b7 03",
+    "category": "sofa-beds",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofa-beds-p39-03.webp",
+    "page": 39,
+    "code": "03",
+    "w": 2.032,
+    "d": 0.8636,
+    "h": 0.8636,
+    "color": "#777258",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        80,
+        34,
+        34
+      ]
+    ],
+    "note": "SOFA PDF page 39, printed 30. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 2.032,
+    "productDepth": 0.8636,
+    "referenceAudit": {
+      "pdfPage": 39,
+      "printedPage": 30,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          80,
+          34,
+          34
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-sofa-beds-p40-04",
+    "label": "3 Fold Cum Bed Spider \u00b7 04",
+    "category": "sofa-beds",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofa-beds-p40-04.webp",
+    "page": 40,
+    "code": "04",
+    "w": 1.8288,
+    "d": 0.8636,
+    "h": 0.8128,
+    "color": "#4b8275",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        72,
+        34,
+        32
+      ]
+    ],
+    "note": "SOFA PDF page 40, printed 31. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 1.8288,
+    "productDepth": 0.8636,
+    "referenceAudit": {
+      "pdfPage": 40,
+      "printedPage": 31,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          72,
+          34,
+          32
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-sofa-beds-p40-05",
+    "label": "3 Fold Cum Bed Magnet \u00b7 05",
+    "category": "sofa-beds",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-sofa-beds-p40-05.webp",
+    "page": 40,
+    "code": "05",
+    "w": 1.8288,
+    "d": 0.8636,
+    "h": 0.8128,
+    "color": "#b9583f",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        72,
+        34,
+        32
+      ]
+    ],
+    "note": "SOFA PDF page 40, printed 31. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations.",
+    "productWidth": 1.8288,
+    "productDepth": 0.8636,
+    "referenceAudit": {
+      "pdfPage": 40,
+      "printedPage": 31,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          72,
+          34,
+          32
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-wooden-sofas-p43-01",
+    "label": "Aster Pattern Sofa 3 + 1 + 1 \u00b7 01",
+    "category": "wooden-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-wooden-sofas-p43-01.webp",
+    "page": 43,
+    "code": "01",
+    "w": 3.4595,
+    "d": 2.2047,
+    "h": 0.762,
+    "color": "#b6ae93",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        68,
+        31,
+        30
+      ],
+      [
+        26,
+        31,
+        30
+      ],
+      [
+        26,
+        31,
+        30
+      ]
+    ],
+    "note": "SOFA PDF page 43, printed 34. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 1.7272,
+    "productDepth": 0.7874,
+    "setSeats": [
+      3,
+      1,
+      1
+    ],
+    "referenceAudit": {
+      "pdfPage": 43,
+      "printedPage": 34,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          68,
+          31,
+          30
+        ],
+        [
+          26,
+          31,
+          30
+        ],
+        [
+          26,
+          31,
+          30
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-wooden-sofas-p43-02",
+    "label": "Teak Thapi Sofa 3 + 2 + 1 \u00b7 02",
+    "category": "wooden-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-wooden-sofas-p43-02.webp",
+    "page": 43,
+    "code": "02",
+    "w": 3.4798,
+    "d": 2.1336,
+    "h": 0.9652,
+    "color": "#887d7a",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        71,
+        30,
+        38
+      ],
+      [
+        48,
+        30,
+        38
+      ],
+      [
+        27,
+        30,
+        38
+      ]
+    ],
+    "note": "SOFA PDF page 43, printed 34. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 1.8034,
+    "productDepth": 0.762,
+    "setSeats": [
+      3,
+      2,
+      1
+    ],
+    "referenceAudit": {
+      "pdfPage": 43,
+      "printedPage": 34,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          71,
+          30,
+          38
+        ],
+        [
+          48,
+          30,
+          38
+        ],
+        [
+          27,
+          30,
+          38
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-wooden-sofas-p43-03",
+    "label": "Fish Pattern Sofa 3 + 2 + 1 \u00b7 03",
+    "category": "wooden-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-wooden-sofas-p43-03.webp",
+    "page": 43,
+    "code": "03",
+    "w": 3.429,
+    "d": 2.1336,
+    "h": 0.8128,
+    "color": "#7c6c67",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        69,
+        30,
+        32
+      ],
+      [
+        48,
+        30,
+        32
+      ],
+      [
+        27,
+        30,
+        32
+      ]
+    ],
+    "note": "SOFA PDF page 43, printed 34. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 1.7526,
+    "productDepth": 0.762,
+    "setSeats": [
+      3,
+      2,
+      1
+    ],
+    "referenceAudit": {
+      "pdfPage": 43,
+      "printedPage": 34,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          69,
+          30,
+          32
+        ],
+        [
+          48,
+          30,
+          32
+        ],
+        [
+          27,
+          30,
+          32
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-wooden-sofas-p44-04",
+    "label": "Box Pattern Sofa 3 + 2 + 1 + 1 \u00b7 04",
+    "category": "wooden-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-wooden-sofas-p44-04.webp",
+    "page": 44,
+    "code": "04",
+    "w": 3.3731,
+    "d": 2.0625,
+    "h": 0.762,
+    "color": "#7f5244",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        69,
+        29,
+        30
+      ],
+      [
+        48,
+        29,
+        30
+      ],
+      [
+        24,
+        29,
+        30
+      ],
+      [
+        24,
+        29,
+        30
+      ]
+    ],
+    "note": "SOFA PDF page 44, printed 35. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 1.7526,
+    "productDepth": 0.7366,
+    "setSeats": [
+      3,
+      2,
+      1,
+      1
+    ],
+    "referenceAudit": {
+      "pdfPage": 44,
+      "printedPage": 35,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          69,
+          29,
+          30
+        ],
+        [
+          48,
+          29,
+          30
+        ],
+        [
+          24,
+          29,
+          30
+        ],
+        [
+          24,
+          29,
+          30
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-wooden-sofas-p44-05",
+    "label": "Box Pattern Sofa 3 + 1 + 1 \u00b7 05",
+    "category": "wooden-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-wooden-sofas-p44-05.webp",
+    "page": 44,
+    "code": "05",
+    "w": 3.3731,
+    "d": 2.0625,
+    "h": 0.762,
+    "color": "#897f71",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        69,
+        29,
+        30
+      ],
+      [
+        24,
+        29,
+        30
+      ],
+      [
+        24,
+        29,
+        30
+      ]
+    ],
+    "note": "SOFA PDF page 44, printed 35. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 1.7526,
+    "productDepth": 0.7366,
+    "setSeats": [
+      3,
+      1,
+      1
+    ],
+    "referenceAudit": {
+      "pdfPage": 44,
+      "printedPage": 35,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          69,
+          29,
+          30
+        ],
+        [
+          24,
+          29,
+          30
+        ],
+        [
+          24,
+          29,
+          30
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-wooden-sofas-p44-06",
+    "label": "Classic Sofa 3 + 1 + 1 \u00b7 06",
+    "category": "wooden-sofas",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-wooden-sofas-p44-06.webp",
+    "page": 44,
+    "code": "06",
+    "w": 3.429,
+    "d": 2.1336,
+    "h": 0.8128,
+    "color": "#6a696d",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        69,
+        30,
+        32
+      ],
+      [
+        27,
+        30,
+        32
+      ],
+      [
+        27,
+        30,
+        32
+      ]
+    ],
+    "note": "SOFA PDF page 44, printed 35. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions.",
+    "productWidth": 1.7526,
+    "productDepth": 0.762,
+    "setSeats": [
+      3,
+      1,
+      1
+    ],
+    "referenceAudit": {
+      "pdfPage": 44,
+      "printedPage": 35,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          69,
+          30,
+          32
+        ],
+        [
+          27,
+          30,
+          32
+        ],
+        [
+          27,
+          30,
+          32
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sf-dining-glass-p48-01",
+    "label": "Fp Dining Set 4 + 1 \u00b7 01",
+    "category": "dining-glass",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-glass-p48-01.webp",
+    "page": 48,
+    "code": "01",
+    "w": 2.1152,
+    "d": 1.8104,
+    "h": 0.762,
+    "color": "#8c686c",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        38,
+        26,
+        30
+      ],
+      [
+        17,
+        17,
+        37
+      ]
+    ],
+    "note": "Sofa Factory PDF page 48. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.9652,
+    "productDepth": 0.6604
+  },
+  {
+    "id": "sf-dining-glass-p48-02",
+    "label": "14 Lining Dining Set 6 + 1 \u00b7 02",
+    "category": "dining-glass",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-glass-p48-02.webp",
+    "page": 48,
+    "code": "02",
+    "w": 2.3184,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#826f60",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        46,
+        24,
+        30
+      ],
+      [
+        17,
+        18,
+        37
+      ]
+    ],
+    "note": "Sofa Factory PDF page 48. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.1684,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-glass-p49-03",
+    "label": "5 Line Dining Set 6 + 1 \u00b7 03",
+    "category": "dining-glass",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-glass-p49-03.webp",
+    "page": 49,
+    "code": "03",
+    "w": 2.293,
+    "d": 1.8104,
+    "h": 0.762,
+    "color": "#857c7b",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        45,
+        26,
+        30
+      ],
+      [
+        17,
+        17,
+        37
+      ]
+    ],
+    "note": "Sofa Factory PDF page 49. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.143,
+    "productDepth": 0.6604
+  },
+  {
+    "id": "sf-dining-glass-p49-04",
+    "label": "3 Heart Dining Set 4 + 1 \u00b7 04",
+    "category": "dining-glass",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-glass-p49-04.webp",
+    "page": 49,
+    "code": "04",
+    "w": 2.1152,
+    "d": 1.8104,
+    "h": 0.762,
+    "color": "#7b726e",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        38,
+        26,
+        30
+      ],
+      [
+        17,
+        17,
+        37
+      ]
+    ],
+    "note": "Sofa Factory PDF page 49. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.9652,
+    "productDepth": 0.6604
+  },
+  {
+    "id": "sf-dining-glass-p49-05",
+    "label": "Fp 2 Dining Set 4 + 1 \u00b7 05",
+    "category": "dining-glass",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-glass-p49-05.webp",
+    "page": 49,
+    "code": "05",
+    "w": 2.1152,
+    "d": 1.8104,
+    "h": 0.762,
+    "color": "#6f5951",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        38,
+        26,
+        30
+      ],
+      [
+        17,
+        17,
+        37
+      ]
+    ],
+    "note": "Sofa Factory PDF page 49. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.9652,
+    "productDepth": 0.6604
+  },
+  {
+    "id": "sf-dining-glass-p50-06",
+    "label": "3 Heart Dining Set 6 + 1 \u00b7 06",
+    "category": "dining-glass",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-glass-p50-06.webp",
+    "page": 50,
+    "code": "06",
+    "w": 2.3184,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#706560",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        46,
+        24,
+        30
+      ],
+      [
+        17,
+        18,
+        38
+      ]
+    ],
+    "note": "Sofa Factory PDF page 50. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.1684,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-glass-p50-07",
+    "label": "Capsule Dining Set 6 + 1 \u00b7 07",
+    "category": "dining-glass",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-glass-p50-07.webp",
+    "page": 50,
+    "code": "07",
+    "w": 2.3184,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#857757",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        46,
+        24,
+        30
+      ],
+      [
+        17,
+        18,
+        38
+      ]
+    ],
+    "note": "Sofa Factory PDF page 50. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.1684,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-glass-p51-08",
+    "label": "D Dining Set 6 + 1 \u00b7 08",
+    "category": "dining-glass",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-glass-p51-08.webp",
+    "page": 51,
+    "code": "08",
+    "w": 2.3184,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#645d55",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        46,
+        24,
+        30
+      ],
+      [
+        17,
+        18,
+        38
+      ]
+    ],
+    "note": "Sofa Factory PDF page 51. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.1684,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-glass-p51-09",
+    "label": "Frame Dining Set 6 + 1 \u00b7 09",
+    "category": "dining-glass",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-glass-p51-09.webp",
+    "page": 51,
+    "code": "09",
+    "w": 2.3184,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#726a62",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        46,
+        24,
+        30
+      ],
+      [
+        17,
+        18,
+        38
+      ]
+    ],
+    "note": "Sofa Factory PDF page 51. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.1684,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-glass-p51-10",
+    "label": "Double Cross Dining Set 6 + 1 \u00b7 10",
+    "category": "dining-glass",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-glass-p51-10.webp",
+    "page": 51,
+    "code": "10",
+    "w": 2.3184,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#8b8872",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        46,
+        24,
+        30
+      ],
+      [
+        17,
+        18,
+        38
+      ]
+    ],
+    "note": "Sofa Factory PDF page 51. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.1684,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-glass-p52-11",
+    "label": "D 2 Dining Set 6 + 1 \u00b7 11",
+    "category": "dining-glass",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-glass-p52-11.webp",
+    "page": 52,
+    "code": "11",
+    "w": 2.674,
+    "d": 2.0644,
+    "h": 0.762,
+    "color": "#67636b",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        60,
+        36,
+        30
+      ],
+      [
+        21,
+        18,
+        38
+      ]
+    ],
+    "note": "Sofa Factory PDF page 52. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.524,
+    "productDepth": 0.9144
+  },
+  {
+    "id": "sf-dining-glass-p52-12",
+    "label": "Mask Dining Set 4 + 1 \u00b7 12",
+    "category": "dining-glass",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-glass-p52-12.webp",
+    "page": 52,
+    "code": "12",
+    "w": 2.3184,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#6c6465",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        46,
+        24,
+        30
+      ],
+      [
+        21,
+        18,
+        38
+      ]
+    ],
+    "note": "Sofa Factory PDF page 52. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.1684,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-marble-p53-01",
+    "label": "Mt Dining Set 6 + 1 \u00b7 01",
+    "category": "dining-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-marble-p53-01.webp",
+    "page": 53,
+    "code": "01",
+    "w": 2.3692,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#b1a5ab",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        30
+      ],
+      [
+        21,
+        19,
+        36
+      ]
+    ],
+    "note": "Sofa Factory PDF page 53. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-marble-p53-02",
+    "label": "Capsule 2 Dining Set 6 + 1 \u00b7 02",
+    "category": "dining-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-marble-p53-02.webp",
+    "page": 53,
+    "code": "02",
+    "w": 2.3692,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#526ca6",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        30
+      ],
+      [
+        21,
+        18,
+        38
+      ]
+    ],
+    "note": "Sofa Factory PDF page 53. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-marble-p53-03",
+    "label": "U Chester Dining Set 6 + 1 \u00b7 03",
+    "category": "dining-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-marble-p53-03.webp",
+    "page": 53,
+    "code": "03",
+    "w": 2.3692,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#5b6b7a",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        30
+      ],
+      [
+        20,
+        20,
+        35
+      ]
+    ],
+    "note": "Sofa Factory PDF page 53. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-marble-p54-04",
+    "label": "U Base Dining Set 6 + 1 \u00b7 04",
+    "category": "dining-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-marble-p54-04.webp",
+    "page": 54,
+    "code": "04",
+    "w": 2.3692,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#a46c47",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        30
+      ],
+      [
+        20,
+        20,
+        35
+      ]
+    ],
+    "note": "Sofa Factory PDF page 54. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-marble-p54-05",
+    "label": "V Dot Dining Set 6 + 1 \u00b7 05",
+    "category": "dining-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-marble-p54-05.webp",
+    "page": 54,
+    "code": "05",
+    "w": 2.3692,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#797878",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        30
+      ],
+      [
+        20,
+        19,
+        38
+      ]
+    ],
+    "note": "Sofa Factory PDF page 54. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-marble-p55-06",
+    "label": "Cross Dining Set 6 + 1 \u00b7 06",
+    "category": "dining-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-marble-p55-06.webp",
+    "page": 55,
+    "code": "06",
+    "w": 2.293,
+    "d": 1.8104,
+    "h": 0.762,
+    "color": "#a4817e",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        45,
+        26,
+        30
+      ],
+      [
+        17,
+        18,
+        37
+      ]
+    ],
+    "note": "Sofa Factory PDF page 55. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.143,
+    "productDepth": 0.6604
+  },
+  {
+    "id": "sf-dining-marble-p55-07",
+    "label": "Mask Dining Set 6 + 1 \u00b7 07",
+    "category": "dining-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-marble-p55-07.webp",
+    "page": 55,
+    "code": "07",
+    "w": 2.3692,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#8a817f",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        30
+      ],
+      [
+        20,
+        17,
+        39
+      ]
+    ],
+    "note": "Sofa Factory PDF page 55. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-marble-p55-08",
+    "label": "3 Piller Dining Set 4 + 1 \u00b7 08",
+    "category": "dining-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-marble-p55-08.webp",
+    "page": 55,
+    "code": "08",
+    "w": 2.3692,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#736c78",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        30
+      ],
+      [
+        20,
+        18,
+        35
+      ]
+    ],
+    "note": "Sofa Factory PDF page 55. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-marble-p56-09",
+    "label": "Capsule 2 Cherry Dining Set 6 + 1 \u00b7 09",
+    "category": "dining-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-marble-p56-09.webp",
+    "page": 56,
+    "code": "09",
+    "w": 2.3692,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#98928c",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        30
+      ],
+      [
+        20,
+        19,
+        38
+      ]
+    ],
+    "note": "Sofa Factory PDF page 56. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-marble-p56-10",
+    "label": "Ear Dining Set 6 + 1 \u00b7 10",
+    "category": "dining-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-marble-p56-10.webp",
+    "page": 56,
+    "code": "10",
+    "w": 2.3692,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#8e8483",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        30
+      ],
+      [
+        22,
+        21,
+        35
+      ]
+    ],
+    "note": "Sofa Factory PDF page 56. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-marble-p57-11",
+    "label": "Led Cherry Dining Set 6 + 1 \u00b7 11",
+    "category": "dining-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-marble-p57-11.webp",
+    "page": 57,
+    "code": "11",
+    "w": 2.3692,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#9d9186",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        30
+      ],
+      [
+        20,
+        18,
+        35
+      ]
+    ],
+    "note": "Sofa Factory PDF page 57. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-marble-p57-12",
+    "label": "Mt-V Base Dining Set 6 + 1 \u00b7 12",
+    "category": "dining-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-marble-p57-12.webp",
+    "page": 57,
+    "code": "12",
+    "w": 2.3692,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#605c61",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        30
+      ],
+      [
+        20,
+        19,
+        38
+      ]
+    ],
+    "note": "Sofa Factory PDF page 57. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-marble-p57-13",
+    "label": "U Pattern Dining Set 6 + 1 \u00b7 13",
+    "category": "dining-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-marble-p57-13.webp",
+    "page": 57,
+    "code": "13",
+    "w": 2.3692,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#999290",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        30
+      ],
+      [
+        20,
+        18,
+        35
+      ]
+    ],
+    "note": "Sofa Factory PDF page 57. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-marble-p58-14",
+    "label": "Back Cushion Dining Set 6 + 1 \u00b7 14",
+    "category": "dining-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-marble-p58-14.webp",
+    "page": 58,
+    "code": "14",
+    "w": 2.293,
+    "d": 1.8104,
+    "h": 0.762,
+    "color": "#78665b",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        45,
+        26,
+        30
+      ],
+      [
+        17,
+        18,
+        37
+      ]
+    ],
+    "note": "Sofa Factory PDF page 58. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.143,
+    "productDepth": 0.6604
+  },
+  {
+    "id": "sf-dining-marble-p58-15",
+    "label": "Star Chair Dining Set 6 + 1 \u00b7 15",
+    "category": "dining-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-marble-p58-15.webp",
+    "page": 58,
+    "code": "15",
+    "w": 2.3692,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#7a6a65",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        30
+      ],
+      [
+        20,
+        18,
+        35
+      ]
+    ],
+    "note": "Sofa Factory PDF page 58. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-marble-p59-16",
+    "label": "Eye P Dining Set 6 + 1 \u00b7 16",
+    "category": "dining-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-marble-p59-16.webp",
+    "page": 59,
+    "code": "16",
+    "w": 2.3692,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#918272",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        30
+      ],
+      [
+        20,
+        18,
+        36
+      ]
+    ],
+    "note": "Sofa Factory PDF page 59. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-marble-p59-17",
+    "label": "Minar Dining Set 4 + 1 \u00b7 17",
+    "category": "dining-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-marble-p59-17.webp",
+    "page": 59,
+    "code": "17",
+    "w": 2.3692,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#7f7b7e",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        30
+      ],
+      [
+        20,
+        17,
+        39
+      ]
+    ],
+    "note": "Sofa Factory PDF page 59. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-marble-p59-18",
+    "label": "Pizza Dining Set 6 + 1 \u00b7 18",
+    "category": "dining-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-marble-p59-18.webp",
+    "page": 59,
+    "code": "18",
+    "w": 2.3692,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#a28c7c",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        30
+      ],
+      [
+        20,
+        20,
+        38
+      ]
+    ],
+    "note": "Sofa Factory PDF page 59. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-marble-p60-19",
+    "label": "Eye P 2 Dining Set 6 + 1 \u00b7 19",
+    "category": "dining-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-marble-p60-19.webp",
+    "page": 60,
+    "code": "19",
+    "w": 2.3692,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#b3a592",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        30
+      ],
+      [
+        20,
+        18,
+        36
+      ]
+    ],
+    "note": "Sofa Factory PDF page 60. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-dining-marble-p60-20",
+    "label": "Eye Dining Set 6 + 1 \u00b7 20",
+    "category": "dining-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-dining-marble-p60-20.webp",
+    "page": 60,
+    "code": "20",
+    "w": 2.3692,
+    "d": 1.7596,
+    "h": 0.762,
+    "color": "#c7a36a",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        30
+      ],
+      [
+        20,
+        18,
+        36
+      ]
+    ],
+    "note": "Sofa Factory PDF page 60. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-antique-chairs-p64-01",
+    "label": "Low Back Regular Chair \u00b7 01",
+    "category": "antique-chairs",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-antique-chairs-p64-01.webp",
+    "page": 64,
+    "code": "01",
+    "w": 0.7366,
+    "d": 0.762,
+    "h": 0.9398,
+    "color": "#415950",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        29,
+        30,
+        37
+      ]
+    ],
+    "note": "Sofa Factory PDF page 64. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.7366,
+    "productDepth": 0.762
+  },
+  {
+    "id": "sf-antique-chairs-p64-03",
+    "label": "High Back Flower Chair \u00b7 03",
+    "category": "antique-chairs",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-antique-chairs-p64-03.webp",
+    "page": 64,
+    "code": "03",
+    "w": 0.762,
+    "d": 0.8382,
+    "h": 1.143,
+    "color": "#c5a98b",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        30,
+        33,
+        45
+      ]
+    ],
+    "note": "Sofa Factory PDF page 64. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.762,
+    "productDepth": 0.8382
+  },
+  {
+    "id": "sf-antique-chairs-p65-04",
+    "label": "Rich Chair \u00b7 04",
+    "category": "antique-chairs",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-antique-chairs-p65-04.webp",
+    "page": 65,
+    "code": "04",
+    "w": 0.762,
+    "d": 0.508,
+    "h": 1.1176,
+    "color": "#7b6d62",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        30,
+        20,
+        44
+      ]
+    ],
+    "note": "Sofa Factory PDF page 65. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.762,
+    "productDepth": 0.508
+  },
+  {
+    "id": "sf-antique-chairs-p65-05",
+    "label": "Comfort Chair \u00b7 05",
+    "category": "antique-chairs",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-antique-chairs-p65-05.webp",
+    "page": 65,
+    "code": "05",
+    "w": 0.762,
+    "d": 0.8382,
+    "h": 1.143,
+    "color": "#73605a",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        30,
+        33,
+        45
+      ]
+    ],
+    "note": "Sofa Factory PDF page 65. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.762,
+    "productDepth": 0.8382
+  },
+  {
+    "id": "sf-antique-chairs-p65-06",
+    "label": "Coral Chair \u00b7 06",
+    "category": "antique-chairs",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-antique-chairs-p65-06.webp",
+    "page": 65,
+    "code": "06",
+    "w": 0.762,
+    "d": 0.8128,
+    "h": 1.143,
+    "color": "#55634c",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        30,
+        32,
+        45
+      ]
+    ],
+    "note": "Sofa Factory PDF page 65. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.762,
+    "productDepth": 0.8128
+  },
+  {
+    "id": "sf-antique-chairs-p66-01",
+    "label": "High Back Diamond Chair \u00b7 01",
+    "category": "antique-chairs",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-antique-chairs-p66-01.webp",
+    "page": 66,
+    "code": "01",
+    "w": 0.762,
+    "d": 0.762,
+    "h": 1.143,
+    "color": "#c6bbab",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        30,
+        30,
+        45
+      ]
+    ],
+    "note": "Sofa Factory PDF page 66. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.762,
+    "productDepth": 0.762
+  },
+  {
+    "id": "sf-antique-chairs-p66-02",
+    "label": "Comfort Chair \u00b7 02",
+    "category": "antique-chairs",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-antique-chairs-p66-02.webp",
+    "page": 66,
+    "code": "02",
+    "w": 0.8382,
+    "d": 0.8382,
+    "h": 1.143,
+    "color": "#333e36",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        33,
+        33,
+        45
+      ]
+    ],
+    "note": "Sofa Factory PDF page 66. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.8382,
+    "productDepth": 0.8382
+  },
+  {
+    "id": "sf-antique-chairs-p67-03",
+    "label": "King Chair \u00b7 03",
+    "category": "antique-chairs",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-antique-chairs-p67-03.webp",
+    "page": 67,
+    "code": "03",
+    "w": 0.762,
+    "d": 0.8382,
+    "h": 1.2446,
+    "color": "#c1874f",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        30,
+        33,
+        49
+      ]
+    ],
+    "note": "Sofa Factory PDF page 67. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.762,
+    "productDepth": 0.8382
+  },
+  {
+    "id": "sf-antique-chairs-p67-04",
+    "label": "Divano Chair \u00b7 04",
+    "category": "antique-chairs",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-antique-chairs-p67-04.webp",
+    "page": 67,
+    "code": "04",
+    "w": 0.762,
+    "d": 0.762,
+    "h": 1.1176,
+    "color": "#9a8f81",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        30,
+        30,
+        44
+      ]
+    ],
+    "note": "Sofa Factory PDF page 67. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.762,
+    "productDepth": 0.762
+  },
+  {
+    "id": "sf-antique-chairs-p67-05",
+    "label": "Flower Chair \u00b7 05",
+    "category": "antique-chairs",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-antique-chairs-p67-05.webp",
+    "page": 67,
+    "code": "05",
+    "w": 0.762,
+    "d": 0.762,
+    "h": 0.8382,
+    "color": "#5e4b3e",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        30,
+        30,
+        33
+      ]
+    ],
+    "note": "Sofa Factory PDF page 67. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.762,
+    "productDepth": 0.762
+  },
+  {
+    "id": "sf-relaxing-chairs-p68-01",
+    "label": "Cushion Rocking Chair \u00b7 01",
+    "category": "relaxing-chairs",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-relaxing-chairs-p68-01.webp",
+    "page": 68,
+    "code": "01",
+    "w": 0.6096,
+    "d": 0.9906,
+    "h": 0.9652,
+    "color": "#646572",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        24,
+        39,
+        38
+      ]
+    ],
+    "note": "Sofa Factory PDF page 68. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.6096,
+    "productDepth": 0.9906
+  },
+  {
+    "id": "sf-relaxing-chairs-p68-02",
+    "label": "Cushion Golden Lining Rocking Chair \u00b7 02",
+    "category": "relaxing-chairs",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-relaxing-chairs-p68-02.webp",
+    "page": 68,
+    "code": "02",
+    "w": 0.6096,
+    "d": 0.9906,
+    "h": 0.9652,
+    "color": "#634f41",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        24,
+        39,
+        38
+      ]
+    ],
+    "note": "Sofa Factory PDF page 68. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.6096,
+    "productDepth": 0.9906
+  },
+  {
+    "id": "sf-relaxing-chairs-p69-03",
+    "label": "Wooden Eye Rocking Chair \u00b7 03",
+    "category": "relaxing-chairs",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-relaxing-chairs-p69-03.webp",
+    "page": 69,
+    "code": "03",
+    "w": 0.6096,
+    "d": 0.9906,
+    "h": 0.9652,
+    "color": "#896d47",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        24,
+        39,
+        38
+      ]
+    ],
+    "note": "Sofa Factory PDF page 69. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.6096,
+    "productDepth": 0.9906
+  },
+  {
+    "id": "sf-relaxing-chairs-p69-04",
+    "label": "Wooden Line Rocking Chair \u00b7 04",
+    "category": "relaxing-chairs",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-relaxing-chairs-p69-04.webp",
+    "page": 69,
+    "code": "04",
+    "w": 0.6096,
+    "d": 0.9906,
+    "h": 0.9652,
+    "color": "#745040",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        24,
+        39,
+        38
+      ]
+    ],
+    "note": "Sofa Factory PDF page 69. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.6096,
+    "productDepth": 0.9906
+  },
+  {
+    "id": "sf-relaxing-chairs-p69-05",
+    "label": "Wooden Capsule Rocking Chair \u00b7 05",
+    "category": "relaxing-chairs",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-relaxing-chairs-p69-05.webp",
+    "page": 69,
+    "code": "05",
+    "w": 0.6096,
+    "d": 0.9906,
+    "h": 0.9652,
+    "color": "#854428",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        24,
+        39,
+        38
+      ]
+    ],
+    "note": "Sofa Factory PDF page 69. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.6096,
+    "productDepth": 0.9906
+  },
+  {
+    "id": "sf-pouffes-p70-01",
+    "label": "Hexagone Puffy \u00b7 01",
+    "category": "pouffes",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-pouffes-p70-01.webp",
+    "page": 70,
+    "code": "01",
+    "w": 0.4572,
+    "d": 0.4572,
+    "h": 0.4572,
+    "color": "#45777e",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        18,
+        18,
+        18
+      ]
+    ],
+    "note": "Sofa Factory PDF page 70. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.4572,
+    "productDepth": 0.4572
+  },
+  {
+    "id": "sf-pouffes-p70-02",
+    "label": "Round Puffy \u00b7 02",
+    "category": "pouffes",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-pouffes-p70-02.webp",
+    "page": 70,
+    "code": "02",
+    "w": 0.4572,
+    "d": 0.4572,
+    "h": 0.4572,
+    "color": "#293d59",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        18,
+        18,
+        18
+      ]
+    ],
+    "note": "Sofa Factory PDF page 70. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.4572,
+    "productDepth": 0.4572
+  },
+  {
+    "id": "sf-pouffes-p71-03",
+    "label": "4 Shape Square Puffy \u00b7 03",
+    "category": "pouffes",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-pouffes-p71-03.webp",
+    "page": 71,
+    "code": "03",
+    "w": 0.4572,
+    "d": 0.4572,
+    "h": 0.4572,
+    "color": "#a97458",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        18,
+        18,
+        18
+      ]
+    ],
+    "note": "Sofa Factory PDF page 71. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.4572,
+    "productDepth": 0.4572
+  },
+  {
+    "id": "sf-pouffes-p71-04",
+    "label": "Square Puffy \u00b7 04",
+    "category": "pouffes",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-pouffes-p71-04.webp",
+    "page": 71,
+    "code": "04",
+    "w": 0.4572,
+    "d": 0.4572,
+    "h": 0.4572,
+    "color": "#96928d",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        18,
+        18,
+        18
+      ]
+    ],
+    "note": "Sofa Factory PDF page 71. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.4572,
+    "productDepth": 0.4572
+  },
+  {
+    "id": "sf-center-glass-p72-01",
+    "label": "Double X Center Table \u00b7 01",
+    "category": "center-glass",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-center-glass-p72-01.webp",
+    "page": 72,
+    "code": "01",
+    "w": 1.0668,
+    "d": 0.5334,
+    "h": 0.4318,
+    "color": "#967a5c",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        42,
+        21,
+        17
+      ]
+    ],
+    "note": "Sofa Factory PDF page 72. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.0668,
+    "productDepth": 0.5334
+  },
+  {
+    "id": "sf-center-glass-p72-02",
+    "label": "Net Center Table \u00b7 02",
+    "category": "center-glass",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-center-glass-p72-02.webp",
+    "page": 72,
+    "code": "02",
+    "w": 0.9144,
+    "d": 0.5334,
+    "h": 0.4572,
+    "color": "#ab8c75",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        36,
+        21,
+        18
+      ]
+    ],
+    "note": "Sofa Factory PDF page 72. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.9144,
+    "productDepth": 0.5334
+  },
+  {
+    "id": "sf-center-glass-p72-03",
+    "label": "Square Center Table \u00b7 03",
+    "category": "center-glass",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-center-glass-p72-03.webp",
+    "page": 72,
+    "code": "03",
+    "w": 0.9144,
+    "d": 0.5334,
+    "h": 0.4572,
+    "color": "#62554d",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        36,
+        21,
+        18
+      ]
+    ],
+    "note": "Sofa Factory PDF page 72. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.9144,
+    "productDepth": 0.5334
+  },
+  {
+    "id": "sf-center-marble-p73-01",
+    "label": "Square Nest Center Table \u00b7 01",
+    "category": "center-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-center-marble-p73-01.webp",
+    "page": 73,
+    "code": "01",
+    "w": 1.0668,
+    "d": 0.5334,
+    "h": 0.4572,
+    "color": "#d2cac2",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        42,
+        21,
+        18
+      ]
+    ],
+    "note": "Sofa Factory PDF page 73. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.0668,
+    "productDepth": 0.5334
+  },
+  {
+    "id": "sf-center-marble-p73-02",
+    "label": "Double Center Table \u00b7 02",
+    "category": "center-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-center-marble-p73-02.webp",
+    "page": 73,
+    "code": "02",
+    "w": 0.6096,
+    "d": 0.6096,
+    "h": 0.4572,
+    "color": "#b4a991",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        24,
+        24,
+        18
+      ],
+      [
+        30,
+        30,
+        20
+      ]
+    ],
+    "note": "Sofa Factory PDF page 73. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.6096,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-center-marble-p73-03",
+    "label": "Double Center Table \u00b7 03",
+    "category": "center-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-center-marble-p73-03.webp",
+    "page": 73,
+    "code": "03",
+    "w": 0.6096,
+    "d": 0.6096,
+    "h": 0.4572,
+    "color": "#bdb5a6",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        24,
+        24,
+        18
+      ],
+      [
+        30,
+        30,
+        20
+      ]
+    ],
+    "note": "Sofa Factory PDF page 73. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.6096,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-center-marble-p74-04",
+    "label": "Double Shine Center Table \u00b7 04",
+    "category": "center-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-center-marble-p74-04.webp",
+    "page": 74,
+    "code": "04",
+    "w": 0.6096,
+    "d": 0.6096,
+    "h": 0.4572,
+    "color": "#878175",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        24,
+        24,
+        18
+      ],
+      [
+        30,
+        30,
+        20
+      ]
+    ],
+    "note": "Sofa Factory PDF page 74. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.6096,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-center-marble-p74-05",
+    "label": "C Square Center Table \u00b7 05",
+    "category": "center-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-center-marble-p74-05.webp",
+    "page": 74,
+    "code": "05",
+    "w": 1.0668,
+    "d": 0.5842,
+    "h": 0.4572,
+    "color": "#ac9e9e",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        42,
+        23,
+        18
+      ]
+    ],
+    "note": "Sofa Factory PDF page 74. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.0668,
+    "productDepth": 0.5842
+  },
+  {
+    "id": "sf-center-marble-p75-06",
+    "label": "C Nest Center Table \u00b7 06",
+    "category": "center-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-center-marble-p75-06.webp",
+    "page": 75,
+    "code": "06",
+    "w": 1.0668,
+    "d": 0.5334,
+    "h": 0.4572,
+    "color": "#857b78",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        42,
+        21,
+        18
+      ]
+    ],
+    "note": "Sofa Factory PDF page 75. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.0668,
+    "productDepth": 0.5334
+  },
+  {
+    "id": "sf-center-marble-p75-07",
+    "label": "C Nest Shelf Center Table \u00b7 07",
+    "category": "center-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-center-marble-p75-07.webp",
+    "page": 75,
+    "code": "07",
+    "w": 1.0668,
+    "d": 0.5588,
+    "h": 0.4572,
+    "color": "#6a575a",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        42,
+        22,
+        18
+      ]
+    ],
+    "note": "Sofa Factory PDF page 75. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.0668,
+    "productDepth": 0.5588
+  },
+  {
+    "id": "sf-center-marble-p75-08",
+    "label": "U Center Table \u00b7 08",
+    "category": "center-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-center-marble-p75-08.webp",
+    "page": 75,
+    "code": "08",
+    "w": 1.2192,
+    "d": 0.6096,
+    "h": 0.4318,
+    "color": "#b0a59d",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        17
+      ]
+    ],
+    "note": "Sofa Factory PDF page 75. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-center-marble-p76-09",
+    "label": "4 Puffy Square Center Table \u00b7 09",
+    "category": "center-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-center-marble-p76-09.webp",
+    "page": 76,
+    "code": "09",
+    "w": 0.9144,
+    "d": 0.9144,
+    "h": 0.508,
+    "color": "#615b59",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        36,
+        36,
+        20
+      ]
+    ],
+    "note": "Sofa Factory PDF page 76. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 0.9144,
+    "productDepth": 0.9144
+  },
+  {
+    "id": "sf-center-marble-p76-10",
+    "label": "Sf Center Table 121 \u00b7 10",
+    "category": "center-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-center-marble-p76-10.webp",
+    "page": 76,
+    "code": "10",
+    "w": 1.2192,
+    "d": 0.6096,
+    "h": 0.4318,
+    "color": "#324046",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        17
+      ]
+    ],
+    "note": "Sofa Factory PDF page 76. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-center-marble-p77-11",
+    "label": "Sf Center Table 122 \u00b7 11",
+    "category": "center-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-center-marble-p77-11.webp",
+    "page": 77,
+    "code": "11",
+    "w": 1.2192,
+    "d": 0.6096,
+    "h": 0.4318,
+    "color": "#675445",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        17
+      ]
+    ],
+    "note": "Sofa Factory PDF page 77. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-center-marble-p77-12",
+    "label": "Sf Center Table 123 \u00b7 12",
+    "category": "center-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-center-marble-p77-12.webp",
+    "page": 77,
+    "code": "12",
+    "w": 1.2192,
+    "d": 0.6096,
+    "h": 0.4318,
+    "color": "#7b776f",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        17
+      ]
+    ],
+    "note": "Sofa Factory PDF page 77. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-center-marble-p77-13",
+    "label": "Sf Center Table 124 \u00b7 13",
+    "category": "center-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-center-marble-p77-13.webp",
+    "page": 77,
+    "code": "13",
+    "w": 1.2192,
+    "d": 0.6096,
+    "h": 0.4318,
+    "color": "#78746e",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        17
+      ]
+    ],
+    "note": "Sofa Factory PDF page 77. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-center-marble-p78-14",
+    "label": "Sf Center Table 125 \u00b7 14",
+    "category": "center-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-center-marble-p78-14.webp",
+    "page": 78,
+    "code": "14",
+    "w": 1.2192,
+    "d": 0.6096,
+    "h": 0.4318,
+    "color": "#c8bcb3",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        17
+      ]
+    ],
+    "note": "Sofa Factory PDF page 78. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-center-marble-p78-15",
+    "label": "Sf Center Table 126 \u00b7 15",
+    "category": "center-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-center-marble-p78-15.webp",
+    "page": 78,
+    "code": "15",
+    "w": 1.2192,
+    "d": 0.6096,
+    "h": 0.4318,
+    "color": "#7f7771",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        17
+      ]
+    ],
+    "note": "Sofa Factory PDF page 78. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  },
+  {
+    "id": "sf-center-marble-p79-16",
+    "label": "Sf Center Table 127 \u00b7 16",
+    "category": "center-marble",
+    "kind": "pdf-furniture",
+    "image": "/catalog/sofa-factory/sf-center-marble-p79-16.webp",
+    "page": 79,
+    "code": "16",
+    "w": 1.2192,
+    "d": 0.6096,
+    "h": 0.4318,
+    "color": "#b3b1a7",
+    "corner": false,
+    "dimensionSource": "PDF",
+    "dimensionRows": [
+      [
+        48,
+        24,
+        17
+      ]
+    ],
+    "note": "Sofa Factory PDF page 79. Reference-based 3D model; photograph is the original product. Dimensions from PDF.",
+    "productWidth": 1.2192,
+    "productDepth": 0.6096
+  }
+]

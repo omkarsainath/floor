@@ -55,13 +55,15 @@ def masks(image):
     return enhanced, edge, ink
 
 
-def paired_wall_proposals(image, measurements=None, config=None):
+def paired_wall_proposals(image, measurements=None, config=None, windows=None):
     """Pair nearby, parallel LSD boundary segments at arbitrary angles.
 
     Long support on BOTH faces is required. Greyscale intensity and interior
     hatching are recorded but do not decide whether a band is architectural.
     """
     cfg = config or WallEvidenceConfig()
+    windows = [w for w in windows or [] if 'window' in str(w.get('class','')).lower()
+               and float(w.get('confidence',0)) >= .5]
     gray, edges, ink = masks(image)
     size = max(gray.shape)
     minimum = max(6., size * cfg.min_face_length_ratio)  # 6: raster fit floor
@@ -102,8 +104,15 @@ def paired_wall_proposals(image, measurements=None, config=None):
                 continue
             lo, hi = sorted([np.dot(c-a, u), np.dot(d-a, u)])
             lo, hi = max(0., lo), min(length, hi)
-            if hi-lo < max(minimum, width*2.5):
-                continue
+            short_return = hi-lo < max(minimum, width*2.5)
+            if short_return:
+                # Short, thick returns beside windows need a local exception;
+                # do not relax the aspect-ratio filter for furniture elsewhere.
+                if hi-lo < max(minimum, width*1.25): continue
+                center_a=a+u*lo+n*float(np.mean(offsets))/2
+                center_b=a+u*hi+n*float(np.mean(offsets))/2
+                if not any(window_end_pair(center_a,center_b,width,w,size,cfg) for w in windows or []):
+                    continue
             aa, bb = a+u*lo, a+u*hi
             count = max(12, min(180, round(hi-lo)))
             first = np.linspace(aa, bb, count)
@@ -122,7 +131,8 @@ def paired_wall_proposals(image, measurements=None, config=None):
                            'thickness_px': round(width, 3), 'detector': 'boundary-pair',
                            'boundary_support': round(float(min(supports)), 3),
                            'band_style': 'solid' if fill > .8 else 'outlined' if fill < .15 else 'hatched-or-grey',
-                           'geometry_evidence': 'paired_boundaries'})
+                           'geometry_evidence': 'paired_boundaries',
+                           **({'window_end_candidate':True} if short_return else {})})
     # Long single strokes can be thin partitions. Preserve their orientation;
     # later junction/semantic checks decide acceptance, rather than eroding them.
     for a,b,u,length in faces:
@@ -130,6 +140,24 @@ def paired_wall_proposals(image, measurements=None, config=None):
             result.append({'start':point(a),'end':point(b),'detector':'single-boundary',
                            'geometry_evidence':'unverified_single_stroke'})
     return deduplicate(result, size)
+
+
+def window_end_pair(a, b, width, window, size, config):
+    """Local proposal gate; acceptance still requires pixels and a wall anchor."""
+    box=window.get('bbox', {})
+    if 'window' not in str(window.get('class','')).lower() or float(window.get('confidence',0))<.5:
+        return False
+    if not all(k in box for k in ('x1','y1','x2','y2')): return False
+    x1,y1,x2,y2=[box[k] for k in ('x1','y1','x2','y2')]
+    spans=np.array([x2-x1,y2-y1]); axis=int(np.argmax(spans)); depth=spans[1-axis]
+    if depth<=0 or spans[axis]<depth*2.5 or not .45*depth<=width<=2*depth: return False
+    u=(b-a)/np.linalg.norm(b-a); n=np.array([-u[1],u[0]])
+    if abs(u[1-axis])>math.sin(math.radians(config.angle_tolerance_degrees)): return False
+    if abs(np.dot(np.array([(x1+x2)/2,(y1+y2)/2])-a,n))>width*.35+size*.0007: return False
+    low,high=(x1,x2) if axis==0 else (y1,y2)
+    start,end=sorted((a[axis],b[axis])); tolerance=width*.75+size*.001
+    return ((abs(end-low)<=tolerance and start<low-width*1.25)
+            or (abs(start-high)<=tolerance and end>high+width*1.25))
 
 
 def deduplicate(walls, size):
@@ -391,6 +419,100 @@ def repair_junctions(walls, ink, edge, openings, size):
     return result
 
 
+def recover_door_end_walls(accepted, review, doors, ink, edge, size, config):
+    return _recover_opening_end_walls(accepted, review, doors, ink, edge, size, config, 'door')
+
+
+def recover_window_end_walls(accepted, review, windows, ink, edge, size, config):
+    windows=[w for w in windows or [] if 'window' in str(w.get('class','')).lower()
+             and float(w.get('confidence',0))>=.5]
+    return _recover_opening_end_walls(accepted, review, windows, ink, edge, size, config, 'window')
+
+
+def _recover_opening_end_walls(accepted, review, doors, ink, edge, size, config, kind):
+    """Recover verified jamb-to-wall segments, not arbitrary opening connections.
+
+    A global thickness prior can reject a real short return beside a door;
+    endpoint-only junction counts also miss a T meeting inside a segment.
+    Reconsider ONLY local geometry rejection reasons, after opening cuts and all
+    semantic checks. Never promote text, furniture, stairs or swing candidates.
+    Use the original accepted set as anchors so recoveries cannot justify one
+    another. Square swing boxes do not establish a reliable opening axis.
+    """
+    anchors = list(accepted)
+    recovered, remaining = [], []
+    penalties = {'unverified_thin_stroke': .2, 'isolated_segment': .12}
+    if kind == 'window': penalties['short_wide_outline'] = .25
+    for w in review:
+        reasons = w.get('review_reasons', [])
+        geometry = w.get('geometry_evidence')
+        paired = geometry == 'paired_boundaries'
+        support = w.get('boundary_support' if paired else 'pixel_support', 0)
+        if (not reasons or not set(reasons) <= penalties.keys() or support < .8
+                or geometry not in ('paired_boundaries', 'solid_profile')
+                or (not paired and w.get('thickness_consistency', 0) < .8)):
+            remaining.append(w); continue
+        a, b = points(w); length = np.linalg.norm(b-a)
+        u = (b-a)/length; n = np.array([-u[1], u[0]])
+        width = float(w.get('thickness_px') or 1)
+        # Do not use a single ink edge as the centre of an outlined wall.
+        if width < max(2.5, size*.0015) or length < width*1.25:
+            remaining.append(w); continue
+        door_match = None
+        for door_index, door in enumerate(doors or []):
+            box = door.get('bbox', {})
+            if not all(k in box for k in ('x1', 'y1', 'x2', 'y2')): continue
+            x1,y1,x2,y2 = [box[k] for k in ('x1','y1','x2','y2')]
+            spans = np.array([x2-x1, y2-y1])
+            axis = int(np.argmax(spans)); depth = spans[1-axis]
+            if depth <= 0 or spans[axis] < depth*2.5: continue
+            if abs(u[1-axis]) > math.sin(math.radians(config.angle_tolerance_degrees)): continue
+            if not .45*depth <= width <= 2*depth: continue
+            center = np.array([(x1+x2)/2, (y1+y2)/2])
+            if abs(np.dot(center-a,n)) > width*.35 + size*.0007: continue
+            # The segment must end OUTSIDE one cap, never inside/across the door.
+            low,high = (x1,x2) if axis == 0 else (y1,y2)
+            for p in (a,b):
+                other = b if p is a else a
+                for cap,sign in ((low,-1), (high,1)):
+                    gap = sign*(p[axis]-cap)
+                    if not -size*.0007 <= gap <= width*.75 + size*.001: continue
+                    if sign*(other[axis]-cap) <= sign*(p[axis]-cap): continue
+                    # Confirm both the segment and its small jamb gap in pixels.
+                    q = p + u*((cap-p[axis])/u[axis])
+                    path = np.linspace(q,other,61)
+                    evidence = (min(float(sample(edge,path+s*n*width/2).mean()) for s in (-1,1))
+                                if paired else float(sample(ink,path).mean()))
+                    if evidence < .8: continue
+                    door_match = door_index
+                    break
+                if door_match is not None: break
+            if door_match is not None: break
+        # An accepted structural wall must actually touch/cross this segment.
+        # This includes T junctions inside the segment, not just its endpoints.
+        anchored = False
+        if door_match is not None:
+            for host in anchors:
+                c,d = points(host); v = d-c; host_length = np.linalg.norm(v)
+                host_width = float(host.get('thickness_px') or 1)
+                if host_length < max(width*3, size*.018): continue
+                v /= host_length
+                det = cross(u,v)
+                if abs(det) < .25: continue
+                t = cross(c-a,v)/det; s = cross(c-a,u)/det
+                allowance = (width+host_width)*.5 + size*.0007
+                if -allowance <= t <= length+allowance and -allowance <= s <= host_length+allowance:
+                    anchored = True; break
+        score = float(w.get('evidence_score',0)) + sum(penalties[r] for r in set(reasons))
+        if door_match is None or not anchored or score < config.min_accepted_score:
+            remaining.append(w); continue
+        recovered.append({**w, 'review_status':'accepted', 'review_reasons':[],
+                          'evidence_score':round(min(1.,score),3),
+                          f'{kind}_end_recovered':True, f'{kind}_anchor_index':door_match,
+                          'previous_review_reasons':list(reasons)})
+    return accepted + recovered, remaining
+
+
 def assess_walls(image, proposals, measurements=None, objects=None, doors=None, config=None):
     """Return accepted/review/rejected candidates with explicit supporting evidence."""
     cfg = config or WallEvidenceConfig(); size = max(image.shape[:2])
@@ -519,7 +641,9 @@ def assess_walls(image, proposals, measurements=None, objects=None, doors=None, 
         if junctions==0 and length<size*.15:
             reasons.append('isolated_segment'); score-=.12
         anchored_partition=structural_junctions>0 and evidence>.85 and length>max(size*.035,width*8)
-        if not paired and width<reference*.5 and (junctions<2 or length<size*.08) and not anchored_partition:
+        # Long bed/table outlines also have two corners. Length and mutual
+        # junctions cannot establish structure for a thin, detached stroke.
+        if not paired and width<reference*.5 and not anchored_partition:
             reasons.append('unverified_thin_stroke'); score-=.2
         # Furniture corners support one another too. Two fitted ink edges and
         # local junctions alone do not establish a short, very thin partition.
@@ -528,7 +652,7 @@ def assess_walls(image, proposals, measurements=None, objects=None, doors=None, 
         # Pairing a mattress/cabinet edge with its surrounding frame creates a
         # short, anomalously wide hollow "wall". Require structural support at
         # both ends before accepting that competing interpretation.
-        if paired and width>reference*1.5 and length<size*.1 and structural_junctions<2:
+        if w.get('window_end_candidate') or (paired and width>reference*1.5 and length<size*.1 and structural_junctions<2):
             reasons.append('short_wide_outline'); score-=.25
         border=size*.012
         if min(a[0],b[0])<border and max(a[0],b[0])<border or min(a[1],b[1])<border and max(a[1],b[1])<border or min(a[0],b[0])>image.shape[1]-border or min(a[1],b[1])>image.shape[0]-border:
@@ -548,6 +672,8 @@ def assess_walls(image, proposals, measurements=None, objects=None, doors=None, 
                  thickness_px=width, thickness_source='paired_faces' if paired else 'normal_profile' if w.get('geometry_evidence')=='solid_profile' else 'unverified_estimate')
         destination=rejected if status=='rejected' else review if status=='uncertain' else accepted
         destination.extend(split_openings(w,openings,size))
+    accepted, review = recover_door_end_walls(accepted, review, doors, ink, near, size, cfg)
+    accepted, review = recover_window_end_walls(accepted, review, objects, ink, near, size, cfg)
     used_ids={str(w['id']) for w in accepted if w.get('source') in AUTHORED and w.get('id') is not None}
     for prefix, group in (('W',accepted),('R',review),('X',rejected)):
         for i,w in enumerate(group,1):

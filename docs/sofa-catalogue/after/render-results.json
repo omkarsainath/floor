@@ -1,0 +1,2699 @@
+[
+  {
+    "id": "sf-sofas-p11-1",
+    "dimensions": [
+      2.8956,
+      0.8127999999999999,
+      2.3368
+    ],
+    "expected": [
+      2.8956,
+      0.8128,
+      2.3368
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 5,
+      "upholstery-piping": 10,
+      "back-cushion": 5,
+      "fabric-button": 10,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "rolled-arm-bolster": 2,
+      "carved-arm-end-approximation": 2,
+      "quilted-arm-side": 2,
+      "rolled-arm-scroll": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 3
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p11-2",
+    "dimensions": [
+      2.9463999999999997,
+      0.8636000000000001,
+      2.3876
+    ],
+    "expected": [
+      2.9464,
+      0.8636,
+      2.3876
+    ],
+    "floor": 6.938893903907228e-18,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 5,
+      "upholstery-piping": 10,
+      "seat-front-channel": 40,
+      "back-cushion": 5,
+      "fabric-button": 10,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-outline": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 3
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p11-3",
+    "dimensions": [
+      3.3642000000000003,
+      0.8636000000000001,
+      2.8308
+    ],
+    "expected": [
+      3.3642000000000003,
+      0.8636,
+      2.8308
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 8,
+      "back-shell": 2,
+      "seat-cushion": 5,
+      "upholstery-piping": 10,
+      "back-cushion": 5,
+      "fabric-button": 15,
+      "sofa-arm": 4,
+      "arm-side-panel": 4,
+      "arm-metal-badge": 12,
+      "quilted-arm-side": 4,
+      "set-component-1": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p12-4",
+    "dimensions": [
+      2.8956,
+      0.8382,
+      2.3368
+    ],
+    "expected": [
+      2.8956,
+      0.8382,
+      2.3368
+    ],
+    "floor": -6.938893903907228e-18,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 5,
+      "upholstery-piping": 10,
+      "seat-front-channel": 40,
+      "back-cushion": 5,
+      "fabric-button": 10,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-outline": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 3
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p12-5",
+    "dimensions": [
+      3.048,
+      0.8636,
+      2.4384
+    ],
+    "expected": [
+      3.048,
+      0.8636,
+      2.4384
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 5,
+      "upholstery-piping": 15,
+      "seat-front-channel": 45,
+      "back-cushion": 10,
+      "back-accent-band": 10,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "rolled-arm-bolster": 2,
+      "arm-front-inlay": 2,
+      "rolled-arm-scroll": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 3
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p13-6",
+    "dimensions": [
+      2.7939999999999996,
+      0.8382000000000001,
+      2.7939999999999996
+    ],
+    "expected": [
+      2.794,
+      0.8382,
+      2.794
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 4,
+      "upholstery-piping": 8,
+      "seat-front-channel": 44,
+      "back-cushion": 4,
+      "lumbar-pad": 4,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-metal-badge": 6,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p13-7",
+    "dimensions": [
+      2.9971999999999994,
+      0.8635999999999999,
+      2.9972000000000003
+    ],
+    "expected": [
+      2.9972,
+      0.8636,
+      2.9972
+    ],
+    "floor": 6.938893903907228e-18,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 6,
+      "upholstery-piping": 20,
+      "back-cushion": 12,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "timber-arm-tray": 2,
+      "scatter-cushion": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p13-8",
+    "dimensions": [
+      3.1102,
+      0.9397999999999999,
+      2.653
+    ],
+    "expected": [
+      3.1102,
+      0.9398,
+      2.653
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 8,
+      "back-shell": 2,
+      "seat-cushion": 4,
+      "upholstery-piping": 16,
+      "back-cushion": 8,
+      "sofa-arm": 4,
+      "arm-side-panel": 4,
+      "swept-arm-inlay": 4,
+      "quilted-arm-side": 4,
+      "scatter-cushion": 4,
+      "set-component-1": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p14-9",
+    "dimensions": [
+      3.0480000000000005,
+      0.8382000000000001,
+      2.4384
+    ],
+    "expected": [
+      3.048,
+      0.8382,
+      2.4384
+    ],
+    "floor": 1.3877787807814457e-17,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 5,
+      "upholstery-piping": 15,
+      "back-cushion": 10,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-metal-badge": 6,
+      "quilted-arm-side": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 3
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p14-10",
+    "dimensions": [
+      2.7432,
+      0.889,
+      2.1844
+    ],
+    "expected": [
+      2.7432,
+      0.889,
+      2.1844
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 4,
+      "upholstery-piping": 8,
+      "back-cushion": 4,
+      "adjustable-headrest": 4,
+      "headrest-stem": 8,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-outline": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p14-11",
+    "dimensions": [
+      3.1356,
+      0.9398000000000001,
+      2.526
+    ],
+    "expected": [
+      3.1356,
+      0.9398,
+      2.526
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 8,
+      "back-shell": 2,
+      "seat-cushion": 5,
+      "upholstery-piping": 20,
+      "back-cushion": 15,
+      "sofa-arm": 4,
+      "arm-side-panel": 4,
+      "rolled-arm-bolster": 4,
+      "arm-outline": 4,
+      "rolled-arm-scroll": 4,
+      "set-component-1": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p15-12",
+    "dimensions": [
+      2.8956000000000004,
+      0.8382000000000001,
+      2.3114
+    ],
+    "expected": [
+      2.8956,
+      0.8382,
+      2.3114
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 5,
+      "upholstery-piping": 10,
+      "seat-front-channel": 40,
+      "back-cushion": 5,
+      "fabric-button": 10,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-outline": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 3
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p15-13",
+    "dimensions": [
+      2.6924,
+      0.9144000000000001,
+      2.6924
+    ],
+    "expected": [
+      2.6924,
+      0.9144,
+      2.6924
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 4,
+      "upholstery-piping": 8,
+      "back-cushion": 4,
+      "adjustable-headrest": 4,
+      "headrest-stem": 8,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "swept-arm-inlay": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 3
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p16-14",
+    "dimensions": [
+      2.7432,
+      0.9144000000000002,
+      2.7432
+    ],
+    "expected": [
+      2.7432,
+      0.9144,
+      2.7432
+    ],
+    "floor": 6.938893903907228e-18,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 4,
+      "upholstery-piping": 12,
+      "back-cushion": 8,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "swept-arm-inlay": 2,
+      "arm-metal-badge": 6,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p16-15",
+    "dimensions": [
+      2.794,
+      0.9652,
+      2.7939999999999996
+    ],
+    "expected": [
+      2.794,
+      0.9652,
+      2.794
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 4,
+      "upholstery-piping": 12,
+      "back-cushion": 8,
+      "lumbar-pad": 4,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "swept-arm-inlay": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p17-16",
+    "dimensions": [
+      2.8448,
+      0.889,
+      2.8448
+    ],
+    "expected": [
+      2.8448,
+      0.889,
+      2.8448
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 4,
+      "upholstery-piping": 8,
+      "back-cushion": 4,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-outline": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p17-17",
+    "dimensions": [
+      3.048,
+      0.8128000000000001,
+      2.4384000000000006
+    ],
+    "expected": [
+      3.048,
+      0.8128,
+      2.4384
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 5,
+      "upholstery-piping": 15,
+      "back-cushion": 10,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "swept-arm-inlay": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 3
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p17-18",
+    "dimensions": [
+      3.3388,
+      0.8635999999999999,
+      2.8308
+    ],
+    "expected": [
+      3.3388,
+      0.8636,
+      2.8308
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 8,
+      "back-shell": 2,
+      "seat-cushion": 4,
+      "upholstery-piping": 12,
+      "back-cushion": 4,
+      "sofa-arm": 4,
+      "arm-side-panel": 4,
+      "arm-outline": 4,
+      "scatter-cushion": 4,
+      "set-component-1": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p18-19",
+    "dimensions": [
+      2.7940000000000005,
+      0.8382,
+      2.7940000000000005
+    ],
+    "expected": [
+      2.794,
+      0.8382,
+      2.794
+    ],
+    "floor": -3.753696624364533e-10,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "Twin Wood Handle Corner Sofa — 19": 1,
+      "corner-base": 1,
+      "base-x-wing": 1,
+      "base-z-wing": 1,
+      "backrest-x-wing": 1,
+      "backrest-z-wing": 1,
+      "seat-x-wing": 1,
+      "upholstery-piping": 9,
+      "seat-z-wing": 1,
+      "shared-corner-seat": 1,
+      "back-cushion-x-0": 1,
+      "loose-back-cushion": 7,
+      "patterned-insert": 23,
+      "back-cushion-z-0": 1,
+      "back-cushion-x-1": 1,
+      "back-cushion-z-1": 1,
+      "corner-cushion-x": 1,
+      "corner-cushion-z": 1,
+      "corner-cushion-diagonal": 1,
+      "square-end-arm": 2,
+      "arm-body": 2,
+      "arm-top": 2,
+      "arm-outer-panel": 2,
+      "light-wood-stile": 4,
+      "dark-vertical-accent": 2,
+      "end-foot": 2,
+      "support-foot": 4
+    },
+    "sources": [
+      "sf-sofas-p18-19"
+    ]
+  },
+  {
+    "id": "sf-sofas-p18-20",
+    "dimensions": [
+      2.794,
+      0.8636000000000001,
+      2.7939999999999996
+    ],
+    "expected": [
+      2.794,
+      0.8636,
+      2.794
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 4,
+      "upholstery-piping": 12,
+      "back-cushion": 8,
+      "back-accent-band": 8,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-outline": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p19-21",
+    "dimensions": [
+      2.8448,
+      0.8890000000000001,
+      2.8448
+    ],
+    "expected": [
+      2.8448,
+      0.889,
+      2.8448
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 4,
+      "upholstery-piping": 14,
+      "back-cushion": 8,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "timber-arm-tray": 2,
+      "scatter-cushion": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 3
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p19-22",
+    "dimensions": [
+      3.2626,
+      0.8381999999999998,
+      2.653
+    ],
+    "expected": [
+      3.2626,
+      0.8382,
+      2.653
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 8,
+      "back-shell": 2,
+      "seat-cushion": 4,
+      "upholstery-piping": 9,
+      "back-cushion": 5,
+      "adjustable-headrest": 5,
+      "headrest-stem": 10,
+      "sofa-arm": 4,
+      "arm-side-panel": 4,
+      "arm-outline": 4,
+      "set-component-1": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p19-23",
+    "dimensions": [
+      2.8956,
+      0.889,
+      2.8956
+    ],
+    "expected": [
+      2.8956,
+      0.889,
+      2.8956
+    ],
+    "floor": -6.938893903907228e-18,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 4,
+      "upholstery-piping": 8,
+      "back-cushion": 4,
+      "lumbar-pad": 4,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "timber-arm-tray": 2,
+      "quilted-arm-side": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p20-24",
+    "dimensions": [
+      4.2646,
+      0.9906000000000001,
+      2.1196
+    ],
+    "expected": [
+      4.2646,
+      0.9906,
+      2.1196
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 3,
+      "sofa-foot": 12,
+      "back-shell": 3,
+      "seat-cushion": 5,
+      "upholstery-piping": 15,
+      "back-cushion": 10,
+      "sofa-arm": 6,
+      "arm-side-panel": 6,
+      "set-component-1": 1,
+      "set-component-2": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p20-25",
+    "dimensions": [
+      2.8956000000000004,
+      0.9652000000000001,
+      2.8956
+    ],
+    "expected": [
+      2.8956,
+      0.9652,
+      2.8956
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "base-fabric-gather": 70,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 4,
+      "upholstery-piping": 12,
+      "back-cushion": 8,
+      "adjustable-headrest": 4,
+      "headrest-stem": 8,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-front-inlay": 14,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p21-26",
+    "dimensions": [
+      2.8448,
+      0.9398,
+      2.8448
+    ],
+    "expected": [
+      2.8448,
+      0.9398,
+      2.8448
+    ],
+    "floor": -6.938893903907228e-18,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 4,
+      "upholstery-piping": 10,
+      "back-cushion": 4,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "timber-arm-tray": 2,
+      "scatter-cushion": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p21-27",
+    "dimensions": [
+      1.905,
+      0.8636000000000001,
+      0.8636
+    ],
+    "expected": [
+      1.905,
+      0.8636,
+      0.8636
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "upholstered-base": 1,
+      "sofa-foot": 4,
+      "back-shell": 1,
+      "seat-cushion": 2,
+      "upholstery-piping": 6,
+      "back-cushion": 2,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "scatter-cushion": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p21-28",
+    "dimensions": [
+      2.8702,
+      0.889,
+      2.3114
+    ],
+    "expected": [
+      2.8702,
+      0.889,
+      2.3114
+    ],
+    "floor": -6.938893903907228e-18,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 3,
+      "upholstery-piping": 8,
+      "back-cushion": 5,
+      "fabric-button": 10,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-outline": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 3
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p22-29",
+    "dimensions": [
+      2.9972,
+      0.8636000000000001,
+      2.4383999999999997
+    ],
+    "expected": [
+      2.9972,
+      0.8636,
+      2.4384
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 5,
+      "upholstery-piping": 15,
+      "back-cushion": 10,
+      "adjustable-headrest": 5,
+      "headrest-stem": 10,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-outline": 2,
+      "side-upholstery-channel": 24,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p22-30",
+    "dimensions": [
+      2.8448,
+      0.9397999999999999,
+      2.8448
+    ],
+    "expected": [
+      2.8448,
+      0.9398,
+      2.8448
+    ],
+    "floor": -1.3877787807814457e-17,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 4,
+      "upholstery-piping": 12,
+      "back-cushion": 8,
+      "adjustable-headrest": 4,
+      "headrest-stem": 8,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "timber-arm-tray": 2,
+      "side-upholstery-channel": 24,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p23-31",
+    "dimensions": [
+      2.7432,
+      0.7111999999999999,
+      2.1336000000000004
+    ],
+    "expected": [
+      2.7432,
+      0.7112,
+      2.1336
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 5,
+      "upholstery-piping": 7,
+      "back-cushion": 2,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "rolled-arm-bolster": 2,
+      "quilted-arm-side": 2,
+      "rolled-arm-scroll": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p23-32",
+    "dimensions": [
+      2.8448,
+      0.9143999999999999,
+      2.8448
+    ],
+    "expected": [
+      2.8448,
+      0.9144,
+      2.8448
+    ],
+    "floor": -1.3877787807814457e-17,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 4,
+      "upholstery-piping": 8,
+      "back-cushion": 4,
+      "fabric-button": 12,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-outline": 2,
+      "quilted-arm-side": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p23-33",
+    "dimensions": [
+      2.794,
+      0.8635999999999999,
+      2.7939999999999996
+    ],
+    "expected": [
+      2.794,
+      0.8636,
+      2.794
+    ],
+    "floor": 1.3877787807814457e-17,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 4,
+      "upholstery-piping": 8,
+      "back-cushion": 4,
+      "back-accent-band": 4,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-outline": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 3
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p24-34",
+    "dimensions": [
+      3.0086,
+      0.889,
+      2.526
+    ],
+    "expected": [
+      3.0086,
+      0.889,
+      2.526
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 8,
+      "back-shell": 2,
+      "seat-cushion": 4,
+      "upholstery-piping": 12,
+      "back-cushion": 2,
+      "sofa-arm": 4,
+      "arm-side-panel": 4,
+      "scatter-cushion": 6,
+      "set-component-1": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p24-35",
+    "dimensions": [
+      2.8194,
+      0.9397999999999997,
+      1.9812
+    ],
+    "expected": [
+      2.8194,
+      0.9398,
+      1.9812
+    ],
+    "floor": 3.469446951953614e-18,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "chaise-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 8,
+      "back-shell": 2,
+      "seat-cushion": 2,
+      "upholstery-piping": 9,
+      "back-cushion": 4,
+      "adjustable-headrest": 4,
+      "headrest-stem": 8,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "scatter-cushion": 3,
+      "chaise-extension": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p25-36",
+    "dimensions": [
+      2.921,
+      0.8890000000000001,
+      2.3876
+    ],
+    "expected": [
+      2.921,
+      0.889,
+      2.3876
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 5,
+      "upholstery-piping": 9,
+      "back-cushion": 4,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-front-inlay": 2,
+      "side-upholstery-channel": 24,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p25-37",
+    "dimensions": [
+      3.2118,
+      0.9397999999999999,
+      2.653
+    ],
+    "expected": [
+      3.2117999999999998,
+      0.9398,
+      2.653
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 8,
+      "back-shell": 2,
+      "seat-cushion": 3,
+      "upholstery-piping": 11,
+      "back-cushion": 4,
+      "sofa-arm": 4,
+      "arm-side-panel": 4,
+      "rolled-arm-bolster": 4,
+      "timber-arm-tray": 4,
+      "rolled-arm-scroll": 4,
+      "scatter-cushion": 4,
+      "set-component-1": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofas-p25-38",
+    "dimensions": [
+      2.794,
+      0.8381999999999998,
+      2.794
+    ],
+    "expected": [
+      2.794,
+      0.8382,
+      2.794
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 2,
+      "upholstery-piping": 6,
+      "back-cushion": 4,
+      "bordered-fabric-insert": 12,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "twin-arm-post": 4,
+      "twin-arm-band": 4,
+      "bordered-arm-side": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 3
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-economic-sofas-p26-01",
+    "dimensions": [
+      2.6923999999999997,
+      0.7874,
+      2.1336000000000004
+    ],
+    "expected": [
+      2.6924,
+      0.7874,
+      2.1336
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 4,
+      "upholstery-piping": 8,
+      "back-cushion": 4,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-outline": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-economic-sofas-p26-02",
+    "dimensions": [
+      3.7565999999999997,
+      0.8128,
+      2.399
+    ],
+    "expected": [
+      3.7565999999999997,
+      0.8128,
+      2.399
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 3,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 5,
+      "upholstery-piping": 11,
+      "back-cushion": 6,
+      "sofa-arm": 6,
+      "arm-side-panel": 6,
+      "set-component-1": 1,
+      "separate-diwan": 1
+    },
+    "sources": [
+      "sf-economic-sofas-p26-02"
+    ]
+  },
+  {
+    "id": "sf-economic-sofas-p27-03",
+    "dimensions": [
+      2.6162,
+      0.7873999999999999,
+      1.8288000000000002
+    ],
+    "expected": [
+      2.6162,
+      0.7874,
+      1.8288
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "chaise-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 8,
+      "back-shell": 2,
+      "seat-cushion": 2,
+      "upholstery-piping": 6,
+      "back-cushion": 4,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-outline": 2,
+      "chaise-extension": 1
+    },
+    "sources": [
+      "sf-economic-sofas-p27-03"
+    ]
+  },
+  {
+    "id": "sf-economic-sofas-p27-04",
+    "dimensions": [
+      2.7432,
+      0.7873999999999999,
+      2.2097999999999995
+    ],
+    "expected": [
+      2.7432,
+      0.7874,
+      2.2098
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 3,
+      "upholstery-piping": 8,
+      "back-cushion": 5,
+      "fabric-button": 10,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-front-inlay": 2,
+      "quilted-arm-side": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-economic-sofas-p27-05",
+    "dimensions": [
+      3.0848000000000004,
+      0.762,
+      2.5768
+    ],
+    "expected": [
+      3.0848,
+      0.762,
+      2.5768
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 8,
+      "back-shell": 2,
+      "seat-cushion": 5,
+      "upholstery-piping": 9,
+      "back-cushion": 4,
+      "sofa-arm": 4,
+      "arm-side-panel": 4,
+      "arm-outline": 4,
+      "pierced-arm-ornament": 16,
+      "set-component-1": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-economic-sofas-p28-06",
+    "dimensions": [
+      2.7431999999999994,
+      0.7874,
+      2.2098000000000004
+    ],
+    "expected": [
+      2.7432,
+      0.7874,
+      2.2098
+    ],
+    "floor": 6.938893903907228e-18,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 2,
+      "upholstery-piping": 7,
+      "back-cushion": 5,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 2
+    },
+    "sources": [
+      "sf-economic-sofas-p28-06"
+    ]
+  },
+  {
+    "id": "sf-economic-sofas-p28-07",
+    "dimensions": [
+      3.1609999999999996,
+      0.762,
+      2.6276
+    ],
+    "expected": [
+      3.1609999999999996,
+      0.762,
+      2.6276
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 8,
+      "back-shell": 2,
+      "seat-cushion": 2,
+      "upholstery-piping": 4,
+      "back-cushion": 2,
+      "sofa-arm": 4,
+      "arm-side-panel": 4,
+      "arm-outline": 4,
+      "set-component-1": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-economic-sofas-p29-08",
+    "dimensions": [
+      3.034,
+      0.8636000000000001,
+      2.4752
+    ],
+    "expected": [
+      3.034,
+      0.8636,
+      2.4752
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 8,
+      "back-shell": 2,
+      "seat-cushion": 2,
+      "upholstery-piping": 7,
+      "back-cushion": 5,
+      "sofa-arm": 4,
+      "arm-side-panel": 4,
+      "arm-outline": 4,
+      "set-component-1": 1
+    },
+    "sources": [
+      "sf-economic-sofas-p29-08"
+    ]
+  },
+  {
+    "id": "sf-economic-sofas-p29-09",
+    "dimensions": [
+      2.7432,
+      0.8636,
+      1.8288000000000002
+    ],
+    "expected": [
+      2.7432,
+      0.8636,
+      1.8288
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "chaise-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 8,
+      "back-shell": 2,
+      "seat-cushion": 3,
+      "upholstery-piping": 7,
+      "back-cushion": 4,
+      "adjustable-headrest": 4,
+      "headrest-stem": 8,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "chaise-extension": 1
+    },
+    "sources": [
+      "sf-economic-sofas-p29-09"
+    ]
+  },
+  {
+    "id": "sf-economic-sofas-p29-10",
+    "dimensions": [
+      2.7432,
+      0.7874,
+      2.1844
+    ],
+    "expected": [
+      2.7432,
+      0.7874,
+      2.1844
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 2,
+      "upholstery-piping": 6,
+      "back-cushion": 4,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "rolled-arm-bolster": 2,
+      "swept-arm-inlay": 2,
+      "rolled-arm-scroll": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 1
+    },
+    "sources": [
+      "sf-economic-sofas-p29-10"
+    ]
+  },
+  {
+    "id": "sf-economic-sofas-p30-11",
+    "dimensions": [
+      3.0848,
+      0.9144,
+      2.6276
+    ],
+    "expected": [
+      3.0847999999999995,
+      0.9144,
+      2.6276
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 8,
+      "back-shell": 2,
+      "seat-cushion": 4,
+      "upholstery-piping": 12,
+      "back-cushion": 8,
+      "adjustable-headrest": 4,
+      "headrest-stem": 8,
+      "sofa-arm": 4,
+      "arm-side-panel": 4,
+      "arm-outline": 4,
+      "pierced-arm-ornament": 16,
+      "set-component-1": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-economic-sofas-p30-12",
+    "dimensions": [
+      2.7432000000000003,
+      0.8635999999999999,
+      2.1336
+    ],
+    "expected": [
+      2.7432,
+      0.8636,
+      2.1336
+    ],
+    "floor": -3.469446951953614e-18,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "base-fabric-gather": 57,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 2,
+      "upholstery-piping": 8,
+      "seat-front-channel": 37,
+      "back-cushion": 6,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "rolled-arm-bolster": 2,
+      "arm-outline": 2,
+      "rolled-arm-scroll": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-economic-sofas-p31-13",
+    "dimensions": [
+      2.7432000000000003,
+      0.8635999999999999,
+      2.1336
+    ],
+    "expected": [
+      2.7432,
+      0.8636,
+      2.1336
+    ],
+    "floor": -3.469446951953614e-18,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 2,
+      "upholstery-piping": 7,
+      "back-cushion": 5,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "rolled-arm-bolster": 2,
+      "arm-outline": 2,
+      "rolled-arm-scroll": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 1
+    },
+    "sources": [
+      "sf-economic-sofas-p31-13"
+    ]
+  },
+  {
+    "id": "sf-economic-sofas-p31-14",
+    "dimensions": [
+      2.7432,
+      0.8128,
+      1.8288000000000002
+    ],
+    "expected": [
+      2.7432,
+      0.8128,
+      1.8288
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "chaise-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 8,
+      "back-shell": 2,
+      "seat-cushion": 2,
+      "upholstery-piping": 6,
+      "back-cushion": 4,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "chaise-extension": 1,
+      "sofa-bed-extension-1": 1,
+      "sofa-bed-extension-2": 1
+    },
+    "sources": [
+      "sf-economic-sofas-p31-14"
+    ]
+  },
+  {
+    "id": "sf-economic-sofas-p31-15",
+    "dimensions": [
+      2.794,
+      0.8635999999999999,
+      2.2352
+    ],
+    "expected": [
+      2.794,
+      0.8636,
+      2.2352
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 5,
+      "upholstery-piping": 10,
+      "back-cushion": 5,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-outline": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-economic-sofas-p32-16",
+    "dimensions": [
+      2.6670000000000003,
+      0.7874,
+      1.8288000000000002
+    ],
+    "expected": [
+      2.667,
+      0.7874,
+      1.8288
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "chaise-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 8,
+      "back-shell": 2,
+      "seat-cushion": 2,
+      "upholstery-piping": 4,
+      "back-cushion": 2,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "quilted-arm-side": 2,
+      "chaise-extension": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-economic-sofas-p32-17",
+    "dimensions": [
+      2.7431999999999994,
+      0.762,
+      2.1336000000000004
+    ],
+    "expected": [
+      2.7432,
+      0.762,
+      2.1336
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 5,
+      "upholstery-piping": 10,
+      "back-cushion": 5,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-front-inlay": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-economic-sofas-p33-18",
+    "dimensions": [
+      3.034,
+      0.8636,
+      2.4752
+    ],
+    "expected": [
+      3.034,
+      0.8636,
+      2.4752
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 8,
+      "back-shell": 2,
+      "seat-cushion": 2,
+      "upholstery-piping": 9,
+      "back-cushion": 2,
+      "sofa-arm": 4,
+      "arm-side-panel": 4,
+      "scatter-cushion": 5,
+      "set-component-1": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-economic-sofas-p33-19",
+    "dimensions": [
+      2.526,
+      0.8128,
+      2.2211999999999996
+    ],
+    "expected": [
+      2.526,
+      0.8128,
+      2.2211999999999996
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 8,
+      "back-shell": 2,
+      "seat-cushion": 2,
+      "upholstery-piping": 4,
+      "back-cushion": 2,
+      "sofa-arm": 4,
+      "arm-side-panel": 4,
+      "set-component-1": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-economic-sofas-p33-20",
+    "dimensions": [
+      2.6415999999999995,
+      0.8636,
+      2.0827999999999998
+    ],
+    "expected": [
+      2.6416,
+      0.8636,
+      2.0828
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 2,
+      "upholstery-piping": 7,
+      "back-cushion": 5,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-outline": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 1
+    },
+    "sources": [
+      "sf-economic-sofas-p33-20"
+    ]
+  },
+  {
+    "id": "sf-economic-sofas-p34-21",
+    "dimensions": [
+      2.7432,
+      0.8635999999999999,
+      2.1336000000000004
+    ],
+    "expected": [
+      2.7432,
+      0.8636,
+      2.1336
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 2,
+      "upholstery-piping": 8,
+      "back-cushion": 6,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 1
+    },
+    "sources": [
+      "sf-economic-sofas-p34-21"
+    ]
+  },
+  {
+    "id": "sf-economic-sofas-p34-22",
+    "dimensions": [
+      2.7432,
+      0.8636000006130009,
+      1.8287999999999998
+    ],
+    "expected": [
+      2.7432,
+      0.8636,
+      1.8288
+    ],
+    "floor": -6.130008167737344e-10,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 2,
+      "upholstery-piping": 7,
+      "back-cushion": 5,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-outline": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 1,
+      "sofa-bed-extension-1": 1,
+      "sofa-bed-extension-2": 1
+    },
+    "sources": [
+      "sf-economic-sofas-p34-22"
+    ]
+  },
+  {
+    "id": "sf-economic-sofas-p35-23",
+    "dimensions": [
+      1.397,
+      0.5842,
+      0.5842
+    ],
+    "expected": [
+      1.397,
+      0.5842,
+      0.5842
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "upholstered-base": 1,
+      "sofa-foot": 4,
+      "seat-cushion": 1,
+      "upholstery-piping": 1,
+      "sofa-arm": 2,
+      "arm-side-panel": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-recliners-p37-01",
+    "dimensions": [
+      4.391599999999999,
+      1.016,
+      2.1196
+    ],
+    "expected": [
+      4.3915999999999995,
+      1.016,
+      2.1196
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 3,
+      "sofa-foot": 12,
+      "back-shell": 3,
+      "seat-cushion": 5,
+      "upholstery-piping": 20,
+      "back-cushion": 15,
+      "lumbar-pad": 5,
+      "footrest": 5,
+      "sofa-arm": 6,
+      "arm-side-panel": 6,
+      "set-component-1": 1,
+      "set-component-2": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-recliners-p37-02",
+    "dimensions": [
+      4.4677999999999995,
+      0.9906000000000001,
+      2.2212000000000005
+    ],
+    "expected": [
+      4.4677999999999995,
+      0.9906,
+      2.2212
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 3,
+      "sofa-foot": 12,
+      "back-shell": 3,
+      "seat-cushion": 5,
+      "upholstery-piping": 20,
+      "back-cushion": 15,
+      "footrest": 5,
+      "sofa-arm": 6,
+      "arm-side-panel": 6,
+      "set-component-1": 1,
+      "set-component-2": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-recliners-p37-03",
+    "dimensions": [
+      1.016,
+      0.9144,
+      0.9144000000000001
+    ],
+    "expected": [
+      1.016,
+      0.9144,
+      0.9144
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "upholstered-base": 1,
+      "sofa-foot": 4,
+      "back-shell": 1,
+      "seat-cushion": 1,
+      "upholstery-piping": 3,
+      "back-cushion": 2,
+      "footrest": 1,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "arm-outline": 2
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofa-beds-p39-01",
+    "dimensions": [
+      2.7432000000000003,
+      0.8636000005899378,
+      1.8288000000000002
+    ],
+    "expected": [
+      2.7432,
+      0.8636,
+      1.8288
+    ],
+    "floor": -5.89937793060713e-10,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "chaise-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 8,
+      "back-shell": 2,
+      "seat-cushion": 2,
+      "upholstery-piping": 6,
+      "back-cushion": 4,
+      "adjustable-headrest": 4,
+      "headrest-stem": 8,
+      "sofa-arm": 1,
+      "arm-shelf-base": 1,
+      "arm-shelf-post": 2,
+      "arm-shelf-interior": 1,
+      "arm-shelf-floor": 1,
+      "timber-arm-tray": 1,
+      "chaise-extension": 1,
+      "sofa-bed-extension-1": 1,
+      "sofa-bed-extension-2": 1
+    },
+    "sources": [
+      "sf-sofa-beds-p39-01"
+    ]
+  },
+  {
+    "id": "sf-sofa-beds-p39-02",
+    "dimensions": [
+      2.7432,
+      0.8636000006130009,
+      2.1336000000000004
+    ],
+    "expected": [
+      2.7432,
+      0.8636,
+      2.1336
+    ],
+    "floor": -6.130008167737344e-10,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "corner-main": 1,
+      "upholstered-base": 2,
+      "sofa-foot": 12,
+      "back-shell": 2,
+      "seat-cushion": 2,
+      "upholstery-piping": 7,
+      "back-cushion": 5,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "rolled-arm-bolster": 2,
+      "arm-front-inlay": 2,
+      "rolled-arm-scroll": 2,
+      "corner-return": 1,
+      "shared-corner": 1,
+      "corner-base": 1,
+      "shared-corner-seat": 1,
+      "corner-back-x": 1,
+      "corner-back-z": 1,
+      "corner-cushion": 1,
+      "sofa-bed-extension-1": 1,
+      "sofa-bed-extension-2": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofa-beds-p39-03",
+    "dimensions": [
+      2.032,
+      0.8636000006140779,
+      0.8635999999999999
+    ],
+    "expected": [
+      2.032,
+      0.8636,
+      0.8636
+    ],
+    "floor": -6.140780384189526e-10,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "upholstered-base": 1,
+      "wood-front-recess": 3,
+      "wood-front-stile": 2,
+      "sofa-foot": 4,
+      "back-shell": 1,
+      "seat-cushion": 1,
+      "upholstery-piping": 4,
+      "back-cushion": 3,
+      "sofa-arm": 2,
+      "wood-side-panel": 2,
+      "sofa-bed-extension-1": 1,
+      "sofa-bed-extension-2": 1
+    },
+    "sources": [
+      "sf-sofa-beds-p39-03"
+    ]
+  },
+  {
+    "id": "sf-sofa-beds-p40-04",
+    "dimensions": [
+      1.8287999999999998,
+      0.8128000014764232,
+      0.8636
+    ],
+    "expected": [
+      1.8288,
+      0.8128,
+      0.8636
+    ],
+    "floor": -1.476423261426163e-9,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "upholstered-base": 1,
+      "base-fabric-gather": 33,
+      "sofa-foot": 4,
+      "back-shell": 1,
+      "seat-cushion": 1,
+      "upholstery-piping": 4,
+      "back-cushion": 1,
+      "fabric-button": 3,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "scatter-cushion": 2,
+      "sofa-bed-extension-1": 1,
+      "sofa-bed-extension-2": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-sofa-beds-p40-05",
+    "dimensions": [
+      1.8287999999999998,
+      0.8128,
+      0.8636
+    ],
+    "expected": [
+      1.8288,
+      0.8128,
+      0.8636
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "upholstered-base": 1,
+      "base-fabric-gather": 33,
+      "sofa-foot": 4,
+      "back-shell": 1,
+      "seat-cushion": 1,
+      "upholstery-piping": 4,
+      "back-cushion": 1,
+      "sofa-arm": 2,
+      "arm-side-panel": 2,
+      "scatter-cushion": 2,
+      "sofa-bed-extension-1": 1,
+      "sofa-bed-extension-2": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-wooden-sofas-p43-01",
+    "dimensions": [
+      3.781999999999999,
+      0.762,
+      1.6878000000000002
+    ],
+    "expected": [
+      3.7819999999999996,
+      0.762,
+      1.6878
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 3,
+      "sofa-foot": 12,
+      "back-shell": 3,
+      "seat-cushion": 5,
+      "upholstery-piping": 10,
+      "back-cushion": 5,
+      "sofa-arm": 6,
+      "curved-timber-side": 6,
+      "set-component-1": 1,
+      "set-component-2": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-wooden-sofas-p43-02",
+    "dimensions": [
+      3.8073999999999995,
+      0.9652,
+      2.2211999999999996
+    ],
+    "expected": [
+      3.8074,
+      0.9652,
+      2.2211999999999996
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 3,
+      "sofa-foot": 12,
+      "back-shell": 3,
+      "seat-cushion": 6,
+      "upholstery-piping": 12,
+      "back-cushion": 6,
+      "sofa-arm": 6,
+      "arm-spindle": 30,
+      "set-component-1": 1,
+      "set-component-2": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-wooden-sofas-p43-03",
+    "dimensions": [
+      3.7565999999999997,
+      0.8128,
+      2.2211999999999996
+    ],
+    "expected": [
+      3.7565999999999997,
+      0.8128,
+      2.2211999999999996
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 3,
+      "sofa-foot": 12,
+      "back-shell": 3,
+      "seat-cushion": 6,
+      "upholstery-piping": 12,
+      "back-cushion": 6,
+      "sofa-arm": 6,
+      "curved-timber-side": 6,
+      "set-component-1": 1,
+      "set-component-2": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-wooden-sofas-p44-04",
+    "dimensions": [
+      3.7058,
+      0.762,
+      3.045399999999999
+    ],
+    "expected": [
+      3.7058,
+      0.762,
+      3.0453999999999994
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 4,
+      "wood-front-recess": 12,
+      "wood-front-stile": 8,
+      "sofa-foot": 16,
+      "back-shell": 4,
+      "seat-cushion": 7,
+      "upholstery-piping": 14,
+      "back-cushion": 7,
+      "sofa-arm": 8,
+      "horizontal-arm-rail": 24,
+      "arm-post": 16,
+      "set-component-1": 1,
+      "set-component-2": 1,
+      "set-component-3": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-wooden-sofas-p44-05",
+    "dimensions": [
+      3.7058,
+      0.762,
+      1.5861999999999998
+    ],
+    "expected": [
+      3.7058,
+      0.762,
+      1.5861999999999998
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 3,
+      "wood-front-recess": 9,
+      "wood-front-stile": 6,
+      "sofa-foot": 12,
+      "back-shell": 3,
+      "seat-cushion": 5,
+      "upholstery-piping": 10,
+      "back-cushion": 5,
+      "sofa-arm": 6,
+      "horizontal-arm-rail": 18,
+      "arm-post": 12,
+      "set-component-1": 1,
+      "set-component-2": 1
+    },
+    "sources": []
+  },
+  {
+    "id": "sf-wooden-sofas-p44-06",
+    "dimensions": [
+      3.7565999999999997,
+      0.8128,
+      1.6878000000000002
+    ],
+    "expected": [
+      3.7565999999999997,
+      0.8128,
+      1.6878
+    ],
+    "floor": 0,
+    "views": 6,
+    "triangles": 1,
+    "calls": 1,
+    "parts": {
+      "set-component-0": 1,
+      "upholstered-base": 3,
+      "sofa-foot": 12,
+      "back-shell": 3,
+      "seat-cushion": 5,
+      "upholstery-piping": 10,
+      "back-cushion": 5,
+      "sofa-arm": 6,
+      "wood-side-panel": 6,
+      "set-component-1": 1,
+      "set-component-2": 1
+    },
+    "sources": []
+  }
+]

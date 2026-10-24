@@ -1,0 +1,272 @@
+[
+  {
+    "image": "floorplan1.webp",
+    "walls": 67,
+    "review": 409,
+    "rejected": 3
+  },
+  {
+    "image": "test-6.webp",
+    "walls": 49,
+    "review": 238,
+    "rejected": 3
+  },
+  {
+    "image": "test-aplah.webp",
+    "walls": 62,
+    "review": 203,
+    "rejected": 29
+  },
+  {
+    "image": "test12.webp",
+    "walls": 34,
+    "review": 58,
+    "rejected": 15
+  },
+  {
+    "image": "test13.webp",
+    "walls": 38,
+    "review": 291,
+    "rejected": 0
+  },
+  {
+    "image": "test15.webp",
+    "walls": 68,
+    "review": 235,
+    "rejected": 0
+  },
+  {
+    "image": "test16.webp",
+    "walls": 62,
+    "review": 203,
+    "rejected": 29
+  },
+  {
+    "image": "test20.webp",
+    "walls": 45,
+    "review": 182,
+    "rejected": 1
+  },
+  {
+    "image": "test21.webp",
+    "walls": 34,
+    "review": 58,
+    "rejected": 15
+  },
+  {
+    "image": "test22.webp",
+    "walls": 59,
+    "review": 328,
+    "rejected": 3
+  },
+  {
+    "image": "FPimage4.jpg",
+    "walls": 27,
+    "review": 173,
+    "rejected": 0
+  },
+  {
+    "image": "Puli Floor plan_page-0001.jpg",
+    "walls": 84,
+    "review": 95,
+    "rejected": 5
+  },
+  {
+    "image": "test-3.jpg",
+    "walls": 38,
+    "review": 253,
+    "rejected": 8
+  },
+  {
+    "image": "test-4.jpg",
+    "walls": 65,
+    "review": 220,
+    "rejected": 5
+  },
+  {
+    "image": "test-5.jpg",
+    "walls": 74,
+    "review": 287,
+    "rejected": 5
+  },
+  {
+    "image": "test11.jpg",
+    "walls": 44,
+    "review": 145,
+    "rejected": 4
+  },
+  {
+    "image": "test14.jpg",
+    "walls": 158,
+    "review": 174,
+    "rejected": 17
+  },
+  {
+    "image": "test-1.jpeg",
+    "walls": 23,
+    "review": 79,
+    "rejected": 0
+  },
+  {
+    "image": "test-2.jpeg",
+    "walls": 46,
+    "review": 152,
+    "rejected": 2
+  },
+  {
+    "image": "floor_image2.png",
+    "walls": 57,
+    "review": 58,
+    "rejected": 0
+  },
+  {
+    "image": "FP-image3.avif",
+    "walls": 40,
+    "review": 102,
+    "rejected": 0
+  },
+  {
+    "image": "20261006_095745_upload.jpg",
+    "walls": 71,
+    "review": 140,
+    "rejected": 0
+  },
+  {
+    "image": "20261006_095849_upload.jpg",
+    "walls": 89,
+    "review": 141,
+    "rejected": 0
+  },
+  {
+    "image": "20261006_095955_upload.jpg",
+    "walls": 56,
+    "review": 211,
+    "rejected": 17
+  },
+  {
+    "image": "20261006_100253_upload.jpg",
+    "walls": 132,
+    "review": 168,
+    "rejected": 0
+  },
+  {
+    "image": "20261006_100744_upload.jpg",
+    "walls": 43,
+    "review": 152,
+    "rejected": 4
+  },
+  {
+    "image": "20261006_100812_upload.jpg",
+    "walls": 41,
+    "review": 289,
+    "rejected": 0
+  },
+  {
+    "image": "20261006_100842_upload.jpg",
+    "walls": 63,
+    "review": 234,
+    "rejected": 2
+  },
+  {
+    "image": "20261006_100957_upload.jpg",
+    "walls": 63,
+    "review": 234,
+    "rejected": 2
+  },
+  {
+    "image": "20261006_101003_upload.jpg",
+    "walls": 164,
+    "review": 173,
+    "rejected": 15
+  },
+  {
+    "image": "20261006_101036_upload.jpg",
+    "walls": 67,
+    "review": 203,
+    "rejected": 32
+  },
+  {
+    "image": "20261006_101116_upload.jpg",
+    "walls": 44,
+    "review": 193,
+    "rejected": 2
+  },
+  {
+    "image": "20261006_101500_upload.jpg",
+    "walls": 63,
+    "review": 173,
+    "rejected": 5
+  },
+  {
+    "image": "20261006_101841_upload.jpg",
+    "walls": 63,
+    "review": 173,
+    "rejected": 5
+  },
+  {
+    "image": "20261006_101933_upload.jpg",
+    "walls": 36,
+    "review": 230,
+    "rejected": 0
+  },
+  {
+    "image": "20261006_102010_upload.jpg",
+    "walls": 71,
+    "review": 140,
+    "rejected": 0
+  },
+  {
+    "image": "20261006_102142_upload.jpg",
+    "walls": 48,
+    "review": 398,
+    "rejected": 3
+  },
+  {
+    "image": "20261006_102254_upload.jpg",
+    "walls": 60,
+    "review": 250,
+    "rejected": 1
+  },
+  {
+    "image": "20261006_102559_upload.jpg",
+    "walls": 41,
+    "review": 184,
+    "rejected": 13
+  },
+  {
+    "image": "20261006_102958_upload.jpg",
+    "walls": 192,
+    "review": 218,
+    "rejected": 5
+  },
+  {
+    "image": "20261006_103216_upload.jpg",
+    "walls": 45,
+    "review": 267,
+    "rejected": 23
+  },
+  {
+    "image": "20261006_103443_upload.jpg",
+    "walls": 20,
+    "review": 112,
+    "rejected": 0
+  },
+  {
+    "image": "20261006_103724_upload.jpg",
+    "walls": 43,
+    "review": 152,
+    "rejected": 4
+  },
+  {
+    "image": "20261006_104237_upload.jpg",
+    "walls": 41,
+    "review": 183,
+    "rejected": 3
+  },
+  {
+    "image": "20261006_104539_upload.jpg",
+    "walls": 63,
+    "review": 173,
+    "rejected": 5
+  }
+]

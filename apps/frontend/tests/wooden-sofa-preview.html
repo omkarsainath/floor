@@ -1,0 +1,20 @@
+<!doctype html><html><head><style>body{margin:0;background:#ece9e3;font:15px system-ui}#gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:12px}figure{margin:0;background:white}img{width:100%;height:210px;object-fit:contain}figcaption{padding:8px}</style></head><body><div id="gallery"></div><script type="module">
+import * as T from 'three';
+import { SOFA_FACTORY_CATALOG, createSofaFactoryFurniture } from '../src/generators/sofaFactory.js';
+const ids=['sf-sofa-beds-p39-03','sf-wooden-sofas-p44-04','sf-wooden-sofas-p44-05','sf-wooden-sofas-p44-06','sf-sofa-beds-p40-05','sf-wooden-sofas-p43-02','sf-wooden-sofas-p43-01','sf-wooden-sofas-p43-03','sf-sofa-beds-p39-01','sf-sofa-beds-p39-02'];
+const renderer=new T.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setSize(700,400);renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1;
+for(const id of ids){
+ const s=SOFA_FACTORY_CATALOG.find(s=>s.id===id),figure=document.createElement('figure');
+ const photo=new Image();photo.src=s.image;figure.append(photo);
+ const scene=new T.Scene();scene.background=new T.Color('#eeebe5');scene.add(new T.HemisphereLight(0xffffff,0x7e746b,1.6));
+ const key=new T.DirectionalLight(0xfff3e4,2.5);key.position.set(-3,5,5);scene.add(key);
+ const model=createSofaFactoryFurniture(id,s.w,s.d);scene.add(model);
+ const size=new T.Box3().setFromObject(model).getSize(new T.Vector3());
+ const camera=new T.PerspectiveCamera(36,700/400,.01,100),target=new T.Vector3(0,s.h*.45,0);
+ camera.position.copy(target).add(new T.Vector3(.25,.24,1).normalize().multiplyScalar(Math.max(size.x/1.75,size.y,size.z)*2.05));camera.lookAt(target);
+ renderer.render(scene,camera);const image=new Image();image.src=renderer.domElement.toDataURL();figure.append(image);
+ const caption=document.createElement('figcaption');caption.textContent=s.label;figure.append(caption);gallery.append(figure);
+ model.traverse(n=>{n.geometry?.dispose();n.material?.dispose();});
+}
+const timer=setInterval(()=>{if([...document.images].every(i=>i.complete&&i.naturalWidth)){document.body.dataset.ready='true';clearInterval(timer);}},100);
+</script></body></html>

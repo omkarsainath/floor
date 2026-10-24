@@ -1,11 +1,11 @@
 import { normalizeRoomDesign, getFinishStyle, inferRoomType } from './roomDesignCatalog.js';
 import { buildRoomFinish, disposeRoomFinish } from './finishGeometry.js';
-import { isDesignableRoom, roomWallSurfaces } from './roomSurfaces.js';
+import { isDesignableRoom, roomWallSurfaces, selectedWallSurfaces } from './roomSurfaces.js';
 import { persistLayout } from '../state/projectPersistence.js';
 import { isProfileCeiling } from './ceilingTypes.js';
 import { getCeilingHeights } from './ceilingProfiles.js';
 import * as THREE from 'three';
-import { buildCeilingLight, normalizeCeilingLights } from './ceilingLights.js';
+import { buildCeilingLight, normalizeCeilingLights, disposeCeilingLight } from './ceilingLights.js';
 import { validateCeilingLight, orientCeilingLight } from './ceilingLightPlacement.js';
 import { clipWallSurfacesToRegion, normalizeWallPanelRegions, wallRegionFrame } from './wallPanelRegions.js';
 
@@ -13,10 +13,16 @@ export function createRoomDesignController({ scene, getLayout, getWallSegments, 
   const groups = new Map();
   let ceilingsVisible = false;
   const roomFor = id => (getLayout().rooms || []).find(room => room.id === id);
-  const surfacesFor = room => roomWallSurfaces(room, getWallSegments());
-  function getWallChoices(roomId) {
+  const directSurfaces = (wallId, side) => selectedWallSurfaces((getLayout().walls || []).find(w=>String(w.id)===String(wallId)),getWallSegments(),side);
+  const surfacesFor = (room, selection = room?.design) => {
+    const surfaces = roomWallSurfaces(room, getWallSegments());
+    if (![1,-1].includes(selection?.accentWallSide)) return surfaces;
+    return [...surfaces.filter(s=>String(s.parentWallId)!==String(selection.accentWallId)),
+      ...directSurfaces(selection.accentWallId, selection.accentWallSide)];
+  };
+  function getWallChoices(roomId, selection) {
     const room = roomFor(roomId); if (!room) return [];
-    const surfaces = surfacesFor(room), ids = [...new Set(surfaces.map(s => s.parentWallId))];
+    const surfaces = surfacesFor(room, selection), ids = [...new Set(surfaces.map(s => s.parentWallId))];
     return ids.map(id => {
       const index = (getLayout().walls || []).findIndex(wall => wall.id === id);
       const area = surfaces.filter(s => s.parentWallId === id).reduce((sum, s) => sum + Math.hypot(s.end.x - s.start.x, s.end.y - s.start.y) * s.height, 0);
@@ -49,7 +55,7 @@ export function createRoomDesignController({ scene, getLayout, getWallSegments, 
       const validation = validateRegion(room.id, region, selection.wallPanelRegions);
       if (!validation.ok) throw new Error(validation.message);
     }
-    const group = buildRoomFinish({ room, walls: getLayout().walls, wallSurfaces: surfacesFor(room), selection, styleLookup: getFinishStyle });
+    const group = buildRoomFinish({ room, walls: getLayout().walls, wallSurfaces: surfacesFor(room, selection), selection, styleLookup: getFinishStyle });
     try {
       for (const placement of selection.ceilingLights || []) {
         const attachment = validateCeilingLight(room, group, placement, selection.ceilingLights);
@@ -65,6 +71,35 @@ export function createRoomDesignController({ scene, getLayout, getWallSegments, 
     const room = roomFor(roomId), placement = normalizeCeilingLights([value])[0];
     if (!room || !placement) return { ok: false, message: 'Choose a valid light and a position in this room.' };
     return validateCeilingLight(room, groups.get(roomId), placement, room.design?.ceilingLights || []);
+  }
+  function updateLight(roomId, lightId, settings) {
+    const room = roomFor(roomId), group = groups.get(roomId);
+    const existing = room?.design?.ceilingLights?.find(light => light.id === lightId);
+    if (!existing || !group) return { ok: false, message: 'This light is no longer available.' };
+    const placement = normalizeCeilingLights([{ ...existing, ...settings, id: existing.id }])[0];
+    if (!placement) return { ok: false, message: 'Enter valid light settings.' };
+    const lights = room.design.ceilingLights.map(light => light.id === lightId ? placement : light);
+    const attachment = validateCeilingLight(room, group, placement, lights);
+    if (!attachment.ok) return attachment;
+    let replacement;
+    try {
+      replacement = orientCeilingLight(buildCeilingLight({ placement, ceilingY: attachment.ceilingY, roomId }), placement, attachment);
+      if (new THREE.Box3().setFromObject(replacement).min.y <= .1) throw new Error('The light would reach the floor. Reduce its hanging length.');
+    } catch (error) {
+      disposeCeilingLight(replacement);
+      return { ok: false, message: error.message };
+    }
+    const previous = room.design;
+    room.design = { ...previous, ceilingLights: lights };
+    let saved = false;
+    try { saved = save(getLayout()); } catch { /* Restore the last saved fixture below. */ }
+    if (!saved) {
+      room.design = previous; disposeCeilingLight(replacement);
+      return { ok: false, message: 'Local save failed. The previous light was kept.' };
+    }
+    const old = group.children.find(node => node.userData.ceilingLightId === lightId);
+    group.add(replacement); disposeCeilingLight(old);
+    return { ok: true, message: 'Light updated and saved.' };
   }
   function validateRegion(roomId, value, regions = roomFor(roomId)?.design?.wallPanelRegions || []) {
     const room = roomFor(roomId), region = normalizeWallPanelRegions([value])[0];
@@ -107,7 +142,7 @@ export function createRoomDesignController({ scene, getLayout, getWallSegments, 
     }
     if (selection.ceiling && selection.ceilingDropM === undefined) selection.ceilingDropM = 0.15;
     if (((selection.wallPanel && !selection.wallPanelRegions?.length) || selection.tvPanel || getFinishStyle(selection.ceiling)?.pattern === 'cascade')
-      && !getWallChoices(roomId).some(w => String(w.id) === String(selection.accentWallId))) {
+      && !getWallChoices(roomId, selection).some(w => String(w.id) === String(selection.accentWallId))) {
       return { ok: false, message: 'Choose a wall that touches this room. Unmatched walls need boundary correction in the tracer.' };
     }
     const height = room.height || 3;
@@ -141,7 +176,7 @@ export function createRoomDesignController({ scene, getLayout, getWallSegments, 
     }
     remove(roomId); return { ok: true, message: 'Room finishes reset and saved. Furniture and plan dimensions were kept.' };
   }
-  return { apply, reset, rebuild, getWallChoices, setCeilingsVisible, previewLight, validateRegion,
+  return { apply, reset, rebuild, updateLight, getWallChoices, getDirectWallSurfaces: directSurfaces, setCeilingsVisible, previewLight, validateRegion,
     getRoom: roomFor, getWallSurfaces: id => { const room = roomFor(id); return room ? surfacesFor(room) : []; },
     getGroups: () => [...groups.values()], getGroup: id => groups.get(id),
     destroy() { [...groups.keys()].forEach(remove); } };

@@ -164,3 +164,12 @@ test('local save round-trips catalog dimensions, rotation and calibration', asyn
   assert.equal(restored.objects[0].rotationY, 0.8);
   assert.deepEqual(restored.objects[0].bbox, layout.objects[0].bbox);
 });
+
+test('render environment fill preserves finish colours and restores shared materials',async()=>{
+ const {softenRenderEnvironment}=await import('../src/ui/renderMode.js');
+ const scene=new THREE.Scene(),material=new THREE.MeshStandardMaterial({color:'#d6c9b1',envMapIntensity:.8});
+ scene.add(new THREE.Mesh(new THREE.BoxGeometry(),material),new THREE.Mesh(new THREE.BoxGeometry(),material));
+ const color=material.color.getHex();const restore=softenRenderEnvironment(scene);
+ assert.ok(Math.abs(material.envMapIntensity-.304)<1e-9);assert.equal(material.color.getHex(),color);
+ restore();assert.equal(material.envMapIntensity,.8);restore();assert.equal(material.envMapIntensity,.8);
+});

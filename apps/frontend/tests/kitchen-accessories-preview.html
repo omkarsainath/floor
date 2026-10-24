@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kitchen accessories verification studio</title>
+<style>body{margin:0;background:#e9e5df;font:14px system-ui;color:#263d35;overflow:hidden}canvas{display:block}.bar{position:fixed;top:20px;left:24px;max-width:calc(100% - 440px)}h1{margin:0 0 6px;font-size:26px}button,select{padding:9px;margin:4px 4px 4px 0;border:1px solid #8d9e97;border-radius:6px;background:#fff;color:#294038}p{margin:6px 0}.note{font-size:12px}</style>
+<div class="bar"><h1>Kitchen accessories</h1><p>Fixed-size procedural studies · existing cabinet geometry</p><select id="model" aria-label="Accessory model"></select><button id="edit">Configure</button><button id="operate">Open / close</button><p class="note">Conceptual hardware. Dimensions and motion are not manufacturer-certified.<br>Drag to orbit · Scroll to zoom · Greenlam catalog finishes</p></div>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
+import {RoomEnvironment} from 'three/examples/jsm/environments/RoomEnvironment.js';
+import {createObject} from '../src/generators/object.js';
+import {ACCESSORIES} from '../src/kitchen/catalog.js';
+import {cabinetList,kitchenState,applyKitchenState,newAccessory,operateAccessory,tickKitchen,setKitchenCutaway,accessoryModel} from '../src/kitchen/system.js';
+import {showKitchenAccessories} from '../src/ui/kitchenAccessoriesPanel.js';
+const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=.95;document.body.append(renderer.domElement);
+const scene=new THREE.Scene();scene.background=new THREE.Color('#e9e5df');const pmrem=new THREE.PMREMGenerator(renderer),envRoom=new RoomEnvironment(),env=pmrem.fromScene(envRoom,.04);scene.environment=env.texture;envRoom.dispose();pmrem.dispose();
+const camera=new THREE.PerspectiveCamera(36,innerWidth/innerHeight,.01,60),controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;
+scene.add(new THREE.HemisphereLight('#ffffff','#8c816f',1.2));const light=new THREE.DirectionalLight('#fff5e8',3);light.position.set(-3,6,4);light.castShadow=true;light.shadow.mapSize.set(2048,2048);Object.assign(light.shadow.camera,{left:-4,right:4,top:4,bottom:-4,near:.1,far:20});light.shadow.bias=-.0001;light.shadow.normalBias=.002;scene.add(light);
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(100,100),new THREE.MeshStandardMaterial({color:'#c7bfb2',roughness:.8}));floor.rotation.x=-Math.PI/2;floor.position.y=-.004;floor.receiveShadow=true;scene.add(floor);
+const wall=new THREE.Mesh(new THREE.BoxGeometry(10,4,.10),new THREE.MeshStandardMaterial({color:'#ede7db',roughness:.9}));wall.position.set(0,2,-1);wall.receiveShadow=true;scene.add(wall);
+let root,editor;const model=document.querySelector('#model');for(const p of ACCESSORIES)model.add(new Option(p.name+' · '+p.variant,p.id));
+function edit(){editor=showKitchenAccessories({roots:[root],root,onSave(){localStorage.setItem('kitchen-accessory-preview',JSON.stringify({product:model.value,state:kitchenState(root)}));return true;},getObstacles:()=>[wall],onInspect(){controls.target.set(-.2,.6,0);},onRestoreCamera:()=>frameCamera()});}
+function frameCamera(){const p=ACCESSORIES.find(p=>p.id===model.value),tall=p.category==='pantry';camera.position.set(tall?2:1.65,tall?2.0:1.6,tall?3.4:2.7);controls.target.set(.05,tall?1:.48,.12);controls.update();}
+function load(id,saved){editor?.close();if(root){scene.remove(root);root.traverse(n=>{n.geometry?.dispose();for(const m of Array.isArray(n.material)?n.material:[n.material])m?.dispose();});}
+ const p=ACCESSORIES.find(p=>p.id===id),w=['corner'].includes(p.category)?1.9:['cutlery','wicker','waste'].includes(p.category)?1.10:p.category==='pantry'?.84:p.id==='concept-bottle-3'?.50:.46;
+ root=createObject({id:'studio-kitchen',class:'kitchen-base-cabinet',source:'catalog',objectHeightM:p.category==='pantry'?2.4:1,bbox:{x1:-w/2,x2:w/2,y1:-.32,y2:.32}});scene.add(root);
+ const state=saved||{cabinets:{'bay-1':{profile:{confirmed:true,type:p.category==='corner'?'corner':p.category==='pantry'?'tall':p.category==='waste'?'sink':'base',plumbingConfirmed:true},finish:{laminateId:'gl-5106-brl'},accessory:newAccessory(id)},'bay-2':{finish:{laminateId:'gl-5106-brl'}}}};
+ applyKitchenState(root,state);frameCamera();edit();window.__kitchenPreview={THREE,root,scene,camera,renderer,controls,cabinetList,kitchenState,applyKitchenState,operateAccessory,setKitchenCutaway,accessoryModel,load};document.body.dataset.ready='true';
+}
+let saved;try{saved=JSON.parse(localStorage.getItem('kitchen-accessory-preview'));}catch{}
+if(saved&&ACCESSORIES.some(p=>p.id===saved.product))model.value=saved.product;load(model.value,saved?.state);
+model.onchange=()=>load(model.value);document.querySelector('#edit').onclick=edit;document.querySelector('#operate').onclick=()=>{const a=kitchenState(root).cabinets['bay-1'].accessory;operateAccessory(root,'bay-1',a.openingState>.5?0:1,{obstacles:[wall]});};
+const clock=new THREE.Clock();function render(){requestAnimationFrame(render);tickKitchen(root,clock.getDelta());controls.update();renderer.render(scene,camera);}render();
+addEventListener('resize',()=>{renderer.setSize(innerWidth,innerHeight);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();});
+</script></html>

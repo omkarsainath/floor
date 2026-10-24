@@ -1,3 +1,7 @@
+import { customWallStyles, getCustomWallStyle, registerCustomWallStyle } from './customWallStyles.js';
+import { STONES } from '../materials/stone.js';
+import { WALL_RELIEF_STYLES } from './wallReliefs.js';
+import { REFERENCE_CEILING_TYPES } from './referenceCeilings.js';
 import { CEILING_TYPES, getCeilingType, isProfileCeiling, normalizeCeilingSettings } from './ceilingTypes.js';
 import { normalizeCeilingLights } from './ceilingLights.js';
 import { normalizeWallPanelRegions } from './wallPanelRegions.js';
@@ -160,18 +164,21 @@ export const FINISH_STYLES = Object.freeze([
     'slats', '#aa8f70', '#776047', { spacingM: 0.07, depthM: 0.022 }),
 ]);
 
-const byId = new Map(FINISH_STYLES.map(finish => [finish.id, finish]));
+export const STONE_FLOORS=Object.freeze(STONES.map(s=>({...s,id:`floor-${s.id}`,stoneId:s.id,label:`${s.name} · ${s.kind}`,roomType:'all',category:'floor',pattern:'catalogStone',color:'#ffffff',roughness:.24,metalness:0,tileWidthM:1.2,tileDepthM:2/3,material:`Lavina ${s.kind}: ${s.name}. Catalogue photograph; approximate scale and polished finish.`,source:{report:'E-catalogue.pdf',page:s.page}})));
+const byId = new Map([...FINISH_STYLES, ...STONE_FLOORS, ...WALL_RELIEF_STYLES].map(finish => [finish.id, finish]));
 const roomIds = new Set(ROOM_TYPES.map(room => room.id));
 const categoryIds = new Set(CATEGORIES.map(category => category.id));
 
 export function optionsFor(roomType, category) {
   if (!roomIds.has(roomType) || !categoryIds.has(category)) return [];
   const concepts = FINISH_STYLES.filter(finish => finish.roomType === roomType && finish.category === category);
-  return category === 'ceiling' ? [...CEILING_TYPES, ...concepts] : concepts;
+  if(category==='floor')return [...concepts,...STONE_FLOORS];
+  if (category === 'wallPanel') return [...concepts, ...WALL_RELIEF_STYLES, ...customWallStyles()];
+  return category === 'ceiling' ? [...CEILING_TYPES, ...REFERENCE_CEILING_TYPES, ...concepts] : concepts;
 }
 
 export function getFinishStyle(id) {
-  return byId.get(id) || getCeilingType(id);
+  return byId.get(id) || getCeilingType(id) || getCustomWallStyle(id) || null;
 }
 
 function typeFromLabel(value) {
@@ -203,6 +210,7 @@ export function inferRoomType(room) {
 // are deliberately absent from this visual-design object.
 export function normalizeRoomDesign(value, roomType) {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
+  for (const style of Array.isArray(value.customWallStyles) ? value.customWallStyles.slice(0,32) : []) registerCustomWallStyle(style);
   const type = typeFromLabel(roomType) || typeFromLabel(value.roomType);
   if (!type) return {};
   const normalized = { roomType: type };
@@ -215,6 +223,7 @@ export function normalizeRoomDesign(value, roomType) {
   } else if (typeof value.accentWallId === 'number' && Number.isFinite(value.accentWallId)) {
     normalized.accentWallId = value.accentWallId;
   }
+  if (normalized.accentWallId != null && [1,-1].includes(value.accentWallSide)) normalized.accentWallSide = value.accentWallSide;
   if (typeof value.ceilingDropM === 'number' && Number.isFinite(value.ceilingDropM)) {
     normalized.ceilingDropM = Math.max(0.05, Math.min(0.45, value.ceilingDropM));
   }
@@ -225,5 +234,8 @@ export function normalizeRoomDesign(value, roomType) {
   // An invalid marked region must never silently become a whole-wall finish.
   if (value.wallPanelRegions?.length && !normalized.wallPanelRegions?.length) delete normalized.wallPanel;
   if (typeof value.color === 'string' && /^#[0-9a-f]{6}$/i.test(value.color)) normalized.color = value.color.toLowerCase();
+  const used = new Set([normalized.wallPanel, ...(normalized.wallPanelRegions || []).map(r => r.styleId)]);
+  const custom = [...used].map(getCustomWallStyle).filter(Boolean);
+  if (custom.length) normalized.customWallStyles = custom;
   return normalized;
 }

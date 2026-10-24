@@ -1,0 +1,1472 @@
+{
+  "input": "docs/wall-validation/continuous-ceiling-fixed/test-5.json",
+  "slabs": 1,
+  "rayHitSamples": 2181,
+  "coverage": [
+    {
+      "points": [
+        {
+          "x": 460.94953599999997,
+          "y": 37.66840599999989
+        },
+        {
+          "x": 758.175736,
+          "y": 37.66840599999989
+        },
+        {
+          "x": 758.175736,
+          "y": 61.44650200000001
+        },
+        {
+          "x": 1055.401936,
+          "y": 61.44650200000001
+        },
+        {
+          "x": 1055.401936,
+          "y": 55.50197800000001
+        },
+        {
+          "x": 1058.374198,
+          "y": 55.50197800000001
+        },
+        {
+          "x": 1058.374198,
+          "y": 52.52971600000001
+        },
+        {
+          "x": 1073.235508,
+          "y": 52.52971600000001
+        },
+        {
+          "x": 1073.235508,
+          "y": 55.50197800000001
+        },
+        {
+          "x": 1076.20777,
+          "y": 55.50197800000001
+        },
+        {
+          "x": 1076.20777,
+          "y": 58.474239999999895
+        },
+        {
+          "x": 1079.180032,
+          "y": 58.474239999999895
+        },
+        {
+          "x": 1079.180032,
+          "y": 400.28437
+        },
+        {
+          "x": 1082.152294,
+          "y": 400.28437
+        },
+        {
+          "x": 1082.152294,
+          "y": 477.563182
+        },
+        {
+          "x": 1079.180032,
+          "y": 477.563182
+        },
+        {
+          "x": 1079.180032,
+          "y": 602.398186
+        },
+        {
+          "x": 1082.152294,
+          "y": 602.398186
+        },
+        {
+          "x": 1082.152294,
+          "y": 724.260928
+        },
+        {
+          "x": 1079.180032,
+          "y": 724.260928
+        },
+        {
+          "x": 1079.180032,
+          "y": 852.0681940000001
+        },
+        {
+          "x": 1082.152294,
+          "y": 852.0681940000001
+        },
+        {
+          "x": 1082.152294,
+          "y": 967.9864120000001
+        },
+        {
+          "x": 1079.180032,
+          "y": 967.9864120000001
+        },
+        {
+          "x": 1079.180032,
+          "y": 1107.682726
+        },
+        {
+          "x": 1082.152294,
+          "y": 1107.682726
+        },
+        {
+          "x": 1082.152294,
+          "y": 1202.79511
+        },
+        {
+          "x": 1079.180032,
+          "y": 1202.79511
+        },
+        {
+          "x": 1079.180032,
+          "y": 1508.938096
+        },
+        {
+          "x": 1076.20777,
+          "y": 1508.938096
+        },
+        {
+          "x": 1076.20777,
+          "y": 1511.910358
+        },
+        {
+          "x": 1073.235508,
+          "y": 1511.910358
+        },
+        {
+          "x": 1073.235508,
+          "y": 1514.8826199999999
+        },
+        {
+          "x": 1061.34646,
+          "y": 1514.8826199999999
+        },
+        {
+          "x": 1061.34646,
+          "y": 1511.910358
+        },
+        {
+          "x": 1058.374198,
+          "y": 1511.910358
+        },
+        {
+          "x": 1058.374198,
+          "y": 1508.938096
+        },
+        {
+          "x": 1055.401936,
+          "y": 1508.938096
+        },
+        {
+          "x": 1055.401936,
+          "y": 1502.993572
+        },
+        {
+          "x": 758.175736,
+          "y": 1502.993572
+        },
+        {
+          "x": 758.175736,
+          "y": 1529.74393
+        },
+        {
+          "x": 460.94953599999997,
+          "y": 1529.74393
+        },
+        {
+          "x": 460.94953599999997,
+          "y": 1502.993572
+        },
+        {
+          "x": 125.08393000000001,
+          "y": 1502.993572
+        },
+        {
+          "x": 125.08393000000001,
+          "y": 1500.02131
+        },
+        {
+          "x": 122.11166800000001,
+          "y": 1500.02131
+        },
+        {
+          "x": 122.11166800000001,
+          "y": 1497.0490479999999
+        },
+        {
+          "x": 119.13940599999995,
+          "y": 1497.0490479999999
+        },
+        {
+          "x": 119.13940599999995,
+          "y": 1482.187738
+        },
+        {
+          "x": 122.11166800000001,
+          "y": 1482.187738
+        },
+        {
+          "x": 122.11166800000001,
+          "y": 1202.79511
+        },
+        {
+          "x": 119.13940599999995,
+          "y": 1202.79511
+        },
+        {
+          "x": 119.13940599999995,
+          "y": 884.7630760000001
+        },
+        {
+          "x": 116.16714400000001,
+          "y": 884.7630760000001
+        },
+        {
+          "x": 116.16714400000001,
+          "y": 881.790814
+        },
+        {
+          "x": 113.194882,
+          "y": 881.790814
+        },
+        {
+          "x": 113.194882,
+          "y": 878.8185520000001
+        },
+        {
+          "x": 110.22261999999995,
+          "y": 878.8185520000001
+        },
+        {
+          "x": 110.22261999999995,
+          "y": 863.957242
+        },
+        {
+          "x": 113.194882,
+          "y": 863.957242
+        },
+        {
+          "x": 113.194882,
+          "y": 860.9849800000001
+        },
+        {
+          "x": 119.13940599999995,
+          "y": 860.9849800000001
+        },
+        {
+          "x": 119.13940599999995,
+          "y": 858.012718
+        },
+        {
+          "x": 125.08393000000001,
+          "y": 858.012718
+        },
+        {
+          "x": 125.08393000000001,
+          "y": 860.9849800000001
+        },
+        {
+          "x": 172.64012199999996,
+          "y": 860.9849800000001
+        },
+        {
+          "x": 172.64012199999996,
+          "y": 703.455094
+        },
+        {
+          "x": 136.972978,
+          "y": 703.455094
+        },
+        {
+          "x": 136.972978,
+          "y": 706.4273559999999
+        },
+        {
+          "x": 128.056192,
+          "y": 706.4273559999999
+        },
+        {
+          "x": 128.056192,
+          "y": 703.455094
+        },
+        {
+          "x": 113.194882,
+          "y": 703.455094
+        },
+        {
+          "x": 113.194882,
+          "y": 700.482832
+        },
+        {
+          "x": 110.22261999999995,
+          "y": 700.482832
+        },
+        {
+          "x": 110.22261999999995,
+          "y": 685.6215219999999
+        },
+        {
+          "x": 113.194882,
+          "y": 685.6215219999999
+        },
+        {
+          "x": 113.194882,
+          "y": 682.64926
+        },
+        {
+          "x": 116.16714400000001,
+          "y": 682.64926
+        },
+        {
+          "x": 116.16714400000001,
+          "y": 679.676998
+        },
+        {
+          "x": 119.13940599999995,
+          "y": 679.676998
+        },
+        {
+          "x": 119.13940599999995,
+          "y": 82.25233600000001
+        },
+        {
+          "x": 116.16714400000001,
+          "y": 82.25233600000001
+        },
+        {
+          "x": 116.16714400000001,
+          "y": 79.28007400000001
+        },
+        {
+          "x": 113.194882,
+          "y": 79.28007400000001
+        },
+        {
+          "x": 113.194882,
+          "y": 67.39102600000001
+        },
+        {
+          "x": 116.16714400000001,
+          "y": 67.39102600000001
+        },
+        {
+          "x": 116.16714400000001,
+          "y": 64.41876400000001
+        },
+        {
+          "x": 119.13940599999995,
+          "y": 64.41876400000001
+        },
+        {
+          "x": 119.13940599999995,
+          "y": 61.44650200000001
+        },
+        {
+          "x": 306.391912,
+          "y": 61.44650200000001
+        },
+        {
+          "x": 306.391912,
+          "y": 58.474239999999895
+        },
+        {
+          "x": 309.364174,
+          "y": 58.474239999999895
+        },
+        {
+          "x": 309.364174,
+          "y": 55.50197800000001
+        },
+        {
+          "x": 312.336436,
+          "y": 55.50197800000001
+        },
+        {
+          "x": 312.336436,
+          "y": 52.52971600000001
+        },
+        {
+          "x": 330.170008,
+          "y": 52.52971600000001
+        },
+        {
+          "x": 330.170008,
+          "y": 55.50197800000001
+        },
+        {
+          "x": 336.114532,
+          "y": 55.50197800000001
+        },
+        {
+          "x": 336.114532,
+          "y": 58.474239999999895
+        },
+        {
+          "x": 339.08679400000005,
+          "y": 58.474239999999895
+        },
+        {
+          "x": 339.08679400000005,
+          "y": 61.44650200000001
+        },
+        {
+          "x": 368.809414,
+          "y": 61.44650200000001
+        },
+        {
+          "x": 368.809414,
+          "y": 64.41876400000001
+        },
+        {
+          "x": 434.19917799999996,
+          "y": 64.41876400000001
+        },
+        {
+          "x": 434.19917799999996,
+          "y": 61.44650200000001
+        },
+        {
+          "x": 449.060488,
+          "y": 61.44650200000001
+        },
+        {
+          "x": 449.060488,
+          "y": 64.41876400000001
+        },
+        {
+          "x": 460.94953599999997,
+          "y": 64.41876400000001
+        }
+      ],
+      "holes": [],
+      "id": "ceiling-coverage-0",
+      "height": 3,
+      "ceilingCoverageOnly": true,
+      "boundary_source": "enclosed-wall-network",
+      "boundary_tolerance_m": 0.02972262
+    }
+  ],
+  "openingSpans": [
+    {
+      "start": {
+        "x": 1066.5,
+        "y": 404.351
+      },
+      "end": {
+        "x": 1066.5,
+        "y": 473.13000000000005
+      },
+      "thickness_px": 21,
+      "detector": "cv-outline",
+      "outline_faces": {
+        "axis": "y",
+        "low": 1056,
+        "high": 1077,
+        "stroke_px": 4
+      },
+      "interior_white_fraction": 0.98,
+      "pixel_support": 0.033,
+      "wall_type": "exterior",
+      "wall_type_inferred": true,
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.919,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.787,
+      "junction_count": 2,
+      "thickness_source": "image-stroke",
+      "opening_split": true,
+      "id": "W1",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 1056,
+          "y": 64
+        },
+        {
+          "x": 1056,
+          "y": 404.351
+        },
+        {
+          "x": 1077,
+          "y": 404.351
+        },
+        {
+          "x": 1077,
+          "y": 64
+        }
+      ],
+      "height": 3,
+      "thickness": 0.21,
+      "parentWallId": "W1",
+      "isDetectedGap": true,
+      "supportingOpenings": [
+        {
+          "class": "window",
+          "confidence": 0.667,
+          "bbox": {
+            "x1": 4.649091796875,
+            "y1": -3.7824394458007817,
+            "x2": 4.86444580078125,
+            "y2": -3.0946495288085942
+          },
+          "inference_size": 640,
+          "id": "object_67"
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 1066.5,
+        "y": 609.984
+      },
+      "end": {
+        "x": 1066.5,
+        "y": 718.054
+      },
+      "thickness_px": 21,
+      "detector": "cv-outline",
+      "outline_faces": {
+        "axis": "y",
+        "low": 1056,
+        "high": 1077,
+        "stroke_px": 4
+      },
+      "interior_white_fraction": 0.98,
+      "pixel_support": 0.033,
+      "wall_type": "exterior",
+      "wall_type_inferred": true,
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.919,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.787,
+      "junction_count": 2,
+      "thickness_source": "image-stroke",
+      "opening_split": true,
+      "id": "W2",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 1056,
+          "y": 473.13
+        },
+        {
+          "x": 1056,
+          "y": 609.984
+        },
+        {
+          "x": 1077,
+          "y": 609.984
+        },
+        {
+          "x": 1077,
+          "y": 473.13
+        }
+      ],
+      "height": 3,
+      "thickness": 0.21,
+      "parentWallId": "W2",
+      "isDetectedGap": true,
+      "supportingOpenings": [
+        {
+          "class": "window",
+          "confidence": 0.558,
+          "bbox": {
+            "x1": 4.641131591796875,
+            "y1": -1.726107963867188,
+            "x2": 4.876646728515625,
+            "y2": -0.6454048388671879
+          },
+          "inference_size": 640,
+          "id": "object_71"
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 1066.5,
+        "y": 856.363
+      },
+      "end": {
+        "x": 1066.5,
+        "y": 963.923
+      },
+      "thickness_px": 21,
+      "detector": "cv-outline",
+      "outline_faces": {
+        "axis": "y",
+        "low": 1056,
+        "high": 1077,
+        "stroke_px": 4
+      },
+      "interior_white_fraction": 0.98,
+      "pixel_support": 0.033,
+      "wall_type": "exterior",
+      "wall_type_inferred": true,
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.919,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.787,
+      "junction_count": 2,
+      "thickness_source": "image-stroke",
+      "opening_split": true,
+      "id": "W3",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 1056,
+          "y": 718.054
+        },
+        {
+          "x": 1056,
+          "y": 856.363
+        },
+        {
+          "x": 1077,
+          "y": 856.363
+        },
+        {
+          "x": 1077,
+          "y": 718.054
+        }
+      ],
+      "height": 3,
+      "thickness": 0.21,
+      "parentWallId": "W3",
+      "isDetectedGap": true,
+      "supportingOpenings": [
+        {
+          "class": "window",
+          "confidence": 0.477,
+          "bbox": {
+            "x1": 4.646031494140625,
+            "y1": 0.7376835400390621,
+            "x2": 4.860887451171875,
+            "y2": 1.8132835156249996
+          },
+          "inference_size": 640,
+          "id": "object_72"
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 1066.5,
+        "y": 1110.972
+      },
+      "end": {
+        "x": 1066.5,
+        "y": 1180.697
+      },
+      "thickness_px": 21,
+      "detector": "cv-outline",
+      "outline_faces": {
+        "axis": "y",
+        "low": 1056,
+        "high": 1077,
+        "stroke_px": 4
+      },
+      "interior_white_fraction": 0.98,
+      "pixel_support": 0.033,
+      "wall_type": "exterior",
+      "wall_type_inferred": true,
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.919,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.787,
+      "junction_count": 2,
+      "thickness_source": "image-stroke",
+      "opening_split": true,
+      "id": "W4",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 1056,
+          "y": 963.923
+        },
+        {
+          "x": 1056,
+          "y": 1110.972
+        },
+        {
+          "x": 1077,
+          "y": 1110.972
+        },
+        {
+          "x": 1077,
+          "y": 963.923
+        }
+      ],
+      "height": 3,
+      "thickness": 0.21,
+      "parentWallId": "W4",
+      "isDetectedGap": true,
+      "supportingOpenings": [
+        {
+          "class": "window",
+          "confidence": 0.626,
+          "bbox": {
+            "x1": 4.64672119140625,
+            "y1": 3.2837791210937497,
+            "x2": 4.86039794921875,
+            "y2": 3.981021552734375
+          },
+          "inference_size": 640,
+          "id": "object_70"
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 468.386,
+        "y": 872.5
+      },
+      "end": {
+        "x": 544.867,
+        "y": 872.5
+      },
+      "thickness_px": 21,
+      "detector": "cv-outline",
+      "outline_faces": {
+        "axis": "x",
+        "low": 862,
+        "high": 883,
+        "stroke_px": 5
+      },
+      "interior_white_fraction": 0.946,
+      "pixel_support": 0.098,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "geometry_evidence": "paired_boundaries",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.956,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.885,
+      "junction_count": 2,
+      "thickness_source": "image-stroke",
+      "opening_split": true,
+      "id": "W6",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 121.507,
+          "y": 883
+        },
+        {
+          "x": 468.386,
+          "y": 883
+        },
+        {
+          "x": 468.386,
+          "y": 862
+        },
+        {
+          "x": 121.507,
+          "y": 862
+        }
+      ],
+      "height": 3,
+      "thickness": 0.21,
+      "parentWallId": "W6",
+      "isDetectedGap": true,
+      "supportingOpenings": [
+        {
+          "bbox": {
+            "x1": -1.2536358642578125,
+            "y1": 0.7879563671874996,
+            "x2": -0.488831787109375,
+            "y2": 0.9909403759765621
+          },
+          "swing_bbox": {
+            "x1": 469.92388916015625,
+            "y1": 875.8633422851562,
+            "x2": 547.682373046875,
+            "y2": 942.7190551757812
+          },
+          "class": "door",
+          "confidence": 0.631,
+          "swingDir": "left-inside",
+          "id": "object_0"
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 467.75,
+        "y": 692.5
+      },
+      "end": {
+        "x": 546.559,
+        "y": 692.5
+      },
+      "thickness_px": 21,
+      "detector": "cv-outline",
+      "outline_faces": {
+        "axis": "x",
+        "low": 682,
+        "high": 703,
+        "stroke_px": 4
+      },
+      "interior_white_fraction": 1,
+      "pixel_support": 0.098,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "geometry_evidence": "paired_boundaries",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.938,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.836,
+      "junction_count": 2,
+      "thickness_source": "image-stroke",
+      "opening_split": true,
+      "id": "W8",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 121,
+          "y": 703
+        },
+        {
+          "x": 467.75,
+          "y": 703
+        },
+        {
+          "x": 467.75,
+          "y": 682
+        },
+        {
+          "x": 121,
+          "y": 682
+        }
+      ],
+      "height": 3,
+      "thickness": 0.21,
+      "parentWallId": "W8",
+      "isDetectedGap": true,
+      "supportingOpenings": [
+        {
+          "bbox": {
+            "x1": -1.2600021362304688,
+            "y1": -0.962229790039063,
+            "x2": -0.4719110107421875,
+            "y2": -0.7634437792968755
+          },
+          "swingDir": "right-inside",
+          "class": "door",
+          "id": "object_10"
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 257.934,
+        "y": 1489.238
+      },
+      "end": {
+        "x": 365.815,
+        "y": 1489.238
+      },
+      "thickness_px": 23.234,
+      "detector": "boundary-pair",
+      "boundary_support": 1,
+      "band_style": "hatched-or-grey",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 1,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.033,
+      "junction_count": 2,
+      "thickness_source": "image-stroke",
+      "opening_split": true,
+      "id": "W10",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 140.625,
+          "y": 1500.855
+        },
+        {
+          "x": 257.934,
+          "y": 1500.855
+        },
+        {
+          "x": 257.934,
+          "y": 1477.621
+        },
+        {
+          "x": 140.625,
+          "y": 1477.621
+        }
+      ],
+      "height": 3,
+      "thickness": 0.23234000000000002,
+      "parentWallId": "W10",
+      "isDetectedGap": true,
+      "supportingOpenings": [
+        {
+          "class": "window",
+          "confidence": 0.737,
+          "bbox": {
+            "x1": -3.35815673828125,
+            "y1": 6.98204572265625,
+            "x2": -2.2793484497070313,
+            "y2": 7.178182197265625
+          },
+          "inference_size": 640,
+          "id": "object_62"
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 858.56,
+        "y": 1489.245
+      },
+      "end": {
+        "x": 966.401,
+        "y": 1489.245
+      },
+      "thickness_px": 23.213,
+      "detector": "boundary-pair",
+      "boundary_support": 1,
+      "band_style": "hatched-or-grey",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 1,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.033,
+      "junction_count": 2,
+      "thickness_source": "image-stroke",
+      "opening_split": true,
+      "id": "W12",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 768.119,
+          "y": 1500.851
+        },
+        {
+          "x": 858.56,
+          "y": 1500.851
+        },
+        {
+          "x": 858.56,
+          "y": 1477.638
+        },
+        {
+          "x": 768.119,
+          "y": 1477.638
+        }
+      ],
+      "height": 3,
+      "thickness": 0.23213,
+      "parentWallId": "W12",
+      "isDetectedGap": true,
+      "supportingOpenings": [
+        {
+          "class": "window",
+          "confidence": 0.707,
+          "bbox": {
+            "x1": 2.6481011962890624,
+            "y1": 6.988067451171875,
+            "x2": 3.7265106201171876,
+            "y2": 7.18671369140625
+          },
+          "inference_size": 640,
+          "id": "object_64"
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 858.335,
+        "y": 75.66300000000001
+      },
+      "end": {
+        "x": 966.379,
+        "y": 75.66300000000001
+      },
+      "thickness_px": 23.732,
+      "detector": "boundary-pair",
+      "boundary_support": 1,
+      "band_style": "hatched-or-grey",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 1,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.033,
+      "junction_count": 2,
+      "thickness_source": "image-stroke",
+      "opening_split": true,
+      "id": "W14",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 768.121,
+          "y": 87.529
+        },
+        {
+          "x": 858.335,
+          "y": 87.529
+        },
+        {
+          "x": 858.335,
+          "y": 63.797
+        },
+        {
+          "x": 768.121,
+          "y": 63.797
+        }
+      ],
+      "height": 3,
+      "thickness": 0.23732,
+      "parentWallId": "W14",
+      "isDetectedGap": true,
+      "supportingOpenings": [
+        {
+          "class": "window",
+          "confidence": 0.678,
+          "bbox": {
+            "x1": 2.64585205078125,
+            "y1": -7.17464357788086,
+            "x2": 3.72629150390625,
+            "y2": -6.948121895141602
+          },
+          "inference_size": 640,
+          "id": "object_66"
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 131.30800000000005,
+        "y": 514.365
+      },
+      "end": {
+        "x": 131.30800000000005,
+        "y": 625
+      },
+      "thickness_px": 23.055,
+      "detector": "boundary-pair",
+      "boundary_support": 0.984,
+      "band_style": "hatched-or-grey",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.994,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.016,
+      "junction_count": 2,
+      "thickness_source": "image-stroke",
+      "opening_split": true,
+      "id": "W17",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 119.78,
+          "y": 396.875
+        },
+        {
+          "x": 119.78,
+          "y": 514.365
+        },
+        {
+          "x": 142.835,
+          "y": 514.365
+        },
+        {
+          "x": 142.835,
+          "y": 396.875
+        }
+      ],
+      "height": 3,
+      "thickness": 0.23055,
+      "parentWallId": "W17",
+      "isDetectedGap": true,
+      "supportingOpenings": [
+        {
+          "class": "window",
+          "confidence": 0.659,
+          "bbox": {
+            "x1": -4.722899627685547,
+            "y1": -2.6822926562500005,
+            "x2": -4.529298400878907,
+            "y2": -1.575943168945313
+          },
+          "inference_size": 640,
+          "id": "object_68"
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 257.996,
+        "y": 73.92100000000005
+      },
+      "end": {
+        "x": 365.628,
+        "y": 73.92100000000005
+      },
+      "thickness_px": 20.246,
+      "detector": "boundary-pair",
+      "boundary_support": 1,
+      "band_style": "outlined",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.967,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.016,
+      "junction_count": 2,
+      "thickness_source": "image-stroke",
+      "opening_split": true,
+      "id": "W28",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 124.375,
+          "y": 84.044
+        },
+        {
+          "x": 257.996,
+          "y": 84.044
+        },
+        {
+          "x": 257.996,
+          "y": 63.798
+        },
+        {
+          "x": 124.375,
+          "y": 63.798
+        }
+      ],
+      "height": 3,
+      "thickness": 0.20246,
+      "parentWallId": "W28",
+      "isDetectedGap": true,
+      "supportingOpenings": [
+        {
+          "class": "window",
+          "confidence": 0.658,
+          "bbox": {
+            "x1": -3.3575360107421877,
+            "y1": -7.172730964965821,
+            "x2": -2.2944158935546874,
+            "y2": -6.9641796343994145
+          },
+          "inference_size": 640,
+          "id": "object_69"
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 576.872,
+        "y": 1427.619
+      },
+      "end": {
+        "x": 641.926,
+        "y": 1427.619
+      },
+      "thickness_px": 13.351,
+      "detector": "boundary-pair",
+      "boundary_support": 1,
+      "band_style": "hatched-or-grey",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.78,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.328,
+      "junction_count": 1,
+      "thickness_source": "image-stroke",
+      "id": "W33",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 465.627,
+          "y": 1434.294
+        },
+        {
+          "x": 576.872,
+          "y": 1434.294
+        },
+        {
+          "x": 576.872,
+          "y": 1420.943
+        },
+        {
+          "x": 465.627,
+          "y": 1420.943
+        }
+      ],
+      "height": 3,
+      "thickness": 0.13351000000000002,
+      "parentWallId": "W33",
+      "isDetectedGap": true,
+      "supportingOpenings": [
+        {
+          "bbox": {
+            "x1": -0.0623150634765625,
+            "y1": 6.4153001171875,
+            "x2": 0.48176025390625,
+            "y2": 6.506745429687499
+          },
+          "swingDir": "right-outside",
+          "class": "door",
+          "id": "object_3"
+        },
+        {
+          "class": "door",
+          "confidence": 0.464,
+          "bbox": {
+            "x1": -0.1664373779296875,
+            "y1": 6.4319212109374995,
+            "x2": 0.49221435546875003,
+            "y2": 6.765482001953124
+          },
+          "inference_size": 640,
+          "source": "object-door-fallback",
+          "swingDir": "left-inside",
+          "id": "object_17"
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 574.373,
+        "y": 137.22199999999998
+      },
+      "end": {
+        "x": 675.942,
+        "y": 137.22199999999998
+      },
+      "thickness_px": 13.514,
+      "detector": "boundary-pair",
+      "boundary_support": 1,
+      "band_style": "hatched-or-grey",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.778,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.311,
+      "junction_count": 1,
+      "thickness_source": "image-stroke",
+      "id": "W35",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 466.873,
+          "y": 143.979
+        },
+        {
+          "x": 574.373,
+          "y": 143.979
+        },
+        {
+          "x": 574.373,
+          "y": 130.465
+        },
+        {
+          "x": 466.873,
+          "y": 130.465
+        }
+      ],
+      "height": 3,
+      "thickness": 0.13514,
+      "parentWallId": "W35",
+      "isDetectedGap": true,
+      "supportingOpenings": [
+        {
+          "bbox": {
+            "x1": -0.150352783203125,
+            "y1": -6.483977531738282,
+            "x2": 0.47529541015625,
+            "y2": -6.384209770507813
+          },
+          "swingDir": "left-inside",
+          "class": "door",
+          "id": "object_2"
+        },
+        {
+          "class": "door",
+          "confidence": 0.568,
+          "bbox": {
+            "x1": -0.165928955078125,
+            "y1": -6.754020714111329,
+            "x2": 0.4668511962890625,
+            "y2": -6.392417930908204
+          },
+          "inference_size": 960,
+          "source": "object-door-fallback",
+          "swingDir": "left-outside",
+          "id": "object_16"
+        },
+        {
+          "class": "window",
+          "confidence": 0.35,
+          "bbox": {
+            "x1": 0.49700927734375,
+            "y1": -6.513553947753906,
+            "x2": 0.8219189453125,
+            "y2": -6.3945501940917975
+          },
+          "inference_size": 640,
+          "id": "object_73"
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 131.30899999999997,
+        "y": 1164.968
+      },
+      "end": {
+        "x": 131.30899999999997,
+        "y": 1096.879
+      },
+      "thickness_px": 23.052,
+      "detector": "boundary-pair",
+      "boundary_support": 1,
+      "band_style": "hatched-or-grey",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.91,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.082,
+      "junction_count": 2,
+      "thickness_source": "image-stroke",
+      "opening_split": true,
+      "id": "W38",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 142.835,
+          "y": 1181.875
+        },
+        {
+          "x": 142.835,
+          "y": 1164.968
+        },
+        {
+          "x": 119.783,
+          "y": 1164.968
+        },
+        {
+          "x": 119.783,
+          "y": 1181.875
+        }
+      ],
+      "height": 3,
+      "thickness": 0.23052,
+      "parentWallId": "W38",
+      "isDetectedGap": true,
+      "supportingOpenings": [
+        {
+          "class": "window",
+          "confidence": 0.694,
+          "bbox": {
+            "x1": -4.722880249023437,
+            "y1": 3.142845283203125,
+            "x2": -4.514076843261718,
+            "y2": 3.8237327343749996
+          },
+          "inference_size": 640,
+          "id": "object_65"
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 131.30800000000005,
+        "y": 301.704
+      },
+      "end": {
+        "x": 131.30800000000005,
+        "y": 369.864
+      },
+      "thickness_px": 23.054,
+      "detector": "boundary-pair",
+      "boundary_support": 1,
+      "band_style": "hatched-or-grey",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.908,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.082,
+      "junction_count": 2,
+      "thickness_source": "image-stroke",
+      "opening_split": true,
+      "id": "W40",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 119.781,
+          "y": 284.375
+        },
+        {
+          "x": 119.781,
+          "y": 301.704
+        },
+        {
+          "x": 142.835,
+          "y": 301.704
+        },
+        {
+          "x": 142.835,
+          "y": 284.375
+        }
+      ],
+      "height": 3,
+      "thickness": 0.23054,
+      "parentWallId": "W40",
+      "isDetectedGap": true,
+      "supportingOpenings": [
+        {
+          "class": "window",
+          "confidence": 0.724,
+          "bbox": {
+            "x1": -4.728227233886719,
+            "y1": -4.808902763671876,
+            "x2": -4.516983337402344,
+            "y2": -4.127300285644532
+          },
+          "inference_size": 640,
+          "id": "object_63"
+        }
+      ]
+    }
+  ]
+}

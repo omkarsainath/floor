@@ -1,0 +1,5 @@
+train: /Users/apple/Documents/ai-3d-project/apps/dataset/train/images
+val: /Users/apple/Documents/ai-3d-project/apps/dataset/valid/images
+test: /Users/apple/Documents/ai-3d-project/apps/dataset/test/images
+nc: 1
+names: ['wall']

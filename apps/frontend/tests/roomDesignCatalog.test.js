@@ -1,3 +1,4 @@
+import { REFERENCE_CEILING_TYPES } from '../src/design/referenceCeilings.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { ROOM_TYPES, CATEGORIES, FINISH_STYLES, optionsFor, getFinishStyle, inferRoomType, normalizeRoomDesign } from '../src/design/roomDesignCatalog.js';
@@ -18,10 +19,10 @@ test('the supplied report contributes exactly 40 distinct, correctly grouped fin
 test('all 12 architectural ceiling types are available in every room collection alongside its material concepts', () => {
   for (const { id } of ROOM_TYPES) {
     const options = optionsFor(id, 'ceiling');
-    assert.deepEqual(options.filter(style => style.roomType === 'all'), CEILING_TYPES);
+    assert.deepEqual(options.filter(style => style.roomType === 'all'), [...CEILING_TYPES, ...REFERENCE_CEILING_TYPES]);
     assert.equal(new Set(options.map(style => style.id)).size, options.length);
     assert.ok(options.some(style => style.roomType === id));
-    assert.equal(optionsFor(id, 'floor').some(style => style.roomType === 'all'), false);
+    assert.ok(optionsFor(id, 'floor').filter(style => style.roomType === 'all').every(style=>style.stoneId));
     assert.deepEqual(normalizeRoomDesign({ roomType: id, ceiling: 'ceiling-cathedral', ceilingRiseM: 0.9, ceilingAxis: 'z' }), {
       roomType: id, ceiling: 'ceiling-cathedral', ceilingDropM: 0.15, ceilingRiseM: 0.9, ceilingAxis: 'z',
     });

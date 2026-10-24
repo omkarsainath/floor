@@ -1,0 +1,2537 @@
+{
+  "sf-sofas-p11-1": {
+    "w": 2.8956,
+    "d": 2.3368,
+    "h": 0.8128,
+    "productWidth": 2.8956,
+    "productDepth": 2.3368,
+    "seatingDepth": 0.9144,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 11,
+      "printedPage": 2,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        114,
+        92,
+        32
+      ],
+      "seatingDepthInches": 36
+    },
+    "note": "SOFA PDF page 11, printed 02. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p11-2": {
+    "w": 2.9464,
+    "d": 2.3876,
+    "h": 0.8636,
+    "productWidth": 2.9464,
+    "productDepth": 2.3876,
+    "seatingDepth": 0.889,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 11,
+      "printedPage": 2,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        116,
+        94,
+        34
+      ],
+      "seatingDepthInches": 35
+    },
+    "note": "SOFA PDF page 11, printed 02. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p11-3": {
+    "w": 3.2156,
+    "d": 2.5603,
+    "h": 0.8636,
+    "productWidth": 2.2098,
+    "productDepth": 0.9144,
+    "dimensionRows": [
+      [
+        87,
+        36,
+        34
+      ],
+      [
+        66,
+        36,
+        34
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 11,
+      "printedPage": 2,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          87,
+          36,
+          34
+        ],
+        [
+          66,
+          36,
+          34
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 11, printed 02. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-sofas-p12-4": {
+    "w": 2.8956,
+    "d": 2.3368,
+    "h": 0.8382,
+    "productWidth": 2.8956,
+    "productDepth": 2.3368,
+    "seatingDepth": 0.9144,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 12,
+      "printedPage": 3,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        114,
+        92,
+        33
+      ],
+      "seatingDepthInches": 36
+    },
+    "note": "SOFA PDF page 12, printed 03. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p12-5": {
+    "w": 3.048,
+    "d": 2.4384,
+    "h": 0.8636,
+    "productWidth": 3.048,
+    "productDepth": 2.4384,
+    "seatingDepth": 0.8636,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 12,
+      "printedPage": 3,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        120,
+        96,
+        34
+      ],
+      "seatingDepthInches": 34
+    },
+    "note": "SOFA PDF page 12, printed 03. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p13-6": {
+    "w": 2.794,
+    "d": 2.794,
+    "h": 0.8382,
+    "productWidth": 2.794,
+    "productDepth": 2.794,
+    "seatingDepth": 0.9144,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 13,
+      "printedPage": 4,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        110,
+        110,
+        33
+      ],
+      "seatingDepthInches": 36
+    },
+    "note": "SOFA PDF page 13, printed 04. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p13-7": {
+    "w": 2.9972,
+    "d": 2.9972,
+    "h": 0.8636,
+    "productWidth": 2.9972,
+    "productDepth": 2.9972,
+    "seatingDepth": 0.889,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 13,
+      "printedPage": 4,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        118,
+        118,
+        34
+      ],
+      "seatingDepthInches": 35
+    },
+    "note": "SOFA PDF page 13, printed 04. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p13-8": {
+    "w": 2.9591,
+    "d": 2.4892,
+    "h": 0.9398,
+    "productWidth": 1.9812,
+    "productDepth": 0.889,
+    "dimensionRows": [
+      [
+        78,
+        35,
+        37
+      ],
+      [
+        60,
+        35,
+        37
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 13,
+      "printedPage": 4,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          78,
+          35,
+          37
+        ],
+        [
+          60,
+          35,
+          37
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 13, printed 04. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-sofas-p14-9": {
+    "w": 3.048,
+    "d": 2.4384,
+    "h": 0.8382,
+    "productWidth": 3.048,
+    "productDepth": 2.4384,
+    "seatingDepth": 0.9144,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 14,
+      "printedPage": 5,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        120,
+        96,
+        33
+      ],
+      "seatingDepthInches": 36
+    },
+    "note": "SOFA PDF page 14, printed 05. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p14-10": {
+    "w": 2.7432,
+    "d": 2.1844,
+    "h": 0.889,
+    "productWidth": 2.7432,
+    "productDepth": 2.1844,
+    "seatingDepth": 0.9144,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 14,
+      "printedPage": 5,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        86,
+        35
+      ],
+      "seatingDepthInches": 36
+    },
+    "note": "SOFA PDF page 14, printed 05. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p14-11": {
+    "w": 2.9718,
+    "d": 2.1336,
+    "h": 0.9398,
+    "productWidth": 2.1336,
+    "productDepth": 0.762,
+    "dimensionRows": [
+      [
+        84,
+        30,
+        37
+      ],
+      [
+        60,
+        30,
+        37
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 14,
+      "printedPage": 5,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          84,
+          30,
+          37
+        ],
+        [
+          60,
+          30,
+          37
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 14, printed 05. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-sofas-p15-12": {
+    "w": 2.8956,
+    "d": 2.3114,
+    "h": 0.8382,
+    "productWidth": 2.8956,
+    "productDepth": 2.3114,
+    "seatingDepth": 0.8636,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 15,
+      "printedPage": 6,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        114,
+        91,
+        33
+      ],
+      "seatingDepthInches": 34
+    },
+    "note": "SOFA PDF page 15, printed 06. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p15-13": {
+    "w": 2.6924,
+    "d": 2.6924,
+    "h": 0.9144,
+    "productWidth": 2.6924,
+    "productDepth": 2.6924,
+    "seatingDepth": 0.9144,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 15,
+      "printedPage": 6,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        106,
+        106,
+        36
+      ],
+      "seatingDepthInches": 36
+    },
+    "note": "SOFA PDF page 15, printed 06. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p16-14": {
+    "w": 2.7432,
+    "d": 2.7432,
+    "h": 0.9144,
+    "productWidth": 2.7432,
+    "productDepth": 2.7432,
+    "seatingDepth": 0.9144,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 16,
+      "printedPage": 7,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        108,
+        36
+      ],
+      "seatingDepthInches": 36
+    },
+    "note": "SOFA PDF page 16, printed 07. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p16-15": {
+    "w": 2.794,
+    "d": 2.794,
+    "h": 0.9652,
+    "productWidth": 2.794,
+    "productDepth": 2.794,
+    "seatingDepth": 0.9398,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 16,
+      "printedPage": 7,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        110,
+        110,
+        38
+      ],
+      "seatingDepthInches": 37
+    },
+    "note": "SOFA PDF page 16, printed 07. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p17-16": {
+    "w": 2.8448,
+    "d": 2.8448,
+    "h": 0.889,
+    "productWidth": 2.8448,
+    "productDepth": 2.8448,
+    "seatingDepth": 0.889,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 17,
+      "printedPage": 8,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        112,
+        112,
+        35
+      ],
+      "seatingDepthInches": 35
+    },
+    "note": "SOFA PDF page 17, printed 08. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p17-17": {
+    "w": 3.048,
+    "d": 2.4384,
+    "h": 0.8128,
+    "productWidth": 3.048,
+    "productDepth": 2.4384,
+    "seatingDepth": 0.9144,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 17,
+      "printedPage": 8,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        120,
+        96,
+        32
+      ],
+      "seatingDepthInches": 36
+    },
+    "note": "SOFA PDF page 17, printed 08. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p17-18": {
+    "w": 3.1902,
+    "d": 2.5603,
+    "h": 0.8636,
+    "productWidth": 2.1844,
+    "productDepth": 0.9144,
+    "dimensionRows": [
+      [
+        86,
+        36,
+        34
+      ],
+      [
+        66,
+        36,
+        34
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 17,
+      "printedPage": 8,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          86,
+          36,
+          34
+        ],
+        [
+          66,
+          36,
+          34
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 17, printed 08. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-sofas-p18-19": {
+    "w": 2.794,
+    "d": 2.794,
+    "h": 0.8382,
+    "productWidth": 2.794,
+    "productDepth": 2.794,
+    "seatingDepth": 0.8636,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 18,
+      "printedPage": 9,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        110,
+        110,
+        33
+      ],
+      "seatingDepthInches": 34
+    },
+    "note": "SOFA PDF page 18, printed 09. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p18-20": {
+    "w": 2.794,
+    "d": 2.794,
+    "h": 0.8636,
+    "productWidth": 2.794,
+    "productDepth": 2.794,
+    "seatingDepth": 0.889,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 18,
+      "printedPage": 9,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        110,
+        110,
+        34
+      ],
+      "seatingDepthInches": 35
+    },
+    "note": "SOFA PDF page 18, printed 09. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p19-21": {
+    "w": 2.8448,
+    "d": 2.8448,
+    "h": 0.889,
+    "productWidth": 2.8448,
+    "productDepth": 2.8448,
+    "seatingDepth": 0.889,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 19,
+      "printedPage": 10,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        112,
+        112,
+        35
+      ],
+      "seatingDepthInches": 35
+    },
+    "note": "SOFA PDF page 19, printed 10. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p19-22": {
+    "w": 3.1115,
+    "d": 2.4892,
+    "h": 0.8382,
+    "productWidth": 2.1336,
+    "productDepth": 0.889,
+    "dimensionRows": [
+      [
+        84,
+        35,
+        33
+      ],
+      [
+        60,
+        35,
+        33
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 19,
+      "printedPage": 10,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          84,
+          35,
+          33
+        ],
+        [
+          60,
+          35,
+          33
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 19, printed 10. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-sofas-p19-23": {
+    "w": 2.8956,
+    "d": 2.8956,
+    "h": 0.889,
+    "productWidth": 2.8956,
+    "productDepth": 2.8956,
+    "seatingDepth": 0.889,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 19,
+      "printedPage": 10,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        114,
+        114,
+        35
+      ],
+      "seatingDepthInches": 35
+    },
+    "note": "SOFA PDF page 19, printed 10. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p20-24": {
+    "w": 3.9573,
+    "d": 2.4181,
+    "h": 0.9906,
+    "productWidth": 2.0574,
+    "productDepth": 0.8636,
+    "dimensionRows": [
+      [
+        81,
+        34,
+        39
+      ],
+      [
+        40,
+        34,
+        39
+      ],
+      [
+        40,
+        34,
+        39
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 20,
+      "printedPage": 11,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          81,
+          34,
+          39
+        ],
+        [
+          40,
+          34,
+          39
+        ],
+        [
+          40,
+          34,
+          39
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 20, printed 11. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-sofas-p20-25": {
+    "w": 2.8956,
+    "d": 2.8956,
+    "h": 0.9652,
+    "productWidth": 2.8956,
+    "productDepth": 2.8956,
+    "seatingDepth": 0.9398,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 20,
+      "printedPage": 11,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        114,
+        114,
+        38
+      ],
+      "seatingDepthInches": 37
+    },
+    "note": "SOFA PDF page 20, printed 11. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p21-26": {
+    "w": 2.8448,
+    "d": 2.8448,
+    "h": 0.9398,
+    "productWidth": 2.8448,
+    "productDepth": 2.8448,
+    "seatingDepth": 0.8636,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 21,
+      "printedPage": 12,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        112,
+        112,
+        37
+      ],
+      "seatingDepthInches": 34
+    },
+    "note": "SOFA PDF page 21, printed 12. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p21-27": {
+    "w": 1.905,
+    "d": 0.8636,
+    "h": 0.8636,
+    "productWidth": 1.905,
+    "productDepth": 0.8636,
+    "dimensionRows": [
+      [
+        75,
+        34,
+        34
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 21,
+      "printedPage": 12,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          75,
+          34,
+          34
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 21, printed 12. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p21-28": {
+    "w": 2.8702,
+    "d": 2.3114,
+    "h": 0.889,
+    "productWidth": 2.8702,
+    "productDepth": 2.3114,
+    "seatingDepth": 0.889,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 21,
+      "printedPage": 12,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        113,
+        91,
+        35
+      ],
+      "seatingDepthInches": 35
+    },
+    "note": "SOFA PDF page 21, printed 12. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p22-29": {
+    "w": 2.9972,
+    "d": 2.4384,
+    "h": 0.8636,
+    "productWidth": 2.9972,
+    "productDepth": 2.4384,
+    "seatingDepth": 0.9144,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 22,
+      "printedPage": 13,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        118,
+        96,
+        34
+      ],
+      "seatingDepthInches": 36
+    },
+    "note": "SOFA PDF page 22, printed 13. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p22-30": {
+    "w": 2.8448,
+    "d": 2.8448,
+    "h": 0.9398,
+    "productWidth": 2.8448,
+    "productDepth": 2.8448,
+    "seatingDepth": 0.889,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 22,
+      "printedPage": 13,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        112,
+        112,
+        37
+      ],
+      "seatingDepthInches": 35
+    },
+    "note": "SOFA PDF page 22, printed 13. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p23-31": {
+    "w": 2.7432,
+    "d": 2.1336,
+    "h": 0.7112,
+    "productWidth": 2.7432,
+    "productDepth": 2.1336,
+    "seatingDepth": 0.8382,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 23,
+      "printedPage": 14,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        84,
+        28
+      ],
+      "seatingDepthInches": 33
+    },
+    "note": "SOFA PDF page 23, printed 14. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p23-32": {
+    "w": 2.8448,
+    "d": 2.8448,
+    "h": 0.9144,
+    "productWidth": 2.8448,
+    "productDepth": 2.8448,
+    "seatingDepth": 0.889,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 23,
+      "printedPage": 14,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        112,
+        112,
+        36
+      ],
+      "seatingDepthInches": 35
+    },
+    "note": "SOFA PDF page 23, printed 14. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p23-33": {
+    "w": 2.794,
+    "d": 2.794,
+    "h": 0.8636,
+    "productWidth": 2.794,
+    "productDepth": 2.794,
+    "seatingDepth": 0.889,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 23,
+      "printedPage": 14,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        110,
+        110,
+        34
+      ],
+      "seatingDepthInches": 35
+    },
+    "note": "SOFA PDF page 23, printed 14. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p24-34": {
+    "w": 2.855,
+    "d": 2.4181,
+    "h": 0.889,
+    "productWidth": 1.905,
+    "productDepth": 0.8636,
+    "dimensionRows": [
+      [
+        75,
+        34,
+        35
+      ],
+      [
+        56,
+        34,
+        35
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 24,
+      "printedPage": 15,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          75,
+          34,
+          35
+        ],
+        [
+          56,
+          34,
+          35
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 24, printed 15. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-sofas-p24-35": {
+    "w": 2.8194,
+    "d": 1.9812,
+    "h": 0.9398,
+    "productWidth": 2.8194,
+    "productDepth": 1.9812,
+    "seatingDepth": 0.9144,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 24,
+      "printedPage": 15,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        111,
+        78,
+        37
+      ],
+      "seatingDepthInches": 36
+    },
+    "note": "SOFA PDF page 24, printed 15. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p25-36": {
+    "w": 2.921,
+    "d": 2.3876,
+    "h": 0.889,
+    "productWidth": 2.921,
+    "productDepth": 2.3876,
+    "seatingDepth": 0.8636,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 25,
+      "printedPage": 16,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        115,
+        94,
+        35
+      ],
+      "seatingDepthInches": 34
+    },
+    "note": "SOFA PDF page 25, printed 16. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofas-p25-37": {
+    "w": 3.0607,
+    "d": 2.4892,
+    "h": 0.9398,
+    "productWidth": 2.0828,
+    "productDepth": 0.889,
+    "dimensionRows": [
+      [
+        82,
+        35,
+        37
+      ],
+      [
+        60,
+        35,
+        37
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 25,
+      "printedPage": 16,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          82,
+          35,
+          37
+        ],
+        [
+          60,
+          35,
+          37
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 25, printed 16. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-sofas-p25-38": {
+    "w": 2.794,
+    "d": 2.794,
+    "h": 0.8382,
+    "productWidth": 2.794,
+    "productDepth": 2.794,
+    "seatingDepth": 0.8636,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 25,
+      "printedPage": 16,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        110,
+        110,
+        33
+      ],
+      "seatingDepthInches": 34
+    },
+    "note": "SOFA PDF page 25, printed 16. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-economic-sofas-p26-01": {
+    "w": 2.6924,
+    "d": 2.1336,
+    "h": 0.7874,
+    "productWidth": 2.6924,
+    "productDepth": 2.1336,
+    "seatingDepth": 0.8382,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 26,
+      "printedPage": 17,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        106,
+        84,
+        31
+      ],
+      "seatingDepthInches": 33
+    },
+    "note": "SOFA PDF page 26, printed 17. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-economic-sofas-p26-02": {
+    "w": 2.7711,
+    "d": 2.2047,
+    "h": 0.8128,
+    "productWidth": 1.905,
+    "productDepth": 0.7874,
+    "dimensionRows": [
+      [
+        75,
+        31,
+        32
+      ],
+      [
+        54,
+        31,
+        32
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 26,
+      "printedPage": 17,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details",
+        "Separate diwan depth and height are absent from PDF; use 23 inches provisionally, matching the catalogue standalone diwan"
+      ],
+      "componentsInches": [
+        [
+          75,
+          31,
+          32
+        ],
+        [
+          54,
+          31,
+          32
+        ]
+      ],
+      "extraDiwanInches": [
+        50,
+        null,
+        null
+      ]
+    },
+    "note": "SOFA PDF page 26, printed 17. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions. The diwan width is 50 inches; its depth and height are not listed and are provisionally 23 inches each."
+  },
+  "sf-economic-sofas-p27-03": {
+    "w": 2.6162,
+    "d": 1.8288,
+    "h": 0.7874,
+    "productWidth": 2.6162,
+    "productDepth": 1.8288,
+    "seatingDepth": 0.8636,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 27,
+      "printedPage": 18,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        103,
+        72,
+        31
+      ],
+      "seatingDepthInches": 34
+    },
+    "note": "SOFA PDF page 27, printed 18. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-economic-sofas-p27-04": {
+    "w": 2.7432,
+    "d": 2.2098,
+    "h": 0.7874,
+    "productWidth": 2.7432,
+    "productDepth": 2.2098,
+    "seatingDepth": 0.8382,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 27,
+      "printedPage": 18,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        87,
+        31
+      ],
+      "seatingDepthInches": 33
+    },
+    "note": "SOFA PDF page 27, printed 18. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-economic-sofas-p27-05": {
+    "w": 2.9337,
+    "d": 2.4892,
+    "h": 0.762,
+    "productWidth": 1.9558,
+    "productDepth": 0.889,
+    "dimensionRows": [
+      [
+        77,
+        35,
+        30
+      ],
+      [
+        57,
+        35,
+        30
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 27,
+      "printedPage": 18,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          77,
+          35,
+          30
+        ],
+        [
+          57,
+          35,
+          30
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 27, printed 18. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-economic-sofas-p28-06": {
+    "w": 2.7432,
+    "d": 2.2098,
+    "h": 0.7874,
+    "productWidth": 2.7432,
+    "productDepth": 2.2098,
+    "seatingDepth": 0.8382,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 28,
+      "printedPage": 19,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        87,
+        31
+      ],
+      "seatingDepthInches": 33
+    },
+    "note": "SOFA PDF page 28, printed 19. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-economic-sofas-p28-07": {
+    "w": 3.0074,
+    "d": 2.4181,
+    "h": 0.762,
+    "productWidth": 2.0574,
+    "productDepth": 0.8636,
+    "dimensionRows": [
+      [
+        81,
+        34,
+        30
+      ],
+      [
+        60,
+        34,
+        30
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 28,
+      "printedPage": 19,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          81,
+          34,
+          30
+        ],
+        [
+          60,
+          34,
+          30
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 28, printed 19. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-economic-sofas-p29-08": {
+    "w": 2.8753,
+    "d": 2.2758,
+    "h": 0.8636,
+    "productWidth": 1.9812,
+    "productDepth": 0.8128,
+    "dimensionRows": [
+      [
+        78,
+        32,
+        34
+      ],
+      [
+        56,
+        32,
+        34
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 29,
+      "printedPage": 20,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          78,
+          32,
+          34
+        ],
+        [
+          56,
+          32,
+          34
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 29, printed 20. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-economic-sofas-p29-09": {
+    "w": 2.7432,
+    "d": 1.8288,
+    "h": 0.8636,
+    "productWidth": 2.7432,
+    "productDepth": 1.8288,
+    "seatingDepth": 0.8636,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 29,
+      "printedPage": 20,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        72,
+        34
+      ],
+      "seatingDepthInches": 34
+    },
+    "note": "SOFA PDF page 29, printed 20. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-economic-sofas-p29-10": {
+    "w": 2.7432,
+    "d": 2.1844,
+    "h": 0.7874,
+    "productWidth": 2.7432,
+    "productDepth": 2.1844,
+    "seatingDepth": 0.8382,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 29,
+      "printedPage": 20,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        86,
+        31
+      ],
+      "seatingDepthInches": 33
+    },
+    "note": "SOFA PDF page 29, printed 20. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-economic-sofas-p30-11": {
+    "w": 2.9312,
+    "d": 2.4181,
+    "h": 0.9144,
+    "productWidth": 1.9812,
+    "productDepth": 0.8636,
+    "dimensionRows": [
+      [
+        78,
+        34,
+        36
+      ],
+      [
+        60,
+        34,
+        36
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 30,
+      "printedPage": 21,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          78,
+          34,
+          36
+        ],
+        [
+          60,
+          34,
+          36
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 30, printed 21. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-economic-sofas-p30-12": {
+    "w": 2.7432,
+    "d": 2.1336,
+    "h": 0.8636,
+    "productWidth": 2.7432,
+    "productDepth": 2.1336,
+    "seatingDepth": 0.8636,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 30,
+      "printedPage": 21,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        84,
+        34
+      ],
+      "seatingDepthInches": 34
+    },
+    "note": "SOFA PDF page 30, printed 21. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-economic-sofas-p31-13": {
+    "w": 2.7432,
+    "d": 2.1336,
+    "h": 0.8636,
+    "productWidth": 2.7432,
+    "productDepth": 2.1336,
+    "seatingDepth": 0.8636,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 31,
+      "printedPage": 22,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        84,
+        34
+      ],
+      "seatingDepthInches": 34
+    },
+    "note": "SOFA PDF page 31, printed 22. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-economic-sofas-p31-14": {
+    "w": 2.7432,
+    "d": 1.8288,
+    "h": 0.8128,
+    "productWidth": 2.7432,
+    "productDepth": 1.8288,
+    "seatingDepth": 0.8636,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 31,
+      "printedPage": 22,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        72,
+        32
+      ],
+      "seatingDepthInches": 34
+    },
+    "note": "SOFA PDF page 31, printed 22. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-economic-sofas-p31-15": {
+    "w": 2.794,
+    "d": 2.2352,
+    "h": 0.8636,
+    "productWidth": 2.794,
+    "productDepth": 2.2352,
+    "seatingDepth": 0.889,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 31,
+      "printedPage": 22,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        110,
+        88,
+        34
+      ],
+      "seatingDepthInches": 35
+    },
+    "note": "SOFA PDF page 31, printed 22. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-economic-sofas-p32-16": {
+    "w": 2.667,
+    "d": 1.8288,
+    "h": 0.7874,
+    "productWidth": 2.667,
+    "productDepth": 1.8288,
+    "seatingDepth": 0.8636,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 32,
+      "printedPage": 23,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        105,
+        72,
+        31
+      ],
+      "seatingDepthInches": 34
+    },
+    "note": "SOFA PDF page 32, printed 23. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-economic-sofas-p32-17": {
+    "w": 2.7432,
+    "d": 2.1336,
+    "h": 0.762,
+    "productWidth": 2.7432,
+    "productDepth": 2.1336,
+    "seatingDepth": 0.8382,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 32,
+      "printedPage": 23,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        84,
+        30
+      ],
+      "seatingDepthInches": 33
+    },
+    "note": "SOFA PDF page 32, printed 23. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-economic-sofas-p33-18": {
+    "w": 2.8753,
+    "d": 2.2758,
+    "h": 0.8636,
+    "productWidth": 1.9812,
+    "productDepth": 0.8128,
+    "dimensionRows": [
+      [
+        78,
+        32,
+        34
+      ],
+      [
+        56,
+        32,
+        34
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 33,
+      "printedPage": 24,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          78,
+          32,
+          34
+        ],
+        [
+          56,
+          32,
+          34
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 33, printed 24. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-economic-sofas-p33-19": {
+    "w": 2.3622,
+    "d": 2.1336,
+    "h": 0.8128,
+    "productWidth": 1.524,
+    "productDepth": 0.762,
+    "dimensionRows": [
+      [
+        60,
+        30,
+        32
+      ],
+      [
+        48,
+        30,
+        32
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 33,
+      "printedPage": 24,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          60,
+          30,
+          32
+        ],
+        [
+          48,
+          30,
+          32
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 33, printed 24. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-economic-sofas-p33-20": {
+    "w": 2.6416,
+    "d": 2.0828,
+    "h": 0.8636,
+    "productWidth": 2.6416,
+    "productDepth": 2.0828,
+    "seatingDepth": 0.8382,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 33,
+      "printedPage": 24,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        104,
+        82,
+        34
+      ],
+      "seatingDepthInches": 33
+    },
+    "note": "SOFA PDF page 33, printed 24. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-economic-sofas-p34-21": {
+    "w": 2.7432,
+    "d": 2.1336,
+    "h": 0.8636,
+    "productWidth": 2.7432,
+    "productDepth": 2.1336,
+    "seatingDepth": 0.8636,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 34,
+      "printedPage": 25,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        84,
+        34
+      ],
+      "seatingDepthInches": 34
+    },
+    "note": "SOFA PDF page 34, printed 25. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-economic-sofas-p34-22": {
+    "w": 2.7432,
+    "d": 1.8288,
+    "h": 0.8636,
+    "productWidth": 2.7432,
+    "productDepth": 1.8288,
+    "seatingDepth": 0.8636,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 34,
+      "printedPage": 25,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        72,
+        34
+      ],
+      "seatingDepthInches": 34
+    },
+    "note": "SOFA PDF page 34, printed 25. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-economic-sofas-p35-23": {
+    "w": 1.397,
+    "d": 0.5842,
+    "h": 0.5842,
+    "productWidth": 1.397,
+    "productDepth": 0.5842,
+    "dimensionRows": [
+      [
+        55,
+        23,
+        23
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 35,
+      "printedPage": 26,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          55,
+          23,
+          23
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 35, printed 26. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-recliners-p37-01": {
+    "w": 4.1046,
+    "d": 2.7026,
+    "h": 1.016,
+    "productWidth": 1.9812,
+    "productDepth": 0.9652,
+    "dimensionRows": [
+      [
+        78,
+        38,
+        40
+      ],
+      [
+        36,
+        38,
+        40
+      ],
+      [
+        36,
+        38,
+        40
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 37,
+      "printedPage": 28,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          78,
+          38,
+          40
+        ],
+        [
+          36,
+          38,
+          40
+        ],
+        [
+          36,
+          38,
+          40
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 37, printed 28. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-recliners-p37-02": {
+    "w": 4.1808,
+    "d": 2.7026,
+    "h": 0.9906,
+    "productWidth": 2.0574,
+    "productDepth": 0.9652,
+    "dimensionRows": [
+      [
+        81,
+        38,
+        39
+      ],
+      [
+        40,
+        38,
+        39
+      ],
+      [
+        40,
+        38,
+        39
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 37,
+      "printedPage": 28,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          81,
+          38,
+          39
+        ],
+        [
+          40,
+          38,
+          39
+        ],
+        [
+          40,
+          38,
+          39
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 37, printed 28. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-recliners-p37-03": {
+    "w": 1.016,
+    "d": 0.9144,
+    "h": 0.9144,
+    "productWidth": 1.016,
+    "productDepth": 0.9144,
+    "dimensionRows": [
+      [
+        40,
+        36,
+        36
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 37,
+      "printedPage": 28,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          40,
+          36,
+          36
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 37, printed 28. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofa-beds-p39-01": {
+    "w": 2.7432,
+    "d": 1.8288,
+    "h": 0.8636,
+    "productWidth": 2.7432,
+    "productDepth": 1.8288,
+    "seatingDepth": 0.9144,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 39,
+      "printedPage": 30,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        72,
+        34
+      ],
+      "seatingDepthInches": 36
+    },
+    "note": "SOFA PDF page 39, printed 30. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofa-beds-p39-02": {
+    "w": 2.7432,
+    "d": 2.1336,
+    "h": 0.8636,
+    "productWidth": 2.7432,
+    "productDepth": 2.1336,
+    "seatingDepth": 0.9144,
+    "dimensionRows": [],
+    "referenceAudit": {
+      "pdfPage": 39,
+      "printedPage": 30,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "overallInches": [
+        108,
+        84,
+        34
+      ],
+      "seatingDepthInches": 36
+    },
+    "note": "SOFA PDF page 39, printed 30. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofa-beds-p39-03": {
+    "w": 2.032,
+    "d": 0.8636,
+    "h": 0.8636,
+    "productWidth": 2.032,
+    "productDepth": 0.8636,
+    "dimensionRows": [
+      [
+        80,
+        34,
+        34
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 39,
+      "printedPage": 30,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          80,
+          34,
+          34
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 39, printed 30. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofa-beds-p40-04": {
+    "w": 1.8288,
+    "d": 0.8636,
+    "h": 0.8128,
+    "productWidth": 1.8288,
+    "productDepth": 0.8636,
+    "dimensionRows": [
+      [
+        72,
+        34,
+        32
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 40,
+      "printedPage": 31,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          72,
+          34,
+          32
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 40, printed 31. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-sofa-beds-p40-05": {
+    "w": 1.8288,
+    "d": 0.8636,
+    "h": 0.8128,
+    "productWidth": 1.8288,
+    "productDepth": 0.8636,
+    "dimensionRows": [
+      [
+        72,
+        34,
+        32
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 40,
+      "printedPage": 31,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          72,
+          34,
+          32
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 40, printed 31. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations."
+  },
+  "sf-wooden-sofas-p43-01": {
+    "w": 3.4595,
+    "d": 2.2047,
+    "h": 0.762,
+    "productWidth": 1.7272,
+    "productDepth": 0.7874,
+    "dimensionRows": [
+      [
+        68,
+        31,
+        30
+      ],
+      [
+        26,
+        31,
+        30
+      ],
+      [
+        26,
+        31,
+        30
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 43,
+      "printedPage": 34,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          68,
+          31,
+          30
+        ],
+        [
+          26,
+          31,
+          30
+        ],
+        [
+          26,
+          31,
+          30
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 43, printed 34. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-wooden-sofas-p43-02": {
+    "w": 3.4798,
+    "d": 2.1336,
+    "h": 0.9652,
+    "productWidth": 1.8034,
+    "productDepth": 0.762,
+    "dimensionRows": [
+      [
+        71,
+        30,
+        38
+      ],
+      [
+        48,
+        30,
+        38
+      ],
+      [
+        27,
+        30,
+        38
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 43,
+      "printedPage": 34,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          71,
+          30,
+          38
+        ],
+        [
+          48,
+          30,
+          38
+        ],
+        [
+          27,
+          30,
+          38
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 43, printed 34. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-wooden-sofas-p43-03": {
+    "w": 3.429,
+    "d": 2.1336,
+    "h": 0.8128,
+    "productWidth": 1.7526,
+    "productDepth": 0.762,
+    "dimensionRows": [
+      [
+        69,
+        30,
+        32
+      ],
+      [
+        48,
+        30,
+        32
+      ],
+      [
+        27,
+        30,
+        32
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 43,
+      "printedPage": 34,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          69,
+          30,
+          32
+        ],
+        [
+          48,
+          30,
+          32
+        ],
+        [
+          27,
+          30,
+          32
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 43, printed 34. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-wooden-sofas-p44-04": {
+    "w": 3.3731,
+    "d": 2.0625,
+    "h": 0.762,
+    "productWidth": 1.7526,
+    "productDepth": 0.7366,
+    "dimensionRows": [
+      [
+        69,
+        29,
+        30
+      ],
+      [
+        48,
+        29,
+        30
+      ],
+      [
+        24,
+        29,
+        30
+      ],
+      [
+        24,
+        29,
+        30
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 44,
+      "printedPage": 35,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          69,
+          29,
+          30
+        ],
+        [
+          48,
+          29,
+          30
+        ],
+        [
+          24,
+          29,
+          30
+        ],
+        [
+          24,
+          29,
+          30
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 44, printed 35. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-wooden-sofas-p44-05": {
+    "w": 3.3731,
+    "d": 2.0625,
+    "h": 0.762,
+    "productWidth": 1.7526,
+    "productDepth": 0.7366,
+    "dimensionRows": [
+      [
+        69,
+        29,
+        30
+      ],
+      [
+        24,
+        29,
+        30
+      ],
+      [
+        24,
+        29,
+        30
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 44,
+      "printedPage": 35,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          69,
+          29,
+          30
+        ],
+        [
+          24,
+          29,
+          30
+        ],
+        [
+          24,
+          29,
+          30
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 44, printed 35. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  },
+  "sf-wooden-sofas-p44-06": {
+    "w": 3.429,
+    "d": 2.1336,
+    "h": 0.8128,
+    "productWidth": 1.7526,
+    "productDepth": 0.762,
+    "dimensionRows": [
+      [
+        69,
+        30,
+        32
+      ],
+      [
+        27,
+        30,
+        32
+      ],
+      [
+        27,
+        30,
+        32
+      ]
+    ],
+    "referenceAudit": {
+      "pdfPage": 44,
+      "printedPage": 35,
+      "units": "inches",
+      "reviewed": true,
+      "inferred": [
+        "rear and underside construction",
+        "foam thickness and cushion compression",
+        "fabric weave, pattern repeat and small decorative details"
+      ],
+      "componentsInches": [
+        [
+          69,
+          30,
+          32
+        ],
+        [
+          27,
+          30,
+          32
+        ],
+        [
+          27,
+          30,
+          32
+        ]
+      ]
+    },
+    "note": "SOFA PDF page 44, printed 35. Reviewed product-specific construction; hidden details and unresolved textile motifs are approximations. Set footprint includes display spacing; each component keeps its own listed dimensions."
+  }
+}

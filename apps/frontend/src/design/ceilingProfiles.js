@@ -1,4 +1,7 @@
+import { decorateReferenceCeiling } from './referenceCeilings.js';
+import { addCeilingIllumination } from './ceilingIllumination.js';
 import * as THREE from 'three';
+import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import { isProfileCeiling, normalizeCeilingSettings } from './ceilingTypes.js';
 
 const EPS = 1e-8;
@@ -32,6 +35,7 @@ export function getCeilingHeights({ roomHeight = 3, style, selection = {} }) {
   const settings = normalizeCeilingSettings(selection);
   const height = Number.isFinite(roomHeight) && roomHeight > 0 ? roomHeight : 3;
   const dropped = height - settings.ceilingDropM;
+  if (style?.ceilingType === 'reference') return { minHeightM: dropped, maxHeightM: height - 0.02 };
   if (style?.raised) return { minHeightM: dropped - settings.ceilingRiseM, maxHeightM: dropped };
   if (['coffered', 'tray', 'false-drop'].includes(style?.ceilingType)) return { minHeightM: dropped, maxHeightM: height - 0.035 };
   return { minHeightM: dropped, maxHeightM: dropped };
@@ -123,7 +127,16 @@ export function buildCeilingProfile({ room, style, selection = {} }) {
     const polygons = region ? roomTriangles.map(t => clip(t, region)).filter(p => p.length >= 3) : [polygon];
     addSurface(polygons, () => y, thickness, polygons, mat);
   };
-  if (style.raised) {
+  if (style.ceilingType === 'reference') {
+    patch(null, height - .02);
+    const light = new THREE.MeshStandardMaterial({ color: style.lightColor, emissive: style.lightColor,
+      emissiveIntensity: 3.5, roughness: .3, side: THREE.DoubleSide });
+    materials.push(light);
+    decorateReferenceCeiling({ style, patch: (region,y,mat,thickness=.018) => {
+      const underside = Math.max(peak, Math.min(height-.025,y));
+      patch(region,underside,mat,Math.min(thickness,height-underside-.002));
+    }, material, accent, light, minX, minZ, width, depth, peak, drop: settings.ceilingDropM });
+  } else if (style.raised) {
     const base = range.minHeightM;
     const heightAt = (x, z) => {
       const u = Math.max(-1, Math.min(1, (x - minX) / width * 2 - 1));
@@ -239,9 +252,24 @@ export function buildCeilingProfile({ room, style, selection = {} }) {
   } else {
     patch(null, peak);
   }
+  if (style.ceilingType === 'reference') {
+    // Repeated rings and lattice cells share three materials: batch them so
+    // a decorated room does not require hundreds of draw calls per frame.
+    for (const mat of materials) {
+      const pieces = group.children.filter(mesh => mesh.material === mat);
+      if (pieces.length < 2) continue;
+      const geometry = mergeGeometries(pieces.map(mesh => mesh.geometry));
+      const mesh = new THREE.Mesh(geometry, mat);
+      mesh.castShadow = mesh.receiveShadow = true;
+      mesh.userData = { ...group.userData, walkSurfaceTriangles: true };
+      for (const piece of pieces) { group.remove(piece); piece.geometry.dispose(); }
+      group.add(mesh);
+    }
+  }
   for (const mat of materials) if (!group.children.some(mesh => mesh.material === mat)) { mat.map?.dispose(); mat.dispose(); }
   // Actual generated bounds support diagnostics for an irregular clipped room.
   const bounds = new THREE.Box3().setFromObject(group);
   group.userData.actualMinHeightM = bounds.min.y;
+  if (style.ceilingType === 'reference') addCeilingIllumination(group, { peak, color: style.lightColor, roomId: room.id, polygon });
   return group;
 }

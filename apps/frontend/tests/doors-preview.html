@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Door variants — visual check</title>
+<style>
+  body{margin:20px;background:#eeebe5;color:#26343c;font:15px system-ui}
+  main{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px}
+  article{background:#fff;border-radius:12px;overflow:hidden;padding:10px}
+  canvas{width:100%;aspect-ratio:3/4;display:block}button{padding:8px;margin:3px;border:1px solid #aaa;border-radius:5px;cursor:pointer}
+</style>
+<h1>Door designs</h1>
+<p>Reference-inspired doors. Drag to orbit, scroll to zoom, and open / close to check both faces. The frame stays fixed.</p>
+<main></main>
+<script type="module">
+import * as THREE from 'three';
+import {createDesignerDoor,DESIGNER_DOOR_CATALOG} from '../src/generators/designerDoors.js';
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
+import {queueObjectAnimations,advanceObjectAnimations} from '../src/generators/objectAnimations.js';
+const previews=[];
+const params=new URLSearchParams(location.search), page=Math.max(0,Math.min(5,Number(params.get('page'))||0));
+const nav=document.createElement('p');
+for(let i=0;i<6;i++){const link=document.createElement('a');link.href='?page='+i+(params.has('open')?'&open':'');link.textContent='Designs '+(i*6+1)+'–'+(i*6+6);link.style.marginRight='24px';nav.append(link);}
+document.querySelector('main').before(nav);
+for(const item of DESIGNER_DOOR_CATALOG.slice(page*6,page*6+6)){
+ const type=item.id;
+ const card=document.createElement('article'), title=document.createElement('h3');title.textContent=item.label;
+ const canvas=document.createElement('canvas');card.append(title,canvas);document.querySelector('main').append(card);
+ const renderer=new THREE.WebGLRenderer({canvas,antialias:true});renderer.setSize(420,560,false);
+ renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+ renderer.setPixelRatio(1);renderer.setClearColor(0xf5f2ed);renderer.toneMapping=THREE.ACESFilmicToneMapping;
+ const scene=new THREE.Scene();scene.add(new THREE.HemisphereLight(0xffffff,0x716453,1.2));
+ const light=new THREE.DirectionalLight(0xffffff,2.3);light.position.set(-3,5,5);light.castShadow=true;light.shadow.mapSize.set(1024,1024);light.shadow.camera.left=-2;light.shadow.camera.right=2;light.shadow.camera.top=3;light.shadow.camera.bottom=-1;light.shadow.normalBias=.015;scene.add(light);
+ const camera=new THREE.PerspectiveCamera(36,420/560,.01,30);camera.position.set(1.2,1.7,4.7);camera.lookAt(0,1.15,0);
+ const controls=new OrbitControls(camera,canvas);controls.target.set(0,1.15,0);controls.update();
+ const root=createDesignerDoor(type,item.w,item.h);scene.add(root);const queue=[];
+ const floor=new THREE.Mesh(new THREE.PlaneGeometry(20,20),new THREE.MeshStandardMaterial({color:0xddd6cb}));
+ floor.receiveShadow=true;floor.rotation.x=-Math.PI/2;floor.position.y=-.003;scene.add(floor);
+ for(const part of ['door']){
+  let has=false;root.traverse(n=>{if(n.userData._animType===part)has=true;});if(!has)continue;
+  const button=document.createElement('button');button.textContent='Open / close';button.onclick=()=>queueObjectAnimations(root,queue);card.append(button);
+ }
+ if(new URLSearchParams(location.search).has('open')){queueObjectAnimations(root,queue);advanceObjectAnimations(queue,1);}
+ previews.push({renderer,scene,camera,queue});
+}
+function frame(){for(const p of previews){advanceObjectAnimations(p.queue);p.renderer.render(p.scene,p.camera);}requestAnimationFrame(frame);}
+frame();
+document.body.dataset.ready='true';document.body.dataset.page=page;
+</script>
+</html>

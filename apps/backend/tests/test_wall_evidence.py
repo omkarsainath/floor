@@ -16,6 +16,32 @@ def wall(a,b,width=8,**extra):
 
 
 class WallEvidenceTests(unittest.TestCase):
+    def test_large_thin_furniture_outline_cannot_self_validate(self):
+        im=np.full((800,800,3),255,np.uint8)
+        proposals=[]
+        for polygon,width in [([(70,70),(730,70),(730,730),(70,730)],10),
+                              ([(250,250),(410,250),(410,470),(250,470)],1)]:
+            for i,a in enumerate(polygon):
+                b=polygon[(i+1)%4]
+                cv2.line(im,a,b,(0,0,0),width)
+                proposals.append(wall(a,b,width))
+        result=assess_walls(im,proposals)
+        self.assertEqual(len(result['walls']),4)
+        self.assertEqual(len(result['wall_review']),4)
+        self.assertTrue(all('unverified_thin_stroke' in w['review_reasons']
+                            for w in result['wall_review']))
+
+    def test_thin_partition_connected_to_structural_wall_survives(self):
+        im=np.full((800,800,3),255,np.uint8)
+        proposals=[wall((70,70),(730,70),10),wall((70,730),(730,730),10),
+                   wall((400,70),(400,730),1)]
+        for w in proposals:
+            cv2.line(im,tuple(map(int,points(w)[0])),tuple(map(int,points(w)[1])),
+                     (0,0,0),int(w['thickness_px']))
+        result=assess_walls(im,proposals)
+        self.assertTrue(any(abs(w['start']['x']-400)<2 and abs(w['end']['x']-400)<2
+                            for w in result['walls']))
+
     def test_ocr_missed_title_corners_cannot_support_each_other_as_walls(self):
         im=np.full((800,800,3),255,np.uint8)
         building=[(100,200),(700,200),(700,700),(100,700)]

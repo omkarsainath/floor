@@ -1,0 +1,7845 @@
+{
+  "walls": [
+    {
+      "start": {
+        "x": 47.934,
+        "y": 261.868
+      },
+      "end": {
+        "x": 47.934,
+        "y": 346.876
+      },
+      "thickness_px": 18.491,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "outlined",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.992,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "junction_count": 2,
+      "thickness_source": "paired_faces",
+      "id": "W1",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 38.688,
+          "y": 261.868
+        },
+        {
+          "x": 38.688,
+          "y": 346.876
+        },
+        {
+          "x": 57.179,
+          "y": 346.876
+        },
+        {
+          "x": 57.179,
+          "y": 261.868
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 89.81,
+        "y": 346.888
+      },
+      "end": {
+        "x": 89.81,
+        "y": 264.381
+      },
+      "thickness_px": 16.397,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "outlined",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.987,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "junction_count": 2,
+      "thickness_source": "paired_faces",
+      "id": "W2",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 98.008,
+          "y": 346.888
+        },
+        {
+          "x": 98.008,
+          "y": 264.381
+        },
+        {
+          "x": 81.612,
+          "y": 264.381
+        },
+        {
+          "x": 81.612,
+          "y": 346.888
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 63.518,
+        "y": 264.377
+      },
+      "end": {
+        "x": 63.518,
+        "y": 346.882
+      },
+      "thickness_px": 12.676,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "outlined",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.987,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "junction_count": 2,
+      "thickness_source": "paired_faces",
+      "id": "W3",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 57.18,
+          "y": 264.377
+        },
+        {
+          "x": 57.18,
+          "y": 346.882
+        },
+        {
+          "x": 69.856,
+          "y": 346.882
+        },
+        {
+          "x": 69.856,
+          "y": 264.377
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 75.733,
+        "y": 260.09
+      },
+      "end": {
+        "x": 75.733,
+        "y": 346.874
+      },
+      "thickness_px": 11.755,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "outlined",
+      "geometry_evidence": "paired_boundaries",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.996,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "junction_count": 2,
+      "thickness_source": "paired_faces",
+      "id": "W4",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 69.856,
+          "y": 260.09
+        },
+        {
+          "x": 69.856,
+          "y": 346.874
+        },
+        {
+          "x": 81.611,
+          "y": 346.874
+        },
+        {
+          "x": 81.611,
+          "y": 260.09
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 96.87,
+        "y": 361.261
+      },
+      "end": {
+        "x": 133.131,
+        "y": 361.261
+      },
+      "thickness_px": 4.261,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "outlined",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.739,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "junction_count": 1,
+      "thickness_source": "paired_faces",
+      "id": "W5",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 96.87,
+          "y": 363.392
+        },
+        {
+          "x": 133.131,
+          "y": 363.392
+        },
+        {
+          "x": 133.131,
+          "y": 359.131
+        },
+        {
+          "x": 96.87,
+          "y": 359.131
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 596.862,
+        "y": 309.509
+      },
+      "end": {
+        "x": 616.868,
+        "y": 309.509
+      },
+      "thickness_px": 6.541,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "outlined",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.831,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "junction_count": 2,
+      "thickness_source": "paired_faces",
+      "id": "W6",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 596.862,
+          "y": 312.78
+        },
+        {
+          "x": 616.868,
+          "y": 312.78
+        },
+        {
+          "x": 616.868,
+          "y": 306.238
+        },
+        {
+          "x": 596.862,
+          "y": 306.238
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 598.124,
+        "y": 364.507
+      },
+      "end": {
+        "x": 616.878,
+        "y": 364.507
+      },
+      "thickness_px": 6.917,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "outlined",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.836,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "junction_count": 2,
+      "thickness_source": "paired_faces",
+      "id": "W7",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 598.124,
+          "y": 367.966
+        },
+        {
+          "x": 616.878,
+          "y": 367.966
+        },
+        {
+          "x": 616.878,
+          "y": 361.048
+        },
+        {
+          "x": 598.124,
+          "y": 361.048
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 599.382,
+        "y": 316.468
+      },
+      "end": {
+        "x": 614.373,
+        "y": 316.468
+      },
+      "thickness_px": 2.573,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "outlined",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.742,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "junction_count": 2,
+      "thickness_source": "paired_faces",
+      "id": "W8",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 599.382,
+          "y": 317.755
+        },
+        {
+          "x": 614.373,
+          "y": 317.755
+        },
+        {
+          "x": 614.373,
+          "y": 315.182
+        },
+        {
+          "x": 599.382,
+          "y": 315.182
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 599.381,
+        "y": 357.526
+      },
+      "end": {
+        "x": 614.364,
+        "y": 357.526
+      },
+      "thickness_px": 2.578,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "outlined",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.742,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "junction_count": 2,
+      "thickness_source": "paired_faces",
+      "id": "W9",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 599.381,
+          "y": 358.815
+        },
+        {
+          "x": 614.364,
+          "y": 358.815
+        },
+        {
+          "x": 614.364,
+          "y": 356.237
+        },
+        {
+          "x": 599.381,
+          "y": 356.237
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 159.0,
+        "y": 113.0
+      },
+      "end": {
+        "x": 159.0,
+        "y": 273.001
+      },
+      "detector": "yolo",
+      "confidence": 0.4837389588356018,
+      "thickness_px": 8.0,
+      "pixel_support": 0.672,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 1.0,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.815,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.656,
+      "junction_count": 2,
+      "thickness_source": "normal_profile",
+      "opening_split": true,
+      "id": "W10",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 155.0,
+          "y": 113.0
+        },
+        {
+          "x": 155.0,
+          "y": 273.001
+        },
+        {
+          "x": 163.0,
+          "y": 273.001
+        },
+        {
+          "x": 163.0,
+          "y": 113.0
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 159.0,
+        "y": 324.053
+      },
+      "end": {
+        "x": 159.0,
+        "y": 401.974
+      },
+      "detector": "yolo",
+      "confidence": 0.4837389588356018,
+      "thickness_px": 8.0,
+      "pixel_support": 0.672,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 1.0,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.815,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.656,
+      "junction_count": 2,
+      "thickness_source": "normal_profile",
+      "opening_split": true,
+      "id": "W11",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 155.0,
+          "y": 324.053
+        },
+        {
+          "x": 155.0,
+          "y": 401.974
+        },
+        {
+          "x": 163.0,
+          "y": 401.974
+        },
+        {
+          "x": 163.0,
+          "y": 324.053
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 159.0,
+        "y": 470.268
+      },
+      "end": {
+        "x": 159.0,
+        "y": 514.0
+      },
+      "detector": "yolo",
+      "confidence": 0.4837389588356018,
+      "thickness_px": 8.0,
+      "pixel_support": 0.672,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 1.0,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.815,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.656,
+      "junction_count": 2,
+      "thickness_source": "normal_profile",
+      "opening_split": true,
+      "id": "W12",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 155.0,
+          "y": 470.268
+        },
+        {
+          "x": 155.0,
+          "y": 514.0
+        },
+        {
+          "x": 163.0,
+          "y": 514.0
+        },
+        {
+          "x": 163.0,
+          "y": 470.268
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 627.0,
+        "y": 113.0
+      },
+      "end": {
+        "x": 627.0,
+        "y": 322.737
+      },
+      "detector": "cv",
+      "thickness_px": 8.0,
+      "pixel_support": 0.918,
+      "confidence": 0.639568030834198,
+      "wall_type": "exterior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 0.857,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.909,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.934,
+      "junction_count": 2,
+      "thickness_source": "normal_profile",
+      "opening_split": true,
+      "id": "W13",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 623.0,
+          "y": 113.0
+        },
+        {
+          "x": 623.0,
+          "y": 322.737
+        },
+        {
+          "x": 631.0,
+          "y": 322.737
+        },
+        {
+          "x": 631.0,
+          "y": 113.0
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 627.0,
+        "y": 353.871
+      },
+      "end": {
+        "x": 627.0,
+        "y": 508.0
+      },
+      "detector": "cv",
+      "thickness_px": 8.0,
+      "pixel_support": 0.918,
+      "confidence": 0.639568030834198,
+      "wall_type": "exterior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 0.857,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.909,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.934,
+      "junction_count": 2,
+      "thickness_source": "normal_profile",
+      "opening_split": true,
+      "id": "W14",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 623.0,
+          "y": 353.871
+        },
+        {
+          "x": 623.0,
+          "y": 508.0
+        },
+        {
+          "x": 631.0,
+          "y": 508.0
+        },
+        {
+          "x": 631.0,
+          "y": 353.871
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 159.0,
+        "y": 503.0
+      },
+      "end": {
+        "x": 289.552,
+        "y": 503.0
+      },
+      "detector": "cv",
+      "thickness_px": 8.0,
+      "pixel_support": 0.738,
+      "confidence": 0.43778562545776367,
+      "wall_type": "exterior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 0.714,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.76,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.934,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "opening_split": true,
+      "id": "W15",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 159.0,
+          "y": 507.0
+        },
+        {
+          "x": 289.552,
+          "y": 507.0
+        },
+        {
+          "x": 289.552,
+          "y": 499.0
+        },
+        {
+          "x": 159.0,
+          "y": 499.0
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 347.317,
+        "y": 503.0
+      },
+      "end": {
+        "x": 408.035,
+        "y": 503.0
+      },
+      "detector": "cv",
+      "thickness_px": 8.0,
+      "pixel_support": 0.738,
+      "confidence": 0.43778562545776367,
+      "wall_type": "exterior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 0.714,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.76,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.934,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "opening_split": true,
+      "id": "W16",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 347.317,
+          "y": 507.0
+        },
+        {
+          "x": 408.035,
+          "y": 507.0
+        },
+        {
+          "x": 408.035,
+          "y": 499.0
+        },
+        {
+          "x": 347.317,
+          "y": 499.0
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 455.775,
+        "y": 503.0
+      },
+      "end": {
+        "x": 550.474,
+        "y": 503.0
+      },
+      "detector": "cv",
+      "thickness_px": 8.0,
+      "pixel_support": 0.738,
+      "confidence": 0.43778562545776367,
+      "wall_type": "exterior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 0.714,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.76,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.934,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "opening_split": true,
+      "id": "W17",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 455.775,
+          "y": 507.0
+        },
+        {
+          "x": 550.474,
+          "y": 507.0
+        },
+        {
+          "x": 550.474,
+          "y": 499.0
+        },
+        {
+          "x": 455.775,
+          "y": 499.0
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 96.0,
+        "y": 255.0
+      },
+      "end": {
+        "x": 240.856,
+        "y": 255.0
+      },
+      "detector": "cv",
+      "thickness_px": 8.0,
+      "pixel_support": 0.918,
+      "confidence": 0.5869568586349487,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 1.0,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.909,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.705,
+      "junction_count": 2,
+      "thickness_source": "normal_profile",
+      "opening_split": true,
+      "id": "W18",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 96.0,
+          "y": 259.0
+        },
+        {
+          "x": 240.856,
+          "y": 259.0
+        },
+        {
+          "x": 240.856,
+          "y": 251.0
+        },
+        {
+          "x": 96.0,
+          "y": 251.0
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 266.147,
+        "y": 255.0
+      },
+      "end": {
+        "x": 371.435,
+        "y": 255.0
+      },
+      "detector": "cv",
+      "thickness_px": 8.0,
+      "pixel_support": 0.918,
+      "confidence": 0.5869568586349487,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 1.0,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.909,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.705,
+      "junction_count": 2,
+      "thickness_source": "normal_profile",
+      "opening_split": true,
+      "id": "W19",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 266.147,
+          "y": 259.0
+        },
+        {
+          "x": 371.435,
+          "y": 259.0
+        },
+        {
+          "x": 371.435,
+          "y": 251.0
+        },
+        {
+          "x": 266.147,
+          "y": 251.0
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 381.741,
+        "y": 373.0
+      },
+      "end": {
+        "x": 475.997,
+        "y": 373.0
+      },
+      "detector": "yolo",
+      "confidence": 0.3801267445087433,
+      "thickness_px": 8.0,
+      "pixel_support": 1.0,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 0.909,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.86,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.738,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "opening_split": true,
+      "id": "W20",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 381.741,
+          "y": 377.0
+        },
+        {
+          "x": 475.997,
+          "y": 377.0
+        },
+        {
+          "x": 475.997,
+          "y": 369.0
+        },
+        {
+          "x": 381.741,
+          "y": 369.0
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 501.034,
+        "y": 373.0
+      },
+      "end": {
+        "x": 586.308,
+        "y": 373.0
+      },
+      "detector": "yolo",
+      "confidence": 0.3801267445087433,
+      "thickness_px": 8.0,
+      "pixel_support": 1.0,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 0.909,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.86,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.738,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "opening_split": true,
+      "id": "W21",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 501.034,
+          "y": 377.0
+        },
+        {
+          "x": 586.308,
+          "y": 377.0
+        },
+        {
+          "x": 586.308,
+          "y": 369.0
+        },
+        {
+          "x": 501.034,
+          "y": 369.0
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 611.157,
+        "y": 373.0
+      },
+      "end": {
+        "x": 627.0,
+        "y": 373.0
+      },
+      "detector": "yolo",
+      "confidence": 0.3801267445087433,
+      "thickness_px": 8.0,
+      "pixel_support": 1.0,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 0.909,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.86,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.738,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "opening_split": true,
+      "id": "W22",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 611.157,
+          "y": 377.0
+        },
+        {
+          "x": 627.0,
+          "y": 377.0
+        },
+        {
+          "x": 627.0,
+          "y": 369.0
+        },
+        {
+          "x": 611.157,
+          "y": 369.0
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 159.0,
+        "y": 113.0
+      },
+      "end": {
+        "x": 229.648,
+        "y": 113.0
+      },
+      "detector": "cv",
+      "thickness_px": 8.0,
+      "pixel_support": 0.803,
+      "confidence": 0.30928561091423035,
+      "wall_type": "exterior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 0.917,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.785,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.951,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "opening_split": true,
+      "id": "W23",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 159.0,
+          "y": 117.0
+        },
+        {
+          "x": 229.648,
+          "y": 117.0
+        },
+        {
+          "x": 229.648,
+          "y": 109.0
+        },
+        {
+          "x": 159.0,
+          "y": 109.0
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 281.236,
+        "y": 113.0
+      },
+      "end": {
+        "x": 425.82,
+        "y": 113.0
+      },
+      "detector": "cv",
+      "thickness_px": 8.0,
+      "pixel_support": 0.803,
+      "confidence": 0.30928561091423035,
+      "wall_type": "exterior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 0.917,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.785,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.951,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "opening_split": true,
+      "id": "W24",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 281.236,
+          "y": 117.0
+        },
+        {
+          "x": 425.82,
+          "y": 117.0
+        },
+        {
+          "x": 425.82,
+          "y": 109.0
+        },
+        {
+          "x": 281.236,
+          "y": 109.0
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 345.0,
+        "y": 113.0
+      },
+      "end": {
+        "x": 345.0,
+        "y": 306.0
+      },
+      "detector": "yolo",
+      "confidence": 0.5030713081359863,
+      "thickness_px": 8.0,
+      "pixel_support": 0.984,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 1.0,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.854,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.984,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "id": "W25",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 341.0,
+          "y": 113.0
+        },
+        {
+          "x": 341.0,
+          "y": 306.0
+        },
+        {
+          "x": 349.0,
+          "y": 306.0
+        },
+        {
+          "x": 349.0,
+          "y": 113.0
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 278.0,
+        "y": 367.967
+      },
+      "end": {
+        "x": 278.0,
+        "y": 504.0
+      },
+      "detector": "cv",
+      "thickness_px": 9.0,
+      "pixel_support": 0.984,
+      "confidence": 0.5888068675994873,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 1.0,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.934,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.918,
+      "junction_count": 2,
+      "thickness_source": "normal_profile",
+      "id": "W26",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 273.5,
+          "y": 367.967
+        },
+        {
+          "x": 273.5,
+          "y": 504.0
+        },
+        {
+          "x": 282.5,
+          "y": 504.0
+        },
+        {
+          "x": 282.5,
+          "y": 367.967
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 399.0,
+        "y": 368.466
+      },
+      "end": {
+        "x": 399.0,
+        "y": 504.0
+      },
+      "detector": "cv",
+      "thickness_px": 8.0,
+      "pixel_support": 0.984,
+      "confidence": 0.6827757954597473,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 1.0,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.934,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.918,
+      "junction_count": 2,
+      "thickness_source": "normal_profile",
+      "id": "W27",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 395.0,
+          "y": 368.466
+        },
+        {
+          "x": 395.0,
+          "y": 504.0
+        },
+        {
+          "x": 403.0,
+          "y": 504.0
+        },
+        {
+          "x": 403.0,
+          "y": 368.466
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 519.0,
+        "y": 368.466
+      },
+      "end": {
+        "x": 519.0,
+        "y": 504.0
+      },
+      "detector": "yolo",
+      "confidence": 0.6187265515327454,
+      "thickness_px": 8.0,
+      "pixel_support": 0.984,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 1.0,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.934,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.918,
+      "junction_count": 2,
+      "thickness_source": "normal_profile",
+      "id": "W28",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 515.0,
+          "y": 368.466
+        },
+        {
+          "x": 515.0,
+          "y": 504.0
+        },
+        {
+          "x": 523.0,
+          "y": 504.0
+        },
+        {
+          "x": 523.0,
+          "y": 368.466
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 530.283,
+        "y": 113.0
+      },
+      "end": {
+        "x": 627.0,
+        "y": 113.0
+      },
+      "detector": "cv",
+      "thickness_px": 8.0,
+      "pixel_support": 0.984,
+      "wall_type": "exterior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 1.0,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.854,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.967,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "opening_split": true,
+      "id": "W29",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 530.283,
+          "y": 117.0
+        },
+        {
+          "x": 627.0,
+          "y": 117.0
+        },
+        {
+          "x": 627.0,
+          "y": 109.0
+        },
+        {
+          "x": 530.283,
+          "y": 109.0
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 533.0,
+        "y": 301.0
+      },
+      "end": {
+        "x": 554.739,
+        "y": 301.0
+      },
+      "detector": "yolo",
+      "confidence": 0.5702164173126221,
+      "thickness_px": 8.0,
+      "pixel_support": 0.754,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 0.733,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.847,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.721,
+      "junction_count": 2,
+      "thickness_source": "normal_profile",
+      "opening_split": true,
+      "id": "W30",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 533.0,
+          "y": 305.0
+        },
+        {
+          "x": 554.739,
+          "y": 305.0
+        },
+        {
+          "x": 554.739,
+          "y": 297.0
+        },
+        {
+          "x": 533.0,
+          "y": 297.0
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 579.855,
+        "y": 301.0
+      },
+      "end": {
+        "x": 627.0,
+        "y": 301.0
+      },
+      "detector": "yolo",
+      "confidence": 0.5702164173126221,
+      "thickness_px": 8.0,
+      "pixel_support": 0.754,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 0.733,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.847,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.721,
+      "junction_count": 2,
+      "thickness_source": "normal_profile",
+      "opening_split": true,
+      "id": "W31",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 579.855,
+          "y": 305.0
+        },
+        {
+          "x": 627.0,
+          "y": 305.0
+        },
+        {
+          "x": 627.0,
+          "y": 297.0
+        },
+        {
+          "x": 579.855,
+          "y": 297.0
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 533.0,
+        "y": 225.0
+      },
+      "end": {
+        "x": 627.0,
+        "y": 225.0
+      },
+      "detector": "cv",
+      "thickness_px": 9.0,
+      "pixel_support": 1.0,
+      "confidence": 0.6524839997291565,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 0.933,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.94,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.918,
+      "junction_count": 2,
+      "thickness_source": "normal_profile",
+      "id": "W32",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 533.0,
+          "y": 229.5
+        },
+        {
+          "x": 627.0,
+          "y": 229.5
+        },
+        {
+          "x": 627.0,
+          "y": 220.5
+        },
+        {
+          "x": 533.0,
+          "y": 220.5
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 533.0,
+        "y": 225.0
+      },
+      "end": {
+        "x": 533.0,
+        "y": 306.413
+      },
+      "detector": "cv",
+      "thickness_px": 8.0,
+      "pixel_support": 0.984,
+      "confidence": 0.7199652791023254,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 1.0,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.919,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.902,
+      "junction_count": 2,
+      "thickness_source": "normal_profile",
+      "id": "W33",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 529.0,
+          "y": 225.0
+        },
+        {
+          "x": 529.0,
+          "y": 306.413
+        },
+        {
+          "x": 537.0,
+          "y": 306.413
+        },
+        {
+          "x": 537.0,
+          "y": 225.0
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 278.0,
+        "y": 372.904
+      },
+      "end": {
+        "x": 354.375,
+        "y": 372.904
+      },
+      "thickness_px": 8.0,
+      "detector": "boundary-pair",
+      "boundary_support": 0.967,
+      "band_style": "solid",
+      "geometry_evidence": "solid_profile",
+      "thickness_consistency": 1.0,
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.835,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "id": "W34",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 278.0,
+          "y": 376.904
+        },
+        {
+          "x": 354.375,
+          "y": 376.904
+        },
+        {
+          "x": 354.375,
+          "y": 368.904
+        },
+        {
+          "x": 278.0,
+          "y": 368.904
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 111.862,
+        "y": 354.736
+      },
+      "end": {
+        "x": 151.859,
+        "y": 354.736
+      },
+      "thickness_px": 9.0,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "solid",
+      "geometry_evidence": "solid_profile",
+      "thickness_consistency": 0.917,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.761,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "id": "W35",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 111.862,
+          "y": 359.236
+        },
+        {
+          "x": 151.859,
+          "y": 359.236
+        },
+        {
+          "x": 151.859,
+          "y": 350.236
+        },
+        {
+          "x": 111.862,
+          "y": 350.236
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 225.0,
+        "y": 350.0
+      },
+      "end": {
+        "x": 225.0,
+        "y": 382.0
+      },
+      "detector": "cv",
+      "thickness_px": 8.0,
+      "pixel_support": 0.803,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 1.0,
+      "geometry_evidence": "solid_profile",
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.67,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.705,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "id": "W36",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 221.0,
+          "y": 350.0
+        },
+        {
+          "x": 221.0,
+          "y": 382.0
+        },
+        {
+          "x": 229.0,
+          "y": 382.0
+        },
+        {
+          "x": 229.0,
+          "y": 350.0
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 345.0,
+        "y": 271.0
+      },
+      "end": {
+        "x": 371.435,
+        "y": 271.0
+      },
+      "detector": "cv",
+      "thickness_px": 8.0,
+      "pixel_support": 1.0,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 1.0,
+      "geometry_evidence": "solid_profile",
+      "junction_repaired": true,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.814,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.869,
+      "junction_count": 2,
+      "thickness_source": "normal_profile",
+      "id": "W37",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 345.0,
+          "y": 275.0
+        },
+        {
+          "x": 371.435,
+          "y": 275.0
+        },
+        {
+          "x": 371.435,
+          "y": 267.0
+        },
+        {
+          "x": 345.0,
+          "y": 267.0
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 189.367,
+        "y": 372.148
+      },
+      "end": {
+        "x": 219.359,
+        "y": 372.148
+      },
+      "thickness_px": 8.0,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "solid",
+      "geometry_evidence": "solid_profile",
+      "thickness_consistency": 0.923,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.741,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "id": "W38",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 189.367,
+          "y": 376.148
+        },
+        {
+          "x": 219.359,
+          "y": 376.148
+        },
+        {
+          "x": 219.359,
+          "y": 368.148
+        },
+        {
+          "x": 189.367,
+          "y": 368.148
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 599.814,
+        "y": 502.866
+      },
+      "end": {
+        "x": 621.892,
+        "y": 502.866
+      },
+      "thickness_px": 8.0,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "solid",
+      "geometry_evidence": "solid_profile",
+      "thickness_consistency": 1.0,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.726,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "opening_split": true,
+      "id": "W39",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 599.814,
+          "y": 506.866
+        },
+        {
+          "x": 621.892,
+          "y": 506.866
+        },
+        {
+          "x": 621.892,
+          "y": 498.866
+        },
+        {
+          "x": 599.814,
+          "y": 498.866
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 163.128,
+        "y": 372.149
+      },
+      "end": {
+        "x": 184.396,
+        "y": 372.149
+      },
+      "thickness_px": 8.0,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "solid",
+      "geometry_evidence": "solid_profile",
+      "thickness_consistency": 1.0,
+      "review_status": "accepted",
+      "review_reasons": [],
+      "evidence_score": 0.723,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "id": "W40",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 163.128,
+          "y": 376.149
+        },
+        {
+          "x": 184.396,
+          "y": 376.149
+        },
+        {
+          "x": 184.396,
+          "y": 368.149
+        },
+        {
+          "x": 163.128,
+          "y": 368.149
+        }
+      ]
+    }
+  ],
+  "wall_review": [
+    {
+      "start": {
+        "x": 511.027,
+        "y": 419.374
+      },
+      "end": {
+        "x": 511.027,
+        "y": 464.375
+      },
+      "thickness_px": 5.407,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "outlined",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "furniture_overlap",
+        "isolated_segment"
+      ],
+      "evidence_score": 0.259,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "junction_count": 0,
+      "thickness_source": "paired_faces",
+      "id": "R1",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 508.323,
+          "y": 419.374
+        },
+        {
+          "x": 508.323,
+          "y": 464.375
+        },
+        {
+          "x": 513.731,
+          "y": 464.375
+        },
+        {
+          "x": 513.731,
+          "y": 419.374
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 620.06,
+        "y": 419.373
+      },
+      "end": {
+        "x": 620.06,
+        "y": 463.126
+      },
+      "thickness_px": 5.73,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "outlined",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment"
+      ],
+      "evidence_score": 0.583,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "junction_count": 0,
+      "thickness_source": "paired_faces",
+      "id": "R2",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 617.195,
+          "y": 419.373
+        },
+        {
+          "x": 617.195,
+          "y": 463.126
+        },
+        {
+          "x": 622.925,
+          "y": 463.126
+        },
+        {
+          "x": 622.925,
+          "y": 419.373
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 390.635,
+        "y": 463.126
+      },
+      "end": {
+        "x": 390.635,
+        "y": 419.375
+      },
+      "thickness_px": 6.737,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "outlined",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "furniture_overlap",
+        "isolated_segment"
+      ],
+      "evidence_score": 0.283,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "junction_count": 0,
+      "thickness_source": "paired_faces",
+      "id": "R3",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 394.003,
+          "y": 463.126
+        },
+        {
+          "x": 394.003,
+          "y": 419.375
+        },
+        {
+          "x": 387.267,
+          "y": 419.375
+        },
+        {
+          "x": 387.267,
+          "y": 463.126
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 270.632,
+        "y": 419.374
+      },
+      "end": {
+        "x": 270.632,
+        "y": 463.124
+      },
+      "thickness_px": 6.031,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "outlined",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "furniture_overlap",
+        "isolated_segment"
+      ],
+      "evidence_score": 0.269,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "junction_count": 0,
+      "thickness_source": "paired_faces",
+      "id": "R4",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 267.617,
+          "y": 419.374
+        },
+        {
+          "x": 267.617,
+          "y": 463.124
+        },
+        {
+          "x": 273.647,
+          "y": 463.124
+        },
+        {
+          "x": 273.647,
+          "y": 419.374
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 194.635,
+        "y": 234.375
+      },
+      "end": {
+        "x": 194.635,
+        "y": 193.125
+      },
+      "thickness_px": 3.44,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "outlined",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "furniture_overlap",
+        "isolated_segment"
+      ],
+      "evidence_score": 0.212,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "junction_count": 0,
+      "thickness_source": "paired_faces",
+      "id": "R5",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 196.355,
+          "y": 234.375
+        },
+        {
+          "x": 196.355,
+          "y": 193.125
+        },
+        {
+          "x": 192.915,
+          "y": 193.125
+        },
+        {
+          "x": 192.915,
+          "y": 234.375
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 337.283,
+        "y": 185.626
+      },
+      "end": {
+        "x": 337.283,
+        "y": 223.126
+      },
+      "thickness_px": 7.56,
+      "detector": "boundary-pair",
+      "boundary_support": 0.902,
+      "band_style": "outlined",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment"
+      ],
+      "evidence_score": 0.57,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "junction_count": 0,
+      "thickness_source": "paired_faces",
+      "id": "R6",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 333.503,
+          "y": 185.626
+        },
+        {
+          "x": 333.503,
+          "y": 223.126
+        },
+        {
+          "x": 341.063,
+          "y": 223.126
+        },
+        {
+          "x": 341.063,
+          "y": 185.626
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 164.296,
+        "y": 231.874
+      },
+      "end": {
+        "x": 164.296,
+        "y": 195.623
+      },
+      "thickness_px": 3.665,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "hatched-or-grey",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "furniture_overlap",
+        "isolated_segment"
+      ],
+      "evidence_score": 0.207,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "junction_count": 0,
+      "thickness_source": "paired_faces",
+      "id": "R7",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 166.129,
+          "y": 231.874
+        },
+        {
+          "x": 166.129,
+          "y": 195.623
+        },
+        {
+          "x": 162.463,
+          "y": 195.623
+        },
+        {
+          "x": 162.463,
+          "y": 231.874
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 331.84,
+        "y": 189.373
+      },
+      "end": {
+        "x": 331.84,
+        "y": 223.122
+      },
+      "thickness_px": 3.331,
+      "detector": "boundary-pair",
+      "boundary_support": 0.885,
+      "band_style": "outlined",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment"
+      ],
+      "evidence_score": 0.471,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.443,
+      "junction_count": 0,
+      "thickness_source": "paired_faces",
+      "id": "R8",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 330.174,
+          "y": 189.373
+        },
+        {
+          "x": 330.174,
+          "y": 223.122
+        },
+        {
+          "x": 333.505,
+          "y": 223.122
+        },
+        {
+          "x": 333.505,
+          "y": 189.373
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 589.405,
+        "y": 231.221
+      },
+      "end": {
+        "x": 615.673,
+        "y": 231.221
+      },
+      "thickness_px": 3.275,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "outlined",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment"
+      ],
+      "evidence_score": 0.499,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "junction_count": 0,
+      "thickness_source": "paired_faces",
+      "id": "R9",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 589.405,
+          "y": 232.858
+        },
+        {
+          "x": 615.673,
+          "y": 232.858
+        },
+        {
+          "x": 615.673,
+          "y": 229.584
+        },
+        {
+          "x": 589.405,
+          "y": 229.584
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 621.079,
+        "y": 349.366
+      },
+      "end": {
+        "x": 621.079,
+        "y": 325.615
+      },
+      "thickness_px": 5.518,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "outlined",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment"
+      ],
+      "evidence_score": 0.539,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "junction_count": 0,
+      "thickness_source": "paired_faces",
+      "id": "R10",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 623.838,
+          "y": 349.366
+        },
+        {
+          "x": 623.838,
+          "y": 325.615
+        },
+        {
+          "x": 618.32,
+          "y": 325.615
+        },
+        {
+          "x": 618.32,
+          "y": 349.366
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 96.872,
+        "y": 365.472
+      },
+      "end": {
+        "x": 116.874,
+        "y": 365.472
+      },
+      "thickness_px": 4.153,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "outlined",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment"
+      ],
+      "evidence_score": 0.504,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "junction_count": 0,
+      "thickness_source": "paired_faces",
+      "id": "R11",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 96.872,
+          "y": 367.548
+        },
+        {
+          "x": 116.874,
+          "y": 367.548
+        },
+        {
+          "x": 116.874,
+          "y": 363.395
+        },
+        {
+          "x": 96.872,
+          "y": 363.395
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 500.977,
+        "y": 395.656
+      },
+      "end": {
+        "x": 500.977,
+        "y": 378.101
+      },
+      "thickness_px": 2.637,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "hatched-or-grey",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "door_swing_region"
+      ],
+      "evidence_score": 0.368,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "junction_count": 1,
+      "thickness_source": "paired_faces",
+      "id": "R12",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 502.295,
+          "y": 395.656
+        },
+        {
+          "x": 502.295,
+          "y": 378.101
+        },
+        {
+          "x": 499.659,
+          "y": 378.101
+        },
+        {
+          "x": 499.659,
+          "y": 395.656
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 587.251,
+        "y": 183.967
+      },
+      "end": {
+        "x": 596.513,
+        "y": 193.59
+      },
+      "thickness_px": 2.671,
+      "detector": "boundary-pair",
+      "boundary_support": 1.0,
+      "band_style": "hatched-or-grey",
+      "geometry_evidence": "paired_boundaries",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment"
+      ],
+      "evidence_score": 0.46,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.951,
+      "junction_count": 0,
+      "thickness_source": "paired_faces",
+      "id": "R13",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 586.289,
+          "y": 184.893
+        },
+        {
+          "x": 595.551,
+          "y": 194.516
+        },
+        {
+          "x": 597.475,
+          "y": 192.664
+        },
+        {
+          "x": 588.213,
+          "y": 183.041
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 161.875,
+        "y": 560.274
+      },
+      "end": {
+        "x": 623.125,
+        "y": 560.274
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R14",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 161.875,
+          "y": 560.774
+        },
+        {
+          "x": 623.125,
+          "y": 560.774
+        },
+        {
+          "x": 623.125,
+          "y": 559.774
+        },
+        {
+          "x": 161.875,
+          "y": 559.774
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 161.875,
+        "y": 562.024
+      },
+      "end": {
+        "x": 621.875,
+        "y": 562.024
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.44,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R15",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 161.875,
+          "y": 562.524
+        },
+        {
+          "x": 621.875,
+          "y": 562.524
+        },
+        {
+          "x": 621.875,
+          "y": 561.524
+        },
+        {
+          "x": 161.875,
+          "y": 561.524
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 163.125,
+        "y": 59.535
+      },
+      "end": {
+        "x": 620.625,
+        "y": 59.535
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.44,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R16",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 163.125,
+          "y": 60.035
+        },
+        {
+          "x": 620.625,
+          "y": 60.035
+        },
+        {
+          "x": 620.625,
+          "y": 59.035
+        },
+        {
+          "x": 163.125,
+          "y": 59.035
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 247.0,
+        "y": 504.0
+      },
+      "end": {
+        "x": 289.552,
+        "y": 504.0
+      },
+      "detector": "yolo",
+      "confidence": 0.5486888289451599,
+      "pixel_support": 0.59,
+      "wall_type": "exterior",
+      "wall_type_inferred": true,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.034,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.41,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "opening_split": true,
+      "id": "R17",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 247.0,
+          "y": 504.5
+        },
+        {
+          "x": 289.552,
+          "y": 504.5
+        },
+        {
+          "x": 289.552,
+          "y": 503.5
+        },
+        {
+          "x": 247.0,
+          "y": 503.5
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 347.317,
+        "y": 504.0
+      },
+      "end": {
+        "x": 408.035,
+        "y": 504.0
+      },
+      "detector": "yolo",
+      "confidence": 0.5486888289451599,
+      "pixel_support": 0.59,
+      "wall_type": "exterior",
+      "wall_type_inferred": true,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.034,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.41,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "opening_split": true,
+      "id": "R18",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 347.317,
+          "y": 504.5
+        },
+        {
+          "x": 408.035,
+          "y": 504.5
+        },
+        {
+          "x": 408.035,
+          "y": 503.5
+        },
+        {
+          "x": 347.317,
+          "y": 503.5
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 455.775,
+        "y": 504.0
+      },
+      "end": {
+        "x": 550.474,
+        "y": 504.0
+      },
+      "detector": "yolo",
+      "confidence": 0.5486888289451599,
+      "pixel_support": 0.59,
+      "wall_type": "exterior",
+      "wall_type_inferred": true,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.034,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.41,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "opening_split": true,
+      "id": "R19",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 455.775,
+          "y": 504.5
+        },
+        {
+          "x": 550.474,
+          "y": 504.5
+        },
+        {
+          "x": 550.474,
+          "y": 503.5
+        },
+        {
+          "x": 455.775,
+          "y": 503.5
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 599.814,
+        "y": 504.0
+      },
+      "end": {
+        "x": 636.0,
+        "y": 504.0
+      },
+      "detector": "yolo",
+      "confidence": 0.5486888289451599,
+      "pixel_support": 0.59,
+      "wall_type": "exterior",
+      "wall_type_inferred": true,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.034,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.41,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "opening_split": true,
+      "id": "R20",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 599.814,
+          "y": 504.5
+        },
+        {
+          "x": 636.0,
+          "y": 504.5
+        },
+        {
+          "x": 636.0,
+          "y": 503.5
+        },
+        {
+          "x": 599.814,
+          "y": 503.5
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 680.821,
+        "y": 118.125
+      },
+      "end": {
+        "x": 680.821,
+        "y": 495.625
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.44,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R21",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 680.321,
+          "y": 118.125
+        },
+        {
+          "x": 680.321,
+          "y": 495.625
+        },
+        {
+          "x": 681.321,
+          "y": 495.625
+        },
+        {
+          "x": 681.321,
+          "y": 118.125
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 454.375,
+        "y": 84.323
+      },
+      "end": {
+        "x": 620.625,
+        "y": 84.323
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R22",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 454.375,
+          "y": 84.823
+        },
+        {
+          "x": 620.625,
+          "y": 84.823
+        },
+        {
+          "x": 620.625,
+          "y": 83.823
+        },
+        {
+          "x": 454.375,
+          "y": 83.823
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 454.375,
+        "y": 86.192
+      },
+      "end": {
+        "x": 620.625,
+        "y": 86.192
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.44,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R23",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 454.375,
+          "y": 86.692
+        },
+        {
+          "x": 620.625,
+          "y": 86.692
+        },
+        {
+          "x": 620.625,
+          "y": 85.692
+        },
+        {
+          "x": 454.375,
+          "y": 85.692
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 464.375,
+        "y": 529.485
+      },
+      "end": {
+        "x": 621.875,
+        "y": 529.485
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R24",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 464.375,
+          "y": 529.985
+        },
+        {
+          "x": 621.875,
+          "y": 529.985
+        },
+        {
+          "x": 621.875,
+          "y": 528.985
+        },
+        {
+          "x": 464.375,
+          "y": 528.985
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 464.375,
+        "y": 531.22
+      },
+      "end": {
+        "x": 621.875,
+        "y": 531.22
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.44,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R25",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 464.375,
+          "y": 531.72
+        },
+        {
+          "x": 621.875,
+          "y": 531.72
+        },
+        {
+          "x": 621.875,
+          "y": 530.72
+        },
+        {
+          "x": 464.375,
+          "y": 530.72
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 198.0,
+        "y": 108.0
+      },
+      "end": {
+        "x": 198.0,
+        "y": 260.0
+      },
+      "detector": "cv",
+      "thickness_px": 2.0,
+      "pixel_support": 0.967,
+      "wall_type": "interior",
+      "wall_type_inferred": true,
+      "thickness_consistency": 1.0,
+      "geometry_evidence": "solid_profile",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "furniture_overlap"
+      ],
+      "evidence_score": 0.488,
+      "score_kind": "heuristic_not_probability",
+      "boundary_support": 0.918,
+      "junction_count": 2,
+      "thickness_source": "normal_profile",
+      "id": "R26",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 197.0,
+          "y": 108.0
+        },
+        {
+          "x": 197.0,
+          "y": 260.0
+        },
+        {
+          "x": 199.0,
+          "y": 260.0
+        },
+        {
+          "x": 199.0,
+          "y": 108.0
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 101.371,
+        "y": 496.875
+      },
+      "end": {
+        "x": 101.371,
+        "y": 379.375
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.44,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R27",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 101.871,
+          "y": 496.875
+        },
+        {
+          "x": 101.871,
+          "y": 379.375
+        },
+        {
+          "x": 100.871,
+          "y": 379.375
+        },
+        {
+          "x": 100.871,
+          "y": 496.875
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 163.125,
+        "y": 531.23
+      },
+      "end": {
+        "x": 278.125,
+        "y": 531.23
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.44,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R28",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 163.125,
+          "y": 531.73
+        },
+        {
+          "x": 278.125,
+          "y": 531.73
+        },
+        {
+          "x": 278.125,
+          "y": 530.73
+        },
+        {
+          "x": 163.125,
+          "y": 530.73
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 164.375,
+        "y": 529.488
+      },
+      "end": {
+        "x": 278.125,
+        "y": 529.488
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R29",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 164.375,
+          "y": 529.988
+        },
+        {
+          "x": 278.125,
+          "y": 529.988
+        },
+        {
+          "x": 278.125,
+          "y": 528.988
+        },
+        {
+          "x": 164.375,
+          "y": 528.988
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 126.626,
+        "y": 118.125
+      },
+      "end": {
+        "x": 126.626,
+        "y": 230.625
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.44,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R30",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 126.126,
+          "y": 118.125
+        },
+        {
+          "x": 126.126,
+          "y": 230.625
+        },
+        {
+          "x": 127.126,
+          "y": 230.625
+        },
+        {
+          "x": 127.126,
+          "y": 118.125
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 127.463,
+        "y": 118.125
+      },
+      "end": {
+        "x": 127.463,
+        "y": 230.625
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.44,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R31",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 126.963,
+          "y": 118.125
+        },
+        {
+          "x": 126.963,
+          "y": 230.625
+        },
+        {
+          "x": 127.963,
+          "y": 230.625
+        },
+        {
+          "x": 127.963,
+          "y": 118.125
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 656.375,
+        "y": 388.125
+      },
+      "end": {
+        "x": 656.375,
+        "y": 495.625
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R32",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 655.875,
+          "y": 388.125
+        },
+        {
+          "x": 655.875,
+          "y": 495.625
+        },
+        {
+          "x": 656.875,
+          "y": 495.625
+        },
+        {
+          "x": 656.875,
+          "y": 388.125
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 657.912,
+        "y": 388.125
+      },
+      "end": {
+        "x": 657.912,
+        "y": 495.625
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.32,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R33",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 657.412,
+          "y": 388.125
+        },
+        {
+          "x": 657.412,
+          "y": 495.625
+        },
+        {
+          "x": 658.412,
+          "y": 495.625
+        },
+        {
+          "x": 658.412,
+          "y": 388.125
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 165.625,
+        "y": 82.166
+      },
+      "end": {
+        "x": 271.875,
+        "y": 82.166
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 2.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.34,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R34",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 165.625,
+          "y": 83.166
+        },
+        {
+          "x": 271.875,
+          "y": 83.166
+        },
+        {
+          "x": 271.875,
+          "y": 81.166
+        },
+        {
+          "x": 165.625,
+          "y": 81.166
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 656.312,
+        "y": 213.125
+      },
+      "end": {
+        "x": 656.312,
+        "y": 118.125
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R35",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 656.812,
+          "y": 213.125
+        },
+        {
+          "x": 656.812,
+          "y": 118.125
+        },
+        {
+          "x": 655.812,
+          "y": 118.125
+        },
+        {
+          "x": 655.812,
+          "y": 213.125
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 657.915,
+        "y": 213.125
+      },
+      "end": {
+        "x": 657.915,
+        "y": 118.125
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.32,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R36",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 658.415,
+          "y": 213.125
+        },
+        {
+          "x": 658.415,
+          "y": 118.125
+        },
+        {
+          "x": 657.415,
+          "y": 118.125
+        },
+        {
+          "x": 657.415,
+          "y": 213.125
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 126.642,
+        "y": 496.876
+      },
+      "end": {
+        "x": 126.642,
+        "y": 424.375
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.287,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R37",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 127.142,
+          "y": 496.876
+        },
+        {
+          "x": 127.142,
+          "y": 424.375
+        },
+        {
+          "x": 126.142,
+          "y": 424.375
+        },
+        {
+          "x": 126.142,
+          "y": 496.876
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 127.459,
+        "y": 496.875
+      },
+      "end": {
+        "x": 127.459,
+        "y": 424.375
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.287,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R38",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 127.959,
+          "y": 496.875
+        },
+        {
+          "x": 127.959,
+          "y": 424.375
+        },
+        {
+          "x": 126.959,
+          "y": 424.375
+        },
+        {
+          "x": 126.959,
+          "y": 496.875
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 153.683,
+        "y": 333.131
+      },
+      "end": {
+        "x": 154.573,
+        "y": 261.861
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 0.857,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "furniture_overlap",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.14,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.934,
+      "boundary_support": 1.0,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "id": "R39",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 154.183,
+          "y": 333.137
+        },
+        {
+          "x": 155.073,
+          "y": 261.867
+        },
+        {
+          "x": 154.073,
+          "y": 261.855
+        },
+        {
+          "x": 153.183,
+          "y": 333.125
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 152.938,
+        "y": 400.633
+      },
+      "end": {
+        "x": 152.938,
+        "y": 469.369
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 0.934,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R40",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 152.438,
+          "y": 400.633
+        },
+        {
+          "x": 152.438,
+          "y": 469.369
+        },
+        {
+          "x": 153.438,
+          "y": 469.369
+        },
+        {
+          "x": 153.438,
+          "y": 400.633
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 159.994,
+        "y": 466.875
+      },
+      "end": {
+        "x": 159.994,
+        "y": 404.375
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 0.867,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.267,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R41",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 160.494,
+          "y": 466.875
+        },
+        {
+          "x": 160.494,
+          "y": 404.375
+        },
+        {
+          "x": 159.494,
+          "y": 404.375
+        },
+        {
+          "x": 159.494,
+          "y": 466.875
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 290.625,
+        "y": 498.13
+      },
+      "end": {
+        "x": 346.844,
+        "y": 498.13
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R42",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 290.625,
+          "y": 498.63
+        },
+        {
+          "x": 346.844,
+          "y": 498.63
+        },
+        {
+          "x": 346.844,
+          "y": 497.63
+        },
+        {
+          "x": 290.625,
+          "y": 497.63
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 229.375,
+        "y": 367.967
+      },
+      "end": {
+        "x": 283.125,
+        "y": 367.967
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.086,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.492,
+      "boundary_support": 1.0,
+      "junction_count": 2,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R43",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 229.375,
+          "y": 368.467
+        },
+        {
+          "x": 283.125,
+          "y": 368.467
+        },
+        {
+          "x": 283.125,
+          "y": 367.467
+        },
+        {
+          "x": 229.375,
+          "y": 367.467
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 229.411,
+        "y": 115.194
+      },
+      "end": {
+        "x": 283.137,
+        "y": 115.194
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.249,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R44",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 229.411,
+          "y": 115.694
+        },
+        {
+          "x": 283.137,
+          "y": 115.694
+        },
+        {
+          "x": 283.137,
+          "y": 114.694
+        },
+        {
+          "x": 229.411,
+          "y": 114.694
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 291.875,
+        "y": 505.11
+      },
+      "end": {
+        "x": 344.375,
+        "y": 505.11
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 0.933,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.246,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R45",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 291.875,
+          "y": 505.61
+        },
+        {
+          "x": 344.375,
+          "y": 505.61
+        },
+        {
+          "x": 344.375,
+          "y": 504.61
+        },
+        {
+          "x": 291.875,
+          "y": 504.61
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 400.625,
+        "y": 498.135
+      },
+      "end": {
+        "x": 453.124,
+        "y": 498.135
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.049,
+      "boundary_support": 0.967,
+      "junction_count": 1,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R46",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 400.625,
+          "y": 498.635
+        },
+        {
+          "x": 453.124,
+          "y": 498.635
+        },
+        {
+          "x": 453.124,
+          "y": 497.635
+        },
+        {
+          "x": 400.625,
+          "y": 497.635
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 528.932,
+        "y": 306.413
+      },
+      "end": {
+        "x": 580.655,
+        "y": 306.413
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "junction_repaired": true,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.014,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.525,
+      "boundary_support": 1.0,
+      "junction_count": 1,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R47",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 528.932,
+          "y": 306.913
+        },
+        {
+          "x": 580.655,
+          "y": 306.913
+        },
+        {
+          "x": 580.655,
+          "y": 305.913
+        },
+        {
+          "x": 528.932,
+          "y": 305.913
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 231.874,
+        "y": 108.21
+      },
+      "end": {
+        "x": 281.876,
+        "y": 108.21
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R48",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 231.874,
+          "y": 108.71
+        },
+        {
+          "x": 281.876,
+          "y": 108.71
+        },
+        {
+          "x": 281.876,
+          "y": 107.71
+        },
+        {
+          "x": 231.874,
+          "y": 107.71
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 354.375,
+        "y": 368.466
+      },
+      "end": {
+        "x": 404.375,
+        "y": 368.466
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 2.0,
+      "thickness_consistency": 0.667,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.031,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.525,
+      "boundary_support": 1.0,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "id": "R49",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 354.375,
+          "y": 369.466
+        },
+        {
+          "x": 404.375,
+          "y": 369.466
+        },
+        {
+          "x": 404.375,
+          "y": 367.466
+        },
+        {
+          "x": 354.375,
+          "y": 367.466
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 474.375,
+        "y": 368.466
+      },
+      "end": {
+        "x": 523.124,
+        "y": 368.466
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 2.0,
+      "thickness_consistency": 0.667,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.034,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.541,
+      "boundary_support": 1.0,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "id": "R50",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 474.375,
+          "y": 369.466
+        },
+        {
+          "x": 523.124,
+          "y": 369.466
+        },
+        {
+          "x": 523.124,
+          "y": 367.466
+        },
+        {
+          "x": 474.375,
+          "y": 367.466
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 550.625,
+        "y": 498.124
+      },
+      "end": {
+        "x": 599.342,
+        "y": 498.124
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R51",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 550.625,
+          "y": 498.624
+        },
+        {
+          "x": 599.342,
+          "y": 498.624
+        },
+        {
+          "x": 599.342,
+          "y": 497.624
+        },
+        {
+          "x": 550.625,
+          "y": 497.624
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 596.57,
+        "y": 314.375
+      },
+      "end": {
+        "x": 596.57,
+        "y": 360.625
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 0.929,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.495,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.951,
+      "boundary_support": 1.0,
+      "junction_count": 2,
+      "thickness_source": "normal_profile",
+      "id": "R52",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 596.07,
+          "y": 314.375
+        },
+        {
+          "x": 596.07,
+          "y": 360.625
+        },
+        {
+          "x": 597.07,
+          "y": 360.625
+        },
+        {
+          "x": 597.07,
+          "y": 314.375
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 486.499,
+        "y": 418.119
+      },
+      "end": {
+        "x": 486.499,
+        "y": 463.126
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "furniture_overlap",
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R53",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 485.999,
+          "y": 418.119
+        },
+        {
+          "x": 485.999,
+          "y": 463.126
+        },
+        {
+          "x": 486.999,
+          "y": 463.126
+        },
+        {
+          "x": 486.999,
+          "y": 418.119
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 595.713,
+        "y": 419.372
+      },
+      "end": {
+        "x": 595.713,
+        "y": 463.125
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 0.933,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.229,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R54",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 595.213,
+          "y": 419.372
+        },
+        {
+          "x": 595.213,
+          "y": 463.125
+        },
+        {
+          "x": 596.213,
+          "y": 463.125
+        },
+        {
+          "x": 596.213,
+          "y": 419.372
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 245.255,
+        "y": 419.374
+      },
+      "end": {
+        "x": 245.255,
+        "y": 463.125
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "furniture_overlap",
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R55",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 244.755,
+          "y": 419.374
+        },
+        {
+          "x": 244.755,
+          "y": 463.125
+        },
+        {
+          "x": 245.755,
+          "y": 463.125
+        },
+        {
+          "x": 245.755,
+          "y": 419.374
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 365.812,
+        "y": 419.375
+      },
+      "end": {
+        "x": 365.812,
+        "y": 463.125
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 0.933,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "furniture_overlap",
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R56",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 365.312,
+          "y": 419.375
+        },
+        {
+          "x": 365.312,
+          "y": 463.125
+        },
+        {
+          "x": 366.312,
+          "y": 463.125
+        },
+        {
+          "x": 366.312,
+          "y": 419.375
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 410.625,
+        "y": 505.132
+      },
+      "end": {
+        "x": 453.129,
+        "y": 505.132
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 0.933,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.226,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R57",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 410.625,
+          "y": 505.632
+        },
+        {
+          "x": 453.129,
+          "y": 505.632
+        },
+        {
+          "x": 453.129,
+          "y": 504.632
+        },
+        {
+          "x": 410.625,
+          "y": 504.632
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 553.124,
+        "y": 505.09
+      },
+      "end": {
+        "x": 595.624,
+        "y": 505.09
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.226,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R58",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 553.124,
+          "y": 505.59
+        },
+        {
+          "x": 595.624,
+          "y": 505.59
+        },
+        {
+          "x": 595.624,
+          "y": 504.59
+        },
+        {
+          "x": 553.124,
+          "y": 504.59
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 641.875,
+        "y": 107.501
+      },
+      "end": {
+        "x": 684.375,
+        "y": 107.501
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 0.875,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.201,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.934,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R59",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 641.875,
+          "y": 108.001
+        },
+        {
+          "x": 684.375,
+          "y": 108.001
+        },
+        {
+          "x": 684.375,
+          "y": 107.001
+        },
+        {
+          "x": 641.875,
+          "y": 107.001
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 95.625,
+        "y": 246.755
+      },
+      "end": {
+        "x": 131.88,
+        "y": 246.755
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R60",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 95.625,
+          "y": 247.255
+        },
+        {
+          "x": 131.88,
+          "y": 247.255
+        },
+        {
+          "x": 131.88,
+          "y": 246.255
+        },
+        {
+          "x": 95.625,
+          "y": 246.255
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 56.874,
+        "y": 260.09
+      },
+      "end": {
+        "x": 93.126,
+        "y": 260.09
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 2,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R61",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 56.874,
+          "y": 260.59
+        },
+        {
+          "x": 93.126,
+          "y": 260.59
+        },
+        {
+          "x": 93.126,
+          "y": 259.59
+        },
+        {
+          "x": 56.874,
+          "y": 259.59
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 191.562,
+        "y": 231.875
+      },
+      "end": {
+        "x": 191.562,
+        "y": 195.625
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "furniture_overlap",
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R62",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 192.062,
+          "y": 231.875
+        },
+        {
+          "x": 192.062,
+          "y": 195.625
+        },
+        {
+          "x": 191.062,
+          "y": 195.625
+        },
+        {
+          "x": 191.062,
+          "y": 231.875
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 95.625,
+        "y": 249.375
+      },
+      "end": {
+        "x": 131.875,
+        "y": 249.375
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R63",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 95.625,
+          "y": 249.875
+        },
+        {
+          "x": 131.875,
+          "y": 249.875
+        },
+        {
+          "x": 131.875,
+          "y": 248.875
+        },
+        {
+          "x": 95.625,
+          "y": 248.875
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 371.435,
+        "y": 274.354
+      },
+      "end": {
+        "x": 371.435,
+        "y": 239.365
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 2.0,
+      "thickness_consistency": 0.923,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.381,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.869,
+      "boundary_support": 0.836,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "id": "R64",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 372.435,
+          "y": 274.354
+        },
+        {
+          "x": 372.435,
+          "y": 239.365
+        },
+        {
+          "x": 370.435,
+          "y": 239.365
+        },
+        {
+          "x": 370.435,
+          "y": 274.354
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 59.374,
+        "y": 350.913
+      },
+      "end": {
+        "x": 93.125,
+        "y": 350.913
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 2,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R65",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 59.374,
+          "y": 351.413
+        },
+        {
+          "x": 93.125,
+          "y": 351.413
+        },
+        {
+          "x": 93.125,
+          "y": 350.413
+        },
+        {
+          "x": 59.374,
+          "y": 350.413
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 239.372,
+        "y": 259.069
+      },
+      "end": {
+        "x": 266.873,
+        "y": 259.069
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.19,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.984,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R66",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 239.372,
+          "y": 259.569
+        },
+        {
+          "x": 266.873,
+          "y": 259.569
+        },
+        {
+          "x": 266.873,
+          "y": 258.569
+        },
+        {
+          "x": 239.372,
+          "y": 258.569
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 219.365,
+        "y": 376.803
+      },
+      "end": {
+        "x": 234.376,
+        "y": 376.803
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 1,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R67",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 219.365,
+          "y": 377.303
+        },
+        {
+          "x": 234.376,
+          "y": 377.303
+        },
+        {
+          "x": 234.376,
+          "y": 376.303
+        },
+        {
+          "x": 219.365,
+          "y": 376.303
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 273.126,
+        "y": 506.732
+      },
+      "end": {
+        "x": 288.125,
+        "y": 506.732
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 1,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R68",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 273.126,
+          "y": 507.232
+        },
+        {
+          "x": 288.125,
+          "y": 507.232
+        },
+        {
+          "x": 288.125,
+          "y": 506.232
+        },
+        {
+          "x": 273.126,
+          "y": 506.232
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 341.107,
+        "y": 275.588
+      },
+      "end": {
+        "x": 341.107,
+        "y": 260.619
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 2,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R69",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 341.607,
+          "y": 275.588
+        },
+        {
+          "x": 341.607,
+          "y": 260.619
+        },
+        {
+          "x": 340.607,
+          "y": 260.619
+        },
+        {
+          "x": 340.607,
+          "y": 275.588
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 393.143,
+        "y": 506.711
+      },
+      "end": {
+        "x": 406.876,
+        "y": 506.711
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 1,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R70",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 393.143,
+          "y": 507.211
+        },
+        {
+          "x": 406.876,
+          "y": 507.211
+        },
+        {
+          "x": 406.876,
+          "y": 506.211
+        },
+        {
+          "x": 393.143,
+          "y": 506.211
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 95.188,
+        "y": 264.384
+      },
+      "end": {
+        "x": 95.188,
+        "y": 251.875
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 1,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R71",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 95.688,
+          "y": 264.384
+        },
+        {
+          "x": 95.688,
+          "y": 251.875
+        },
+        {
+          "x": 94.688,
+          "y": 251.875
+        },
+        {
+          "x": 94.688,
+          "y": 264.384
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 493.125,
+        "y": 115.086
+      },
+      "end": {
+        "x": 505.625,
+        "y": 115.086
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 0.8,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.165,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R72",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 493.125,
+          "y": 115.586
+        },
+        {
+          "x": 505.625,
+          "y": 115.586
+        },
+        {
+          "x": 505.625,
+          "y": 114.586
+        },
+        {
+          "x": 493.125,
+          "y": 114.586
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 450.625,
+        "y": 108.12
+      },
+      "end": {
+        "x": 463.125,
+        "y": 108.12
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R73",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 450.625,
+          "y": 108.62
+        },
+        {
+          "x": 463.125,
+          "y": 108.62
+        },
+        {
+          "x": 463.125,
+          "y": 107.62
+        },
+        {
+          "x": 450.625,
+          "y": 107.62
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 493.125,
+        "y": 108.121
+      },
+      "end": {
+        "x": 505.625,
+        "y": 108.121
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R74",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 493.125,
+          "y": 108.621
+        },
+        {
+          "x": 505.625,
+          "y": 108.621
+        },
+        {
+          "x": 505.625,
+          "y": 107.621
+        },
+        {
+          "x": 493.125,
+          "y": 107.621
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 585.625,
+        "y": 368.465
+      },
+      "end": {
+        "x": 598.124,
+        "y": 368.465
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 2.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.185,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R75",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 585.625,
+          "y": 369.465
+        },
+        {
+          "x": 598.124,
+          "y": 369.465
+        },
+        {
+          "x": 598.124,
+          "y": 367.465
+        },
+        {
+          "x": 585.625,
+          "y": 367.465
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 631.732,
+        "y": 219.375
+      },
+      "end": {
+        "x": 631.732,
+        "y": 230.629
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 2,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R76",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 631.232,
+          "y": 219.375
+        },
+        {
+          "x": 631.232,
+          "y": 230.629
+        },
+        {
+          "x": 632.232,
+          "y": 230.629
+        },
+        {
+          "x": 632.232,
+          "y": 219.375
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 95.132,
+        "y": 358.125
+      },
+      "end": {
+        "x": 95.132,
+        "y": 346.891
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 1,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R77",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 95.632,
+          "y": 358.125
+        },
+        {
+          "x": 95.632,
+          "y": 346.891
+        },
+        {
+          "x": 94.632,
+          "y": 346.891
+        },
+        {
+          "x": 94.632,
+          "y": 358.125
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 617.262,
+        "y": 359.377
+      },
+      "end": {
+        "x": 617.262,
+        "y": 349.353
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.36,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "id": "R78",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 617.762,
+          "y": 359.377
+        },
+        {
+          "x": 617.762,
+          "y": 349.353
+        },
+        {
+          "x": 616.762,
+          "y": 349.353
+        },
+        {
+          "x": 616.762,
+          "y": 359.377
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 528.932,
+        "y": 306.876
+      },
+      "end": {
+        "x": 528.932,
+        "y": 296.868
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 0.951,
+      "junction_count": 2,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R79",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 529.432,
+          "y": 306.876
+        },
+        {
+          "x": 529.432,
+          "y": 296.868
+        },
+        {
+          "x": 528.432,
+          "y": 296.868
+        },
+        {
+          "x": 528.432,
+          "y": 306.876
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 513.121,
+        "y": 506.687
+      },
+      "end": {
+        "x": 523.113,
+        "y": 506.687
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 2,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R80",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 513.121,
+          "y": 507.187
+        },
+        {
+          "x": 523.113,
+          "y": 507.187
+        },
+        {
+          "x": 523.113,
+          "y": 506.187
+        },
+        {
+          "x": 513.121,
+          "y": 506.187
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 617.379,
+        "y": 325.601
+      },
+      "end": {
+        "x": 617.379,
+        "y": 315.618
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.36,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 1,
+      "thickness_source": "normal_profile",
+      "id": "R81",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 617.879,
+          "y": 325.601
+        },
+        {
+          "x": 617.879,
+          "y": 315.618
+        },
+        {
+          "x": 616.879,
+          "y": 315.618
+        },
+        {
+          "x": 616.879,
+          "y": 325.601
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 153.947,
+        "y": 108.125
+      },
+      "end": {
+        "x": 153.947,
+        "y": 116.877
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 2,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R82",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 153.447,
+          "y": 108.125
+        },
+        {
+          "x": 153.447,
+          "y": 116.877
+        },
+        {
+          "x": 154.447,
+          "y": 116.877
+        },
+        {
+          "x": 154.447,
+          "y": 108.125
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 154.375,
+        "y": 506.746
+      },
+      "end": {
+        "x": 163.126,
+        "y": 506.746
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 2,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R83",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 154.375,
+          "y": 507.246
+        },
+        {
+          "x": 163.126,
+          "y": 507.246
+        },
+        {
+          "x": 163.126,
+          "y": 506.246
+        },
+        {
+          "x": 154.375,
+          "y": 506.246
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 631.741,
+        "y": 496.875
+      },
+      "end": {
+        "x": 631.741,
+        "y": 505.625
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 1,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R84",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 631.241,
+          "y": 496.875
+        },
+        {
+          "x": 631.241,
+          "y": 505.625
+        },
+        {
+          "x": 632.241,
+          "y": 505.625
+        },
+        {
+          "x": 632.241,
+          "y": 496.875
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 621.878,
+        "y": 107.704
+      },
+      "end": {
+        "x": 630.626,
+        "y": 107.704
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 2,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R85",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 621.878,
+          "y": 108.204
+        },
+        {
+          "x": 630.626,
+          "y": 108.204
+        },
+        {
+          "x": 630.626,
+          "y": 107.204
+        },
+        {
+          "x": 621.878,
+          "y": 107.204
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 152.942,
+        "y": 496.881
+      },
+      "end": {
+        "x": 152.942,
+        "y": 505.625
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 1,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R86",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 152.442,
+          "y": 496.881
+        },
+        {
+          "x": 152.442,
+          "y": 505.625
+        },
+        {
+          "x": 153.442,
+          "y": 505.625
+        },
+        {
+          "x": 153.442,
+          "y": 496.881
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 528.973,
+        "y": 230.615
+      },
+      "end": {
+        "x": 528.973,
+        "y": 221.875
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 2,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R87",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 529.473,
+          "y": 230.615
+        },
+        {
+          "x": 529.473,
+          "y": 221.875
+        },
+        {
+          "x": 528.473,
+          "y": 221.875
+        },
+        {
+          "x": 528.473,
+          "y": 230.615
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 530.623,
+        "y": 220.633
+      },
+      "end": {
+        "x": 538.128,
+        "y": 220.633
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.435,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 2,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R88",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 530.623,
+          "y": 221.133
+        },
+        {
+          "x": 538.128,
+          "y": 221.133
+        },
+        {
+          "x": 538.128,
+          "y": 220.133
+        },
+        {
+          "x": 530.623,
+          "y": 220.133
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 154.375,
+        "y": 107.761
+      },
+      "end": {
+        "x": 161.88,
+        "y": 107.761
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "furniture_overlap",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 2,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R89",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 154.375,
+          "y": 108.261
+        },
+        {
+          "x": 161.88,
+          "y": 108.261
+        },
+        {
+          "x": 161.88,
+          "y": 107.261
+        },
+        {
+          "x": 154.375,
+          "y": 107.261
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 184.397,
+        "y": 372.348
+      },
+      "end": {
+        "x": 189.368,
+        "y": 372.348
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 8.0,
+      "thickness_consistency": 0.833,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment"
+      ],
+      "evidence_score": 0.49,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R90",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 184.397,
+          "y": 376.348
+        },
+        {
+          "x": 189.368,
+          "y": 376.348
+        },
+        {
+          "x": 189.368,
+          "y": 368.348
+        },
+        {
+          "x": 184.397,
+          "y": 368.348
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 57.212,
+        "y": 346.869
+      },
+      "end": {
+        "x": 57.212,
+        "y": 349.376
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R91",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 56.712,
+          "y": 346.869
+        },
+        {
+          "x": 56.712,
+          "y": 349.376
+        },
+        {
+          "x": 57.712,
+          "y": 349.376
+        },
+        {
+          "x": 57.712,
+          "y": 346.869
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 525.625,
+        "y": 108.123
+      },
+      "end": {
+        "x": 528.125,
+        "y": 108.123
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R92",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 525.625,
+          "y": 108.623
+        },
+        {
+          "x": 528.125,
+          "y": 108.623
+        },
+        {
+          "x": 528.125,
+          "y": 107.623
+        },
+        {
+          "x": 525.625,
+          "y": 107.623
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 195.626,
+        "y": 259.054
+      },
+      "end": {
+        "x": 198.0,
+        "y": 259.054
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "junction_repaired": true,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "furniture_overlap",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 2,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R93",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 195.626,
+          "y": 259.554
+        },
+        {
+          "x": 198.0,
+          "y": 259.554
+        },
+        {
+          "x": 198.0,
+          "y": 258.554
+        },
+        {
+          "x": 195.626,
+          "y": 258.554
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 196.88,
+        "y": 107.77
+      },
+      "end": {
+        "x": 199.359,
+        "y": 107.77
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "furniture_overlap",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 2,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R94",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 196.88,
+          "y": 108.27
+        },
+        {
+          "x": 199.359,
+          "y": 108.27
+        },
+        {
+          "x": 199.359,
+          "y": 107.27
+        },
+        {
+          "x": 196.88,
+          "y": 107.27
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 96.573,
+        "y": 264.392
+      },
+      "end": {
+        "x": 96.573,
+        "y": 263.123
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 2.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.163,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R95",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 97.573,
+          "y": 264.392
+        },
+        {
+          "x": 97.573,
+          "y": 263.123
+        },
+        {
+          "x": 95.573,
+          "y": 263.123
+        },
+        {
+          "x": 95.573,
+          "y": 264.392
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 165.875,
+        "y": 231.874
+      },
+      "end": {
+        "x": 165.875,
+        "y": 233.125
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 2.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "furniture_overlap",
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R96",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 164.875,
+          "y": 231.874
+        },
+        {
+          "x": 164.875,
+          "y": 233.125
+        },
+        {
+          "x": 166.875,
+          "y": 233.125
+        },
+        {
+          "x": 166.875,
+          "y": 231.874
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 95.624,
+        "y": 363.404
+      },
+      "end": {
+        "x": 96.872,
+        "y": 363.404
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R97",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 95.624,
+          "y": 363.904
+        },
+        {
+          "x": 96.872,
+          "y": 363.904
+        },
+        {
+          "x": 96.872,
+          "y": 362.904
+        },
+        {
+          "x": 95.624,
+          "y": 362.904
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 165.875,
+        "y": 194.375
+      },
+      "end": {
+        "x": 165.875,
+        "y": 195.623
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 2.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "furniture_overlap",
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R98",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 164.875,
+          "y": 194.375
+        },
+        {
+          "x": 164.875,
+          "y": 195.623
+        },
+        {
+          "x": 166.875,
+          "y": 195.623
+        },
+        {
+          "x": 166.875,
+          "y": 194.375
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 57.148,
+        "y": 260.624
+      },
+      "end": {
+        "x": 57.148,
+        "y": 261.861
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "unverified_single_stroke",
+      "review_status": "uncertain",
+      "review_reasons": [
+        "weak_pixel_evidence",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.0,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 0.0,
+      "boundary_support": 1.0,
+      "junction_count": 2,
+      "thickness_px": 1.0,
+      "thickness_source": "unverified_estimate",
+      "id": "R99",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 56.648,
+          "y": 260.624
+        },
+        {
+          "x": 56.648,
+          "y": 261.861
+        },
+        {
+          "x": 57.648,
+          "y": 261.861
+        },
+        {
+          "x": 57.648,
+          "y": 260.624
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 96.444,
+        "y": 348.125
+      },
+      "end": {
+        "x": 96.444,
+        "y": 346.899
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 2.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.162,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R100",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 97.444,
+          "y": 348.125
+        },
+        {
+          "x": 97.444,
+          "y": 346.899
+        },
+        {
+          "x": 95.444,
+          "y": 346.899
+        },
+        {
+          "x": 95.444,
+          "y": 348.125
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 450.625,
+        "y": 115.098
+      },
+      "end": {
+        "x": 463.125,
+        "y": 115.098
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 0.733,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.165,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R101",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 450.625,
+          "y": 115.598
+        },
+        {
+          "x": 463.125,
+          "y": 115.598
+        },
+        {
+          "x": 463.125,
+          "y": 114.598
+        },
+        {
+          "x": 450.625,
+          "y": 114.598
+        }
+      ]
+    },
+    {
+      "start": {
+        "x": 525.625,
+        "y": 115.078
+      },
+      "end": {
+        "x": 528.125,
+        "y": 115.078
+      },
+      "detector": "single-boundary",
+      "geometry_evidence": "solid_profile",
+      "thickness_px": 1.0,
+      "thickness_consistency": 1.0,
+      "review_status": "uncertain",
+      "review_reasons": [
+        "isolated_segment",
+        "unverified_thin_stroke"
+      ],
+      "evidence_score": 0.145,
+      "score_kind": "heuristic_not_probability",
+      "pixel_support": 1.0,
+      "boundary_support": 1.0,
+      "junction_count": 0,
+      "thickness_source": "normal_profile",
+      "id": "R102",
+      "geometry_reference": "centreline",
+      "boundary_reference": "estimated_parallel_faces",
+      "boundary_polygon": [
+        {
+          "x": 525.625,
+          "y": 115.578
+        },
+        {
+          "x": 528.125,
+          "y": 115.578
+        },
+        {
+          "x": 528.125,
+          "y": 114.578
+        },
+        {
+          "x": 525.625,
+          "y": 114.578
+        }
+      ]
+    }
+  ],
+  "wall_rejected": [],
+  "wall_geometry": {
+    "coordinate_space": "original_image_pixels",
+    "width": 740,
+    "height": 612,
+    "resize_transform": {
+      "scale_x": 1.0,
+      "scale_y": 1.0,
+      "offset_x": 0.0,
+      "offset_y": 0.0
+    },
+    "reference_thickness_px": 8.0,
+    "parameters": {
+      "min_face_length_ratio": 0.018,
+      "max_thickness_ratio": 0.025,
+      "min_pair_width_ratio": 0.002,
+      "angle_tolerance_degrees": 2.0,
+      "min_boundary_support": 0.72,
+      "min_accepted_score": 0.64,
+      "long_wall_ratio": 0.12,
+      "max_faces": 900
+    }
+  },
+  "scan_api_version": 1,
+  "seedWalls": [],
+  "walls_include_seeds": true,
+  "params": {
+    "canny1": 40,
+    "canny2": 120,
+    "hough_threshold": 90,
+    "min_line_length": 40,
+    "max_line_gap": 20,
+    "wall_thickness": 10
+  },
+  "model": "yolo+cv",
+  "floor_plan_id": null,
+  "db_saved": false,
+  "db_corrections_loaded": false,
+  "detection_provenance": {
+    "mode": "fresh_detector",
+    "database_enabled": false,
+    "database_saved": false,
+    "saved_corrections_loaded": false,
+    "manual_walls_preserved": 0
+  },
+  "yolo_weights": "/Users/apple/Documents/ai-3d-project/models/best.pt",
+  "door_weights": "/Users/apple/Documents/ai-3d-project/models/best.pt",
+  "room_object_weights": "/Users/apple/Documents/ai-3d-project/apps/room-and-object/runs/room_object_yolo/weights/best.pt",
+  "window_glass_weights": "/Users/apple/Documents/ai-3d-project/models/best.pt",
+  "doors": [
+    {
+      "bbox": {
+        "x1": 235.99920654296875,
+        "y1": 369.83233642578125,
+        "x2": 261.12158203125,
+        "y2": 377.8455810546875
+      },
+      "swingDir": "left-outside"
+    },
+    {
+      "bbox": {
+        "x1": 554.7386474609375,
+        "y1": 299.3022766113281,
+        "x2": 579.8553466796875,
+        "y2": 306.76470947265625
+      },
+      "swing_bbox": {
+        "x1": 554.38916015625,
+        "y1": 276.3502502441406,
+        "x2": 580.5694580078125,
+        "y2": 302.57843017578125
+      },
+      "class": "Door",
+      "confidence": 0.636,
+      "swingDir": "left-outside"
+    },
+    {
+      "bbox": {
+        "x1": 240.85614013671875,
+        "y1": 252.73306274414062,
+        "x2": 266.1473083496094,
+        "y2": 260.0595397949219
+      },
+      "swing_bbox": {
+        "x1": 240.74769592285156,
+        "y1": 228.49952697753906,
+        "x2": 267.3523864746094,
+        "y2": 255.52284240722656
+      },
+      "class": "Door",
+      "confidence": 0.493,
+      "swingDir": "left-outside"
+    },
+    {
+      "bbox": {
+        "x1": 475.99676513671875,
+        "y1": 369.6695251464844,
+        "x2": 501.0340881347656,
+        "y2": 377.43243408203125
+      },
+      "swing_bbox": {
+        "x1": 475.41986083984375,
+        "y1": 375.1318664550781,
+        "x2": 501.6626281738281,
+        "y2": 399.2975769042969
+      },
+      "class": "Door",
+      "confidence": 0.471,
+      "swingDir": "right-inside"
+    },
+    {
+      "bbox": {
+        "x1": 356.82171630859375,
+        "y1": 369.5481872558594,
+        "x2": 381.74102783203125,
+        "y2": 377.4604797363281
+      },
+      "swingDir": "right-inside"
+    },
+    {
+      "bbox": {
+        "x1": 153.95449829101562,
+        "y1": 273.0009460449219,
+        "x2": 162.11988830566406,
+        "y2": 324.05303955078125
+      },
+      "swingDir": "right-inside"
+    },
+    {
+      "bbox": {
+        "x1": 586.3081665039062,
+        "y1": 369.4334411621094,
+        "x2": 611.1571655273438,
+        "y2": 377.2222595214844
+      },
+      "swing_bbox": {
+        "x1": 585.9122314453125,
+        "y1": 373.9314270019531,
+        "x2": 612.0634155273438,
+        "y2": 399.3127746582031
+      },
+      "class": "Door",
+      "confidence": 0.692,
+      "swingDir": "right-inside"
+    },
+    {
+      "class": "Door",
+      "confidence": 0.31,
+      "bbox": {
+        "x1": 159.72930908203125,
+        "y1": 285.5126647949219,
+        "x2": 185.41055297851562,
+        "y2": 324.4969482421875
+      },
+      "inference_size": 960,
+      "source": "object-door-fallback",
+      "swingDir": "left-outside"
+    }
+  ],
+  "rooms_detected": [
+    {
+      "class": "Bathroom",
+      "confidence": 0.954,
+      "bbox": {
+        "x1": 535.8344116210938,
+        "y1": 226.5201416015625,
+        "x2": 625.573974609375,
+        "y2": 302.9164733886719
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bathroom",
+      "confidence": 0.553,
+      "bbox": {
+        "x1": 520.8029174804688,
+        "y1": 372.6109619140625,
+        "x2": 625.6798706054688,
+        "y2": 502.32684326171875
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Bedroom",
+      "confidence": 0.364,
+      "bbox": {
+        "x1": 156.93959045410156,
+        "y1": 112.35369110107422,
+        "x2": 345.0295104980469,
+        "y2": 255.7571563720703
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bedroom",
+      "confidence": 0.347,
+      "bbox": {
+        "x1": 350.6956787109375,
+        "y1": 112.033203125,
+        "x2": 625.8221435546875,
+        "y2": 292.0189208984375
+      },
+      "inference_size": 640
+    }
+  ],
+  "windows": [
+    {
+      "class": "window",
+      "confidence": 0.687,
+      "bbox": {
+        "x1": 408.03546142578125,
+        "y1": 498.75750732421875,
+        "x2": 455.7749328613281,
+        "y2": 506.9447021484375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.65,
+      "bbox": {
+        "x1": 550.473876953125,
+        "y1": 498.9461975097656,
+        "x2": 599.8136596679688,
+        "y2": 506.7195739746094
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.647,
+      "bbox": {
+        "x1": 289.551513671875,
+        "y1": 498.8960266113281,
+        "x2": 347.3170166015625,
+        "y2": 506.8473815917969
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.637,
+      "bbox": {
+        "x1": 229.64776611328125,
+        "y1": 109.36097717285156,
+        "x2": 281.2356872558594,
+        "y2": 116.8462905883789
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.575,
+      "bbox": {
+        "x1": 623.8921508789062,
+        "y1": 322.737060546875,
+        "x2": 632.1422729492188,
+        "y2": 353.8710021972656
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.491,
+      "bbox": {
+        "x1": 425.8199768066406,
+        "y1": 109.12682342529297,
+        "x2": 530.2833251953125,
+        "y2": 117.10317993164062
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.461,
+      "bbox": {
+        "x1": 153.9624786376953,
+        "y1": 401.9739685058594,
+        "x2": 161.99017333984375,
+        "y2": 470.26837158203125
+      },
+      "inference_size": 640
+    }
+  ],
+  "glass_grills": [],
+  "glass_banisters": [],
+  "pillars": [],
+  "stairs": [],
+  "lifts": [],
+  "fixtures": [
+    {
+      "class": "Sink",
+      "confidence": 0.98,
+      "bbox": {
+        "x1": 164.70924377441406,
+        "y1": 192.6152801513672,
+        "x2": 193.2069854736328,
+        "y2": 235.37950134277344
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Stove",
+      "confidence": 0.813,
+      "bbox": {
+        "x1": 165.1790008544922,
+        "y1": 133.48780822753906,
+        "x2": 194.86524963378906,
+        "y2": 160.81753540039062
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Sofa",
+      "confidence": 0.656,
+      "bbox": {
+        "x1": 365.4977722167969,
+        "y1": 417.3166198730469,
+        "x2": 387.7821960449219,
+        "y2": 464.3111572265625
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Sofa",
+      "confidence": 0.65,
+      "bbox": {
+        "x1": 487.1630554199219,
+        "y1": 417.42218017578125,
+        "x2": 508.0899963378906,
+        "y2": 464.5530090332031
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Kitchen-Slab",
+      "confidence": 0.4,
+      "bbox": {
+        "x1": 162.84140014648438,
+        "y1": 113.81886291503906,
+        "x2": 196.91592407226562,
+        "y2": 251.5884552001953
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Duct",
+      "confidence": 0.39,
+      "bbox": {
+        "x1": 158.5940704345703,
+        "y1": 269.76629638671875,
+        "x2": 184.8542938232422,
+        "y2": 324.05889892578125
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Sofa",
+      "confidence": 0.363,
+      "bbox": {
+        "x1": 246.2787628173828,
+        "y1": 417.66070556640625,
+        "x2": 267.75665283203125,
+        "y2": 464.3661193847656
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Commode",
+      "confidence": 0.301,
+      "bbox": {
+        "x1": 538.2169189453125,
+        "y1": 234.56422424316406,
+        "x2": 566.7913818359375,
+        "y2": 254.54290771484375
+      },
+      "inference_size": 960
+    }
+  ],
+  "rooms_and_objects": [
+    {
+      "class": "Sink",
+      "confidence": 0.98,
+      "bbox": {
+        "x1": 164.70924377441406,
+        "y1": 192.6152801513672,
+        "x2": 193.2069854736328,
+        "y2": 235.37950134277344
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bathroom",
+      "confidence": 0.954,
+      "bbox": {
+        "x1": 535.8344116210938,
+        "y1": 226.5201416015625,
+        "x2": 625.573974609375,
+        "y2": 302.9164733886719
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Stove",
+      "confidence": 0.813,
+      "bbox": {
+        "x1": 165.1790008544922,
+        "y1": 133.48780822753906,
+        "x2": 194.86524963378906,
+        "y2": 160.81753540039062
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Sofa",
+      "confidence": 0.656,
+      "bbox": {
+        "x1": 365.4977722167969,
+        "y1": 417.3166198730469,
+        "x2": 387.7821960449219,
+        "y2": 464.3111572265625
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Sofa",
+      "confidence": 0.65,
+      "bbox": {
+        "x1": 487.1630554199219,
+        "y1": 417.42218017578125,
+        "x2": 508.0899963378906,
+        "y2": 464.5530090332031
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bathroom",
+      "confidence": 0.553,
+      "bbox": {
+        "x1": 520.8029174804688,
+        "y1": 372.6109619140625,
+        "x2": 625.6798706054688,
+        "y2": 502.32684326171875
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Kitchen-Slab",
+      "confidence": 0.4,
+      "bbox": {
+        "x1": 162.84140014648438,
+        "y1": 113.81886291503906,
+        "x2": 196.91592407226562,
+        "y2": 251.5884552001953
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Duct",
+      "confidence": 0.39,
+      "bbox": {
+        "x1": 158.5940704345703,
+        "y1": 269.76629638671875,
+        "x2": 184.8542938232422,
+        "y2": 324.05889892578125
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Bedroom",
+      "confidence": 0.364,
+      "bbox": {
+        "x1": 156.93959045410156,
+        "y1": 112.35369110107422,
+        "x2": 345.0295104980469,
+        "y2": 255.7571563720703
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Sofa",
+      "confidence": 0.363,
+      "bbox": {
+        "x1": 246.2787628173828,
+        "y1": 417.66070556640625,
+        "x2": 267.75665283203125,
+        "y2": 464.3661193847656
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "Bedroom",
+      "confidence": 0.347,
+      "bbox": {
+        "x1": 350.6956787109375,
+        "y1": 112.033203125,
+        "x2": 625.8221435546875,
+        "y2": 292.0189208984375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "Commode",
+      "confidence": 0.301,
+      "bbox": {
+        "x1": 538.2169189453125,
+        "y1": 234.56422424316406,
+        "x2": 566.7913818359375,
+        "y2": 254.54290771484375
+      },
+      "inference_size": 960
+    },
+    {
+      "class": "window",
+      "confidence": 0.687,
+      "bbox": {
+        "x1": 408.03546142578125,
+        "y1": 498.75750732421875,
+        "x2": 455.7749328613281,
+        "y2": 506.9447021484375
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.65,
+      "bbox": {
+        "x1": 550.473876953125,
+        "y1": 498.9461975097656,
+        "x2": 599.8136596679688,
+        "y2": 506.7195739746094
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.647,
+      "bbox": {
+        "x1": 289.551513671875,
+        "y1": 498.8960266113281,
+        "x2": 347.3170166015625,
+        "y2": 506.8473815917969
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.637,
+      "bbox": {
+        "x1": 229.64776611328125,
+        "y1": 109.36097717285156,
+        "x2": 281.2356872558594,
+        "y2": 116.8462905883789
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.575,
+      "bbox": {
+        "x1": 623.8921508789062,
+        "y1": 322.737060546875,
+        "x2": 632.1422729492188,
+        "y2": 353.8710021972656
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.491,
+      "bbox": {
+        "x1": 425.8199768066406,
+        "y1": 109.12682342529297,
+        "x2": 530.2833251953125,
+        "y2": 117.10317993164062
+      },
+      "inference_size": 640
+    },
+    {
+      "class": "window",
+      "confidence": 0.461,
+      "bbox": {
+        "x1": 153.9624786376953,
+        "y1": 401.9739685058594,
+        "x2": 161.99017333984375,
+        "y2": 470.26837158203125
+      },
+      "inference_size": 640
+    }
+  ],
+  "detected_count": 40,
+  "seed_count": 0,
+  "scale_estimate": {
+    "meters_per_pixel": 0.035828685350928244,
+    "source": "door_width_estimate",
+    "sample_count": 8
+  },
+  "measurements": {
+    "status": "ok",
+    "engine": "tesseract-local",
+    "linear": [],
+    "areas": [],
+    "calibration": null,
+    "warnings": [
+      "No readable explicit-unit dimensions found. Calibrate using a known distance in the drawing."
+    ],
+    "ocr_text_regions": [
+      [
+        376.0,
+        43.0,
+        397.0,
+        51.0
+      ],
+      [
+        219.0,
+        70.0,
+        230.0,
+        77.0
+      ],
+      [
+        531.0,
+        71.0,
+        539.0,
+        78.0
+      ],
+      [
+        307.0,
+        130.0,
+        329.0,
+        144.0
+      ],
+      [
+        169.0,
+        148.0,
+        191.0,
+        158.0
+      ],
+      [
+        169.0,
+        136.0,
+        191.0,
+        147.0
+      ],
+      [
+        600.0,
+        167.0,
+        619.0,
+        170.0
+      ],
+      [
+        600.0,
+        163.0,
+        619.0,
+        165.0
+      ],
+      [
+        600.0,
+        176.0,
+        620.0,
+        178.0
+      ],
+      [
+        600.0,
+        170.0,
+        620.0,
+        174.0
+      ],
+      [
+        590.0,
+        260.0,
+        599.0,
+        270.0
+      ],
+      [
+        207.0,
+        396.0,
+        225.0,
+        407.0
+      ],
+      [
+        212.0,
+        406.0,
+        225.0,
+        415.0
+      ],
+      [
+        207.0,
+        517.0,
+        224.0,
+        525.0
+      ],
+      [
+        302.0,
+        544.0,
+        326.0,
+        551.0
+      ],
+      [
+        538.0,
+        519.0,
+        561.0,
+        526.0
+      ]
+    ]
+  },
+  "room_boundaries": [
+    {
+      "id": "auto-room-1",
+      "name": "Bedroom",
+      "points": [
+        {
+          "x": 163.0,
+          "y": 499.0
+        },
+        {
+          "x": 163.0,
+          "y": 259.0
+        },
+        {
+          "x": 341.0,
+          "y": 259.0
+        },
+        {
+          "x": 341.0,
+          "y": 306.0
+        },
+        {
+          "x": 349.0,
+          "y": 306.0
+        },
+        {
+          "x": 349.0,
+          "y": 275.0
+        },
+        {
+          "x": 371.435,
+          "y": 275.0
+        },
+        {
+          "x": 371.435,
+          "y": 267.0
+        },
+        {
+          "x": 349.0,
+          "y": 267.0
+        },
+        {
+          "x": 349.0,
+          "y": 259.0
+        },
+        {
+          "x": 371.435,
+          "y": 259.0
+        },
+        {
+          "x": 371.435,
+          "y": 251.0
+        },
+        {
+          "x": 349.0,
+          "y": 251.0
+        },
+        {
+          "x": 349.0,
+          "y": 117.0
+        },
+        {
+          "x": 623.0,
+          "y": 117.0
+        },
+        {
+          "x": 623.0,
+          "y": 220.5
+        },
+        {
+          "x": 533.0,
+          "y": 220.5
+        },
+        {
+          "x": 533.0,
+          "y": 225.0
+        },
+        {
+          "x": 529.0,
+          "y": 225.0
+        },
+        {
+          "x": 529.0,
+          "y": 306.413
+        },
+        {
+          "x": 537.0,
+          "y": 306.413
+        },
+        {
+          "x": 537.0,
+          "y": 305.0
+        },
+        {
+          "x": 623.0,
+          "y": 305.0
+        },
+        {
+          "x": 623.0,
+          "y": 369.0
+        },
+        {
+          "x": 523.0,
+          "y": 369.0
+        },
+        {
+          "x": 523.0,
+          "y": 368.466
+        },
+        {
+          "x": 515.0,
+          "y": 368.466
+        },
+        {
+          "x": 515.0,
+          "y": 369.0
+        },
+        {
+          "x": 403.0,
+          "y": 369.0
+        },
+        {
+          "x": 403.0,
+          "y": 368.466
+        },
+        {
+          "x": 395.0,
+          "y": 368.466
+        },
+        {
+          "x": 395.0,
+          "y": 369.0
+        },
+        {
+          "x": 354.375,
+          "y": 369.0
+        },
+        {
+          "x": 354.375,
+          "y": 368.904
+        },
+        {
+          "x": 282.5,
+          "y": 368.904
+        },
+        {
+          "x": 282.5,
+          "y": 367.967
+        },
+        {
+          "x": 273.5,
+          "y": 367.967
+        },
+        {
+          "x": 273.5,
+          "y": 499.0
+        }
+      ],
+      "boundary_source": "auto_walls",
+      "boundary_reference": "inside_faces",
+      "area_px2": 95176.995
+    },
+    {
+      "id": "auto-room-2",
+      "name": "Bedroom",
+      "points": [
+        {
+          "x": 163.0,
+          "y": 251.0
+        },
+        {
+          "x": 163.0,
+          "y": 117.0
+        },
+        {
+          "x": 341.0,
+          "y": 117.0
+        },
+        {
+          "x": 341.0,
+          "y": 251.0
+        }
+      ],
+      "boundary_source": "auto_walls",
+      "boundary_reference": "inside_faces",
+      "area_px2": 23852.0
+    },
+    {
+      "id": "auto-room-3",
+      "name": "Bathroom",
+      "points": [
+        {
+          "x": 537.0,
+          "y": 229.5
+        },
+        {
+          "x": 623.0,
+          "y": 229.5
+        },
+        {
+          "x": 623.0,
+          "y": 297.0
+        },
+        {
+          "x": 537.0,
+          "y": 297.0
+        }
+      ],
+      "boundary_source": "auto_walls",
+      "boundary_reference": "inside_faces",
+      "area_px2": 5805.0
+    },
+    {
+      "id": "auto-room-4",
+      "name": "Room 4",
+      "points": [
+        {
+          "x": 282.5,
+          "y": 499.0
+        },
+        {
+          "x": 282.5,
+          "y": 376.904
+        },
+        {
+          "x": 354.375,
+          "y": 376.904
+        },
+        {
+          "x": 354.375,
+          "y": 377.0
+        },
+        {
+          "x": 395.0,
+          "y": 377.0
+        },
+        {
+          "x": 395.0,
+          "y": 499.0
+        }
+      ],
+      "boundary_source": "auto_walls",
+      "boundary_reference": "inside_faces",
+      "area_px2": 13731.9
+    },
+    {
+      "id": "auto-room-5",
+      "name": "Room 5",
+      "points": [
+        {
+          "x": 515.0,
+          "y": 499.0
+        },
+        {
+          "x": 403.0,
+          "y": 499.0
+        },
+        {
+          "x": 403.0,
+          "y": 377.0
+        },
+        {
+          "x": 515.0,
+          "y": 377.0
+        }
+      ],
+      "boundary_source": "auto_walls",
+      "boundary_reference": "inside_faces",
+      "area_px2": 13664.0
+    }
+  ],
+  "room_scan": {
+    "unresolved": [],
+    "warnings": [],
+    "closures": [
+      {
+        "start": {
+          "x": 554.739,
+          "y": 301.0
+        },
+        "end": {
+          "x": 579.855,
+          "y": 301.0
+        },
+        "thickness_px": 8.0,
+        "source": "opening-closure"
+      },
+      {
+        "start": {
+          "x": 240.856,
+          "y": 255.0
+        },
+        "end": {
+          "x": 266.147,
+          "y": 255.0
+        },
+        "thickness_px": 8.0,
+        "source": "opening-closure"
+      },
+      {
+        "start": {
+          "x": 475.997,
+          "y": 373.0
+        },
+        "end": {
+          "x": 501.034,
+          "y": 373.0
+        },
+        "thickness_px": 8.0,
+        "source": "opening-closure"
+      },
+      {
+        "start": {
+          "x": 354.375,
+          "y": 373.0
+        },
+        "end": {
+          "x": 381.741,
+          "y": 373.0
+        },
+        "thickness_px": 8.0,
+        "source": "opening-closure"
+      },
+      {
+        "start": {
+          "x": 159.0,
+          "y": 273.001
+        },
+        "end": {
+          "x": 159.0,
+          "y": 324.053
+        },
+        "thickness_px": 8.0,
+        "source": "opening-closure"
+      },
+      {
+        "start": {
+          "x": 586.308,
+          "y": 373.0
+        },
+        "end": {
+          "x": 611.157,
+          "y": 373.0
+        },
+        "thickness_px": 8.0,
+        "source": "opening-closure"
+      },
+      {
+        "start": {
+          "x": 408.035,
+          "y": 503.0
+        },
+        "end": {
+          "x": 455.775,
+          "y": 503.0
+        },
+        "thickness_px": 8.0,
+        "source": "opening-closure"
+      },
+      {
+        "start": {
+          "x": 550.474,
+          "y": 503.0
+        },
+        "end": {
+          "x": 599.814,
+          "y": 503.0
+        },
+        "thickness_px": 8.0,
+        "source": "opening-closure"
+      },
+      {
+        "start": {
+          "x": 289.552,
+          "y": 503.0
+        },
+        "end": {
+          "x": 347.317,
+          "y": 503.0
+        },
+        "thickness_px": 8.0,
+        "source": "opening-closure"
+      },
+      {
+        "start": {
+          "x": 229.648,
+          "y": 113.0
+        },
+        "end": {
+          "x": 281.236,
+          "y": 113.0
+        },
+        "thickness_px": 8.0,
+        "source": "opening-closure"
+      },
+      {
+        "start": {
+          "x": 627.0,
+          "y": 322.737
+        },
+        "end": {
+          "x": 627.0,
+          "y": 353.871
+        },
+        "thickness_px": 8.0,
+        "source": "opening-closure"
+      },
+      {
+        "start": {
+          "x": 425.82,
+          "y": 113.0
+        },
+        "end": {
+          "x": 530.283,
+          "y": 113.0
+        },
+        "thickness_px": 8.0,
+        "source": "opening-closure"
+      },
+      {
+        "start": {
+          "x": 159.0,
+          "y": 401.974
+        },
+        "end": {
+          "x": 159.0,
+          "y": 470.268
+        },
+        "thickness_px": 8.0,
+        "source": "opening-closure"
+      }
+    ],
+    "wall_thicknesses": [
+      {
+        "wall_index": 0,
+        "thickness_px": 18.491
+      },
+      {
+        "wall_index": 1,
+        "thickness_px": 16.397
+      },
+      {
+        "wall_index": 2,
+        "thickness_px": 12.676
+      },
+      {
+        "wall_index": 3,
+        "thickness_px": 11.755
+      },
+      {
+        "wall_index": 4,
+        "thickness_px": 4.261
+      },
+      {
+        "wall_index": 5,
+        "thickness_px": 6.541
+      },
+      {
+        "wall_index": 6,
+        "thickness_px": 6.917
+      },
+      {
+        "wall_index": 7,
+        "thickness_px": 2.573
+      },
+      {
+        "wall_index": 8,
+        "thickness_px": 2.578
+      },
+      {
+        "wall_index": 9,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 10,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 11,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 12,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 13,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 14,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 15,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 16,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 17,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 18,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 19,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 20,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 21,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 22,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 23,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 24,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 25,
+        "thickness_px": 9.0
+      },
+      {
+        "wall_index": 26,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 27,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 28,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 29,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 30,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 31,
+        "thickness_px": 9.0
+      },
+      {
+        "wall_index": 32,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 33,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 34,
+        "thickness_px": 9.0
+      },
+      {
+        "wall_index": 35,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 36,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 37,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 38,
+        "thickness_px": 8.0
+      },
+      {
+        "wall_index": 39,
+        "thickness_px": 8.0
+      }
+    ]
+  },
+  "ai_review": {
+    "enabled": false,
+    "applied": false,
+    "corrections_count": 0,
+    "summary": null,
+    "error": null
+  },
+  "adk_pipeline_enabled": true,
+  "adk_evaluation": null,
+  "detection_summary": {
+    "walls": 40,
+    "doors": 8,
+    "objects_total": 19,
+    "rooms": 4,
+    "windows": 7,
+    "glass_grills": 0,
+    "glass_banisters": 0,
+    "stairs": 0,
+    "lifts": 0,
+    "fixtures": 8,
+    "objects_by_class": {
+      "Sink": 1,
+      "Bathroom": 2,
+      "Stove": 1,
+      "Sofa": 3,
+      "Kitchen-Slab": 1,
+      "Duct": 1,
+      "Bedroom": 2,
+      "Commode": 1,
+      "window": 7
+    }
+  }
+}
